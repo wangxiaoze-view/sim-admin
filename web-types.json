@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/web-types",
+  "framework": "vue",
+  "name": "name written in package.json",
+  "version": "version written in package.json",
+  "contributions": {
+    "html": {
+      "types-syntax": "typescript",
+      "attributes": [
+        {
+          "name": "v-throttle"
+        },
+        {
+          "name": "v-debounce"
+        },
+        {
+          "name": "v-focus"
+        },
+        {
+          "name": "v-icon-color"
+        }
+      ]
+    }
+  }
+}
