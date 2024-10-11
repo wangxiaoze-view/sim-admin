@@ -14,7 +14,9 @@
 </template>
 
 <script lang="ts" setup>
-  // console.log(import)
+  import { cloneDeep } from 'lodash-es'
+  const aa = cloneDeep({ a: 1 })
+  console.log(aa)
 </script>
 
 <style scoped lang="scss">
@@ -36,5 +38,18 @@
     font-size: 1.2rem;
     font-weight: 400;
     opacity: 0.5;
+  }
+
+  ::placeholder {
+    color: gray;
+  }
+
+  .image {
+    background: red;
+  }
+  @media (min-resolution: 2dppx) {
+    .image {
+      background: red;
+    }
   }
 </style>
