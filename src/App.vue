@@ -1,15 +1,7 @@
 <template>
   <div class="content">
-    <h1>Rsbuild with Vue</h1>
-    <p class="aaa" id="222">
-      <span v-color="'#ff0000'">Start</span>
-      building amazing things with Rsbuild.
-    </p>
-
-    <el-button type="primary">
-      宋
-      <template #dot></template>
-    </el-button>
+    <!-- <img class="test" src="./assets/wave-haikei.svg" alt="" /> -->
+    <!-- <img class="test2" src="./assets/logo.svg" alt="" /> -->
   </div>
 </template>
 
@@ -21,12 +13,20 @@
 
 <style scoped lang="scss">
   .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100vh;
-    line-height: 1.1;
-    text-align: center;
+    height: 100vh;
+    background: url('./assets/wave-haikei.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    .test {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+    }
+
+    .test2 {
+      position: absolute;
+      width: 400px;
+    }
   }
 
   .content h1 {

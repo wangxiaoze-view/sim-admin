@@ -16,6 +16,8 @@ import postcssEnv from 'postcss-preset-env'
 // gzip 插件
 import CompressionPlugin from 'compression-webpack-plugin'
 
+import { settings_config } from './src/config'
+
 export default defineConfig({
   plugins: [pluginVue(), pluginSass(), pluginImageCompress(), pluginCssMinimizer()],
   tools: {
@@ -78,35 +80,43 @@ export default defineConfig({
       //   axios: /node_modules[\\/]vue-axios/,
       //   lodash: /node_modules[\\/]lodash-es/,
       // },
-      override: {
-        chunks: 'all',
-        minSize: 20000,
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name(module: any) {
-              let packageName = 'vendors'
-              // 匹配/node_modules/.pnpm/, 因为固定式pnpm安装的
-              const reg = /[\\/]node_modules[\\/].pnpm\/(.*?)([\\/]|$)/
-              if (reg.test(module.context)) {
-                packageName = module.context.match(reg)[1]
-              }
-              return `chunk-${packageName.replace('@', '')}`
-            },
-            priority: 10,
-            reuseExistingChunk: true,
-            enforce: true,
-          },
-          default: {
-            reuseExistingChunk: true,
-            priority: -10,
-            enforce: true,
-          },
-        },
-      },
+      // override: {
+      //   chunks: 'all',
+      //   minSize: 20000,
+      //   cacheGroups: {
+      //     vendor: {
+      //       test: /[\\/]node_modules[\\/]/,
+      //       name(module: any) {
+      //         let packageName = 'vendors'
+      //         // 匹配/node_modules/.pnpm/, 因为固定式pnpm安装的
+      //         const reg = /[\\/]node_modules[\\/].pnpm\/(.*?)([\\/]|$)/
+      //         if (reg.test(module.context)) {
+      //           packageName = module.context.match(reg)[1]
+      //         }
+      //         return `chunk-${packageName.replace('@', '')}`
+      //       },
+      //       priority: 10,
+      //       reuseExistingChunk: true,
+      //       enforce: true,
+      //     },
+      //     default: {
+      //       reuseExistingChunk: true,
+      //       priority: -10,
+      //       enforce: true,
+      //     },
+      //   },
+      // },
     },
   },
   server: {
     compress: true,
+  },
+  html: {
+    title: settings_config.title,
+    favicon: settings_config.linkIcon,
+    meta: {
+      description: settings_config.description,
+      copyright: settings_config.copyright,
+    },
   },
 })

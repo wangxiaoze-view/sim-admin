@@ -4,3 +4,8 @@ body {
   color: #fff;
   background-image: linear-gradient(to bottom, #020917, #101725);
 }
+
+html,
+body {
+  height: 100%;
+}

@@ -19,9 +19,9 @@ export const settings_config = {
   // 全局的加载文字
   loadingText: 'sim正在加载, 请稍等...',
   // 网站logo
-  logo: '',
-  // 六浏览器的logo
-  linkIcon: '',
+  logo: 'https://file.wangzevw.com/images/sim_admin_favicon.7zqat7487l.ico',
+  // 浏览器的logo
+  linkIcon: 'https://file.wangzevw.com/images/sim_admin_favicon.7zqat7487l.ico',
   // ele message 的消失时间
   messageTime: 3000,
   // token 存储的方式
