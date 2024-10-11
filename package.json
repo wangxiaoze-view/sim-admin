@@ -3,8 +3,10 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "rsbuild build",
-    "dev": "rsbuild dev --open",
+    "build": "rsbuild build --env-mode production",
+    "dev": "rsbuild dev --open --env-mode development",
+    "build:profile": "RSDOCTOR=true RSPACK_PROFILE=ALL  rsbuild build --env-mode production",
+    "preview:profile": "rsdoctor analyze --profile ./dist/.rsdoctor/manifest.json",
     "preview": "rsbuild preview",
     "preinstall": "node ./scripts/preinstall.js",
     "commitlint": "commitlint --config commitlint.config.cjs -e -V",
@@ -14,14 +16,30 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "vue": "^3.5.3"
+    "@log-reporting/core": "^1.0.5",
+    "element-plus": "^2.8.4",
+    "lodash-es": "^4.17.21",
+    "nprogress": "^0.2.0",
+    "pinia": "^2.2.4",
+    "remote-components": "file:./remote-components-lib-main",
+    "vue": "^3.5.3",
+    "vue-router": "^4.4.5",
+    "vxe-pc-ui": "^4.2.19",
+    "vxe-table": "^4.6.21"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
     "@eslint/js": "^9.10.0",
+    "@log-reporting/types": "^1.0.1",
     "@rsbuild/core": "^1.0.1",
+    "@rsbuild/plugin-sass": "^1.0.2",
     "@rsbuild/plugin-vue": "^1.0.1",
+    "@rsdoctor/cli": "^0.4.6",
+    "@rsdoctor/rspack-plugin": "^0.4.6",
+    "@types/lodash-es": "^4.17.12",
+    "@types/node": "^22.7.5",
+    "@types/nprogress": "^0.2.3",
     "eslint": "^9.10.0",
     "globals": "^15.9.0",
     "husky": "^8.0.0",
@@ -34,7 +52,9 @@
     "stylelint-config-recommended-scss": "^14.1.0",
     "stylelint-config-recommended-vue": "^1.5.0",
     "typescript": "^5.5.2",
-    "typescript-eslint": "^8.5.0"
+    "typescript-eslint": "^8.5.0",
+    "unplugin-auto-import": "^0.18.3",
+    "unplugin-vue-components": "^0.27.4"
   },
   "lint-staged": {
     "*.{js,ts,vue,json}": [
@@ -44,6 +64,5 @@
       "git add"
     ]
   },
-  "web-types": "./web-types.json",
-  "__npminstall_done": false
+  "web-types": "./web-types.json"
 }

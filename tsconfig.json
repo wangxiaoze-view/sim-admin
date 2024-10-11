@@ -12,7 +12,24 @@
     "resolveJsonModule": true,
     "moduleResolution": "bundler",
     "useDefineForClassFields": true,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "paths": {
+      "~/*": ["./*"],
+      "/@/*": ["./src/*"],
+      "/@mock/*": ["./mock/*"],
+      "/@sim/*": ["./library/*"]
+    }
   },
-  "include": ["src"]
+  "include": [
+    "mock/**/*.ts",
+    "library/**/*.ts",
+    "library/**/*.vue",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "types/**/*.d.ts",
+    "types/**/*.ts"
+  ],
+  "exclude": ["node_modules", "dist", "remote-components-lib-main"]
 }

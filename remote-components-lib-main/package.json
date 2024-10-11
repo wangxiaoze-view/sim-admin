@@ -1,0 +1,53 @@
+{
+  "name": "remote-components",
+  "version": "1.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "types": "./index.d.ts"
+    },
+    "./hooks": {
+      "import": "./hooks/index.js",
+      "types": "./hooks/index.d.ts"
+    },
+    "./utils": {
+      "import": "./utils/index.js",
+      "types": "./utils/index.d.ts"
+    },
+    "./enum": {
+      "import": "./enum/index.js",
+      "types": "./enum/index.d.ts"
+    },
+    "./checkUpdate": {
+      "import": "./checkUpdate/index.js",
+      "types": "./checkUpdate/index.d.ts"
+    },
+    "./package": "./package.json",
+    "./*": "./*"
+  },
+  "peerDependencies": {
+    "element-plus": "^2.8.0",
+    "@element-plus/icons-vue": "^2.3.1",
+    "vue": "^3.4.29",
+    "vant": "^4.9.4",
+    "chalk": "^5.3.0",
+    "inquirer": "^10.1.8"
+  },
+  "dependencies": {
+    "currency.js": "^2.0.4",
+    "xgplayer": "^3.0.19",
+    "dayjs": "^1.11.13",
+    "axios": "^1.7.4"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm"
+  },
+  "packageManager": "pnpm@8.7.0",
+  "engines": {
+    "node": ">= 18.16.0"
+  }
+}

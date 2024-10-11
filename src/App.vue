@@ -1,11 +1,23 @@
 <template>
   <div class="content">
     <h1>Rsbuild with Vue</h1>
-    <p v-if="false" class="aaa" id="222">Start building amazing things with Rsbuild.</p>
+    <p class="aaa" id="222">
+      <span v-color="'#ff0000'">Start</span>
+      building amazing things with Rsbuild.
+    </p>
+
+    <el-button type="primary">
+      宋
+      <template #dot></template>
+    </el-button>
   </div>
 </template>
 
-<style scoped>
+<script lang="ts" setup>
+  // console.log(import)
+</script>
+
+<style scoped lang="scss">
   .content {
     display: flex;
     flex-direction: column;
