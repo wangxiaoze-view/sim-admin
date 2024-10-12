@@ -14,6 +14,11 @@
 * **custom:** 添加cz工具, 初始化提交規範 ([ff37b38](https://github.com/wangxiaoze-view/sim-admin/commit/ff37b3828468cbd1e3501fbf02e692ea1e080350))
 
 
+### 🐛 Bug Fixes | Bug 修复
+
+* 🐛 修复changelog-hash显示异常的bug ([12ef9d8](https://github.com/wangxiaoze-view/sim-admin/commit/12ef9d8f5b60fc883a6b7d89f3ff6bc50553e723))
+
+
 ### 💄 Styles | 风格
 
 * stylelint配置修改 ([f5fd50d](https://github.com/wangxiaoze-view/sim-admin/commit/f5fd50d159414a92cd0467ce5b7c64ed8d5ecaee))
