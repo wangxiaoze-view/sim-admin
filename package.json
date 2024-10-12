@@ -17,7 +17,8 @@
     "version": "conventional-changelog -p custom-config -i CHANGELOG.md -s -r 0 -n ./scripts/changelog-option.mjs && git add CHANGELOG.md",
     "postversion": "git push --tags",
     "changelog": "conventional-changelog -p custom-config -i CHANGELOG.md -s -r 0 -n ./scripts/changelog-option.mjs && git add CHANGELOG.md",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commit": "git-cz"
   },
   "dependencies": {
     "@log-reporting/core": "^1.0.5",
@@ -48,11 +49,13 @@
     "@types/node": "^22.7.5",
     "@types/nprogress": "^0.2.3",
     "@vue/eslint-config-typescript": "^14.0.1",
+    "commitizen": "^4.3.1",
     "compare-func": "^2.0.0",
     "compression-webpack-plugin": "^11.1.0",
     "conventional-changelog": "^6.0.0",
     "conventional-changelog-cli": "^5.0.0",
     "conventional-changelog-custom-config": "^0.3.1",
+    "cz-customizable": "^7.2.1",
     "eslint": "^9.10.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
@@ -81,5 +84,13 @@
       "git add"
     ]
   },
-  "web-types": "./web-types.json"
+  "web-types": "./web-types.json",
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": ".cz-config.cjs"
+    }
+  }
 }
