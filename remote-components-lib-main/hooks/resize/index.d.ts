@@ -1,8 +1,8 @@
 interface IResizeOptions {
-    /**
-     * 屏幕高度落差xx不显示底部按钮
-     */
-    initScrollHeight: number;
+  /**
+   * 屏幕高度落差xx不显示底部按钮
+   */
+  initScrollHeight: number
 }
 /**
  *
@@ -19,6 +19,6 @@ interface IResizeOptions {
  * @returns
  */
 export default function useResize(options?: IResizeOptions): {
-    showBottom: import('vue').Ref<boolean>;
-};
-export {};
+  showBottom: import('vue').Ref<boolean>
+}
+export {}

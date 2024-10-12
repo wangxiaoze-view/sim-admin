@@ -1,10 +1,10 @@
 interface IOptions {
-    pkg: Record<string, any>;
-    pluginPkg: Record<string, any>;
-    dir: string;
-    include?: string[];
-    exclude?: string[];
-    mode?: string;
+  pkg: Record<string, any>
+  pluginPkg: Record<string, any>
+  dir: string
+  include?: string[]
+  exclude?: string[]
+  mode?: string
 }
 /**
  *
@@ -27,5 +27,5 @@ interface IOptions {
  * }
  * ```
  */
-export default function checkUpdate(options: IOptions): Promise<void>;
-export {};
+export default function checkUpdate(options: IOptions): Promise<void>
+export {}

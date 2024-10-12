@@ -16,19 +16,23 @@
  * ```
  */
 declare class Logger {
-    constructor();
-    static isEmpty(value: any): boolean;
-    static prettyLog(title: string, text: string, color: string): void;
-    static logCaller(): string | undefined;
-    static init(title: string, content: string, defaultTip: string): {
-        _title: string;
-        _text: string;
-    };
-    log(title: string, content?: string): void;
-    error(title: string, content?: string): void;
-    warn(title: string, content?: string): void;
-    debug(content?: string): void;
-    img(url: string, scale?: number): void;
+  constructor()
+  static isEmpty(value: any): boolean
+  static prettyLog(title: string, text: string, color: string): void
+  static logCaller(): string | undefined
+  static init(
+    title: string,
+    content: string,
+    defaultTip: string
+  ): {
+    _title: string
+    _text: string
+  }
+  log(title: string, content?: string): void
+  error(title: string, content?: string): void
+  warn(title: string, content?: string): void
+  debug(content?: string): void
+  img(url: string, scale?: number): void
 }
-declare const log: Logger;
-export default log;
+declare const log: Logger
+export default log

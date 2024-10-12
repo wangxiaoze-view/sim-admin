@@ -2,7 +2,7 @@ import { App } from 'vue'
 
 export default {
   install: (app: App<Element>) => {
-    app.config.errorHandler = (err, vm, info) => {
+    app.config.errorHandler = (err) => {
       console.error(err)
     }
   },

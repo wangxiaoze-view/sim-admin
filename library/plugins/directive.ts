@@ -1,4 +1,4 @@
-import { App, DirectiveBinding } from 'vue'
+import { type App, DirectiveBinding } from 'vue'
 import { throttle } from 'lodash-es'
 
 function handlerFun({ value }: DirectiveBinding) {
@@ -17,8 +17,13 @@ export default {
   install: (app: App<Element>) => {
     // 聚焦
     app.directive('focus', {
-      mounted(el) {
-        el.querySelector('input') ? el.querySelector('input').focus() : el.focus()
+      mounted(el: HTMLElement) {
+        const ele = el.querySelector('input') as HTMLElement
+        if (ele) {
+          ele.focus()
+        } else {
+          el.focus()
+        }
       },
     })
 

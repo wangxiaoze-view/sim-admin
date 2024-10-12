@@ -4,16 +4,16 @@ export default {
     'stylelint-config-recommended-vue',
     'stylelint-config-recess-order',
   ],
-  // overrides: [
-  //   {
-  //     files: ['**/*.(scss|css|vue|html)'],
-  //     customSyntax: 'postcss-scss',
-  //   },
-  //   {
-  //     files: ['**/*.(html|vue)'],
-  //     customSyntax: 'postcss-html',
-  //   },
-  // ],
+  overrides: [
+    {
+      files: ['**/*.(scss|css|vue|html)'],
+      customSyntax: 'postcss-scss',
+    },
+    {
+      files: ['**/*.(html|vue)'],
+      customSyntax: 'postcss-html',
+    },
+  ],
   rules: {
     'selector-class-pattern': null,
     'selector-id-pattern': null,
@@ -24,4 +24,5 @@ export default {
       },
     ],
   },
+  ignoreFiles: ['dist/**/*', 'index.html', 'remote-components-lib-main'],
 }

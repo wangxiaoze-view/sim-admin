@@ -1,11 +1,11 @@
 import { ElMessageBox } from 'element-plus'
-import { App } from 'vue'
 import { version, name } from '~/package.json'
 import setupLogReporting from '../libs/logReporting'
 
 export default {
-  install: (app: App<Element>) => {
-    const isSupport = !!(window as any).ActiveXObject || 'ActiveXObject' in window
+  install: () => {
+    // @ts-expect-error TS2339
+    const isSupport = !!window.ActiveXObject || 'ActiveXObject' in window
 
     if (isSupport) {
       ElMessageBox({

@@ -1,5 +1,5 @@
 <template>
-  <div class="content" id="12">
+  <div id="12" class="content">
     <!-- <img class="test" src="./assets/wave-haikei.svg" alt="" /> -->
     <!-- <img class="test2" src="./assets/logo.svg" alt="" /> -->
   </div>
