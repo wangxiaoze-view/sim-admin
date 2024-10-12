@@ -36,7 +36,7 @@ export default {
       }
 
       if (typeof _commit.hash === 'string') {
-        _commit.hash = _commit.hash.substring(0, 7)
+        _commit.shortHash = _commit.hash.substring(0, 7)
       }
 
       if (typeof _commit.subject === 'string') {
@@ -69,7 +69,6 @@ export default {
         return issues.indexOf(reference.issue) === -1
       })
 
-      console.log(_commit)
       return _commit
     },
     groupBy: 'type',
