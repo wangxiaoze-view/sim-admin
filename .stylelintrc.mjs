@@ -24,5 +24,5 @@ export default {
       },
     ],
   },
-  ignoreFiles: ['dist/**/*', 'index.html', 'remote-components-lib-main'],
+  ignoreFiles: ['dist/**/*', 'index.html'],
 }

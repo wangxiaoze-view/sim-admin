@@ -46,5 +46,5 @@ export default [
       '@typescript-eslint/no-explicit-any': 'off',
     },
   },
-  { ignores: ['dist/', 'node_modules/', 'remote-components-lib-main'] },
+  { ignores: ['dist/', 'node_modules/'] },
 ]

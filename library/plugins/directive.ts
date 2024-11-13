@@ -1,5 +1,5 @@
 import { type App, DirectiveBinding } from 'vue'
-import { throttle } from 'lodash-es'
+import { throttle } from '~/src/utils'
 
 function handlerFun({ value }: DirectiveBinding) {
   let time = 1000

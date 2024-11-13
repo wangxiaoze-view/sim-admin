@@ -1,1 +1,1 @@
-export { EColor, ETimePeriodType } from '~/library/libs/remoteComponentsLib'
+export * from 'functional-helpers/enums'

@@ -1,10 +1,10 @@
-export const themeConfig = {
+export const themeConfig: ITheme = {
   // 布局风格 普通布局ordinary  横向布局row   浮动布局float
   layout: 'ordinary',
   // 主题颜色
   themeColor: 'blue',
   // 菜单风格：卡片，箭头
-  menuMode: '',
+  menuMode: 'card',
   // 顶部固定
   fixedHeader: true,
   // 是否启动进度条

@@ -1,5 +1,7 @@
 import { App } from 'vue'
 
+import 'remixicon/fonts/remixicon.css'
+
 export function setupSim(app: App<Element>) {
   const files = require.context('./plugins', false, /\.ts$/)
   files.keys().forEach((key) => {

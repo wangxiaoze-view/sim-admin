@@ -14,14 +14,20 @@ export const settings_config = {
   keepaliveMax: 10,
   // 路由模式： true 哈希 false history
   hasRouterMode: true,
+  // 路由拦截模式 web: 前端路由管理 all: 后端路由管理
+  // TODO: 待确定
+  hasRouterGuard: 'all',
   // 白名单
-  whiteList: ['/login', '/register', '/403', '404', '500'],
+  whiteList: ['/login', '/register', '/403', '/404', '/500'],
   // 全局的加载文字
   loadingText: 'sim正在加载, 请稍等...',
   // 网站logo
-  logo: 'https://file.wangzevw.com/images/sim_admin_favicon.7zqat7487l.ico',
+  // v1 版本logo
+  // logo: 'https://file.wangzevw.com/images/sim_admin_favicon.7zqat7487l.ico',
+  logo: 'https://file.wangzevw.com/images/logo.51e67aosot.svg',
   // 浏览器的logo
-  linkIcon: 'https://file.wangzevw.com/images/sim_admin_favicon.7zqat7487l.ico',
+  // linkIcon: 'https://file.wangzevw.com/images/sim_admin_favicon.7zqat7487l.ico',
+  linkIcon: 'https://file.wangzevw.com/images/logo.51e67aosot.svg',
   // ele message 的消失时间
   messageTime: 3000,
   // token 存储的方式

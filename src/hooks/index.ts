@@ -1,6 +1,1 @@
-export {
-  useLoading,
-  useComputedNum,
-  useEleForm,
-  useResize,
-} from '~/library/libs/remoteComponentsLib'
+export * from 'functional-helpers/hooks'

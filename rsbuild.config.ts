@@ -17,6 +17,7 @@ import postcssEnv from 'postcss-preset-env'
 import CompressionPlugin from 'compression-webpack-plugin'
 
 import { settings_config } from './src/config'
+const { title, linkIcon, description, copyright } = settings_config
 
 export default defineConfig({
   plugins: [pluginVue(), pluginSass(), pluginImageCompress(), pluginCssMinimizer()],
@@ -79,6 +80,11 @@ export default defineConfig({
       // forceSplitting: {
       //   axios: /node_modules[\\/]vue-axios/,
       //   lodash: /node_modules[\\/]lodash-es/,
+      //   vue: /node_modules[\\/]vue[\\/]/,
+      //   'vue-router': /node_modules[\\/]vue-router[\\/]/,
+      //   'element-plus': /node_modules[\\/]element-plus[\\/]/,
+      //   pinia: /node_modules[\\/]pinia[\\/]/,
+      //   remixicon: /node_modules[\\/]remixicon[\\/]/,
       // },
       // override: {
       //   chunks: 'all',
@@ -112,11 +118,11 @@ export default defineConfig({
     compress: true,
   },
   html: {
-    title: settings_config.title,
-    favicon: settings_config.linkIcon,
+    title,
+    favicon: linkIcon,
     meta: {
-      description: settings_config.description,
-      copyright: settings_config.copyright,
+      description,
+      copyright,
     },
   },
 })
