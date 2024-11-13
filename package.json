@@ -9,17 +9,16 @@
     "build:profile": "RSDOCTOR=true RSPACK_PROFILE=ALL  rsbuild build --env-mode production",
     "build:analyze": "BUNDLE_ANALYZE=true rsbuild build --env-mode production",
     "preview": "rsbuild preview",
-    "preinstall": "node ./scripts/preinstall.js",
     "commitlint": "commitlint --config commitlint.config.cjs -e -V",
-    "lint:fix": "eslint {src,mock,library}/**/*.{vue,js,ts} --fix",
-    "lint:format": "prettier  {src,mock,library}/**/*.{html,vue,css,sass,scss,js,ts,md} --write ",
+    "lint:oxlint": "oxlint {src,mock,library}/**/*.{vue,js,ts} --fix -D correctness --ignore-path .gitignore",
+    "lint:eslint": "eslint --no-error-on-unmatched-pattern {src,mock,library}/**/*.{vue,js,ts} --fix",
+    "lint:format": "prettier --no-error-on-unmatched-pattern  {src,mock,library}/**/*.{html,vue,css,sass,scss,js,ts,md} --write ",
     "lint:style": "stylelint {src,mock,library}/**/*.{vue,css,sass,scss} --cache --fix",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 -n ./scripts/changelog-option.mjs && git add CHANGELOG.md",
-    "postversion": "git push --tags",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 -n ./scripts/changelog-option.mjs && git add CHANGELOG.md",
+    "lint": "run-s lint:*",
+    "commitlog": "conventional-changelog -p angular -i COMMIT.md -s -r 0 -n ./commitlog-option.mjs",
     "prepare": "husky install",
     "commit": "git-cz",
-    "commitizen:init": "commitizen init cz-conventional-changelog --pnpm --save-dev --save-exact"
+    "release": "release-it"
   },
   "dependencies": {
     "@log-reporting/core": "^1.0.5",
@@ -37,6 +36,8 @@
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
+    "release-it": "^17.10.0",
+    "@release-it/conventional-changelog": "^9.0.2",
     "@eslint/js": "^9.10.0",
     "@log-reporting/types": "^1.0.1",
     "@rsbuild/core": "^1.0.1",
@@ -50,17 +51,17 @@
     "@types/node": "^22.7.5",
     "@types/nprogress": "^0.2.3",
     "@vue/eslint-config-typescript": "^14.0.1",
+    "@vue/eslint-config-prettier": "^10.1.0",
     "commitizen": "^4.3.1",
     "compare-func": "^2.0.0",
     "compression-webpack-plugin": "^11.1.0",
     "conventional-changelog": "^6.0.0",
     "conventional-changelog-cli": "^5.0.0",
-    "cz-conventional-changelog": "^3.3.0",
+    "cz-message-helper": "^1.3.1",
     "eslint": "^9.10.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-vue": "^9.29.0",
-    "git-cz": "^4.9.0",
     "globals": "^15.9.0",
     "husky": "^8.0.0",
     "lint-staged": "^15.2.10",
@@ -76,19 +77,25 @@
     "typescript-eslint": "^8.5.0",
     "unplugin-auto-import": "^0.18.3",
     "unplugin-vue-components": "^0.27.4",
-    "vue-eslint-parser": "^9.4.3"
+    "vue-eslint-parser": "^9.4.3",
+    "vite-plugin-vue-devtools": "^7.5.4",
+    "oxlint": "^0.11.0",
+    "eslint-plugin-oxlint": "^0.11.0",
+    "npm-run-all2": "^7.0.1"
   },
   "lint-staged": {
     "*.{js,ts,vue,json}": [
-      "npm run lint:format",
-      "npm run lint:fix",
+      "pnpm run lint",
       "git add"
     ]
   },
   "web-types": "./web-types.json",
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "./node_modules/cz-message-helper"
+    },
+    "cz-message-helper": {
+      "config": "./.cz-message.cjs"
     }
   }
 }

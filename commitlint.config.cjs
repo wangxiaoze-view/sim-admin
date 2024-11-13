@@ -1,24 +1,10 @@
+const config = require('./.cz-message.cjs')
+const types = config.questions[0].choices.map((o) => o.value)
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   // 校验规则
   rules: {
-    'type-enum': [
-      2,
-      'always',
-      [
-        'feat',
-        'fix',
-        'docs',
-        'style',
-        'refactor',
-        'perf',
-        'test',
-        'chore',
-        'revert',
-        'build',
-        'ci',
-      ],
-    ],
+    'type-enum': [2, 'always', types],
     'type-case': [0],
     'type-empty': [0],
     'scope-empty': [0],
