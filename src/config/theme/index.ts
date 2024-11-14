@@ -2,7 +2,7 @@ export const themeConfig: ITheme = {
   // 布局风格 普通布局ordinary  横向布局row   浮动布局float
   layout: 'ordinary',
   // 主题颜色
-  themeColor: 'blue',
+  themeColor: '#4c7cc3',
   // 菜单风格：卡片，箭头
   menuMode: 'card',
   // 顶部固定

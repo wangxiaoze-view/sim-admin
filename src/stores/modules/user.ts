@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
-
-import { getToken } from '~/src/utils'
+import { loginApi } from '~/src/api/user'
+import { getToken, setToken } from '~/src/utils'
 
 export const useUserStore = defineStore('user', {
   state: (): IUserType => ({
@@ -8,5 +8,12 @@ export const useUserStore = defineStore('user', {
   }),
   getters: {
     getToken: (state) => state.token,
+  },
+  actions: {
+    async toLogin(username: string, password: string) {
+      const { success = false, context } = await loginApi({ username, password })
+      if (!success) return
+      setToken(context.token)
+    },
   },
 })

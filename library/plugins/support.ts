@@ -27,6 +27,7 @@ export default {
       'color: #ffffff; background: #0081ff; padding:2px 0; border-radius: 3px 0 0 3px;',
       'color: #ffffff; background: #354855; padding:2px 0; border-radius: 0 3px 3px 0;'
     )
-    setupLogReporting()
+    // TODO: 暂时去掉
+    // setupLogReporting()
   },
 }

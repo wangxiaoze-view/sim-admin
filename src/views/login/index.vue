@@ -15,37 +15,3 @@
     </div>
   </div>
 </template>
-
-<style scoped lang="scss">
-  .login {
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-
-    &-container {
-      width: 90%;
-      height: 90%;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      &--logo {
-        width: 50%;
-      }
-
-      &--content {
-        width: 35%;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        .logo {
-          width: 80%;
-          height: 100px;
-          object-fit: cover;
-        }
-      }
-    }
-  }
-</style>

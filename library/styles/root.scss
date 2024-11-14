@@ -1,0 +1,158 @@
+@import './variables.scss';
+
+// 重写ele 的全局样式变量， 这里修改之后用于 主题切换
+:root {
+  // --el-color-white: #ffffff;
+  // --el-color-black: #000000;
+  // --el-color-primary-rgb: 64, 158, 255;
+  // --el-color-success-rgb: 103, 194, 58;
+  // --el-color-warning-rgb: 230, 162, 60;
+  // --el-color-danger-rgb: 245, 108, 108;
+  // --el-color-error-rgb: 245, 108, 108;
+  // --el-color-info-rgb: 144, 147, 153;
+  // --el-font-size-extra-large: 20px;
+  // --el-font-size-large: 18px;
+  // --el-font-size-medium: 16px;
+  // --el-font-size-base: 14px;
+  // --el-font-size-small: 13px;
+  // --el-font-size-extra-small: 12px;
+  // --el-font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+  //   'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+  // --el-font-weight-primary: 500;
+  // --el-font-line-height-primary: 24px;
+  // --el-index-normal: 1;
+  // --el-index-top: 1000;
+  // --el-index-popper: 2000;
+  // --el-border-radius-base: 4px;
+  // --el-border-radius-small: 2px;
+  // --el-border-radius-round: 20px;
+  // --el-border-radius-circle: 100%;
+  // --el-transition-duration: 0.3s;
+  // --el-transition-duration-fast: 0.2s;
+  // --el-transition-function-ease-in-out-bezier: cubic-bezier(0.645, 0.045, 0.355, 1);
+  // --el-transition-function-fast-bezier: cubic-bezier(0.23, 1, 0.32, 1);
+  // --el-transition-all: all var(--el-transition-duration)
+  //   var(--el-transition-function-ease-in-out-bezier);
+  // --el-transition-fade: opacity var(--el-transition-duration)
+  //   var(--el-transition-function-fast-bezier);
+  // --el-transition-md-fade: transform var(--el-transition-duration)
+  //     var(--el-transition-function-fast-bezier),
+  //   opacity var(--el-transition-duration) var(--el-transition-function-fast-bezier);
+  // --el-transition-fade-linear: opacity var(--el-transition-duration-fast) linear;
+  // --el-transition-border: border-color var(--el-transition-duration-fast)
+  //   var(--el-transition-function-ease-in-out-bezier);
+  // --el-transition-box-shadow: box-shadow var(--el-transition-duration-fast)
+  //   var(--el-transition-function-ease-in-out-bezier);
+  // --el-transition-color: color var(--el-transition-duration-fast)
+  //   var(--el-transition-function-ease-in-out-bezier);
+  // --el-component-size-large: 40px;
+  // --el-component-size: 32px;
+  // --el-component-size-small: 24px;
+  // color-scheme: light;
+  // 主色
+  --el-color-primary: #{$sim-color-primary};
+  --el-color-primary-light-1: #{$sim-color-primary-light-1};
+  --el-color-primary-light-2: #{$sim-color-primary-light-2};
+  --el-color-primary-light-3: #{$sim-color-primary-light-3};
+  --el-color-primary-light-4: #{$sim-color-primary-light-4};
+  --el-color-primary-light-5: #{$sim-color-primary-light-5};
+  --el-color-primary-light-6: #{$sim-color-primary-light-6};
+  --el-color-primary-light-7: #{$sim-color-primary-light-7};
+  --el-color-primary-light-8: #{$sim-color-primary-light-8};
+  --el-color-primary-light-9: #{$sim-color-primary-light-9};
+  // --el-color-primary-dark-2: rgb(51.2, 126.4, 204);
+  --el-color-success: #{$sim-color-success};
+  --el-color-success-light-1: #{$sim-color-success-light-1};
+  --el-color-success-light-2: #{$sim-color-success-light-2};
+  --el-color-success-light-3: #{$sim-color-success-light-3};
+  --el-color-success-light-4: #{$sim-color-success-light-4};
+  --el-color-success-light-5: #{$sim-color-success-light-5};
+  --el-color-success-light-6: #{$sim-color-success-light-6};
+  --el-color-success-light-7: #{$sim-color-success-light-7};
+  --el-color-success-light-8: #{$sim-color-success-light-8};
+  --el-color-success-light-9: #{$sim-color-success-light-9};
+  // --el-color-success-dark-2: rgb(82.4, 155.2, 46.4);
+  --el-color-warning: #{$sim-color-warning};
+  --el-color-warning-light-1: #{$sim-color-warning-light-1};
+  --el-color-warning-light-2: #{$sim-color-warning-light-2};
+  --el-color-warning-light-3: #{$sim-color-warning-light-3};
+  --el-color-warning-light-4: #{$sim-color-warning-light-4};
+  --el-color-warning-light-5: #{$sim-color-warning-light-5};
+  --el-color-warning-light-6: #{$sim-color-warning-light-6};
+  --el-color-warning-light-7: #{$sim-color-warning-light-7};
+  --el-color-warning-light-8: #{$sim-color-warning-light-8};
+  --el-color-warning-light-9: #{$sim-color-warning-light-9};
+  // --el-color-warning-dark-2: rgb(184, 129.6, 48);
+  --el-color-danger: #{$sim-color-danger};
+  --el-color-danger-light-1: #{$sim-color-danger-light-1};
+  --el-color-danger-light-2: #{$sim-color-danger-light-2};
+  --el-color-danger-light-3: #{$sim-color-danger-light-3};
+  --el-color-danger-light-4: #{$sim-color-danger-light-4};
+  --el-color-danger-light-5: #{$sim-color-danger-light-5};
+  --el-color-danger-light-6: #{$sim-color-danger-light-6};
+  --el-color-danger-light-7: #{$sim-color-danger-light-7};
+  --el-color-danger-light-8: #{$sim-color-danger-light-8};
+  --el-color-danger-light-9: #{$sim-color-danger-light-9};
+  // --el-color-danger-dark-2: rgb(196, 86.4, 86.4);
+  --el-color-error: #{$sim-color-error};
+  --el-color-error-light-1: #{$sim-color-error-light-1};
+  --el-color-error-light-2: #{$sim-color-error-light-2};
+  --el-color-error-light-3: #{$sim-color-error-light-3};
+  --el-color-error-light-4: #{$sim-color-error-light-4};
+  --el-color-error-light-5: #{$sim-color-error-light-5};
+  --el-color-error-light-6: #{$sim-color-error-light-6};
+  --el-color-error-light-7: #{$sim-color-error-light-7};
+  --el-color-error-light-8: #{$sim-color-error-light-8};
+  --el-color-error-light-9: #{$sim-color-error-light-9};
+  // --el-color-error-dark-2: rgb(196, 86.4, 86.4);
+  --el-color-info: #{$sim-color-info};
+  --el-color-info-light-1: #{$sim-color-info-light-1};
+  --el-color-info-light-2: #{$sim-color-info-light-2};
+  --el-color-info-light-3: #{$sim-color-info-light-3};
+  --el-color-info-light-4: #{$sim-color-info-light-4};
+  --el-color-info-light-5: #{$sim-color-info-light-5};
+  --el-color-info-light-6: #{$sim-color-info-light-6};
+  --el-color-info-light-7: #{$sim-color-info-light-7};
+  --el-color-info-light-8: #{$sim-color-info-light-8};
+  --el-color-info-light-9: #{$sim-color-info-light-9};
+  // --el-color-info-dark-2: rgb(115.2, 117.6, 122.4);
+  // --el-bg-color: #ffffff;
+  // --el-bg-color-page: #f2f3f5;
+  // --el-bg-color-overlay: #ffffff;
+  // --el-text-color-primary: #303133;
+  // --el-text-color-regular: #606266;
+  // --el-text-color-secondary: #909399;
+  // --el-text-color-placeholder: #a8abb2;
+  // --el-text-color-disabled: #c0c4cc;
+  // --el-border-color: #dcdfe6;
+  // --el-border-color-light: #e4e7ed;
+  // --el-border-color-lighter: #ebeef5;
+  // --el-border-color-extra-light: #f2f6fc;
+  // --el-border-color-dark: #d4d7de;
+  // --el-border-color-darker: #cdd0d6;
+  // --el-fill-color: #f0f2f5;
+  // --el-fill-color-light: #f5f7fa;
+  // --el-fill-color-lighter: #fafafa;
+  // --el-fill-color-extra-light: #fafcff;
+  // --el-fill-color-dark: #ebedf0;
+  // --el-fill-color-darker: #e6e8eb;
+  // --el-fill-color-blank: #ffffff;
+  // --el-box-shadow: 0px 12px 32px 4px rgba(0, 0, 0, 0.04), 0px 8px 20px rgba(0, 0, 0, 0.08);
+  // --el-box-shadow-light: 0px 0px 12px rgba(0, 0, 0, 0.12);
+  // --el-box-shadow-lighter: 0px 0px 6px rgba(0, 0, 0, 0.12);
+  // --el-box-shadow-dark: 0px 16px 48px 16px rgba(0, 0, 0, 0.08), 0px 12px 32px rgba(0, 0, 0, 0.12),
+  //   0px 8px 16px -8px rgba(0, 0, 0, 0.16);
+  // --el-disabled-bg-color: var(--el-fill-color-light);
+  // --el-disabled-text-color: var(--el-text-color-placeholder);
+  // --el-disabled-border-color: var(--el-border-color-light);
+  // --el-overlay-color: rgba(0, 0, 0, 0.8);
+  // --el-overlay-color-light: rgba(0, 0, 0, 0.7);
+  // --el-overlay-color-lighter: rgba(0, 0, 0, 0.5);
+  // --el-mask-color: rgba(255, 255, 255, 0.9);
+  // --el-mask-color-extra-light: rgba(255, 255, 255, 0.3);
+  // --el-border-width: 1px;
+  // --el-border-style: solid;
+  // --el-border-color-hover: var(--el-text-color-disabled);
+  // --el-border: var(--el-border-width) var(--el-border-style) var(--el-border-color);
+  // --el-svg-monochrome-grey: var(--el-border-color);
+}

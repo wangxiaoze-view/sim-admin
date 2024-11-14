@@ -6,7 +6,11 @@ import Components from 'unplugin-vue-components/rspack'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { pluginSass } from '@rsbuild/plugin-sass'
 
+// rsdoctor
 import { RsdoctorRspackPlugin } from '@rsdoctor/rspack-plugin'
+// mock
+import { pluginMockServer } from 'rspack-plugin-mock/rsbuild'
+
 // 图片压缩
 import { pluginImageCompress } from '@rsbuild/plugin-image-compress'
 // css压缩
@@ -20,7 +24,19 @@ import { settings_config } from './src/config'
 const { title, linkIcon, description, copyright } = settings_config
 
 export default defineConfig({
-  plugins: [pluginVue(), pluginSass(), pluginImageCompress(), pluginCssMinimizer()],
+  plugins: [
+    pluginVue(),
+    pluginSass(),
+    pluginImageCompress(),
+    pluginCssMinimizer(),
+    pluginMockServer({
+      log: true,
+      // build: {
+      //   dist: 'mock',
+      //   serverPort: 3300,
+      // },
+    }),
+  ],
   tools: {
     lightningcssLoader: false,
     postcss(opts) {
@@ -116,6 +132,9 @@ export default defineConfig({
   },
   server: {
     compress: true,
+    proxy: {
+      '/api': 'http://localhost:3000',
+    },
   },
   html: {
     title,

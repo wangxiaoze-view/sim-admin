@@ -1,71 +1,65 @@
 <script setup lang="ts">
-  import { useRouter } from 'vue-router'
-  import { useLoading } from '~/src/hooks'
-  import { reactive, computed, ref, nextTick } from 'vue'
-  import { FORM_RULES } from '../config/index'
-  import { randomCodeToCanvas as verificationCode } from '~/src/utils'
   import TripartiteLogin from './tripartiteLogin.vue'
-  import SimFormErrorMsg from '~/src/components/SimFormErrorMsg/index.vue'
   import SimIcon from '~/src/components/SimIcon/index.vue'
-  import { useUserStore } from '~/src/stores/modules/user'
 
   defineOptions({
     name: 'LoginForm',
   })
 
-  const userStore = useUserStore()
-  const router = useRouter()
-  const formRef = ref()
-  const { loading, setLoading } = useLoading(false)
+  import useLogin from '../hooks/useLogin'
 
-  const state = reactive({
-    formModel: {
-      userName: 'admin',
-      password: 'admin',
-      code: '',
-    },
-    codeImage: '',
-    FORM_RULES,
-    isPassword: true,
-    passwordType: 'password',
+  const { formModel, formRef, config, rules, loading, isDisabled, login, refreshCode } = useLogin()
 
-    isDisabled: computed((): boolean => {
-      return !state.formModel.userName || !state.formModel.password
-    }),
-  })
+  // const userStore = useUserStore()
+  // const router = useRouter()
+  // const formRef = ref()
 
-  const refreshCode = () => {
-    const { url, code } = verificationCode.randomCode()
-    state.codeImage = url
-    state.formModel.code = code
-  }
+  // const state = reactive({
+  //   formModel: {
+  //     userName: 'admin',
+  //     password: 'admin',
+  //     code: '',
+  //   },
+  //   codeImage: '',
+  //   FORM_RULES,
+  //   isPassword: true,
+  //   passwordType: 'password',
 
-  const handleLogin = async (formRef: any) => {
-    if (!formRef) return
-    await formRef.validate(async (valid: boolean) => {
-      if (!valid) return
+  //   isDisabled: computed((): boolean => {
+  //     return !state.formModel.userName || !state.formModel.password
+  //   }),
+  // })
 
-      try {
-        setLoading(true)
-        // userStore.setLogin(state.formModel.userName, state.formModel.password).then(() => {
-        //   router.push('/')
-        // })
-      } finally {
-        setTimeout(() => setLoading(false), 2000)
-      }
-    })
-  }
+  // const refreshCode = () => {
+  //   const { url, code } = verificationCode.randomCode()
+  //   state.codeImage = url
+  //   state.formModel.code = code
+  // }
 
-  nextTick(() => {
-    refreshCode()
-  })
+  // const handleLogin = async (formRef: any) => {
+  //   if (!formRef) return
+  //   await formRef.validate(async (valid: boolean) => {
+  //     if (!valid) return
+
+  //     try {
+  //       setLoading(true)
+  //       // userStore.setLogin(state.formModel.userName, state.formModel.password).then(() => {
+  //       //   router.push('/')
+  //       // })
+  //     } finally {
+  //       setTimeout(() => setLoading(false), 2000)
+  //     }
+  //   })
+  // }
+
+  // refreshCode()
 </script>
 
 <template>
-  <el-form ref="formRef" class="sim-form" :model="state.formModel" :rules="FORM_RULES">
+  <el-form ref="formRef" class="sim-form" :model="formModel" :rules="rules">
     <el-form-item prop="userName">
       <el-input
-        v-model.trim="state.formModel.userName"
+        v-model.trim="formModel.userName"
         class="sim-form--input"
         placeholder="请输入用户名"
         type="text"
@@ -74,37 +68,31 @@
           <sim-icon icon-class="ri-user-4-line" />
         </template>
       </el-input>
-      <template #error="{ error }">
-        <sim-form-error-msg :title="error" />
-      </template>
     </el-form-item>
 
     <el-form-item prop="password">
       <el-input
-        v-model.trim="state.formModel.password"
+        v-model.trim="formModel.password"
         class="sim-form--input"
         placeholder="请输入密码"
-        :type="state.isPassword ? 'password' : 'text'"
+        :type="config.isPassword ? 'password' : 'text'"
       >
         <template #prefix>
           <sim-icon icon-class="ri-lock-line" />
         </template>
         <template #suffix>
           <sim-icon
-            :icon-class="state.isPassword ? 'ri-eye-close-line' : 'ri-eye-line'"
-            @click="state.isPassword = !state.isPassword"
+            :icon-class="config.isPassword ? 'ri-eye-close-line' : 'ri-eye-line'"
+            @click="config.isPassword = !config.isPassword"
           />
         </template>
       </el-input>
-      <template #error="{ error }">
-        <sim-form-error-msg :title="error" />
-      </template>
     </el-form-item>
 
     <el-form-item prop="code">
       <div class="sim-code--row">
         <el-input
-          v-model.trim="state.formModel.code"
+          v-model.trim="formModel.code"
           class="sim-form--input"
           :disabled="true"
           placeholder="请输入验证码"
@@ -115,29 +103,21 @@
           </template>
         </el-input>
         <canvas id="sim-code" class="code-image"></canvas>
-        <img alt="Code" class="code-image" :src="state.codeImage" @click="refreshCode" />
+        <img alt="Code" class="code-image" :src="config.codeImage" @click="refreshCode" />
       </div>
-
-      <template #error="{ error }">
-        <sim-form-error-msg :title="error" />
-      </template>
     </el-form-item>
 
     <el-form-item class="sim-form--tools">
-      <router-link class="sim-form--a" to="#">
-        <div>注册</div>
-      </router-link>
-      <router-link class="sim-form--a" to="#">
-        <div>忘记密码</div>
-      </router-link>
+      <el-button type="primary" class="sim-form--a" link>注册</el-button>
+      <el-button type="primary" class="sim-form--a" link>忘记密码</el-button>
     </el-form-item>
 
     <el-button
       class="sim-form--submit"
-      :disabled="state.isDisabled"
+      :disabled="isDisabled"
       :loading="loading"
       type="primary"
-      @click="handleLogin(formRef)"
+      @click="login"
     >
       登录
     </el-button>
@@ -148,12 +128,14 @@
       <span class="line"></span>
     </div>
 
-    <el-form-item class="svg-container">
+    <div class="svg-container">
       <tripartite-login />
-    </el-form-item>
+    </div>
   </el-form>
 </template>
 
-<style scoped lang="scss">
-  @import '../css/login.scss';
+<style lang="scss" scoped>
+  :deep(.el-form-item__content) {
+    justify-content: space-between;
+  }
 </style>

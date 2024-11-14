@@ -18,6 +18,7 @@ export const useRoutesStore = defineStore('routes', {
     async setRoutes() {
       // 设置路由，权限，菜单
       const routes = [...asyncRoutes]
+      console.log(routes, 213)
     },
   },
 })

@@ -1,0 +1,18 @@
+@import 'element-plus/theme-chalk/src/display';
+@import 'element-plus/theme-chalk/src/index';
+@import './root.scss';
+@import './login.scss';
+
+html {
+  body {
+    position: relative;
+    box-sizing: border-box;
+    height: 100vh;
+    margin: 0;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    font-size: var(--el-font-size-base);
+    color: var(--el-color-black);
+    background: var(--el-bg-color);
+  }
+}

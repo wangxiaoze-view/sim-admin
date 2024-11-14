@@ -4,11 +4,11 @@ import { App } from 'vue'
 export default {
   install: (app: App<Element>) => {
     new InitHelpers({
-      isDebug: true,
       isLogger: true,
-      install: (install) => {
-        app.use(install)
-      },
+      // isDebug: true,
+      // install: (install) => {
+      //   app.use(install)
+      // },
     })
   },
 }
