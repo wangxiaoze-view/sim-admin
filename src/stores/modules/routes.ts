@@ -39,7 +39,7 @@ export const useRoutesStore = defineStore('routes', {
         }
         routes = [...routes, ...list]
       }
-      // TODO: 待完善
+      // TODO: 待完善, 后续添加权限校验递归
     },
   },
 })
