@@ -1,58 +1,12 @@
 <script setup lang="ts">
   import TripartiteLogin from './tripartiteLogin.vue'
   import SimIcon from '~/src/components/SimIcon/index.vue'
+  import useLogin from '../hooks/useLogin'
 
   defineOptions({
     name: 'LoginForm',
   })
-
-  import useLogin from '../hooks/useLogin'
-
   const { formModel, formRef, config, rules, loading, isDisabled, login, refreshCode } = useLogin()
-
-  // const userStore = useUserStore()
-  // const router = useRouter()
-  // const formRef = ref()
-
-  // const state = reactive({
-  //   formModel: {
-  //     userName: 'admin',
-  //     password: 'admin',
-  //     code: '',
-  //   },
-  //   codeImage: '',
-  //   FORM_RULES,
-  //   isPassword: true,
-  //   passwordType: 'password',
-
-  //   isDisabled: computed((): boolean => {
-  //     return !state.formModel.userName || !state.formModel.password
-  //   }),
-  // })
-
-  // const refreshCode = () => {
-  //   const { url, code } = verificationCode.randomCode()
-  //   state.codeImage = url
-  //   state.formModel.code = code
-  // }
-
-  // const handleLogin = async (formRef: any) => {
-  //   if (!formRef) return
-  //   await formRef.validate(async (valid: boolean) => {
-  //     if (!valid) return
-
-  //     try {
-  //       setLoading(true)
-  //       // userStore.setLogin(state.formModel.userName, state.formModel.password).then(() => {
-  //       //   router.push('/')
-  //       // })
-  //     } finally {
-  //       setTimeout(() => setLoading(false), 2000)
-  //     }
-  //   })
-  // }
-
-  // refreshCode()
 </script>
 
 <template>

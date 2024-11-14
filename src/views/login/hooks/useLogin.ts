@@ -1,7 +1,7 @@
 import { computed, onMounted, reactive, ref } from 'vue'
 import { useLoading, useForm } from '~/src/hooks'
 import { useUserStore } from '~/src/stores/modules/user'
-import { randomCodeToCanvas } from '~/src/utils'
+import { randomCodeToCanvas, logger } from '~/src/utils'
 import { useRouter } from 'vue-router'
 
 const FORM_RULES = {
@@ -56,12 +56,10 @@ export default function useLogin() {
     passwordType: 'password',
   })
 
+  const router = useRouter()
   const { loading, setLoading } = useLoading(false)
   const { formRef, validate, rules } = useForm(FORM_RULES)
-
   const { toLogin } = useUserStore()
-
-  const router = useRouter()
 
   const isDisabled = computed(() => {
     return !formModel.userName || !formModel.password
@@ -78,10 +76,13 @@ export default function useLogin() {
       if (!valid) return
       try {
         setLoading(true)
-        console.log(loading.value)
-        toLogin(formModel.userName, formModel.password)
-      } finally {
-        router.push('/')
+        toLogin(formModel.userName, formModel.password).then((isSuccess) => {
+          if (isSuccess) router.push('/')
+          // fix: 登录成功之后，加载动画不消失， 一个好处就是在跳转页面之前由于加载文件可能会有短暂的可点状态
+          // setLoading(false)
+        })
+      } catch (error) {
+        logger.error(JSON.stringify(error))
         setLoading(false)
       }
     })

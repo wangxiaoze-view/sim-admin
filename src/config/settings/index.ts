@@ -15,7 +15,6 @@ export const settings_config = {
   // 路由模式： true 哈希 false history
   hasRouterMode: true,
   // 路由拦截模式 web: 前端路由管理 all: 后端路由管理
-  // TODO: 待确定
   hasRouterGuard: 'all',
   // 白名单
   whiteList: ['/login', '/register', '/403', '/404', '/500'],

@@ -28,6 +28,7 @@
     "pinia": "^2.2.6",
     "remixicon": "^4.5.0",
     "vue": "^3.5.12",
+    "vue-i18n": "10",
     "vue-router": "^4.4.5",
     "vxe-pc-ui": "^4.2.51",
     "vxe-table": "^4.8.10"

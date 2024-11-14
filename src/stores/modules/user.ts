@@ -14,6 +14,7 @@ export const useUserStore = defineStore('user', {
       const { success = false, context } = await loginApi({ username, password })
       if (!success) return
       setToken(context.token)
+      return Promise.resolve(success)
     },
   },
 })
