@@ -60,7 +60,9 @@
   --el-color-primary-light-7: #{$sim-color-primary-light-7};
   --el-color-primary-light-8: #{$sim-color-primary-light-8};
   --el-color-primary-light-9: #{$sim-color-primary-light-9};
-  // --el-color-primary-dark-2: rgb(51.2, 126.4, 204);
+  --el-color-primary-dark-2: #{$sim-color-primary};
+
+  // success
   --el-color-success: #{$sim-color-success};
   --el-color-success-light-1: #{$sim-color-success-light-1};
   --el-color-success-light-2: #{$sim-color-success-light-2};
@@ -71,7 +73,9 @@
   --el-color-success-light-7: #{$sim-color-success-light-7};
   --el-color-success-light-8: #{$sim-color-success-light-8};
   --el-color-success-light-9: #{$sim-color-success-light-9};
-  // --el-color-success-dark-2: rgb(82.4, 155.2, 46.4);
+  --el-color-success-dark-2: #{$sim-color-success};
+
+  // warning
   --el-color-warning: #{$sim-color-warning};
   --el-color-warning-light-1: #{$sim-color-warning-light-1};
   --el-color-warning-light-2: #{$sim-color-warning-light-2};
@@ -82,7 +86,9 @@
   --el-color-warning-light-7: #{$sim-color-warning-light-7};
   --el-color-warning-light-8: #{$sim-color-warning-light-8};
   --el-color-warning-light-9: #{$sim-color-warning-light-9};
-  // --el-color-warning-dark-2: rgb(184, 129.6, 48);
+  --el-color-warning-dark-2: #{$sim-color-warning};
+
+  // danger
   --el-color-danger: #{$sim-color-danger};
   --el-color-danger-light-1: #{$sim-color-danger-light-1};
   --el-color-danger-light-2: #{$sim-color-danger-light-2};
@@ -93,7 +99,9 @@
   --el-color-danger-light-7: #{$sim-color-danger-light-7};
   --el-color-danger-light-8: #{$sim-color-danger-light-8};
   --el-color-danger-light-9: #{$sim-color-danger-light-9};
-  // --el-color-danger-dark-2: rgb(196, 86.4, 86.4);
+  --el-color-danger-dark-2: #{$sim-color-danger};
+
+  // error
   --el-color-error: #{$sim-color-error};
   --el-color-error-light-1: #{$sim-color-error-light-1};
   --el-color-error-light-2: #{$sim-color-error-light-2};
@@ -104,7 +112,8 @@
   --el-color-error-light-7: #{$sim-color-error-light-7};
   --el-color-error-light-8: #{$sim-color-error-light-8};
   --el-color-error-light-9: #{$sim-color-error-light-9};
-  // --el-color-error-dark-2: rgb(196, 86.4, 86.4);
+  --el-color-error-dark-2: #{$sim-color-error};
+
   --el-color-info: #{$sim-color-info};
   --el-color-info-light-1: #{$sim-color-info-light-1};
   --el-color-info-light-2: #{$sim-color-info-light-2};
@@ -115,7 +124,8 @@
   --el-color-info-light-7: #{$sim-color-info-light-7};
   --el-color-info-light-8: #{$sim-color-info-light-8};
   --el-color-info-light-9: #{$sim-color-info-light-9};
-  // --el-color-info-dark-2: rgb(115.2, 117.6, 122.4);
+  --el-color-info-dark-2: #{$sim-color-info};
+
   // --el-bg-color: #ffffff;
   // --el-bg-color-page: #f2f3f5;
   // --el-bg-color-overlay: #ffffff;

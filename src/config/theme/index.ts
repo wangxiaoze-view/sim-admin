@@ -49,4 +49,14 @@ export const themeConfig: ITheme = {
   isNotice: true,
   // 是否显示面包屑
   isBreadcrumb: true,
+
+  // 暗黑模式 light:亮色,dark:暗色
+  isMode: true,
+  mode: 'light',
+
+  // 是否启用自定义颜色
+  isColor: true,
+
+  // 自动插入空格
+  autoInsertSpace: true,
 }

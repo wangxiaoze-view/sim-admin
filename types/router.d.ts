@@ -13,6 +13,8 @@ declare interface ISImRouterMeta {
   title?: string
   // 菜单排序
   sort?: number
+  // 菜单角色
+  roles?: string[]
   // 菜单权限
   permissions?: string[]
   // 是否缓存

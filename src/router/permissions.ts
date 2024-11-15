@@ -5,6 +5,7 @@ import { useUserStore } from '../stores/modules/user'
 import { useRoutesStore } from '../stores/modules/routes'
 import { resetLoginPath } from '../utils/routes'
 import { settings_config } from '~/src/config'
+import { logger } from '~/src/utils'
 const { whiteList } = settings_config
 export function setupPermissions(router: Router) {
   router.beforeEach(async (to, from, next) => {
@@ -12,7 +13,7 @@ export function setupPermissions(router: Router) {
       getTheme: { isProgress },
     } = useSettinggsStore()
 
-    const { getToken } = useUserStore()
+    const { getToken, setUserInfo } = useUserStore()
 
     const { getMenuRoutes, setRoutes } = useRoutesStore()
 
@@ -28,14 +29,23 @@ export function setupPermissions(router: Router) {
         next(resetLoginPath(to.fullPath))
       }
     } else {
-      // 这里加一层的原因：避免后期走接口调用
-      if (getMenuRoutes.length === 0) {
-        await setRoutes()
-      } else {
+      if (getMenuRoutes.length > 0) {
+        // 禁止重复跳转
         if (to.path === '/login') {
           next({ path: '/' })
         } else {
           next()
+        }
+      } else {
+        try {
+          await setUserInfo()
+          await setRoutes()
+          next()
+          // next({ ...to, replace: true })
+        } catch (error) {
+          logger.error(JSON.stringify(error))
+          // 清除所有缓存
+          // next(resetLoginPath(to.fullPath))
         }
       }
     }

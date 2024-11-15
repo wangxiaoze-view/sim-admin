@@ -46,4 +46,43 @@ export default defineMock([
       )
     },
   },
+  {
+    url: '/api/getUserInfo',
+    response(req, res, next) {
+      const authorization: string = req.headers.authorization || ''
+      const k = 'Bearer '
+      const userName = authorization.replace(k, '').split('-token-')[0].split('-')[1]
+
+      if (!authorization.startsWith(k) || !userName) {
+        res.end(
+          JSON.stringify({
+            code: 401,
+            message: '登录失效',
+            context: null,
+            success: false,
+          })
+        )
+      }
+      const user = mockUserToken[userName.toLocaleLowerCase() as keyof typeof mockUserToken]
+
+      res.end(
+        JSON.stringify({
+          code: 200,
+          message: 'success',
+          success: true,
+          context: {
+            id: Random.id(),
+            userName,
+            name: Random.cname(),
+            emial: Random.email(),
+            ip: Random.ip(),
+            county: Random.county(true),
+            roles: user.role,
+            permission: user.permission,
+            avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+          },
+        })
+      )
+    },
+  },
 ])

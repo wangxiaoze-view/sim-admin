@@ -1,16 +1,20 @@
 import { settings_config, cache_token } from '~/src/config'
+import { Storage } from '~/src/utils'
 const { tokenStorage } = settings_config
 
-const Storage = tokenStorage === 'localStorage' ? localStorage : sessionStorage
+function getStorage() {
+  Storage.storage = tokenStorage === 'localStorage' ? localStorage : sessionStorage
+  return Storage
+}
 
 export function getToken() {
-  return Storage.getItem(cache_token) ?? ''
+  return getStorage().get(cache_token) || ''
 }
 
 export function setToken(token: string) {
-  return Storage.setItem(cache_token, token)
+  return getStorage().set(cache_token, token)
 }
 
 export function removeToken() {
-  return Storage.removeItem(cache_token)
+  return getStorage().remove(cache_token)
 }

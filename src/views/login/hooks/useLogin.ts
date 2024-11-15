@@ -3,6 +3,7 @@ import { useLoading, useForm } from '~/src/hooks'
 import { useUserStore } from '~/src/stores/modules/user'
 import { randomCodeToCanvas, logger } from '~/src/utils'
 import { useRouter } from 'vue-router'
+import { translate } from '~/src/i18n'
 
 const FORM_RULES = {
   userName: [
@@ -11,7 +12,7 @@ const FORM_RULES = {
       trigger: 'blur',
       validator: (rule: any, value: any, callback: any) => {
         if (!value) {
-          return callback(Error('请输入用户名'))
+          return callback(Error(translate('请输入用户名')))
         }
         callback()
       },
@@ -23,7 +24,7 @@ const FORM_RULES = {
       trigger: 'blur',
       validator: (rule: any, value: any, callback: any) => {
         if (!value) {
-          return callback(new Error('请输入密码'))
+          return callback(new Error(translate('请输入密码')))
         }
         callback()
       },
@@ -35,7 +36,7 @@ const FORM_RULES = {
       trigger: 'blur',
       validator: (rule: any, value: any, callback: any) => {
         if (!value) {
-          return callback(Error('请输入验证码'))
+          return callback(Error(translate('请输入验证码')))
         }
         callback()
       },
@@ -98,6 +99,7 @@ export default function useLogin() {
     formModel,
     config,
     isDisabled,
+    translate,
     refreshCode,
     login,
   }

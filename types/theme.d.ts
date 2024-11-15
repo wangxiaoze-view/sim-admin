@@ -55,4 +55,13 @@ declare interface ITheme {
   isNotice: boolean
   // 是否显示面包屑
   isBreadcrumb: boolean
+
+  // 暗黑模式 light:亮色,dark:暗色
+  isMode: boolean
+  mode: 'light' | 'dark'
+
+  // 是否显示颜色
+  isColor: boolean
+  // 自动插入空格
+  autoInsertSpace: boolean
 }

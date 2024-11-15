@@ -4,6 +4,7 @@ import App from './App.vue'
 import { setupSim } from '~/library'
 import { setupRouter } from './router'
 import { setupStore } from './stores'
+import { setupI18n } from './i18n'
 
 const app = createApp(App)
 
@@ -11,6 +12,8 @@ const app = createApp(App)
 setupSim(app)
 // pinia
 setupStore(app)
+// 国际化
+setupI18n(app)
 // 注册路由
 setupRouter(app)
   .isReady()

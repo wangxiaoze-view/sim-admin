@@ -87,7 +87,25 @@
   height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
   @include flex-center();
+
+  &-cover {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    z-index: -1;
+    object-fit: cover;
+  }
+
+  &-tools {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 20;
+  }
 
   &-container {
     width: 90%;

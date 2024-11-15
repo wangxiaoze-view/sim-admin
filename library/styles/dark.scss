@@ -1,0 +1,34 @@
+@import 'element-plus/theme-chalk/dark/css-vars.css';
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  height: auto;
+  width: 100vw;
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+html {
+  &::view-transition-old(root) {
+    z-index: 1;
+  }
+  &::view-transition-new(root) {
+    z-index: 2147483646;
+  }
+  &.dark {
+    &::view-transition-old(root) {
+      z-index: 2147483646;
+    }
+
+    &::view-transition-new(root) {
+      z-index: 1;
+    }
+    .login {
+      .login-container--content {
+        .sim-form {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}

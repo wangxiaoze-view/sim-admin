@@ -1,12 +1,11 @@
 import { defineStore } from 'pinia'
-
-import { themeConfig as defaultTheme } from '~/src/config'
-import { asyncRoutes } from '~/src/router'
+import { asyncRoutes, constantRoutes } from '~/src/router'
 import { settings_config } from '~/src/config'
-import { isArray, logger } from '~/src/utils'
+import { isArray, logger, filterAsyncRoutes, filterHidden, resetRouter } from '~/src/utils'
+import { getRoutes } from '~/src/router/modules'
+import { useUserStore } from './user'
 
 const { hasRouterGuard } = settings_config
-const theme = { ...defaultTheme }
 
 export const useRoutesStore = defineStore('routes', {
   state: (): IRoutesType => ({
@@ -19,12 +18,16 @@ export const useRoutesStore = defineStore('routes', {
   },
   actions: {
     async setRoutes() {
+      const {
+        getUserInfo: { roles },
+      } = useUserStore()
+      if (this.getMenuRoutes.length > 0) return
       // 设置路由，权限，菜单
-      let routes: any[] = [...asyncRoutes]
-      //
+      let routes: ISimRouterRecordRaw[] = [...asyncRoutes]
       if (hasRouterGuard === 'all') {
         // 这里可以走请求菜单的接口
-        const list: any[] = []
+        // 这里模拟接口
+        const list: ISimRouterRecordRaw[] = await getRoutes()
         if (!isArray(list)) {
           return logger.error('菜单数据格式错误')
         }
@@ -39,7 +42,12 @@ export const useRoutesStore = defineStore('routes', {
         }
         routes = [...routes, ...list]
       }
-      // TODO: 待完善, 后续添加权限校验递归
+
+      const getFilterRoutes = filterAsyncRoutes([...constantRoutes, ...routes], roles)
+      // 需要隐藏 meta.hidden 的菜单
+      this.menuRoutes = filterHidden(getFilterRoutes)
+      this.allRoutes = getFilterRoutes
+      resetRouter(getFilterRoutes)
     },
   },
 })

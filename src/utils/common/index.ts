@@ -1,4 +1,4 @@
-import { extend, IHttpResult, omit } from '..'
+import { IHttpResult, isJson, Storage } from '..'
 
 interface IHttpResultExtends extends Omit<IHttpResult, 'code'> {
   code: number
@@ -18,5 +18,15 @@ export function getReponse(params: Partial<IHttpResultExtends>): IHttpResultExte
     message: params.message ?? 'success',
     requestId: new Date().toISOString(),
     success: params.success ?? true,
+  }
+}
+
+export const getLocalStorage = (key: string) => {
+  Storage.storage = localStorage
+  const value: any = Storage.get(key)
+  if (value && isJson(value)) {
+    return JSON.parse(value)
+  } else {
+    return false
   }
 }

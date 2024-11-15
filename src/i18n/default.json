@@ -1,0 +1,11 @@
+{
+  "登录": "Login",
+  "注册": "Sign up",
+  "忘记密码": "Forget password",
+  "第三方登录": "Third-party login",
+  "请输入用户名": "Please enter username",
+  "请输入密码": "Please enter password",
+  "请输入验证码": "Please enter verification code",
+  "登录失败": "Login failed",
+  "登录成功": "Login successfully"
+}

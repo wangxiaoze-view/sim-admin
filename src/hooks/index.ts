@@ -1,2 +1,5 @@
 export * from 'functional-helpers/hooks'
 export * from './useForm'
+export * from './useColor'
+export * from './useSwitchDark'
+export * from './useConfigProvider'

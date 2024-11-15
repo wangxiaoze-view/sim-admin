@@ -4,6 +4,6 @@ function setKey(cacheKey: string, key: string = 'SIM', space: string = '_') {
 // 存储token
 export const cache_token = setKey('TOKEN')
 // 存储主题
-export const cache_theme = setKey('THEME')
+export const cache_theme: string = setKey('THEME')
 // 存储用户信息
 export const cache_userInfo = setKey('USER_INFO')

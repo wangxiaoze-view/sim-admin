@@ -6,7 +6,8 @@
   defineOptions({
     name: 'LoginForm',
   })
-  const { formModel, formRef, config, rules, loading, isDisabled, login, refreshCode } = useLogin()
+  const { formModel, formRef, config, rules, loading, isDisabled, translate, login, refreshCode } =
+    useLogin()
 </script>
 
 <template>
@@ -15,7 +16,7 @@
       <el-input
         v-model.trim="formModel.userName"
         class="sim-form--input"
-        placeholder="请输入用户名"
+        :placeholder="translate('请输入用户名')"
         type="text"
       >
         <template #prefix>
@@ -28,7 +29,7 @@
       <el-input
         v-model.trim="formModel.password"
         class="sim-form--input"
-        placeholder="请输入密码"
+        :placeholder="translate('请输入密码')"
         :type="config.isPassword ? 'password' : 'text'"
       >
         <template #prefix>
@@ -49,7 +50,7 @@
           v-model.trim="formModel.code"
           class="sim-form--input"
           :disabled="true"
-          placeholder="请输入验证码"
+          :placeholder="translate('请输入验证码')"
           type="text"
         >
           <template #prefix>
@@ -62,8 +63,8 @@
     </el-form-item>
 
     <el-form-item class="sim-form--tools">
-      <el-button type="primary" class="sim-form--a" link>注册</el-button>
-      <el-button type="primary" class="sim-form--a" link>忘记密码</el-button>
+      <el-button type="primary" class="sim-form--a" link>{{ translate('注册') }}</el-button>
+      <el-button type="primary" class="sim-form--a" link>{{ translate('忘记密码') }}</el-button>
     </el-form-item>
 
     <el-button
@@ -73,12 +74,12 @@
       type="primary"
       @click="login"
     >
-      登录
+      {{ translate('登录') }}
     </el-button>
 
     <div class="sim-divider">
       <span class="line"></span>
-      <span class="title">第三方登录</span>
+      <span class="title">{{ translate('第三方登录') }}</span>
       <span class="line"></span>
     </div>
 
