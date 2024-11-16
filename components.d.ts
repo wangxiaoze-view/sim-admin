@@ -39,7 +39,5 @@ declare module 'vue' {
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SimDialogEl: typeof import('./src/components/SimDialogEl/index.vue')['default']
-    SimFormErrorMsg: typeof import('./src/components/SimFormErrorMsg/index.vue')['default']
   }
 }

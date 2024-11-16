@@ -14,6 +14,7 @@ export default [
   {
     name: 'app/files-to-lint',
     files: [
+      'src/*.{ts,mts,tsx,vue}',
       'src/**/*.{ts,mts,tsx,vue}',
       'mock/**/*.{ts,mts,tsx,vue}',
       'library/**/*.{ts,mts,tsx,vue}',
@@ -28,6 +29,7 @@ export default [
       '**/coverage/**',
       'auto-imports.d.ts',
       'components.d.ts',
+      'package.json',
     ],
   },
   js.configs.recommended,
