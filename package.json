@@ -88,7 +88,9 @@
   },
   "lint-staged": {
     "*.{js,ts,vue,json}": [
-      "pnpm run lint",
+      "pnpm run lint:oxlint",
+      "pnpm run lint:eslint",
+      "pnpm run lint:format",
       "git add"
     ]
   },

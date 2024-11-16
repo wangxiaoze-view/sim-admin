@@ -2,6 +2,14 @@
 
 // 重写ele 的全局样式变量， 这里修改之后用于 主题切换
 :root {
+  --el-bg-color: #{$sim-bg-color};
+  --el-logo-height: #{$sim-logo-height};
+  --el-aside-width: #{$sim-sider-width};
+  --el-content-width: #{$sim-content-width};
+  --el-default-animation: #{$sim-default-animation};
+  --el-header-height: #{$sim-header-height};
+  --el-tab-height: #{$sim-tab-height};
+
   // --el-color-white: #ffffff;
   // --el-color-black: #000000;
   // --el-color-primary-rgb: 64, 158, 255;

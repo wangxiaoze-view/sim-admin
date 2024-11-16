@@ -5,7 +5,7 @@ import { useUserStore } from '../stores/modules/user'
 import { useRoutesStore } from '../stores/modules/routes'
 import { resetLoginPath } from '../utils/routes'
 import { settings_config } from '~/src/config'
-import { logger } from '~/src/utils'
+import { getToken, logger } from '~/src/utils'
 const { whiteList } = settings_config
 export function setupPermissions(router: Router) {
   router.beforeEach(async (to, from, next) => {
@@ -13,13 +13,13 @@ export function setupPermissions(router: Router) {
       getTheme: { isProgress },
     } = useSettinggsStore()
 
-    const { getToken, setUserInfo } = useUserStore()
+    const { setUserInfo } = useUserStore()
 
     const { getMenuRoutes, setRoutes } = useRoutesStore()
 
     if (isProgress) SimProgress.start()
 
-    const hasToken = getToken
+    const hasToken = getToken()
 
     if (!hasToken) {
       if (whiteList.includes(to.path)) {
@@ -40,18 +40,17 @@ export function setupPermissions(router: Router) {
         try {
           await setUserInfo()
           await setRoutes()
-          next()
-          // next({ ...to, replace: true })
+          next({ ...to, replace: true })
         } catch (error) {
           logger.error(JSON.stringify(error))
           // 清除所有缓存
-          // next(resetLoginPath(to.fullPath))
+          next(resetLoginPath(to.fullPath))
         }
       }
     }
   })
 
-  router.afterEach((to, from) => {
+  router.afterEach(() => {
     if (SimProgress.status) SimProgress.done()
   })
 }

@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  defineOptions({
+    name: 'HomeIndex',
+  })
+</script>
 <template>
   <div>home</div>
 </template>

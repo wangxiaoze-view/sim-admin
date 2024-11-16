@@ -6,34 +6,36 @@ export const homeRoutes: ISimRouterRecordRaw[] = [
       title: '首页',
       icon: 'ri-home-line',
     },
+    component: () => import('~/library/layouts/index.vue'),
     children: [
-      {
-        path: 'index',
-        name: 'HomeIndex',
-        component: () => import('~/src/views/login/index.vue'),
-        meta: {
-          title: '首页',
-          icon: 'ri-list-check-3',
-        },
-      },
       {
         path: 'workbench',
         name: 'HomeIndex',
-        component: () => import('~/src/views/login/index.vue'),
+        component: () => import('~/src/views/home/index.vue'),
         meta: {
           title: '工作区',
           icon: 'ri-list-check-3',
+          notClose: true,
         },
       },
       {
         path: 'analyse',
         name: 'HomeAnalyse',
-        component: () => import('~/src/views/login/index.vue'),
+        component: () => import('~/src/views/home/index.vue'),
         meta: {
-          title: '分析',
+          title: '分析台',
           icon: 'ri-bubble-chart-line',
         },
       },
     ],
+  },
+  {
+    path: '/analyse',
+    name: 'HomeAnalyse',
+    component: () => import('~/src/views/home/index.vue'),
+    meta: {
+      title: '测试',
+      icon: 'ri-bubble-chart-line',
+    },
   },
 ]

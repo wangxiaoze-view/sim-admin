@@ -1,10 +1,176 @@
 @import 'element-plus/theme-chalk/src/display';
 @import 'element-plus/theme-chalk/src/index';
-@import './dark.scss';
 @import './root.scss';
+@import './dark.scss';
 @import './login.scss';
 
+@mixin nprogress {
+  /* 进度条样式重写 */
+  #nprogress {
+    /* fix: 修复进度条结束之后，又渲染了一小段 */
+    position: fixed;
+    z-index: 2000;
+    .bar {
+      background: var(--el-color-primary) !important;
+      border-radius: 50px;
+
+      .peg {
+        box-shadow:
+          0 0 10px var(--el-color-primary),
+          0 0 5px var(--el-color-primary) !important;
+      }
+    }
+  }
+}
+
+@mixin sim-aside {
+  .sim-aside {
+    height: 100%;
+    position: fixed;
+    font-size: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    transition: var(--el-default-animation);
+    border-right: 1px solid var(--el-border-color-light);
+    background-color: var(--el-bg-color);
+    &--title {
+      .sim-logo {
+        height: var(--el-logo-height);
+        width: 100%;
+        transition: var(--el-default-animation);
+      }
+    }
+    .sim-scroll--bar {
+      height: calc(100vh - var(--el-logo-height));
+      .sim-menu {
+        border-right: none !important;
+        background-color: var(--el-bg-color);
+      }
+    }
+  }
+}
+
+@mixin sim-content {
+  .sim-content {
+    min-height: 100%;
+    margin-left: var(--el-aside-width);
+    position: relative;
+    width: var(--el-content-width);
+    transition: var(--el-default-animation);
+  }
+}
+
+@mixin menu-radius {
+  border-radius: 6px;
+}
+
 html {
+  @include nprogress();
+  img {
+    object-fit: cover;
+  }
+  .sim-theme-set {
+    .el-drawer__body {
+      padding: 0;
+    }
+  }
+
+  // 菜单模式--线条
+  .menu-mode-line {
+    &.is-active {
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 100%;
+        background-color: var(--el-color-primary);
+        border-radius: 0 10px 10px 0;
+      }
+    }
+  }
+
+  // 菜单模式--卡片
+  .menu-mode-card {
+    @include menu-radius();
+    .el-sub-menu__title {
+      @include menu-radius();
+    }
+    &.is-active {
+      background-color: var(--el-color-primary);
+      color: var(--el-color-white);
+      .sim-icon i {
+        color: var(--el-color-white) !important;
+      }
+    }
+  }
+
+  // 菜单模式--箭头
+  .menu-mode-arrow {
+    &.is-active {
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        border: 8px solid transparent;
+        transform: translateY(-50%);
+        border-right-color: var(--el-color-primary);
+      }
+    }
+  }
+
+  // 缩放下的菜单间隔
+  .collapse-menu-space {
+    margin: 0 10px;
+  }
+
+  // 普通，浮动模式的缩放菜单公共样式
+  .collapse-common-menu {
+    .el-menu {
+      @extend .collapse-menu-space;
+    }
+    &.sim-mode {
+      &-line {
+        .el-sub-menu,
+        .el-menu-item {
+          @extend .menu-mode-line;
+          &.is-active {
+            &::before {
+              left: -10px;
+            }
+          }
+        }
+      }
+      &-card {
+        .el-sub-menu,
+        .el-menu-item {
+          @extend .menu-mode-card;
+        }
+      }
+      &-arrow {
+        .el-sub-menu,
+        .el-menu-item {
+          position: relative;
+          @extend .menu-mode-arrow;
+          &.is-active {
+            &::after {
+              right: -10px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .collapse-common-width {
+    --el-aside-width: 84px;
+    --el-logo-height: 60px;
+  }
+
   body {
     position: relative;
     box-sizing: border-box;
@@ -15,5 +181,135 @@ html {
     font-size: var(--el-font-size-base);
     color: var(--el-color-black);
     background: var(--el-bg-color);
+    #root {
+      height: 100%;
+      .is-collapse {
+        @extend .collapse-common-width;
+        .sim-logo {
+          object-fit: initial !important;
+        }
+      }
+
+      .el-sub-menu,
+      .el-menu-item,
+      .el-sub-menu__title {
+        position: relative;
+        &:not(:last-child) {
+          margin-bottom: 4px;
+        }
+      }
+
+      .sim-layout-ordinary {
+        height: 100%;
+        @include sim-aside();
+        @include sim-content();
+        &.sim-mode {
+          &-line {
+            .el-menu-item {
+              @extend .menu-mode-line;
+            }
+          }
+          &-card {
+            .el-menu {
+              @extend .collapse-menu-space;
+            }
+            .el-sub-menu__title {
+              @include menu-radius();
+            }
+            .el-menu-item {
+              @extend .menu-mode-card;
+            }
+          }
+          &-arrow {
+            .el-menu-item {
+              @extend .menu-mode-arrow;
+            }
+          }
+        }
+
+        // 缩放侧边栏
+        &.is-collapse {
+          @extend .collapse-common-menu;
+        }
+      }
+
+      .sim-layout-float {
+        height: 100%;
+        @extend .collapse-common-width;
+        --el-content-width: calc(100% -var(--el-aside-width));
+        @include sim-aside();
+        @include sim-content();
+        @extend .collapse-common-menu;
+      }
+
+      .sim-layout-row {
+        --el-logo-height: 60px;
+
+        .sim-header {
+          border-bottom: 1px solid var(--el-border-color-light);
+
+          &--container {
+            padding: 4px 0;
+            border-bottom: 1px solid var(--el-border-color-light);
+          }
+
+          .sim-logo {
+            height: var(--el-logo-height);
+            width: 100%;
+            transition: var(--el-default-animation);
+          }
+          .sim-menu {
+            border-bottom: none;
+            .el-sub-menu,
+            .el-menu-item {
+              margin-bottom: 0;
+            }
+          }
+        }
+
+        &.sim-mode {
+          &-card {
+            .el-sub-menu__title,
+            .el-sub-menu,
+            .el-sub-item {
+              @include menu-radius();
+            }
+            .el-sub-menu,
+            .el-sub-item {
+              @extend .menu-mode-card;
+              &.is-active {
+                .el-sub-menu__title {
+                  color: var(--el-color-white) !important;
+                  border-bottom: none;
+                  &:hover {
+                    background-color: var(--el-color-primary);
+                    color: var(--el-color-white);
+                  }
+                }
+              }
+            }
+          }
+
+          &-arrow {
+            .el-sub-menu,
+            .el-sub-item {
+              @extend .menu-mode-arrow;
+              &.is-active {
+                .el-sub-menu__title {
+                  border-bottom: none;
+                }
+                &::after {
+                  border: 8px solid transparent;
+                  border-bottom-color: var(--el-color-primary);
+                  bottom: -2px;
+                  right: 50%;
+                  transform: translateX(-50%);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

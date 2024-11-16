@@ -23,6 +23,10 @@ declare interface ISImRouterMeta {
   breadcrumb?: boolean
   // 是否显示菜单
   showMenu?: boolean
+  // 是否不关闭
+  notClose?: boolean
+  // 外链
+  target?: '_blank'
 }
 
 declare interface ISimRouterRecordRaw extends Omit<RouteRecordRaw, 'meta' | 'children'> {

@@ -1,11 +1,14 @@
 <script setup lang="ts">
   import { useColor } from '~/src/hooks'
-  const { color, isColor, predefineColors, changeColor } = useColor()
+  defineOptions({
+    name: 'SimColorPicker',
+  })
+  const { getTheme, predefineColors, changeColor } = useColor()
 </script>
 <template>
   <el-color-picker
-    v-if="isColor"
-    v-model="color"
+    v-if="getTheme.isColor"
+    v-model="getTheme.themeColor"
     :show-alpha="false"
     :predefine="predefineColors"
     @change="changeColor"

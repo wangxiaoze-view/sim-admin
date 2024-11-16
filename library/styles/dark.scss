@@ -23,6 +23,13 @@ html {
     &::view-transition-new(root) {
       z-index: 1;
     }
+
+    .sim-icon {
+      color: #dfdfdf !important;
+      i {
+        color: #dfdfdf !important;
+      }
+    }
     .login {
       .login-container--content {
         .sim-form {

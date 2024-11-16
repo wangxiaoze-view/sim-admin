@@ -5,9 +5,13 @@ import { setupSim } from '~/library'
 import { setupRouter } from './router'
 import { setupStore } from './stores'
 import { setupI18n } from './i18n'
+import { useChangeTheme } from './hooks'
 
+const { setupInitTheme } = useChangeTheme()
 const app = createApp(App)
 
+// 初始化主题
+setupInitTheme()
 // 注册外部插件
 setupSim(app)
 // pinia

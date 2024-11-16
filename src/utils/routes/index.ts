@@ -1,5 +1,7 @@
-import { RouteRecordRaw } from 'vue-router'
+import { RouteLocationNormalizedLoaded, RouteRecordRaw } from 'vue-router'
 import router, { constantRoutes } from '~/src/router'
+import { isExternal } from '~/src/utils'
+import { parseParams } from '../index'
 
 // 重置登录路由
 export function resetLoginPath(currentPath: string) {
@@ -31,18 +33,33 @@ export function hasPermission(roles: string[], route: ISimRouterRecordRaw) {
  * @param roles 细绳[]
  * @returns ISimRouterRecordRaw[] 过滤的路由
  */
-export function filterAsyncRoutes(routes: ISimRouterRecordRaw[], roles: string[]) {
-  const res: ISimRouterRecordRaw[] = []
-  routes.forEach((route: ISimRouterRecordRaw) => {
-    const tmp = { ...route }
-    if (hasPermission(roles, tmp)) {
-      if (tmp.children) {
-        tmp.children = filterAsyncRoutes(tmp.children, roles)
-      }
-      res.push(tmp)
-    }
-  })
-  return res
+export function filterAsyncRoutes(routes: ISimRouterRecordRaw[], roles: string[], baseUrl = '/') {
+  return (
+    routes
+      // 过滤一层
+      .filter((route) =>
+        roles.length && route.meta && route.meta.roles ? hasPermission(roles, route) : true
+      )
+      .map((route) => {
+        route = { ...route }
+        if (route.path !== '*' && !isExternal(route.path)) {
+          // fix: 重置路由路径
+          route.path = `${baseUrl}${baseUrl.endsWith('/') ? '' : '/'}${route.path.replace(/^\/+/, '')}`
+        }
+        if (route.children && route.children.length > 0) {
+          route.children = filterAsyncRoutes(route.children, roles, route.path)
+          if (route.children.length > 0) {
+            route.childrenPathList = route.children.flatMap((item) => item.childrenPathList)
+            if (!route.redirect) {
+              route.redirect = route.children[0].redirect || route.children[0].path
+            }
+          }
+        } else {
+          route.childrenPathList = [route.path]
+        }
+        return route
+      })
+  )
 }
 
 /**
@@ -64,7 +81,7 @@ export function filterHidden(routes: ISimRouterRecordRaw[]) {
  * @param routes ISimRouterRecordRaw[]
  * @returns ISimRouterRecordRaw[] 扁平化路线
  */
-const fatteningRoutes = (routes: ISimRouterRecordRaw[]): ISimRouterRecordRaw[] => {
+export const fatteningRoutes = (routes: ISimRouterRecordRaw[]): ISimRouterRecordRaw[] => {
   return routes.flatMap((route) => {
     return route.children ? fatteningRoutes(route.children) : route
   })
@@ -84,7 +101,7 @@ export function resetRouter(routes: ISimRouterRecordRaw[] = constantRoutes) {
   router.getRoutes().forEach((route) => {
     const { name } = route
     if (name && !routes.find((item) => item.name === name)) {
-      router.hasRoute(name) && router.removeRoute(name)
+      if (router.hasRoute(name)) router.removeRoute(name)
     }
   })
   addRouter(routes)
@@ -100,4 +117,23 @@ export function addRouter(routes: ISimRouterRecordRaw[]) {
     if (!router.hasRoute(route.name)) router.addRoute(route as RouteRecordRaw)
     if (route.children) addRouter(route.children)
   })
+}
+
+// 获取当前路由
+export function handlerActiveRoute(route: RouteLocationNormalizedLoaded) {
+  const fullPath =
+    route.query && Object.keys(route.query).length
+      ? `${route.path}?${parseParams(route.query)}`
+      : route.path
+  return fullPath
+}
+
+export function handlerTabs(route: RouteLocationNormalizedLoaded) {
+  return {
+    path: handlerActiveRoute(route),
+    query: route.query || {},
+    params: route.params || {},
+    name: route.name,
+    meta: { ...route.meta },
+  }
 }

@@ -1,4 +1,4 @@
-import { IHttpResult, isJson, Storage } from '..'
+import { IHttpResult, isJson, Storage, logger } from '..'
 
 interface IHttpResultExtends extends Omit<IHttpResult, 'code'> {
   code: number
@@ -29,4 +29,24 @@ export const getLocalStorage = (key: string) => {
   } else {
     return false
   }
+}
+
+export function parseParams(data: any) {
+  try {
+    const tempArr = []
+    for (const i in data) {
+      const key = encodeURIComponent(i)
+      const value = encodeURIComponent(data[i])
+      tempArr.push(`${key}=${value}`)
+    }
+    const urlParamsStr = tempArr.join('&')
+    return urlParamsStr
+  } catch (err) {
+    logger.error(JSON.stringify(err))
+    return ''
+  }
+}
+
+export const isExternal = (value: string) => {
+  return /^(https?:|mailto:|tel:|\/\/)/.test(value)
 }

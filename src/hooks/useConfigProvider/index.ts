@@ -1,15 +1,10 @@
 import { getElLocal } from '~/src/i18n'
-import { useSettinggsStore } from '~/src/stores/modules/settings'
+import { useChangeTheme } from '~/src/hooks'
 
 export function useConfigProvider() {
-  const {
-    getTheme: { size, autoInsertSpace },
-  } = useSettinggsStore()
+  const { getTheme } = useChangeTheme()
   return {
     getElLocal,
-    size,
-    button: {
-      autoInsertSpace,
-    },
+    getTheme,
   }
 }

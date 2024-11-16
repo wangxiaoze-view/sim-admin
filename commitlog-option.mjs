@@ -17,14 +17,14 @@ const typeMapping = {
 export default {
   writerOpts: {
     transform: (commit, context) => {
-      let discard = true
+      // let discard = true
       const issues = []
       let _commit = cloneDeep(commit) // 使用 lodash 的深拷贝
 
       _commit.notes = _commit.notes.map((note) => {
         if (note.title === 'BREAKING CHANGES') {
           note.title = 'BREAKING CHANGES'
-          discard = false
+          // discard = false
         }
         return note
       })

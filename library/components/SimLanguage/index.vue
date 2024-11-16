@@ -1,13 +1,13 @@
 <script setup lang="ts">
-  import SimIcon from '~/src/components/SimIcon/index.vue'
-  import { useSettinggsStore } from '~/src/stores/modules/settings'
-  const {
-    changeLanguage,
-    getTheme: { isI18n },
-  } = useSettinggsStore()
+  import SimIcon from '~/library/components/SimIcon/index.vue'
+  defineOptions({
+    name: 'SimLanguage',
+  })
+  import { useChangeTheme } from '~/src/hooks'
+  const { changeLanguage, getTheme } = useChangeTheme()
 </script>
 <template>
-  <el-dropdown @command="changeLanguage" v-if="isI18n">
+  <el-dropdown @command="changeLanguage" v-if="getTheme.isI18n">
     <SimIcon icon-class="ri-translate" />
     <template #dropdown>
       <el-dropdown-menu>

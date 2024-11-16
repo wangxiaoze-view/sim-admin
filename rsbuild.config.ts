@@ -31,10 +31,10 @@ export default defineConfig({
     pluginCssMinimizer(),
     pluginMockServer({
       log: true,
-      // build: {
-      //   dist: 'mock',
-      //   serverPort: 3300,
-      // },
+      build: {
+        dist: 'mock',
+        serverPort: 3300,
+      },
     }),
   ],
   tools: {
@@ -50,7 +50,6 @@ export default defineConfig({
       )
     },
     rspack(config, { appendPlugins }) {
-      console.log(process.env.RSDOCTOR)
       process.env.RSDOCTOR &&
         appendPlugins(
           new RsdoctorRspackPlugin({

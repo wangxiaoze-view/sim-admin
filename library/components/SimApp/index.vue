@@ -3,10 +3,14 @@
   defineOptions({
     name: 'SimApp',
   })
-  const { getElLocal, size, button } = useConfigProvider()
+  const { getElLocal, getTheme } = useConfigProvider()
 </script>
 <template>
-  <el-config-provider :locale="getElLocal" :size="size" :button="button">
+  <el-config-provider
+    :locale="getElLocal"
+    :size="getTheme.size"
+    :button="{ autoInsertSpace: getTheme.autoInsertSpace }"
+  >
     <router-view v-slot="{ Component }">
       <component :is="Component" />
     </router-view>

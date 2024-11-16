@@ -11,8 +11,8 @@
     }>(),
     {
       iconClass: '',
-      color: '#a8abb2',
-      size: 20,
+      color: '#333',
+      size: 16,
     }
   )
 </script>
@@ -26,5 +26,7 @@
 <style scoped lang="scss">
   .sim-icon {
     cursor: pointer;
+    padding-right: 3px;
+    transition: all 0.3s;
   }
 </style>

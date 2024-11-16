@@ -11,10 +11,12 @@ export const useRoutesStore = defineStore('routes', {
   state: (): IRoutesType => ({
     menuRoutes: [],
     allRoutes: [],
+    activeMenu: '',
   }),
   getters: {
     getMenuRoutes: (state) => state.menuRoutes,
     getAllRoutes: (state) => state.allRoutes,
+    getActiveMenu: (state) => state.activeMenu,
   },
   actions: {
     async setRoutes() {
@@ -42,12 +44,11 @@ export const useRoutesStore = defineStore('routes', {
         }
         routes = [...routes, ...list]
       }
-
       const getFilterRoutes = filterAsyncRoutes([...constantRoutes, ...routes], roles)
       // 需要隐藏 meta.hidden 的菜单
       this.menuRoutes = filterHidden(getFilterRoutes)
       this.allRoutes = getFilterRoutes
-      resetRouter(getFilterRoutes)
+      await resetRouter(getFilterRoutes)
     },
   },
 })

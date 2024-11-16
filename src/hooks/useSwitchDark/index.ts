@@ -1,21 +1,19 @@
 import { ref, watchEffect } from 'vue'
-import { useSettinggsStore } from '~/src/stores/modules/settings'
+import { useChangeTheme } from '~/src/hooks'
 import { useDark, useToggle } from '../index'
 
 export function useSwitchDark() {
-  const {
-    getTheme: { isMode, mode },
-    setTheme,
-  } = useSettinggsStore()
-  const value = ref(mode === 'dark')
+  const { setupInitTheme, getTheme } = useChangeTheme()
+  const value = ref(getTheme.value.mode === 'dark')
   const isDark = useDark()
   const toggleDark = useToggle(isDark)
   const changeSwitch = () => doAnimate()
+
   const doAnimate = () => {
     const switchEl = document.querySelector('.sim-switch')
     const transition = document.startViewTransition(() => toggleDark())
     transition.ready.then(() => {
-      const { x, y } = switchEl?.getBoundingClientRect()!
+      const { x, y } = switchEl!.getBoundingClientRect()!
       const endRadius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))
       const clipPath = [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`]
       //开始动画
@@ -35,11 +33,11 @@ export function useSwitchDark() {
   }
 
   watchEffect(() => {
-    setTheme({ mode: isDark.value ? 'dark' : 'light' })
+    setupInitTheme({ mode: isDark.value ? 'dark' : 'light' })
   })
 
   return {
-    isMode,
+    getTheme,
     value,
     isDark,
     changeSwitch,

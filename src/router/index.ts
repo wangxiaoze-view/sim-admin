@@ -12,6 +12,14 @@ import { settings_config } from '../config'
 // 1. 常规路由
 export const constantRoutes: ISimRouterRecordRaw[] = [
   {
+    path: '/',
+    name: 'Root',
+    redirect: '/home/workbench',
+    meta: {
+      hidden: true,
+    },
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('~/src/views/login/index.vue'),

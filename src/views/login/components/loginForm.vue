@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import TripartiteLogin from './tripartiteLogin.vue'
-  import SimIcon from '~/src/components/SimIcon/index.vue'
+  import SimIcon from '~/library/components/SimIcon/index.vue'
+
   import useLogin from '../hooks/useLogin'
 
   defineOptions({

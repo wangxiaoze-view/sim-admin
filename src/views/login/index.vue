@@ -3,6 +3,9 @@
   import SimColorPicker from '~/library/components/SimColorPicker/index.vue'
   import SimSwitchDark from '~/library/components/SimSwitchDark/index.vue'
   import loginForm from './components/loginForm.vue'
+  defineOptions({
+    name: 'LoginIndex',
+  })
   import { imageLinks } from '~/src/config'
   const { login_bg, login_cover, logo } = imageLinks
 </script>

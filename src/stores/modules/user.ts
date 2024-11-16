@@ -7,7 +7,7 @@ import { getToken, setToken, getLocalStorage, Storage } from '~/src/utils'
 export const useUserStore = defineStore('user', {
   state: (): IUserType => ({
     token: getToken(),
-    userInfo: { ...(getLocalStorage(cache_userInfo) || {}) },
+    userInfo: { ...getLocalStorage(cache_userInfo) },
   }),
   getters: {
     getToken: (state) => state.token,

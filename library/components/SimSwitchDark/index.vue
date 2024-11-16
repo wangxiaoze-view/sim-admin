@@ -1,15 +1,19 @@
 <script setup lang="ts">
-  import SImIcon from '~/src/components/SimIcon/index.vue'
+  import SimIcon from '~/library/components/SimIcon/index.vue'
+
+  defineOptions({
+    name: 'SimSwitchDark',
+  })
   import { useSwitchDark } from '~/src/hooks'
-  const { isMode, value, changeSwitch } = useSwitchDark()
+  const { getTheme, value, changeSwitch } = useSwitchDark()
 </script>
 <template>
-  <el-switch class="sim-switch" v-model="value" v-if="isMode" @change="changeSwitch">
+  <el-switch class="sim-switch" v-model="value" v-if="getTheme.isMode" @change="changeSwitch">
     <template #active-action>
-      <SImIcon icon-class="ri-sun-line" :size="14" />
+      <SimIcon icon-class="ri-moon-line" :size="14" />
     </template>
     <template #inactive-action>
-      <SImIcon icon-class="ri-moon-line" :size="14" />
+      <SimIcon icon-class="ri-sun-line" :size="14" />
     </template>
   </el-switch>
 </template>

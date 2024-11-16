@@ -1,21 +1,15 @@
 import { ref } from 'vue'
 import { EColor } from '~/src/enum'
-import { useSettinggsStore } from '~/src/stores/modules/settings'
+import { useChangeTheme } from '~/src/hooks'
+
 export function useColor() {
-  const {
-    getTheme: { themeColor, isColor },
-    changePrimaryColor,
-    setTheme,
-  } = useSettinggsStore()
-  const color = ref(themeColor)
+  const { setupInitTheme, getTheme } = useChangeTheme()
   const predefineColors = ref(Object.values(EColor))
   const changeColor = (color: string) => {
-    setTheme({ themeColor: color })
-    changePrimaryColor()
+    setupInitTheme({ themeColor: color })
   }
   return {
-    isColor,
-    color,
+    getTheme,
     predefineColors,
     changeColor,
   }

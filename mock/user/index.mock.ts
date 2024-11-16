@@ -26,7 +26,7 @@ export default defineMock([
     url: '/api/login',
     method: 'POST',
     delay: 2000,
-    response(req, res, next) {
+    response(req, res) {
       const { username, password } = req.body
       const user = mockUserToken[username as keyof typeof mockUserToken]
       if (!user || username !== password) {
@@ -48,7 +48,7 @@ export default defineMock([
   },
   {
     url: '/api/getUserInfo',
-    response(req, res, next) {
+    response(req, res) {
       const authorization: string = req.headers.authorization || ''
       const k = 'Bearer '
       const userName = authorization.replace(k, '').split('-token-')[0].split('-')[1]

@@ -23,4 +23,11 @@ declare interface IRoutesType {
   menuRoutes: ISimRouterRecordRaw[]
   // 所有路由
   allRoutes: ISimRouterRecordRaw[]
+  // 当前菜单
+  activeMenu: string
+}
+
+declare interface ITabasType {
+  // 访问的路由
+  visitedRoutes: ISimRouterRecordRaw[]
 }

@@ -5,10 +5,10 @@ export default {
   install: (app: App<Element>) => {
     new InitHelpers({
       isLogger: true,
-      // isDebug: true,
-      // install: (install) => {
-      //   app.use(install)
-      // },
+      isDebug: true,
+      install: (install) => {
+        app.use(install)
+      },
     })
   },
 }

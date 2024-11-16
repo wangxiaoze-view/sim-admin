@@ -13,12 +13,22 @@ import oxlint from 'eslint-plugin-oxlint'
 export default [
   {
     name: 'app/files-to-lint',
-    files: ['**/*.{ts,mts,tsx,vue}'],
+    files: [
+      'src/**/*.{ts,mts,tsx,vue}',
+      'mock/**/*.{ts,mts,tsx,vue}',
+      'library/**/*.{ts,mts,tsx,vue}',
+    ],
   },
 
   {
     name: 'app/files-to-ignore',
-    ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**'],
+    ignores: [
+      '**/dist/**',
+      '**/dist-ssr/**',
+      '**/coverage/**',
+      'auto-imports.d.ts',
+      'components.d.ts',
+    ],
   },
   js.configs.recommended,
   ...ts.configs.recommended,
@@ -44,7 +54,8 @@ export default [
   {
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off',
     },
   },
-  { ignores: ['dist/', 'node_modules/'] },
+  { ignores: ['dist/', 'node_modules/', 'auto-imports.d.ts', 'components.d.ts'] },
 ]
