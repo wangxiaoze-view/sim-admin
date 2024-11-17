@@ -133,7 +133,7 @@ export default defineConfig({
   server: {
     compress: true,
     proxy: {
-      '/api': isProduction ? 'http://localhost:3300' : 'http://localhost:3000',
+      '/api': isProduction ? 'https://sim-admin-mock-server.wangzevw.com' : 'http://localhost:3000',
     },
   },
   html: {
