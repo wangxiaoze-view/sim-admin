@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "rsbuild dev --open --env-mode development",
-    "build": "rsbuild build --env-mode production",
+    "build": "rsbuild build --env-mode production && cd dist/mock && pnpm i && pnpm run start",
     "build:profile": "RSDOCTOR=true RSPACK_PROFILE=ALL  rsbuild build --env-mode production",
     "build:analyze": "BUNDLE_ANALYZE=true rsbuild build --env-mode production",
     "preview": "rsbuild preview",
