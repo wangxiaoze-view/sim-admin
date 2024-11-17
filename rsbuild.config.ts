@@ -23,7 +23,6 @@ import CompressionPlugin from 'compression-webpack-plugin'
 import { settings_config } from './src/config'
 const { title, linkIcon, description, copyright } = settings_config
 
-const isProduction = process.env.NODE_ENV === 'production'
 export default defineConfig({
   plugins: [
     pluginVue(),
@@ -34,7 +33,7 @@ export default defineConfig({
       log: true,
       build: {
         dist: 'mock',
-        serverPort: 3300,
+        serverPort: 3000,
       },
     }),
   ],
@@ -133,7 +132,7 @@ export default defineConfig({
   server: {
     compress: true,
     proxy: {
-      '/api': isProduction ? 'https://sim-admin-mock-server.wangzevw.com' : 'http://localhost:3000',
+      '/api': 'http://localhost:3000',
     },
   },
   html: {
