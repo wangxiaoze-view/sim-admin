@@ -1,34 +1,45 @@
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import { computed, ref } from 'vue'
   import { translate } from '~/src/i18n'
-  import { useChangeTheme, useFullscreen } from '~/src/hooks'
+  import { useChangeTheme, useFullscreen, useError } from '~/src/hooks'
   import { useUserStore } from '~/src/stores/modules/user'
   import SimThemeDrawer from '../SimThemeDrawer/index.vue'
+  import SimError from '../SimError/index.vue'
   import SimLanguage from '../SimLanguage/index.vue'
   import SimIcon from '~/library/components/SimIcon/index.vue'
   import SimColorPicker from '../SimColorPicker/index.vue'
   import SimSwitchDark from '../SimSwitchDark/index.vue'
+  import SimLock from '../SimLock/index.vue'
+  import { getNoticeListApi, INoticeDataType, type INoticeType } from '~/src/api/other'
 
   defineOptions({
     name: 'SimHeaderTools',
   })
 
-  interface INoticeType {
-    author: string
-    title: string
-    desc: string
-    createTime: string
+  const tabIndex = ref(1)
+
+  const themeRef = ref<InstanceType<typeof SimThemeDrawer>>()
+  const debugRef = ref<InstanceType<typeof SimError>>()
+  const noticeData = ref<INoticeType[]>([])
+  const noticeList = computed(() => {
+    return noticeData.value.find((item) => item.type === tabIndex.value)?.data || []
+  })
+  const getNoticeNum = (tabIndex: number) => {
+    return noticeData.value.find((item) => item.type === tabIndex)?.data.length || 0
   }
 
+  const getAllNotice = computed((): Partial<INoticeDataType>[] => {
+    return noticeData.value.reduce((total, item) => {
+      total.push(...item.data)
+      return total
+    }, [] as Partial<INoticeDataType>[])
+  })
   const {
     getUserInfo: { avatar, name },
   } = useUserStore()
-
-  const themeRef = ref<InstanceType<typeof SimThemeDrawer>>()
-
-  const getNoticeList = ref<INoticeType[]>([])
   const { getTheme, setTheme } = useChangeTheme()
   const { isFullscreen, toggle } = useFullscreen()
+  const { getErrors } = useError()
 
   const onRefresh = () => {}
 
@@ -36,6 +47,13 @@
     themeRef.value?.setVisible(true, {
       size: '300px',
       title: translate('主题设置'),
+    })
+  }
+
+  const showDebug = () => {
+    debugRef.value?.setVisible(true, {
+      size: '600px',
+      title: translate('错误日志'),
     })
   }
 
@@ -49,6 +67,14 @@
         break
     }
   }
+
+  const getNoticeList = async () => {
+    const { success, context } = await getNoticeListApi()
+    if (!success) return
+    noticeData.value = context
+  }
+
+  getNoticeList()
 </script>
 <template>
   <div class="sim-tools">
@@ -56,24 +82,28 @@
     <SimColorPicker class="cursor-icon" />
 
     <el-tooltip :content="translate('错误日志')" effect="dark" placement="bottom">
-      <el-badge v-show="getTheme.device !== 'mobile' && getTheme.isDebug" class="cursor-icon">
-        <sim-icon icon-class="ri-bug-line" />
+      <el-badge
+        :is-dot="getErrors.length > 0"
+        v-show="getTheme.device !== 'mobile' && getTheme.isDebug"
+        class="cursor-icon"
+      >
+        <SimIcon icon-class="ri-bug-line" @click="showDebug" />
       </el-badge>
     </el-tooltip>
 
     <!--lock-->
     <el-tooltip :content="translate('锁屏')" effect="dark" placement="bottom">
-      <sim-icon
+      <SimIcon
         class="cursor-icon"
         v-show="getTheme.device !== 'mobile' && getTheme.isLocked"
         icon-class="ri-rotate-lock-line"
-        @click="setTheme({ isLocked: true })"
+        @click="setTheme({ isLockedLayer: true })"
       />
     </el-tooltip>
 
     <!--全屏-->
     <el-tooltip :content="translate('全屏')" effect="dark" placement="bottom">
-      <sim-icon
+      <SimIcon
         class="cursor-icon"
         v-show="getTheme.device !== 'mobile' && getTheme.isFullPage"
         :icon-class="isFullscreen ? 'ri-fullscreen-exit-line' : 'ri-fullscreen-line'"
@@ -86,27 +116,45 @@
       <el-badge
         v-show="getTheme.isNotice"
         class="cursor-icon"
-        :value="getNoticeList.length > 0 ? getNoticeList.length : ''"
+        :value="getAllNotice.length > 0 ? getAllNotice.length : ''"
       >
-        <sim-icon icon-class="ri-message-3-line" />
+        <SimIcon icon-class="ri-message-3-line" />
       </el-badge>
 
       <template #dropdown>
         <el-scrollbar max-height="500">
           <div class="sim-notice">
-            <div v-for="(item, index) in getNoticeList" :key="index" class="sim-notice--item">
-              <el-avatar class="sim-notice--icon" :src="item.author" />
-              <div class="sim-notice--content">
-                <div class="title">
-                  <div>{{ item.title }}</div>
-                  <div>{{ item.createTime }}</div>
-                </div>
-                <div class="sub-title">{{ item.desc }}</div>
-              </div>
-            </div>
-            <div style="text-align: center">
-              <el-button icon="More" size="small" type="primary">查看更多</el-button>
-            </div>
+            <el-tabs v-model="tabIndex">
+              <el-tab-pane
+                v-for="item in noticeData"
+                :key="item.type"
+                :label="`${item.title}${getNoticeNum(item.type) ? `(${getNoticeNum(item.type)})` : ''}`"
+                :name="item.type"
+              >
+                <el-empty v-if="noticeList.length === 0" description="暂无数据" />
+                <template v-else>
+                  <div class="row" v-for="(notice, index) in noticeList" :key="index">
+                    <el-avatar
+                      class="row-avthor"
+                      :src="notice.avthor"
+                      alt="string"
+                      v-if="notice.avthor"
+                    ></el-avatar>
+                    <div class="row-content">
+                      <div class="row-title">
+                        <span class="row-title--name">
+                          {{ notice.name ? `${notice.name} @你` : notice.title }}
+                        </span>
+                        <span class="row-title--tag" :class="[notice.tipClass]" v-if="notice.tip">
+                          {{ notice.tip }}
+                        </span>
+                      </div>
+                      <div class="row-desc">{{ notice.description }}</div>
+                    </div>
+                  </div>
+                </template>
+              </el-tab-pane>
+            </el-tabs>
           </div>
         </el-scrollbar>
       </template>
@@ -115,7 +163,7 @@
     <SimLanguage class="cursor-icon" />
 
     <el-tooltip :content="translate('刷新')" effec="dark" placement="bottom">
-      <sim-icon
+      <SimIcon
         v-show="getTheme.isRefresh"
         class="cursor-icon"
         icon-class="ri-refresh-line"
@@ -124,7 +172,7 @@
     </el-tooltip>
 
     <el-tooltip :content="translate('主题设置')" effect="dark" placement="bottom">
-      <sim-icon
+      <SimIcon
         v-show="getTheme.device !== 'mobile'"
         class="cursor-icon"
         icon-class="ri-settings-3-line"
@@ -141,22 +189,24 @@
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item command="userCenter">
-            <sim-icon class="cursor-icon" icon-class="ri-user-2-line" />
+            <SimIcon class="cursor-icon" icon-class="ri-user-2-line" />
             {{ translate('个人中心') }}
           </el-dropdown-item>
           <el-dropdown-item command="logout">
-            <sim-icon class="cursor-icon" icon-class="ri-logout-box-line" />
+            <SimIcon class="cursor-icon" icon-class="ri-logout-box-line" />
             {{ translate('退出登录') }}
           </el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>
 
-    <template v-if="getTheme.isLocked">
-      <sim-lock />
+    <template v-if="getTheme.isLockedLayer">
+      <SimLock />
     </template>
 
-    <sim-theme-drawer ref="themeRef" />
+    <SimError ref="debugRef" />
+
+    <SimThemeDrawer ref="themeRef" />
   </div>
 </template>
 
@@ -188,50 +238,53 @@
       }
     }
   }
-</style>
 
-<style lang="scss">
-  .sim-notice {
-    padding: 14px;
-    width: 300px;
+  :deep() {
+    .sim-notice {
+      padding: 14px;
+      width: 300px;
 
-    &--item {
-      display: flex;
-      align-items: flex-start;
-      &:not(:last-of-type) {
-        margin-bottom: 14px;
-      }
-
-      .sim-notice--icon {
-        flex: 0 0 40px;
-        width: 40px;
-        height: 40px;
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-
-      .sim-notice--content {
-        margin-left: 16px;
+      .row {
         display: flex;
-        flex: 1;
-        flex-direction: column;
-
-        .title {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 4px;
+        align-items: center;
+        padding: 10px 0;
+        &-avthor {
+          margin-right: 10px;
         }
+        &-title {
+          margin-bottom: 4px;
+          &--tag {
+            color: #fff;
+            font-size: 10px;
+            border-radius: 4px;
+            padding: 2px 4px;
+            &.out {
+              background-color: var(--el-color-danger);
+            }
+            &.ing {
+              background-color: var(--el-color-primary);
+            }
+            &.todo {
+              background-color: var(--el-color-info);
+            }
+          }
+        }
+        &-content {
+          flex: 1;
+          .row-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
 
-        .sub-title {
-          font-size: 12px;
-          color: var(--el-color-info);
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
-          overflow: hidden;
+          .row-desc {
+            font-size: 12px;
+            color: var(--el-color-info);
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+          }
         }
       }
     }

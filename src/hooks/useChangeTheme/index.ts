@@ -2,7 +2,7 @@ import { storeToRefs } from 'pinia'
 import { useSettinggsStore } from '~/src/stores/modules/settings'
 
 export function useChangeTheme() {
-  const { changePrimaryColor, setTheme, changeLanguage } = useSettinggsStore()
+  const { changePrimaryColor, setTheme, changeLanguage, resetTheme } = useSettinggsStore()
 
   const { getTheme } = storeToRefs(useSettinggsStore())
 
@@ -15,6 +15,7 @@ export function useChangeTheme() {
     setupInitTheme,
     changePrimaryColor,
     setTheme,
+    resetTheme,
     getTheme,
     changeLanguage,
   }

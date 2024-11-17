@@ -106,35 +106,43 @@
 </script>
 
 <template>
-  <div class="sim-tabs--container" v-if="getTheme.isTabs">
-    <div class="sim-tabs">
-      <el-tabs
-        v-model="curtrentTab"
-        :class="[`sim-tabs--${getTheme.tabStyle}`]"
-        type="card"
-        @tab-click="onTabClick"
-        @tab-remove="onTabRemove"
+  <div
+    class="sim-tabs"
+    :class="{
+      'sim-tabs-default': getTheme.tabStyle === 'default',
+      'sim-tabs-rectangle': getTheme.tabStyle === 'rectangle',
+      'sim-tabs-card': getTheme.tabStyle === 'card',
+      'sim-tabs-line': getTheme.tabStyle === 'line',
+      'sim-tabs-smart': getTheme.tabStyle === 'smart',
+    }"
+    v-if="getTheme.isTabs"
+  >
+    <el-tabs
+      v-model="curtrentTab"
+      type="card"
+      :class="[`sim-tabs--${getTheme.tabStyle}`]"
+      @tab-click="onTabClick"
+      @tab-remove="onTabRemove"
+    >
+      <el-tab-pane
+        v-for="item in getVisitedRoutes"
+        :key="item.path"
+        :closable="!item.meta?.notClose"
+        :name="item.path"
       >
-        <el-tab-pane
-          v-for="item in getVisitedRoutes"
-          :key="item.path"
-          :closable="!item.meta?.notClose"
-          :name="item.path"
-        >
-          <template #label>
-            <div @contextmenu.prevent="onShowTabMenu(item.path)">
-              <SimIcon
-                v-if="getTheme.isTabsIcon && item.meta && item.meta.icon"
-                :icon-class="item.meta.icon"
-              />
-              <span v-if="item.meta && item.meta.title">
-                {{ translate(item.meta?.title as string) }}
-              </span>
-            </div>
-          </template>
-        </el-tab-pane>
-      </el-tabs>
-    </div>
+        <template #label>
+          <div @contextmenu.prevent="onShowTabMenu(item.path)">
+            <SimIcon
+              v-if="getTheme.isTabsIcon && item.meta && item.meta.icon"
+              :icon-class="item.meta.icon"
+            />
+            <span v-if="item.meta && item.meta.title">
+              {{ translate(item.meta?.title as string) }}
+            </span>
+          </div>
+        </template>
+      </el-tab-pane>
+    </el-tabs>
 
     <el-dropdown @command="onCommand">
       <sim-icon class="cursor-icon" icon-class="ri-equalizer-line sim-icon" color="#000" />
@@ -181,61 +189,3 @@
     </ul>
   </div>
 </template>
-
-<style scoped lang="scss">
-  .sim-tabs--container {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 14px;
-    height: var(--el-tab-height);
-
-    :deep(.sim-tabs) {
-      width: calc(100% - 35px);
-      .el-tabs__header {
-        margin-bottom: 0;
-        border: none;
-
-        .el-tabs__nav {
-          border: none;
-
-          .el-tabs__item {
-            border: none;
-
-            &:hover,
-            &.is-active {
-              background-color: var(--el-color-primary-light-9);
-            }
-          }
-        }
-      }
-    }
-
-    .sim-tabs--icon {
-      margin-right: 4px;
-    }
-
-    .el-sim--icon {
-      vertical-align: middle;
-      margin-right: 4px;
-    }
-
-    .tab-menu {
-      position: fixed;
-      z-index: 500;
-      list-style: none;
-      padding: 0;
-      border-radius: 6px;
-      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
-      li {
-        padding: 10px 20px;
-        font-size: 14px;
-        &:hover {
-          cursor: pointer;
-          background: var(--el-color-primary-light-9);
-        }
-      }
-    }
-  }
-</style>

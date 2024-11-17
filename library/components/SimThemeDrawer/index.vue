@@ -5,11 +5,12 @@
   import navType from './components/navTypePage.vue'
   import SimColorPicker from '../SimColorPicker/index.vue'
   import SimIcon from '~/library/components/SimIcon/index.vue'
+  import { simMessage } from '~/src/utils'
 
   defineOptions({
     name: 'SimThemeDrawer',
   })
-  const { isSupported } = useClipboard()
+  const { copy, isSupported } = useClipboard()
 
   const visible = ref<boolean>(false)
   const drawerParams = ref<Record<string, any>>({})
@@ -20,20 +21,17 @@
     }
   }
 
-  const { getTheme, setTheme } = useChangeTheme()
-
-  const resetTheme = () => {}
+  const { getTheme, setTheme, resetTheme } = useChangeTheme()
 
   const copyTheme = () => {
     if (!isSupported) {
-      return
-      // return simMessage('您的浏览器不支持Clipboard API', 'warning')
+      return simMessage('您的浏览器不支持Clipboard API', 'warning')
     }
 
-    // if (defaultTheme.value) {
-    //   // simMessage('主题设置已拷贝', 'success')
-    //   // copy(JSON.stringify(defaultTheme.value))
-    // }
+    if (getTheme.value) {
+      copy(JSON.stringify(getTheme.value))
+      simMessage('主题设置已拷贝', 'success')
+    }
   }
 
   watch(
@@ -114,8 +112,9 @@
                 <template #label>{{ translate('标签风格') }}</template>
                 <el-select v-model="getTheme.tabStyle">
                   <el-option value="default" :label="translate('无风格')" />
+                  <el-option value="rectangle" :label="translate('矩形风格')" />
                   <el-option value="card" :label="translate('卡片风格')" />
-                  <el-option value="stress" :label="translate('凸出风格')" />
+                  <el-option value="line" :label="translate('线条风格')" />
                   <el-option value="smart" :label="translate('灵动风格')" />
                 </el-select>
               </el-form-item>
@@ -298,8 +297,8 @@
         </el-scrollbar>
       </template>
       <template #footer>
-        <el-button @click="resetTheme">{{ translate('恢复默认') }}</el-button>
-        <el-button type="warning" @click="copyTheme">{{ translate('拷贝设置') }}</el-button>
+        <el-button type="warning" @click="resetTheme">{{ translate('恢复默认') }}</el-button>
+        <el-button type="primary" @click="copyTheme">{{ translate('拷贝设置') }}</el-button>
       </template>
     </el-drawer>
   </teleport>

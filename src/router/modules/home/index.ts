@@ -32,10 +32,21 @@ export const homeRoutes: ISimRouterRecordRaw[] = [
   {
     path: '/analyse',
     name: 'HomeAnalyse',
-    component: () => import('~/src/views/home/index.vue'),
+    component: () => import('~/library/layouts/index.vue'),
     meta: {
       title: '测试',
       icon: 'ri-bubble-chart-line',
     },
+    children: [
+      {
+        path: 'analyse',
+        name: 'HomeAnalyse',
+        component: () => import('~/src/views/home/index.vue'),
+        meta: {
+          title: '分析台',
+          icon: 'ri-bubble-chart-line',
+        },
+      },
+    ],
   },
 ]

@@ -27,6 +27,8 @@
     "nprogress": "^0.2.0",
     "pinia": "^2.2.6",
     "remixicon": "^4.5.0",
+    "rrweb": "2.0.0-alpha.4",
+    "rrweb-player": "1.0.0-alpha.4",
     "vue": "^3.5.12",
     "vue-i18n": "^10.0.4",
     "vue-router": "^4.4.5",

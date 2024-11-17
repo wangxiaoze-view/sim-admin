@@ -69,7 +69,7 @@
   "标签风格": "Tabs style",
   "无风格": "No style",
   "卡片风格": "Card style",
-  "凸出风格": "Outset style",
+  "线条风格": "Line style",
   "灵动风格": "Dynamic style",
   "色弱模式": "Weak mode",
   "按钮空格": "Button space",
@@ -95,5 +95,10 @@
   "渐变": "Gradient",
   "缩放": "Zoom",
   "恢复默认": "Restore default",
-  "拷贝设置": "Copy settings"
+  "拷贝设置": "Copy settings",
+  "请输入锁屏密码, 默认123456": "Please enter the lock screen password, the default is 123456",
+  "屏幕已锁定，请输入密码解锁🔓": "Screen locked, please enter the password to unlock 🔓",
+  "解锁": "Unlock",
+  "切换壁纸": "Switch wallpaper",
+  "壁纸切换可能会很慢，请耐心等待....": "Wallpaper switching may be slow, please wait patiently...."
 }

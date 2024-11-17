@@ -48,6 +48,7 @@ export function setupPermissions(router: Router) {
         }
       }
     }
+    // next()
   })
 
   router.afterEach(() => {

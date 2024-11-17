@@ -21,7 +21,6 @@ export default {
         dangerouslyUseHTMLString: true,
       }).then(() => {})
     }
-
     console.log(
       ` %c ${name}(v${version}) %c 欢迎使用！附带日志上报系统! `,
       'color: #ffffff; background: #0081ff; padding:2px 0; border-radius: 3px 0 0 3px;',

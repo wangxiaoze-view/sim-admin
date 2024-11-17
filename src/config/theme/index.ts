@@ -35,6 +35,8 @@ export const themeConfig: ITheme = {
   isDebug: true,
   // 是否开启锁屏模式
   isLocked: true,
+  // 锁屏弹窗
+  isLockedLayer: false,
   // 是否显示全屏效果
   isFullPage: true,
   // 是否显示消息

@@ -16,6 +16,10 @@ export const useSettinggsStore = defineStore('settings', {
     getLanguage: (state) => state.theme.i18n,
   },
   actions: {
+    resetTheme() {
+      this.theme = Object.assign(this.theme, defaultTheme || {})
+      this.setTheme(this.theme)
+    },
     setTheme(theme?: Partial<ITheme>) {
       this.theme = Object.assign(this.theme, theme || {})
       if (this.theme.layout === 'float') {

@@ -31,3 +31,7 @@ declare interface ITabasType {
   // 访问的路由
   visitedRoutes: ISimRouterRecordRaw[]
 }
+
+declare interface TErrorType {
+  errors: any[]
+}

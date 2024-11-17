@@ -23,7 +23,7 @@
       path,
       meta: { target },
     } = itemOrMenu
-    console.log(itemOrMenu)
+
     if (target === '_blank') {
       if (isExternal(path)) {
         window.open(path)

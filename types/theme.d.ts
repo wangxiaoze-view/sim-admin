@@ -1,7 +1,7 @@
 declare type TThemeType = 'ordinary' | 'row' | 'float'
 declare type TMenuStyle = 'default' | 'line' | 'card' | 'arrow'
 declare type TLanguageType = 'zh' | 'en'
-declare type TTabType = 'card'
+declare type TTabType = 'default' | 'rectangle' | 'card' | 'line' | 'smart'
 declare type TTransitionType = 'fade-in'
 declare type TSize = 'default'
 declare type TMode = 'light' | 'dark'
@@ -33,6 +33,8 @@ declare interface ITheme {
   transitionName: TTransitionType
   // 是否开启锁屏模式
   isLocked: boolean
+  // 锁屏弹窗
+  isLockedLayer: boolean
   // 语言类型zh、en
   i18n: TLanguageType
   // 是否显示国际化
