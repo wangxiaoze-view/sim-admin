@@ -23,6 +23,7 @@ import CompressionPlugin from 'compression-webpack-plugin'
 import { settings_config } from './src/config'
 const { title, linkIcon, description, copyright } = settings_config
 
+const isProduction = process.env.NODE_ENV === 'production'
 export default defineConfig({
   plugins: [
     pluginVue(),
@@ -131,9 +132,13 @@ export default defineConfig({
   },
   server: {
     compress: true,
-    proxy: {
-      '/api': 'http://localhost:3000',
-    },
+    ...(!isProduction
+      ? {
+          proxy: {
+            '/api': 'http://localhost:3000',
+          },
+        }
+      : {}),
   },
   html: {
     title,

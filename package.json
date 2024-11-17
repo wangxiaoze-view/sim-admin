@@ -1,7 +1,7 @@
 {
   "name": "sim-admin",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "rsbuild dev --open --env-mode development",
@@ -24,6 +24,7 @@
     "@log-reporting/core": "^1.0.5",
     "element-plus": "^2.8.7",
     "functional-helpers": "git@github.com:wangxiaoze-view/functional-helpers-lib.git#v1.0.1",
+    "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
     "pinia": "^2.2.6",
     "remixicon": "^4.5.0",

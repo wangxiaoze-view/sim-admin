@@ -17,6 +17,9 @@ importers:
       functional-helpers:
         specifier: git@github.com:wangxiaoze-view/functional-helpers-lib.git#v1.0.1
         version: https://codeload.github.com/wangxiaoze-view/functional-helpers-lib/tar.gz/2dc1db924e10d6b18e3b3e556b00cc59cf73178d(@vueuse/core@11.1.0(vue@3.5.12(typescript@5.5.2)))(ali-oss@6.21.0)(axios@1.7.7)(currency.js@2.0.4)(dayjs@1.11.13)(fundebug-javascript@2.8.8)(fundebug-vue@0.3.6)(lodash-es@4.17.21)(vue@3.5.12(typescript@5.5.2))
+      lodash-es:
+        specifier: ^4.17.21
+        version: 4.17.21
       nprogress:
         specifier: ^0.2.0
         version: 0.2.0
