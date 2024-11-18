@@ -47,12 +47,11 @@ export function setupPermissions(router: Router) {
           next({ ...to, replace: true })
         } catch (error) {
           logger.error(JSON.stringify(error))
-          // 清除所有缓存
+          // TODO: 清除所有缓存
           next(resetLoginPath(to.fullPath))
         }
       }
     }
-    next()
   })
 
   router.afterEach(() => {

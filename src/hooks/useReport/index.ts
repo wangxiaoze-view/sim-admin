@@ -12,8 +12,6 @@ export function useReport() {
     init({
       // 上报地址, 可以改为 后端真实地址
       dsn: '/',
-      // TODO: admin暂时停止开发。log-reporting将会进行重构
-      // @ts-expect-error TS2339
       isReport: false,
       // 是否开启调试
       isDebug: true,
@@ -24,7 +22,7 @@ export function useReport() {
       // 是否捕获性能
       isPerformance: true,
       // 是否捕获资源
-      // TODO: 资源捕获可能会多次上报
+      // 资源捕获可能会多次上报
       isResource: false,
       // 是否捕获请求
       isXhr: true,

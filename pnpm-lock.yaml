@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       '@log-reporting/core':
-        specifier: ^1.0.7
-        version: 1.0.7
+        specifier: ^1.0.8
+        version: 1.0.8
       element-plus:
         specifier: ^2.8.7
         version: 2.8.8(vue@3.5.13(typescript@5.5.2))
       functional-helpers:
         specifier: git@github.com:wangxiaoze-view/functional-helpers-lib.git
-        version: https://codeload.github.com/wangxiaoze-view/functional-helpers-lib/tar.gz/746318646fc4b922d29df971fa15476b71870b6a(@vueuse/core@9.13.0(vue@3.5.13(typescript@5.5.2)))(ali-oss@6.21.0)(axios@1.7.7)(currency.js@2.0.4)(dayjs@1.11.13)(fundebug-javascript@2.8.8)(fundebug-vue@0.3.6)(lodash-es@4.17.21)(vue@3.5.13(typescript@5.5.2))
+        version: https://codeload.github.com/wangxiaoze-view/functional-helpers-lib/tar.gz/090103d174f9acda54e9bffc7a6126467004c249(@vueuse/core@9.13.0(vue@3.5.13(typescript@5.5.2)))(ali-oss@6.21.0)(axios@1.7.7)(currency.js@2.0.4)(dayjs@1.11.13)(fundebug-javascript@2.8.8)(fundebug-vue@0.3.6)(lodash-es@4.17.21)(vue@3.5.13(typescript@5.5.2))
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
@@ -61,8 +61,8 @@ importers:
         specifier: ^9.10.0
         version: 9.15.0
       '@log-reporting/types':
-        specifier: ^1.0.2
-        version: 1.0.2
+        specifier: ^1.0.3
+        version: 1.0.3
       '@release-it/conventional-changelog':
         specifier: ^9.0.2
         version: 9.0.3(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.0.0)(release-it@17.10.0(typescript@5.5.2))
@@ -1013,11 +1013,11 @@ packages:
     peerDependencies:
       tslib: '2'
 
-  '@log-reporting/core@1.0.7':
-    resolution: {integrity: sha512-ViIZmVb6aFCDKk/oPxLgt5RM3xhCJ2UAngvedgo4EDLnJ4tkzKyOYjS+YWKAJVbxl/y5hRhkJHsSjAykP1uGtA==}
+  '@log-reporting/core@1.0.8':
+    resolution: {integrity: sha512-ehAMOisBoK4arBSfi4UA/TV2BfYvAKLgH1z14a3pxeMvdFu/OTu0bPqjKwC+Vu+l846pKI1EU+8pqazun/Qukw==}
 
-  '@log-reporting/types@1.0.2':
-    resolution: {integrity: sha512-zPkZK2cozq4pnJ8WA1ePOJ5K1s42TdCyd2V0rYESSFbLwwzH41jIsAxIudKL9NDzldUEJVSbDL9OkMfPsnYiVQ==}
+  '@log-reporting/types@1.0.3':
+    resolution: {integrity: sha512-XODCi2UVKT7WdiIvw6s8Hc/FPPsIhqb+nkA14IBBgRw4SkVI7Rz71tpEGcAatjUDAcaz/RF/y9fEEPfWbBXU6A==}
 
   '@module-federation/runtime-tools@0.5.1':
     resolution: {integrity: sha512-nfBedkoZ3/SWyO0hnmaxuz0R0iGPSikHZOAZ0N/dVSQaIzlffUo35B5nlC2wgWIc0JdMZfkwkjZRrnuuDIJbzg==}
@@ -3000,8 +3000,8 @@ packages:
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
 
-  functional-helpers@https://codeload.github.com/wangxiaoze-view/functional-helpers-lib/tar.gz/746318646fc4b922d29df971fa15476b71870b6a:
-    resolution: {tarball: https://codeload.github.com/wangxiaoze-view/functional-helpers-lib/tar.gz/746318646fc4b922d29df971fa15476b71870b6a}
+  functional-helpers@https://codeload.github.com/wangxiaoze-view/functional-helpers-lib/tar.gz/090103d174f9acda54e9bffc7a6126467004c249:
+    resolution: {tarball: https://codeload.github.com/wangxiaoze-view/functional-helpers-lib/tar.gz/090103d174f9acda54e9bffc7a6126467004c249}
     version: 1.0.2
     engines: {node: '>= 18.16.0'}
     peerDependencies:
@@ -6600,14 +6600,14 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@log-reporting/core@1.0.7':
+  '@log-reporting/core@1.0.8':
     dependencies:
       '@types/crypto-js': 4.2.2
       js-base64: 3.7.7
       lz-string: 1.5.0
       rrweb: 2.0.0-alpha.4
 
-  '@log-reporting/types@1.0.2': {}
+  '@log-reporting/types@1.0.3': {}
 
   '@module-federation/runtime-tools@0.5.1':
     dependencies:
@@ -8884,7 +8884,7 @@ snapshots:
 
   function-bind@1.1.2: {}
 
-  functional-helpers@https://codeload.github.com/wangxiaoze-view/functional-helpers-lib/tar.gz/746318646fc4b922d29df971fa15476b71870b6a(@vueuse/core@9.13.0(vue@3.5.13(typescript@5.5.2)))(ali-oss@6.21.0)(axios@1.7.7)(currency.js@2.0.4)(dayjs@1.11.13)(fundebug-javascript@2.8.8)(fundebug-vue@0.3.6)(lodash-es@4.17.21)(vue@3.5.13(typescript@5.5.2)):
+  functional-helpers@https://codeload.github.com/wangxiaoze-view/functional-helpers-lib/tar.gz/090103d174f9acda54e9bffc7a6126467004c249(@vueuse/core@9.13.0(vue@3.5.13(typescript@5.5.2)))(ali-oss@6.21.0)(axios@1.7.7)(currency.js@2.0.4)(dayjs@1.11.13)(fundebug-javascript@2.8.8)(fundebug-vue@0.3.6)(lodash-es@4.17.21)(vue@3.5.13(typescript@5.5.2)):
     dependencies:
       '@vueuse/core': 9.13.0(vue@3.5.13(typescript@5.5.2))
       ali-oss: 6.21.0
