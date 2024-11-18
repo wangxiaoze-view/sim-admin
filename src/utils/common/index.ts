@@ -47,6 +47,3 @@ export function parseParams(data: any) {
   }
 }
 
-export const isExternal = (value: string) => {
-  return /^(https?:|mailto:|tel:|\/\/)/.test(value)
-}
