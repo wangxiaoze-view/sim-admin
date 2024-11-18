@@ -24,6 +24,7 @@ import { settings_config } from './src/config'
 const { title, linkIcon, description, copyright } = settings_config
 
 const isProduction = process.env.NODE_ENV === 'production'
+
 export default defineConfig({
   plugins: [
     pluginVue(),
@@ -33,7 +34,8 @@ export default defineConfig({
     pluginMockServer({
       log: true,
       build: {
-        dist: 'mock',
+        // 将mock数据打包到生产环境
+        dist: `${process.cwd()}/mockServer`,
         serverPort: 3000,
       },
     }),
@@ -41,6 +43,7 @@ export default defineConfig({
   tools: {
     lightningcssLoader: false,
     postcss(opts) {
+      // @ts-expect-error TS2339
       opts.postcssOptions?.plugins?.push(
         postcssEnv({
           autoprefixer: {
@@ -59,7 +62,7 @@ export default defineConfig({
         )
       appendPlugins(
         AutoImport({
-          imports: ['vue', 'vue-router'],
+          imports: ['vue', 'vue-router', 'pinia'],
           resolvers: [ElementPlusResolver()],
         })
       )
@@ -69,7 +72,7 @@ export default defineConfig({
         })
       )
 
-      appendPlugins(new CompressionPlugin({}))
+      appendPlugins(new CompressionPlugin())
     },
   },
   dev: {

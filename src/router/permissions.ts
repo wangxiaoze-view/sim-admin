@@ -9,6 +9,7 @@ import { getToken, logger } from '~/src/utils'
 const { whiteList } = settings_config
 export function setupPermissions(router: Router) {
   router.beforeEach(async (to, from, next) => {
+    console.log(to, '--')
     const {
       getTheme: { isProgress },
     } = useSettinggsStore()
@@ -26,6 +27,8 @@ export function setupPermissions(router: Router) {
         next()
       } else {
         // 不是白名单，要处理重定向地址, 会涉及多处地方引入的重定向，需拆分
+        console.log(resetLoginPath(to.fullPath), 123)
+        // next({ path: resetLoginPath(to.fullPath).path })
         next(resetLoginPath(to.fullPath))
       }
     } else {
@@ -40,6 +43,7 @@ export function setupPermissions(router: Router) {
         try {
           await setUserInfo()
           await setRoutes()
+          console.log(to)
           next({ ...to, replace: true })
         } catch (error) {
           logger.error(JSON.stringify(error))
@@ -48,7 +52,7 @@ export function setupPermissions(router: Router) {
         }
       }
     }
-    // next()
+    next()
   })
 
   router.afterEach(() => {

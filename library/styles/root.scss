@@ -1,4 +1,4 @@
-@import './variables.scss';
+@use './variables.scss' as *;
 
 // 重写ele 的全局样式变量， 这里修改之后用于 主题切换
 :root {

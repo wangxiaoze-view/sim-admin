@@ -1,5 +1,5 @@
 import { useChangeTheme, useError } from '~/src/hooks'
-import { init, _support } from '@log-reporting/core'
+import { init, _support, EVENT_TYPES } from '@log-reporting/core'
 import { AnyFun } from '@log-reporting/types'
 import rrwebPlayer from 'rrweb-player'
 import 'rrweb-player/dist/style.css'
@@ -12,6 +12,9 @@ export function useReport() {
     init({
       // 上报地址, 可以改为 后端真实地址
       dsn: '/',
+      // TODO: admin暂时停止开发。log-reporting将会进行重构
+      // @ts-expect-error TS2339
+      isReport: false,
       // 是否开启调试
       isDebug: true,
       // 是否捕获错误
@@ -58,16 +61,7 @@ export function useReport() {
      */
 
     // https://github1s.com/wangxiaoze-view/log-repeorting/blob/main/packages/core/enum/index.ts
-    const eventTypes = [
-      'error',
-      'unhandledrejection',
-      'consoleError',
-      'xhr',
-      'fetch',
-      'pv',
-      'exposure',
-    ]
-    eventTypes.forEach((eventType) => {
+    Object.values(EVENT_TYPES).forEach((eventType) => {
       _support.eventBus.on(eventType, (errorOptions: AnyFun) => {
         setError(errorOptions)
       })

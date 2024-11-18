@@ -1,6 +1,7 @@
 import { writeFileSync } from 'node:fs'
 
-const json = {
+// vercel 的配置文件
+const vercelJson = {
   version: 2,
   builds: [
     {
@@ -16,4 +17,10 @@ const json = {
   ],
 }
 
-writeFileSync('dist/mock/vercel.json', JSON.stringify(json, null, 2))
+try {
+  // 写入文件，mockServer文件夹可用于部署mock服务
+  writeFileSync('mockServer/vercel.json', JSON.stringify(vercelJson, null, 2))
+} catch (err) {
+  console.error(err)
+  process.exit(1)
+}
