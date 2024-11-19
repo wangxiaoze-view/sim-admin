@@ -33,10 +33,11 @@ export default defineConfig({
     pluginCssMinimizer(),
     pluginMockServer({
       log: true,
+      prefix: '/api',
       build: {
         // 将mock数据打包到生产环境
         dist: `${process.cwd()}/mockServer`,
-        serverPort: 3000,
+        serverPort: 3003,
       },
     }),
   ],
