@@ -98,7 +98,7 @@
       left: 0;
       width: 100%;
       height: 25%;
-      background-color: #fff;
+      background-color: var(--el-bg-color);
     }
   }
 
@@ -129,7 +129,7 @@
       left: 0;
       width: 100%;
       height: 25%;
-      background-color: #fff;
+      background-color: var(--el-bg-color);
     }
   }
 </style>

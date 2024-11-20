@@ -7,10 +7,10 @@ $sim-color-danger: #f56c6c;
 $sim-color-error: #ba1c1c;
 $sim-color-info: #909399;
 $sim-color-text: #303133;
-$sim-color-white: #fff;
+$sim-color-white: #ffffff;
 $sim-color-black: #303133;
 
-$sim-bg-color: #fff;
+$sim-bg-color: #ffffff;
 
 $sim-default-animation:
   all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
@@ -101,3 +101,5 @@ $sim-header-height: 50px;
 
 // 页脚
 $sim-footer-height: 50px;
+
+$sim-padding-sapce: 14px;

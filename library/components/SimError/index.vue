@@ -61,7 +61,7 @@
 <style lang="scss" scoped>
   :deep() {
     .expand-row {
-      padding: 14px;
+      padding: var(--el-padding-sapce);
     }
   }
 </style>

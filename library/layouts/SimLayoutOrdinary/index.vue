@@ -17,7 +17,7 @@
     <SimDrawerMenu v-else />
     <div class="sim-content">
       <SimHeader />
-      <SimMainView class="sim-view--container" />
+      <SimMainView />
     </div>
   </div>
 </template>

@@ -6,7 +6,8 @@ import { useTabsStore } from '~/src/stores/modules/tabs'
 import { handlerTabs } from '~/src/utils'
 
 export function useVisiteRoutes() {
-  const { getVisitedRoutes, setVisitedRoutes } = useTabsStore()
+  const { setVisitedRoutes } = useTabsStore()
+  const { getVisitedRoutes } = storeToRefs(useTabsStore())
 
   const { getMenuRoutes } = useRoutesStore()
 

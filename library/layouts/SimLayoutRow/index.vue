@@ -15,7 +15,7 @@
     <SimDrawerMenu v-if="getTheme.device === 'mobile'" />
     <div class="sim-content">
       <SimRowHeader />
-      <SimMainView class="sim-view--container" />
+      <SimMainView />
     </div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import { computed, ref } from 'vue'
+  import { computed, inject, ref } from 'vue'
   import { translate } from '~/src/i18n'
   import { useChangeTheme, useFullscreen, useError } from '~/src/hooks'
   import { useUserStore } from '~/src/stores/modules/user'
@@ -17,10 +17,18 @@
   })
 
   const tabIndex = ref(1)
-
   const themeRef = ref<InstanceType<typeof SimThemeDrawer>>()
   const debugRef = ref<InstanceType<typeof SimError>>()
   const noticeData = ref<INoticeType[]>([])
+
+  const {
+    getUserInfo: { avatar, name },
+  } = useUserStore()
+  const { getTheme, setTheme } = useChangeTheme()
+  const { isFullscreen, toggle } = useFullscreen()
+  const { getErrors } = useError()
+
+  const $simEmit = inject<any>('$simEmit')
   const noticeList = computed(() => {
     return noticeData.value.find((item) => item.type === tabIndex.value)?.data || []
   })
@@ -34,14 +42,9 @@
       return total
     }, [] as Partial<INoticeDataType>[])
   })
-  const {
-    getUserInfo: { avatar, name },
-  } = useUserStore()
-  const { getTheme, setTheme } = useChangeTheme()
-  const { isFullscreen, toggle } = useFullscreen()
-  const { getErrors } = useError()
 
-  const onRefresh = () => {}
+  // 触发mitt.emit
+  const onRefresh = () => $simEmit('refresh')
 
   const showTheme = () => {
     themeRef.value?.setVisible(true, {
@@ -241,7 +244,7 @@
 
   :deep() {
     .sim-notice {
-      padding: 14px;
+      padding: var(--el-padding-sapce);
       width: 300px;
 
       .row {
@@ -254,7 +257,7 @@
         &-title {
           margin-bottom: 4px;
           &--tag {
-            color: #fff;
+            color: var(--el-color-white);
             font-size: 10px;
             border-radius: 4px;
             padding: 2px 4px;

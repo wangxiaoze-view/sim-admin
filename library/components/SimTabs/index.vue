@@ -1,108 +1,23 @@
 <script lang="ts" setup>
-  import { watch, ref, watchEffect } from 'vue'
-  import { useRoute } from 'vue-router'
+  import useTabs from './useTabs'
   import { translate } from '~/src/i18n'
-  import type { TabPaneName } from 'element-plus'
-  import { useMouse, useChangeTheme, useVisiteRoutes } from '~/src/hooks'
   import SimIcon from '~/library/components/SimIcon/index.vue'
-
   defineOptions({
     name: 'SimTabs',
   })
-
-  const route = useRoute()
-
-  const tabMenu = ref(false)
-  const hoverTabActive = ref('')
-  const left = ref(0)
-  const top = ref(0)
-
-  // 使用hooks获取鼠标位置
-  const { x, y } = useMouse()
-
-  const { getTheme } = useChangeTheme()
-
-  const { curtrentTab, getVisitedRoutes, initNoCloseRoutes, addVisitedRoutes } = useVisiteRoutes()
-
-  // 这里需要固定一个用于展示欢迎页
-  const handlerNotClosePage = (routes: any[]) => {
-    routes.forEach((item) => {
-      if (item.meta?.notClose) handlerAddTab(item)
-      if (item.children && item.children.length) handlerNotClosePage(item.children)
-    })
-  }
-
-  const aaa = ref<any>([])
-  // 添加标签页
-  const handlerAddTab = (route: any) => {}
-
-  // 跳转tab的最后一个
-  const toLastTabRoute = () => {}
-
-  // 点击标签页
-  const onTabClick = (tab: any) => {}
-
-  // 删除标签页
-  const onTabRemove = (name: TabPaneName) => {}
-
-  const onHandlerTabRoutes = (command: string, path: string = '') => {
-    switch (command) {
-      case 'close-left':
-        break
-      case 'close-right':
-        break
-      case 'close-others':
-        break
-      case 'close-all':
-        break
-    }
-  }
-  // 下拉菜单操作
-  const onCommand = (command: string) => {
-    onHandlerTabRoutes(command)
-  }
-
-  // tab右鍵显示tab的菜单
-  const onShowTabMenu = (path: string) => {
-    hoverTabActive.value = path
-    tabMenu.value = true
-    left.value = x.value
-    top.value = y.value
-  }
-
-  // 关闭右键的菜单
-  const onCloseTabMenu = () => {
-    hoverTabActive.value = ''
-    tabMenu.value = false
-  }
-
-  // 点击tab菜单
-  const onClickTabMenu = (command: string) => {
-    onHandlerTabRoutes(command, hoverTabActive.value)
-  }
-
-  // 初始化欢迎页
-  // handlerNotClosePage(_routes.value)
-
-  watch(
-    () => route.fullPath,
-    () => {
-      // 需要将不关闭的显示在最前方
-      initNoCloseRoutes()
-      addVisitedRoutes(route)
-    },
-    {
-      immediate: true,
-    }
-  )
-
-  watchEffect(() => {
-    if (hoverTabActive.value) {
-      document.body.addEventListener('click', onCloseTabMenu)
-    } else {
-      document.body.removeEventListener('click', onCloseTabMenu)
-    }
-  })
+  const {
+    left,
+    top,
+    isContextMenu,
+    commands,
+    getTheme,
+    getVisitedRoutes,
+    curtrentTab,
+    onTabClick,
+    onTabRemove,
+    onShowTabMenu,
+    onCommand,
+  } = useTabs()
 </script>
 
 <template>
@@ -145,46 +60,27 @@
     </el-tabs>
 
     <el-dropdown @command="onCommand">
-      <sim-icon class="cursor-icon" icon-class="ri-equalizer-line sim-icon" color="#000" />
+      <SimIcon icon-class="ri-equalizer-line" />
 
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item command="close-left">
-            <i class="ri-arrow-left-line sim-icon"></i>
-            关闭左侧
-          </el-dropdown-item>
-          <el-dropdown-item command="close-right">
-            <i class="ri-arrow-right-line sim-icon"></i>
-            关闭右侧
-          </el-dropdown-item>
-          <el-dropdown-item command="close-others">
-            <i class="ri-rest-time-line sim-icon"></i>
-            关闭其他
-          </el-dropdown-item>
-          <el-dropdown-item command="close-all">
-            <i class="ri-close-line sim-icon"></i>
-            关闭全部
+          <el-dropdown-item v-for="(item, index) in commands" :command="item.command">
+            <SimIcon :icon-class="item.classNames" />
+            {{ item.label }}
           </el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>
 
-    <ul class="tab-menu" v-if="tabMenu" :style="{ left: left + 'px', top: top + 'px' }">
-      <li @click="onClickTabMenu('close-left')">
-        <i class="ri-arrow-left-line sim-icon"></i>
-        关闭左侧
-      </li>
-      <li @click="onClickTabMenu('close-right')">
-        <i class="ri-arrow-right-line sim-icon"></i>
-        关闭右侧
-      </li>
-      <li @click="onClickTabMenu('close-others')">
-        <i class="ri-rest-time-line sim-icon"></i>
-        关闭其他
-      </li>
-      <li @click="onClickTabMenu('close-all')">
-        <i class="ri-close-line sim-icon"></i>
-        关闭全部
+    <ul class="tab-menu" v-if="isContextMenu" :style="{ left: `${left}px`, top: `${top}px` }">
+      <li
+        v-for="(item, index) in commands"
+        :key="index"
+        :command="item.command"
+        @click="onCommand(item.command)"
+      >
+        <SimIcon :icon-class="item.classNames" />
+        {{ item.label }}
       </li>
     </ul>
   </div>

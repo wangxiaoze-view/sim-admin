@@ -5,7 +5,7 @@
   import navType from './components/navTypePage.vue'
   import SimColorPicker from '../SimColorPicker/index.vue'
   import SimIcon from '~/library/components/SimIcon/index.vue'
-  import { simMessage } from '~/src/utils'
+  import { $sim } from '~/library/plugins/element'
 
   defineOptions({
     name: 'SimThemeDrawer',
@@ -25,12 +25,12 @@
 
   const copyTheme = () => {
     if (!isSupported) {
-      return simMessage('您的浏览器不支持Clipboard API', 'warning')
+      return $sim.$simMessage('当前浏览器不支持复制', 'error')
     }
 
     if (getTheme.value) {
       copy(JSON.stringify(getTheme.value))
-      simMessage('主题设置已拷贝', 'success')
+      $sim.$simMessage('主题设置已拷贝', 'success')
     }
   }
 
@@ -307,7 +307,7 @@
 <style lang="scss" scoped>
   .sim-theme-set {
     .pad-container {
-      padding: 0 14px;
+      padding: 0 var(--el-padding-sapce);
     }
 
     :deep() {

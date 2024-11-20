@@ -9,8 +9,12 @@
   --el-default-animation: #{$sim-default-animation};
   --el-header-height: #{$sim-header-height};
   --el-tab-height: #{$sim-tab-height};
+  // 这个尽量不要修改，不然整体样式会受到影响
+  --el-padding-sapce: #{$sim-padding-sapce};
 
-  // --el-color-white: #ffffff;
+  --el-bg-color: #{$sim-bg-color};
+
+  --el-color-white: #{$sim-color-white};
   // --el-color-black: #000000;
   // --el-color-primary-rgb: 64, 158, 255;
   // --el-color-success-rgb: 103, 194, 58;
@@ -134,7 +138,6 @@
   --el-color-info-light-9: #{$sim-color-info-light-9};
   --el-color-info-dark-2: #{$sim-color-info};
 
-  // --el-bg-color: #ffffff;
   // --el-bg-color-page: #f2f3f5;
   // --el-bg-color-overlay: #ffffff;
   // --el-text-color-primary: #303133;

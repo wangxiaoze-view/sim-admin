@@ -183,6 +183,22 @@ html {
     background: var(--el-bg-color);
     #root {
       height: 100%;
+
+      .sim-router--container {
+        width: 100%;
+        padding: var(--el-padding-sapce);
+        overflow: hidden;
+        transition: var(--el-default-animation);
+
+        [class*='-container'] {
+          min-height: var(--el-keep-alive-height);
+          padding: var(--el-padding);
+          background: var(--el-color-white);
+          border: 1px solid var(--el-border-color);
+          border-radius: var(--el-border-radius-base);
+          transition: var(--el-transition);
+        }
+      }
       .is-collapse {
         @extend .collapse-common-width;
         .sim-logo {
@@ -321,7 +337,7 @@ html {
         align-items: center;
         justify-content: space-between;
         height: var(--el-tab-height);
-        padding: 0 14px;
+        padding: 0 var(--el-padding-sapce);
         border-bottom: 1px solid var(--el-border-color-light);
         .el-tabs__header,
         .el-tabs__nav,
@@ -333,7 +349,7 @@ html {
         }
 
         .el-tabs__item {
-          padding: 0 14px;
+          padding: 0 var(--el-padding-sapce);
           &:not(:last-of-type) {
             margin-right: 4px;
           }
@@ -417,10 +433,11 @@ html {
           border-radius: 6px;
           z-index: 199;
           box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
-          background-color: #fff;
+          background-color: var(--el-bg-color);
           li {
             padding: 10px 20px;
-            font-size: 14px;
+            font-size: var(--el-font-size-base);
+            color: var(--el-text-color-regular);
             &:hover {
               cursor: pointer;
               background: var(--el-color-primary-light-9);
@@ -430,4 +447,26 @@ html {
       }
     }
   }
+}
+
+/* 路由动画 */
+.fade-in-enter-active,
+.fade-in-leave-active {
+  transition: opacity 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.fade-in-enter-from,
+.fade-in-leave-to {
+  opacity: 0;
+}
+
+/* 缩放*/
+.scale-enter-active,
+.scale-leave-active {
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.scale-enter-from,
+.scale-leave-to {
+  opacity: 0;
+  transform: scale(0.98);
 }

@@ -100,5 +100,10 @@
   "屏幕已锁定，请输入密码解锁🔓": "Screen locked, please enter the password to unlock 🔓",
   "解锁": "Unlock",
   "切换壁纸": "Switch wallpaper",
-  "壁纸切换可能会很慢，请耐心等待....": "Wallpaper switching may be slow, please wait patiently...."
+  "壁纸切换可能会很慢，请耐心等待....": "Wallpaper switching may be slow, please wait patiently....",
+  "关闭左侧": "Close left",
+  "关闭右侧": "Close right",
+  "关闭其他": "Close other",
+  "关闭所有": "Close all",
+  "关闭当前": "Close current"
 }

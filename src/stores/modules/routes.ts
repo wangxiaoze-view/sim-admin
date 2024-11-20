@@ -48,7 +48,7 @@ export const useRoutesStore = defineStore('routes', {
       // 需要隐藏 meta.hidden 的菜单
       this.menuRoutes = filterHidden(getFilterRoutes)
       this.allRoutes = getFilterRoutes
-      await resetRouter(getFilterRoutes)
+      resetRouter(getFilterRoutes)
     },
   },
 })
