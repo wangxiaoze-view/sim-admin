@@ -5,4 +5,5 @@ export const imageLinks = {
   login_bg: 'https://file.wangzevw.com/images/wave-haikei.8l03zqtzlh.svg',
   qq_icon: 'https://file.wangzevw.com/images/qq_icon.8z6jnypwzg.svg',
   wechat_icon: 'https://file.wangzevw.com/images/wechat_icon.99tdh4554t.svg',
+  ksrm_image: 'https://file.wangzevw.com/images/ksrm.1ziag0q8rw.webp',
 }

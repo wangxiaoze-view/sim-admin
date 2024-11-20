@@ -2,19 +2,40 @@
 
 // 重写ele 的全局样式变量， 这里修改之后用于 主题切换
 :root {
+  // 背景色
+  --el-body-bg-color: #{$sim-body-bg-color};
   --el-bg-color: #{$sim-bg-color};
+  // logo
   --el-logo-height: #{$sim-logo-height};
+  // aside
   --el-aside-width: #{$sim-sider-width};
+  // content
   --el-content-width: #{$sim-content-width};
-  --el-default-animation: #{$sim-default-animation};
+  // header
   --el-header-height: #{$sim-header-height};
+  // tab
   --el-tab-height: #{$sim-tab-height};
+
   // 这个尽量不要修改，不然整体样式会受到影响
+  // 间距
   --el-padding-sapce: #{$sim-padding-sapce};
+  --el-padding-sapce-large: #{$sim-padding-sapce-large};
 
-  --el-bg-color: #{$sim-bg-color};
+  // 文字大小
+  --el-font-size-extra-large: #{$sim-font-size-extra-large};
+  --el-font-size-large: #{$sim-font-size-large};
+  --el-font-size-medium: #{$sim-font-size-medium};
+  --el-font-size-base: #{$sim-font-size-base};
+  --el-font-size-small: #{$sim-font-size-small};
+  --el-font-size-extra-small: #{$sim-font-size-extra-small};
 
+  // 文字颜色
   --el-color-white: #{$sim-color-white};
+  --el-color-black: #{$sim-color-black};
+
+  // 过度
+  --el-default-animation: #{$sim-default-animation};
+
   // --el-color-black: #000000;
   // --el-color-primary-rgb: 64, 158, 255;
   // --el-color-success-rgb: 103, 194, 58;
@@ -22,12 +43,7 @@
   // --el-color-danger-rgb: 245, 108, 108;
   // --el-color-error-rgb: 245, 108, 108;
   // --el-color-info-rgb: 144, 147, 153;
-  // --el-font-size-extra-large: 20px;
-  // --el-font-size-large: 18px;
-  // --el-font-size-medium: 16px;
-  // --el-font-size-base: 14px;
-  // --el-font-size-small: 13px;
-  // --el-font-size-extra-small: 12px;
+
   // --el-font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
   //   'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
   // --el-font-weight-primary: 500;

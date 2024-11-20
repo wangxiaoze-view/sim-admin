@@ -3,18 +3,15 @@
     name: 'SimIcon',
   })
 
-  withDefaults(
-    defineProps<{
-      iconClass?: string
-      color?: string
-      size?: number
-    }>(),
-    {
-      iconClass: '',
-      color: '#333',
-      size: 16,
-    }
-  )
+  const {
+    iconClass,
+    color = '#333',
+    size = 16,
+  } = defineProps<{
+    iconClass?: string
+    color?: string
+    size?: number
+  }>()
 </script>
 
 <template>

@@ -1,5 +1,23 @@
 // 全局主题变量
 
+// logo 高度
+$sim-logo-height: 100px;
+// header高度
+$sim-header-height: 60px;
+// tab高度
+$sim-tab-height: 40px;
+// 侧边栏
+$sim-sider-width: 260px;
+// 右侧内容
+$sim-content-width: calc(100% - var($sim-sider-width));
+// 顶栏
+$sim-header-height: 50px;
+// 页脚
+$sim-footer-height: 50px;
+// 间距
+$sim-padding-sapce: 14px;
+$sim-padding-sapce-large: 20px;
+// 颜色
 $sim-color-primary: #4c7cc3;
 $sim-color-success: #67c23a;
 $sim-color-warning: #e6a23c;
@@ -10,8 +28,19 @@ $sim-color-text: #303133;
 $sim-color-white: #ffffff;
 $sim-color-black: #303133;
 
+// 背景色
 $sim-bg-color: #ffffff;
+$sim-body-bg-color: #f5f7fa;
 
+// 字体大小
+$sim-font-size-small: 13px;
+$sim-font-size-base: 14px;
+$sim-font-size-medium: 16px;
+$sim-font-size-large: 18px;
+$sim-font-size-extra-large: 20px;
+$sim-font-size-extra-small: 12px;
+
+// 过度
 $sim-default-animation:
   all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
   border 0s,
@@ -83,23 +112,3 @@ $sim-color-info-light-6: rgba($sim-color-info, 0.4);
 $sim-color-info-light-7: rgba($sim-color-info, 0.3);
 $sim-color-info-light-8: rgba($sim-color-info, 0.2);
 $sim-color-info-light-9: rgba($sim-color-info, 0.1);
-
-// logo 高度
-$sim-logo-height: 100px;
-// header高度
-$sim-header-height: 60px;
-// tab高度
-$sim-tab-height: 40px;
-
-// 侧边栏
-$sim-sider-width: 260px;
-// 右侧内容
-$sim-content-width: calc(100% - var($sim-sider-width));
-
-// 顶栏
-$sim-header-height: 50px;
-
-// 页脚
-$sim-footer-height: 50px;
-
-$sim-padding-sapce: 14px;

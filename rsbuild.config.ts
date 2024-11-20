@@ -69,6 +69,7 @@ export default defineConfig({
       )
       appendPlugins(
         Components({
+          dirs: ['src/components', 'library/components'],
           resolvers: [ElementPlusResolver()],
         })
       )

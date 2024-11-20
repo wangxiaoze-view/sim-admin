@@ -1,5 +1,6 @@
 <script lang="ts" setup>
   import useMainView from './useMainView'
+  import SimFooter from '../SImFooter/index.vue'
   defineOptions({
     name: 'SimMainView',
   })
@@ -16,6 +17,7 @@
       </transition>
     </router-view>
     <!-- <sim-footer /> -->
+    <SimFooter />
   </div>
 </template>
 

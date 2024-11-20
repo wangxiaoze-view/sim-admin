@@ -171,32 +171,45 @@ html {
     --el-logo-height: 60px;
   }
 
+  .border {
+    border: 1px solid var(--el-border-color);
+    &-card-radius {
+      border-radius: 4px;
+    }
+  }
+
   body {
     position: relative;
     box-sizing: border-box;
     height: 100vh;
     margin: 0;
-    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
     overflow: hidden;
     font-size: var(--el-font-size-base);
     color: var(--el-color-black);
-    background: var(--el-bg-color);
+    background: var(--el-body-bg-color);
     #root {
       height: 100%;
 
       .sim-router--container {
-        width: 100%;
-        padding: var(--el-padding-sapce);
+        padding: var(--el-padding-sapce-large);
         overflow: hidden;
         transition: var(--el-default-animation);
 
         [class*='-container'] {
           min-height: var(--el-keep-alive-height);
-          padding: var(--el-padding);
-          background: var(--el-color-white);
-          border: 1px solid var(--el-border-color);
-          border-radius: var(--el-border-radius-base);
+          padding: var(--el-padding-sapce-large);
+          background: var(--el-bg-color);
           transition: var(--el-transition);
+          @extend .border;
+        }
+
+        .sim-footer {
+          text-align: center;
+          padding: var(--el-padding-sapce-large);
+          margin-top: var(--el-padding-sapce-large);
+          background: var(--el-color-white);
+          transition: var(--el-transition);
+          @extend .border;
         }
       }
       .is-collapse {
@@ -379,7 +392,8 @@ html {
             .el-tabs__item {
               height: 32px;
               border-radius: 4px;
-              border: 1px solid var(--el-border-color-light);
+              @extend .border;
+
               &:hover,
               &.is-active {
                 border-color: var(--el-color-primary);

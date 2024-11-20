@@ -76,7 +76,7 @@ export default defineMock([
             name: Random.cname(),
             emial: Random.email(),
             ip: Random.ip(),
-            county: Random.county(true),
+            country: Random.county(true),
             roles: user.role,
             permission: user.permission,
             avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',

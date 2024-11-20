@@ -65,5 +65,6 @@ export function useLocked() {
     unLockTitle,
     changeTitle,
     tipTitle,
+    randomImage,
   }
 }

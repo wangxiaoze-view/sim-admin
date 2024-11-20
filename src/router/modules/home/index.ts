@@ -10,8 +10,8 @@ export const homeRoutes: ISimRouterRecordRaw[] = [
     children: [
       {
         path: 'workbench',
-        name: 'HomeIndex',
-        component: () => import('~/src/views/home/index.vue'),
+        name: 'HomeWorkbench',
+        component: () => import('~/src/views/home/workbench/index.vue'),
         meta: {
           title: '工作区',
           icon: 'ri-list-check-3',

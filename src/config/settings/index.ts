@@ -9,7 +9,7 @@ export const settings_config = {
   description:
     'simplify-admin是一款基于element-plus免费开源的中后台模板。使用最新的vue3,pinia等主流技术进行开发,达到简版模板的开发即用的前端解决方案,可以用来作为一个练手的开源项目',
   // 底部版权
-  copyright: '2023 - sim-admin - wangxiaoze@petalmail.com',
+  copyright: 'Copyright 2023 - sim-admin - wangxiaoze@petalmail.com © 王小泽',
   // 路由缓存的最大数
   keepaliveMax: 10,
   // 路由模式： true 哈希 false history
