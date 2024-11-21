@@ -11,7 +11,7 @@ export const permissionRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'role',
         name: 'PermissionRole',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/permissions/role/index.vue'),
         meta: {
           title: '角色',
           icon: 'ri-user-follow-line',
@@ -21,11 +21,11 @@ export const permissionRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'menu',
         name: 'PermissionMenu',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/permissions/menu/index.vue'),
         meta: {
           title: '菜单',
           icon: 'ri-menu-add-fill',
-          roles: ['Admin'],
+          roles: ['Admin', 'User', 'Test'],
         },
       },
     ],

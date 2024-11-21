@@ -25,6 +25,11 @@ html {
       z-index: 1;
     }
 
+    .lf-dnd-text,
+    .lf-control-text {
+      color: var(--el-bg-color-overlay) !important;
+    }
+
     .sim-router--container {
       background-color: var(--el-bg-color) !important;
     }

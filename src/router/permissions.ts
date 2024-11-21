@@ -1,32 +1,23 @@
 import { Router } from 'vue-router'
 import SimProgress from '~/library/libs/nprogress'
-import { useSettinggsStore } from '../stores/modules/settings'
-import { useUserStore } from '../stores/modules/user'
 import { useRoutesStore } from '../stores/modules/routes'
 import { resetLoginPath } from '../utils/routes'
 import { settings_config } from '~/src/config'
 import { getToken, logger } from '~/src/utils'
+import { useChangeTheme, useUser } from '../hooks'
 const { whiteList } = settings_config
 export function setupPermissions(router: Router) {
   router.beforeEach(async (to, from, next) => {
-    const {
-      getTheme: { isProgress },
-    } = useSettinggsStore()
-
-    const { setUserInfo } = useUserStore()
-
+    const { getTheme } = useChangeTheme()
+    const { setUserInfo, getUserInfo } = useUser()
     const { getMenuRoutes, setRoutes } = useRoutesStore()
-
-    if (isProgress) SimProgress.start()
-
+    if (getTheme.value.isProgress) SimProgress.start()
     const hasToken = getToken()
-
     if (!hasToken) {
       if (whiteList.includes(to.path)) {
         next()
       } else {
         // 不是白名单，要处理重定向地址, 会涉及多处地方引入的重定向，需拆分
-        // next({ path: resetLoginPath(to.fullPath).path })
         next(resetLoginPath(to.fullPath))
       }
     } else {
@@ -41,6 +32,9 @@ export function setupPermissions(router: Router) {
         try {
           await setUserInfo()
           await setRoutes()
+          const metaRole = (to.meta.roles ?? []) as string[]
+          const isExit = getUserInfo.value.roles.some((i) => metaRole.includes(i))
+          // next(!isExit ? { path: '/' } : { ...to, replace: true })
           next({ ...to, replace: true })
         } catch (error) {
           logger.error(JSON.stringify(error))

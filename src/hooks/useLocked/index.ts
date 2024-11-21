@@ -1,8 +1,7 @@
 import { reactive, ref } from 'vue'
 import { translate } from '~/src/i18n'
 import { uniqueId } from '~/src/utils'
-import { useChangeTheme, useForm } from '../index'
-import { useUserStore } from '~/src/stores/modules/user'
+import { useChangeTheme, useForm, useUser } from '../index'
 
 const defaultPsw = '123456'
 const LOCK_RULEs = {
@@ -24,9 +23,7 @@ export function useLocked() {
   const { formRef, validate, rules } = useForm(LOCK_RULEs)
   const { setTheme } = useChangeTheme()
 
-  const {
-    getUserInfo: { avatar },
-  } = useUserStore()
+  const { getUserInfo } = useUser()
 
   const formModel = reactive({
     password: defaultPsw,
@@ -60,7 +57,7 @@ export function useLocked() {
     lockImage,
     toUnlock,
     changeImage,
-    avatar,
+    getUserInfo,
     title,
     unLockTitle,
     changeTitle,

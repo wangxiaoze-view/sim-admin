@@ -1,8 +1,7 @@
 <script lang="ts" setup>
   import { computed, inject, ref } from 'vue'
   import { translate } from '~/src/i18n'
-  import { useChangeTheme, useFullscreen, useError } from '~/src/hooks'
-  import { useUserStore } from '~/src/stores/modules/user'
+  import { useChangeTheme, useFullscreen, useError, useUser } from '~/src/hooks'
   import SimThemeDrawer from '../SimThemeDrawer/index.vue'
   import SimError from '../SimError/index.vue'
   import SimLanguage from '../SimLanguage/index.vue'
@@ -21,9 +20,7 @@
   const debugRef = ref<InstanceType<typeof SimError>>()
   const noticeData = ref<INoticeType[]>([])
 
-  const {
-    getUserInfo: { avatar, name },
-  } = useUserStore()
+  const { getUserInfo } = useUser()
   const { getTheme, setTheme } = useChangeTheme()
   const { isFullscreen, toggle } = useFullscreen()
   const { getErrors } = useError()
@@ -185,8 +182,8 @@
 
     <el-dropdown @command="changeUserMenu">
       <div class="login-user">
-        <el-avatar class="login-user--icon" :src="avatar" />
-        {{ name }}
+        <el-avatar class="login-user--icon" :src="getUserInfo.avatar" />
+        {{ getUserInfo.name }}
       </div>
 
       <template #dropdown>

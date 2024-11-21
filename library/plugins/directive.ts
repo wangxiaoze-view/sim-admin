@@ -1,5 +1,7 @@
 import { type App, DirectiveBinding } from 'vue'
+import { useUser } from '~/src/hooks'
 import { throttle } from '~/src/utils'
+const { hasRole, hasPermission } = useUser()
 
 function handlerFun({ value }: DirectiveBinding) {
   let time = 1000
@@ -72,15 +74,11 @@ export default {
       },
     })
 
-    // TODO: 后期合并成一个？？？
     // 用户角色
     app.directive('role', {
       mounted(el, binding) {
         const { value } = binding
-        const roles: string[] = []
-        if (!roles.includes(value)) {
-          el.parentNode.removeChild(el)
-        }
+        if (!hasRole(value)) el.remove()
       },
     })
 
@@ -88,10 +86,7 @@ export default {
     app.directive('permission', {
       mounted(el, binding) {
         const { value } = binding
-        const permissions: string[] = []
-        if (!permissions.includes(value)) {
-          el.parentNode.removeChild(el)
-        }
+        if (!hasPermission(value)) el.remove()
       },
     })
   },

@@ -3,7 +3,7 @@ import { asyncRoutes, constantRoutes } from '~/src/router'
 import { settings_config } from '~/src/config'
 import { isArray, logger, filterAsyncRoutes, filterHidden, resetRouter } from '~/src/utils'
 import { getRoutes } from '~/src/router/modules'
-import { useUserStore } from './user'
+import { useUser } from '~/src/hooks'
 
 const { hasRouterGuard } = settings_config
 
@@ -20,9 +20,7 @@ export const useRoutesStore = defineStore('routes', {
   },
   actions: {
     async setRoutes() {
-      const {
-        getUserInfo: { roles },
-      } = useUserStore()
+      const { getUserInfo } = useUser()
       if (this.getMenuRoutes.length > 0) return
       // 设置路由，权限，菜单
       let routes: ISimRouterRecordRaw[] = [...asyncRoutes]
@@ -44,7 +42,10 @@ export const useRoutesStore = defineStore('routes', {
         }
         routes = [...routes, ...list]
       }
-      const getFilterRoutes = filterAsyncRoutes([...constantRoutes, ...routes], roles)
+      const getFilterRoutes = filterAsyncRoutes(
+        [...constantRoutes, ...routes],
+        getUserInfo.value.roles
+      )
       // 需要隐藏 meta.hidden 的菜单
       this.menuRoutes = filterHidden(getFilterRoutes)
       this.allRoutes = getFilterRoutes

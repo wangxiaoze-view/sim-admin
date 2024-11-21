@@ -16,6 +16,7 @@ export const homeRoutes: ISimRouterRecordRaw[] = [
           title: '工作区',
           icon: 'ri-list-check-3',
           notClose: true,
+          roles: ['Admin', 'User', 'Test'],
         },
       },
       {
@@ -25,6 +26,7 @@ export const homeRoutes: ISimRouterRecordRaw[] = [
         meta: {
           title: '分析台',
           icon: 'ri-bubble-chart-line',
+          roles: ['Admin'],
         },
       },
     ],

@@ -22,6 +22,8 @@
   },
   "dependencies": {
     "@log-reporting/core": "^1.0.8",
+    "@logicflow/core": "^2.0.7",
+    "@logicflow/extension": "^2.0.11",
     "dayjs": "^1.11.13",
     "echarts": "^5.5.1",
     "element-plus": "^2.8.7",

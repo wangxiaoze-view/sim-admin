@@ -11,7 +11,7 @@ export const functionRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'flow',
         name: 'FunFlow',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/fun/flow/index.vue'),
         meta: {
           title: '流程图',
           icon: 'ri-route-line',
@@ -21,7 +21,7 @@ export const functionRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'echarts',
         name: 'FunEcharts',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/fun/echarts/index.vue'),
         meta: {
           title: 'Echarts',
           icon: 'ri-line-chart-line',

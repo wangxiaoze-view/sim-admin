@@ -11,7 +11,7 @@
     formRef,
     rules,
     lockImage,
-    avatar,
+    getUserInfo,
     toUnlock,
     changeImage,
     title,
@@ -32,7 +32,8 @@
         ></div>
         <div class="sim-lock--content">
           <div class="author-container">
-            <el-avatar class="author-icon" :src="avatar" />
+            getUserInfo,
+            <el-avatar class="author-icon" :src="getUserInfo.avatar" />
             <div class="tip-row">
               <SimIcon icon-class="ri-git-repository-private-line" />
               {{ title }}

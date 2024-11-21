@@ -1,6 +1,5 @@
 import { computed, onMounted, reactive } from 'vue'
-import { useLoading, useForm } from '~/src/hooks'
-import { useUserStore } from '~/src/stores/modules/user'
+import { useLoading, useForm, useUser } from '~/src/hooks'
 import { randomCodeToCanvas, logger } from '~/src/utils'
 import { useRouter } from 'vue-router'
 import { translate } from '~/src/i18n'
@@ -60,7 +59,7 @@ export default function useLogin() {
   const router = useRouter()
   const { loading, setLoading } = useLoading(false)
   const { formRef, validate, rules } = useForm(FORM_RULES)
-  const { toLogin } = useUserStore()
+  const { toLogin } = useUser()
 
   const isDisabled = computed(() => {
     return !formModel.userName || !formModel.password

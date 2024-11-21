@@ -1,17 +1,15 @@
 <script setup lang="ts">
-  import { useUserStore } from '~/src/stores/modules/user'
   import { imageLinks } from '~/src/config'
   import SimIcon from '~/library/components/SimIcon/index.vue'
-  import { useLocked } from '~/src/hooks'
+  import { useLocked, useUser } from '~/src/hooks'
 
   defineOptions({
     name: 'SimWelcome',
   })
 
   const { ksrm_image } = imageLinks
-  const {
-    getUserInfo: { name, ip, country },
-  } = useUserStore()
+
+  const { getUserInfo } = useUser()
   const { randomImage } = useLocked()
 
   const todoList = [
@@ -35,11 +33,11 @@
       >
         <div class="title">
           欢迎回来，
-          <span>{{ name }}</span>
+          <span>{{ getUserInfo.name }}</span>
           ，祝您开心每一天！
         </div>
-        <div class="subTitle">当前登录地址：{{ country }}</div>
-        <div class="subTitle">当前登录IP：{{ ip }}</div>
+        <div class="subTitle">当前登录地址：{{ getUserInfo.country }}</div>
+        <div class="subTitle">当前登录IP：{{ getUserInfo.ip }}</div>
         <el-space :size="30" wrap>
           <span v-for="(item, index) in todoList" :key="index">
             <SimIcon :icon-class="item.icon" :color="item.color" />
