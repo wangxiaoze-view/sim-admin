@@ -38,7 +38,7 @@ declare interface ITheme {
   // 语言类型zh、en
   i18n: TLanguageType
   // 是否显示国际化
-  isI18n: true
+  isI18n: boolean
   // ui尺寸
   size: TSize
   // 色弱模式

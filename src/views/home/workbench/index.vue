@@ -1,22 +1,15 @@
 <script setup lang="ts">
   import SimWelcome from './components/welcome.vue'
   import SimChartData from './components/chartData.vue'
-  import SimUpdate from './components/update.vue'
+  import SimDataContainer from './components/dataContainer.vue'
   defineOptions({
     name: 'HomeWorkbench',
   })
 </script>
 <template>
-  <div class="home-container">
+  <div class="home-page">
     <SimWelcome />
     <SimChartData />
+    <SimDataContainer />
   </div>
 </template>
-
-<style lang="scss" scoped>
-  .home-container {
-    background-color: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-  }
-</style>

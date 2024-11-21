@@ -14,11 +14,12 @@ export function useResizeMobile(immediate = true) {
   const resizeHandler = () => {
     if (document.hidden) return
     const isMobile = getDeviceWidth()
-    if (getTheme.value.device === 'desktop') {
-      setTheme({ collapse: isMobile })
-    } else {
-      setTheme({ collapse: true, isLocked: false })
-    }
+    setTheme({
+      device: isMobile ? 'mobile' : 'desktop',
+      isI18n: !isMobile,
+      isNotice: !isMobile,
+      collapse: isMobile,
+    })
   }
 
   const debounceFn = useDebounceFn(resizeHandler, 100)

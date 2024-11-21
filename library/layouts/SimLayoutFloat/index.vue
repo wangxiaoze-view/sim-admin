@@ -14,7 +14,7 @@
 
 <template>
   <div class="sim-layout-float">
-    <SimAside v-if="getTheme.device !== 'mobile'" />
+    <SimAside v-if="getTheme.device !== 'mobile'" :is-collapse="getTheme.collapse" />
     <SimDrawerMenu v-else />
     <div class="sim-content">
       <SimHeader />

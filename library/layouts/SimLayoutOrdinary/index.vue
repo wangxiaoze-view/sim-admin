@@ -13,7 +13,7 @@
 </script>
 <template>
   <div class="sim-layout-ordinary">
-    <SimAside v-if="getTheme.device !== 'mobile'" />
+    <SimAside v-if="getTheme.device !== 'mobile'" :is-collapse="getTheme.collapse" />
     <SimDrawerMenu v-else />
     <div class="sim-content">
       <SimHeader />

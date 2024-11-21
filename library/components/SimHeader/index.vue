@@ -20,7 +20,7 @@
       <el-col :span="24">
         <el-header class="sim-header--content">
           <el-row align="middle" class="sim-header--row">
-            <el-col :lg="10" :md="10" :sm="9" :xl="14" :xs="10">
+            <el-col :lg="10" :md="10" :sm="9" :xl="14" :xs="8">
               <el-space wrap>
                 <SimIcon
                   @click="zoomMenu"
@@ -34,7 +34,7 @@
                 <breadcumb />
               </el-space>
             </el-col>
-            <el-col :lg="14" :md="14" :sm="15" :xl="10" :xs="14">
+            <el-col :lg="14" :md="14" :sm="15" :xl="10" :xs="16">
               <sim-header-tools />
             </el-col>
           </el-row>
@@ -47,7 +47,7 @@
 
 <style scoped lang="scss">
   .sim-header {
-    background-color: var(--el-fill-color-blank);
+    background-color: var(--el-bg-color);
     &--container {
       border-bottom: 1px solid var(--el-border-color-light);
     }

@@ -10,7 +10,7 @@
   const { copyright } = settings_config
 </script>
 <template>
-  <footer v-if="getTheme.isFooter" class="sim-footer">
+  <el-card class="border border-card-radius sim-footer" v-if="getTheme.isFooter">
     {{ copyright }}
-  </footer>
+  </el-card>
 </template>

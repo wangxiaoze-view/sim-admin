@@ -3,7 +3,7 @@ import * as echarts from 'echarts'
 import { ENUM_COLOR } from '~/src/enum'
 // TODO: 后期放基础包里
 import dayjs from 'dayjs'
-import SimEchart from '@/components/SimEchart/index.vue'
+import SimEcharts from '~/src/components/SimEcharts/index.vue'
 
 interface IWeekChart {
   time: string
@@ -13,7 +13,7 @@ interface IWeekChart {
 }
 
 // TODO：后期代码优化
-export function useWeekChart(chartRef: Ref<InstanceType<typeof SimEchart>>) {
+export function useWeekChart(chartRef: Ref<InstanceType<typeof SimEcharts>>) {
   const max = 7
   const gapTime = 8 * 1000
   const data = ref<IWeekChart[]>([])
@@ -34,7 +34,6 @@ export function useWeekChart(chartRef: Ref<InstanceType<typeof SimEchart>>) {
       }
 
       chartOptions.value = {
-        backgroundColor: '#fff',
         legend: {
           show: false,
           icon: 'circle',

@@ -3,12 +3,15 @@
   defineOptions({
     name: 'SimChart',
   })
-  const { chartId, initChart, setChartData, resizeChart, chartIntance } = useChart()
+  const { chartId, initChart, setChartData, resizeChart, chartIntance, clearEchartsData } =
+    useChart()
+
   defineExpose({
     initChart,
     setChartData,
     resizeChart,
     chartIntance,
+    clearEchartsData,
   })
 </script>
 

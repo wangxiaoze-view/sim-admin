@@ -1,5 +1,5 @@
-import { defineMock } from 'rspack-plugin-mock/helper'
-import { Random } from 'mockjs'
+import { defineMock, MockOptions } from 'rspack-plugin-mock/helper'
+import { Random, mock } from 'mockjs'
 
 const mockNoticeData = [
   {
@@ -57,6 +57,71 @@ export default defineMock([
           message: 'success',
           success: true,
           context: mockNoticeData,
+        })
+      )
+    },
+  },
+  {
+    url: '/api/getTotalData',
+    delay: 1500,
+    response(req: any, res: any) {
+      const count = 50
+      const data = mock({
+        'list|10': [
+          {
+            'id|+1': 1,
+            name: '@cname',
+            'avatar|1': [
+              'https://picsum.photos/50/50?random=1',
+              'https://picsum.photos/50/50?random=2',
+            ],
+            'email|1': ['@email', '-'],
+            'status|1': ['0', '1'],
+            'createTime|1': ['@datetime', '-'],
+            'updateTime|1': ['@datetime', '-'],
+            'address|1': ['@county(true)', '-'],
+          },
+        ],
+      })
+      const page = req.query.page || 1
+      const pageSize = req.query.pageSize || 10
+
+      res.end(
+        JSON.stringify({
+          code: 200,
+          message: 'success',
+          success: true,
+          context: {
+            total: count,
+            ...data,
+            page,
+            pageSize,
+          },
+        })
+      )
+    },
+  },
+  {
+    url: '/api/getDynamic',
+    response(req: any, res: any) {
+      const data = []
+      for (let i = 0; i < 15; i++) {
+        data.push({
+          name: Random.cname(),
+          avthor: `https://picsum.photos/50/50?random=${Random.guid()}`,
+          title: Random.cname(),
+          description: Random.cparagraph(1, 3),
+          color: Random.color(),
+          week: Random.natural(1, 7),
+          date: Random.date(),
+        })
+      }
+      res.end(
+        JSON.stringify({
+          code: 200,
+          message: 'success',
+          success: true,
+          context: data,
         })
       )
     },

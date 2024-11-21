@@ -3,6 +3,8 @@ import { http } from '~/src/utils'
 const url = {
   getNoticeList: '/api/getNoticeList',
   getUserInfo: '/api/getUserInfo',
+  getTotalData: '/api/getTotalData',
+  getDynamic: '/api/getDynamic',
 }
 
 export interface INoticeDataType {
@@ -20,4 +22,39 @@ export interface INoticeType {
 }
 export function getNoticeListApi() {
   return http.get<INoticeType[]>(url.getNoticeList, {})
+}
+
+export interface ITotalDataType {
+  id: number
+  name: string
+  avatar: string
+  email: string
+  status: number
+  createTime: string
+  updateTime: string
+  address: string
+}
+export function getTotalDataApi(page: number, pageSize: number) {
+  return http.get<{
+    total: number
+    page: number
+    pageSize: number
+    list: ITotalDataType[]
+  }>(url.getTotalData, {
+    params: { page, pageSize },
+  })
+}
+
+export interface IDynamicType {
+  name: string
+  avatar: string
+  title: string
+  description: number
+  color: string
+  week: string
+  date: string
+}
+
+export function getDynamicApi() {
+  return http.get<IDynamicType[]>(url.getDynamic, {})
 }

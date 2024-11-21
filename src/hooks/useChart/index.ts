@@ -29,6 +29,10 @@ export function useChart() {
     chartIntance().resize()
   }
 
+  const clearEchartsData = () => {
+    chartIntance().clear()
+  }
+
   const debounceFn = useDebounceFn(resizeChart, 100)
   onBeforeMount(() => {
     window.addEventListener('resize', debounceFn)
@@ -43,5 +47,6 @@ export function useChart() {
     setChartData,
     resizeChart,
     chartIntance,
+    clearEchartsData,
   }
 }

@@ -136,6 +136,8 @@ export default defineConfig({
     },
   },
   server: {
+    port: 5555,
+    host: '0.0.0.0',
     compress: true,
     ...(!isProduction
       ? {

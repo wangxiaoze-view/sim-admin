@@ -10,6 +10,7 @@ declare module 'vue' {
     Breadcumb: typeof import('./library/components/SimHeader/components/breadcumb.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
+    ElBacktop: typeof import('element-plus/es')['ElBacktop']
     ElBadge: typeof import('element-plus/es')['ElBadge']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
@@ -36,6 +37,7 @@ declare module 'vue' {
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElOption: typeof import('element-plus/es')['ElOption']
+    ElPagination: typeof import('element-plus/es')['ElPagination']
     ElRadioButton: typeof import('element-plus/es')['ElRadioButton']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
     ElRow: typeof import('element-plus/es')['ElRow']
@@ -48,6 +50,9 @@ declare module 'vue' {
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
+    ElTag: typeof import('element-plus/es')['ElTag']
+    ElTimeline: typeof import('element-plus/es')['ElTimeline']
+    ElTimelineItem: typeof import('element-plus/es')['ElTimelineItem']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     NavTypePage: typeof import('./library/components/SimThemeDrawer/components/navTypePage.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
@@ -56,6 +61,7 @@ declare module 'vue' {
     SimAside: typeof import('./library/components/SimAside/index.vue')['default']
     SimColorPicker: typeof import('./library/components/SimColorPicker/index.vue')['default']
     SimDrawerMenu: typeof import('./library/components/SimDrawerMenu/index.vue')['default']
+    SimEcharts: typeof import('./src/components/SimEcharts/index.vue')['default']
     SimError: typeof import('./library/components/SimError/index.vue')['default']
     SimErrorDialog: typeof import('./library/components/SimErrorDialog/index.vue')['default']
     SImFooter: typeof import('./library/components/SImFooter/index.vue')['default']
@@ -73,5 +79,8 @@ declare module 'vue' {
     SimSwitchDark: typeof import('./library/components/SimSwitchDark/index.vue')['default']
     SimTabs: typeof import('./library/components/SimTabs/index.vue')['default']
     SimThemeDrawer: typeof import('./library/components/SimThemeDrawer/index.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
   }
 }

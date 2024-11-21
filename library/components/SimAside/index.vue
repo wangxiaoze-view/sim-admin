@@ -3,16 +3,17 @@
   import SimLogo from '../SimLogo/index.vue'
   import SimMenu from '../SimMenu/index.vue'
   import { storeToRefs } from 'pinia'
-  import { useChangeTheme } from '~/src/hooks'
 
   defineOptions({
     name: 'SimAside',
   })
 
+  const { isCollapse } = defineProps<{
+    isCollapse?: boolean
+  }>()
+
   const { getMenuRoutes } = useRoutesStore()
   const { getActiveMenu } = storeToRefs(useRoutesStore())
-
-  const { getTheme } = useChangeTheme()
 </script>
 <template>
   <el-aside class="sim-aside">
@@ -22,7 +23,7 @@
         class="sim-menu"
         :default-active="getActiveMenu"
         :collapse-transition="false"
-        :collapse="getTheme.collapse"
+        :collapse="isCollapse"
         :unique-opened="false"
         mode="vertical"
         menu-trigger="click"

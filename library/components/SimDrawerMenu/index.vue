@@ -6,7 +6,7 @@
     :with-header="false"
     @close="setCollapse"
   >
-    <sim-aside class="sim-aside--drawer" :collapse="false" />
+    <sim-aside class="sim-aside--drawer" :is-collapse="false" />
   </el-drawer>
 </template>
 

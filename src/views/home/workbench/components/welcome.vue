@@ -23,9 +23,9 @@
 </script>
 <template>
   <el-row class="sim-welcome" :gutter="20">
-    <el-col :span="16">
-      <div
-        class="card border border-card-radius"
+    <el-col class="mb-20" :lg="16" :md="24" :sm="24" :xl="16" :xs="24">
+      <el-card
+        shadow="hover"
         :style="{
           backgroundImage: `url(${ksrm_image})`,
           'background-size': 'contain',
@@ -47,16 +47,16 @@
             <b class="font-red" v-if="item.num">({{ item.num }})</b>
           </span>
         </el-space>
-      </div>
+      </el-card>
     </el-col>
-    <el-col :span="8">
-      <div class="card border border-card-radius">
+    <el-col class="mb-20" :lg="8" :md="24" :sm="24" :xl="8" :xs="24">
+      <el-card shadow="hover">
         <el-carousel class="banner" autoplay>
           <el-carousel-item v-for="item in bannerList" :key="item">
             <el-image class="banner-image" :src="item" fit="cover" />
           </el-carousel-item>
         </el-carousel>
-      </div>
+      </el-card>
     </el-col>
   </el-row>
 </template>
@@ -67,32 +67,33 @@
     .font-red {
       color: var(--el-color-danger);
     }
-    .card {
-      height: $height;
-      background-color: var(--el-bg-color);
-      padding: var(--el-padding-sapce-large);
-      .title {
-        font-size: var(--el-font-size-large);
-        span {
-          color: var(--el-color-primary);
-        }
-      }
-      .subTitle {
-        margin: var(--el-padding-sapce) 0;
-        color: var(--el-color-info);
-      }
-      .banner {
+
+    :deep() {
+      .el-card__body {
         height: $height;
-        width: 100%;
-        :deep() {
-          .el-carousel__item {
-            height: $height;
+
+        .title {
+          font-size: var(--el-font-size-large);
+          span {
+            color: var(--el-color-primary);
           }
         }
-
-        &-image {
-          width: 100%;
+        .subTitle {
+          margin: var(--el-padding-sapce) 0;
+        }
+        .banner {
           height: $height;
+          width: 100%;
+          :deep() {
+            .el-carousel__item {
+              height: $height;
+            }
+          }
+
+          &-image {
+            width: 100%;
+            height: $height;
+          }
         }
       }
     }
