@@ -1,22 +1,14 @@
 <script setup lang="ts">
-  import { onMounted, ref } from 'vue'
+  import { ref } from 'vue'
   import SimEcharts from '~/src/components/SimEcharts/index.vue'
-  import { useWeekChart } from '../hook/useWeekChart'
-  import { useColumnChart } from '../hook/useColumnChart'
+  import { useWeekChart, useColumnChart } from '~/src/views/fun/echarts/hooks'
   defineOptions({
     name: 'SimChartData',
   })
   const weekActive = ref('pre-week')
-  const chartRef = ref()
-  const chartColumnarRef = ref()
 
-  const { chartOptions, initData } = useWeekChart(chartRef)
-  const { chartOptions: columnOptions } = useColumnChart(chartColumnarRef)
-
-  onMounted(() => {
-    chartRef.value?.initChart('chart', chartOptions.value)
-    chartColumnarRef.value?.initChart('column-chart', columnOptions.value)
-  })
+  const { chartRef, immediateRender } = useWeekChart()
+  const { chartRef: chartColumnarRef } = useColumnChart()
 </script>
 <template>
   <el-row class="sim-chart" :gutter="20">
@@ -24,7 +16,7 @@
       <el-card shadow="hover">
         <div class="header">
           <b>分析概览</b>
-          <el-radio-group v-model="weekActive" @change="initData(true)">
+          <el-radio-group v-model="weekActive" @change="immediateRender">
             <el-radio-button label="上周" value="pre-week" />
             <el-radio-button label="本周" value="now-weel" />
           </el-radio-group>

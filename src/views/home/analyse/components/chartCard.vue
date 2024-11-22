@@ -1,19 +1,10 @@
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue'
-  import { useChart, useChart2, useChart3 } from '~/src/views/fun/echarts/config/index'
   import SimEcharts from '~/src/components/SimEcharts/index.vue'
-  const chartRef = ref()
-  const chartRef2 = ref()
-  const chartRef3 = ref()
+  import { useEcharts_1, useEcharts_2, useEcharts_3 } from '~/src/views/fun/echarts/hooks'
 
-  const { chartOptions } = useChart(chartRef)
-  const { chartOptions: chartOptions_2 } = useChart2(chartRef2)
-  const { chartOptions: chartOptions_3 } = useChart3(chartRef3)
-  onMounted(() => {
-    chartRef.value?.initChart('xs-canvas', chartOptions.value)
-    chartRef2.value?.initChart('dl-canvas', chartOptions_2.value)
-    chartRef3.value?.initChart('zb-canvas', chartOptions_3.value)
-  })
+  const { chartRef: chartRef1 } = useEcharts_1()
+  const { chartRef: chartRef2 } = useEcharts_2()
+  const { chartRef: chartRef3 } = useEcharts_3()
 </script>
 
 <template>
@@ -23,7 +14,7 @@
         <div class="header">
           <span>销售率</span>
         </div>
-        <SimEcharts ref="chartRef" />
+        <SimEcharts ref="chartRef1" />
       </el-card>
     </el-col>
     <el-col ::md="24" :lg="8" :offset="0" :sm="24" :xs="24" class="mb-20">

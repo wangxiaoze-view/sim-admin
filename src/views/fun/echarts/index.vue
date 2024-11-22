@@ -1,114 +1,110 @@
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue'
-  import { useChart, useChart2, useChart5, useChart3, useChart6, useChart7 } from './config'
   import SimEchart from '~/src/components/SimEcharts/index.vue'
+  import {
+    useEcharts_1,
+    useEcharts_2,
+    useEcharts_3,
+    useEcharts_4,
+    useEcharts_5,
+    useEcharts_6,
+    useEcharts_7,
+  } from './hooks'
 
   defineOptions({
     name: 'FunEcharts',
   })
 
-  const chartRef1 = ref()
-  const chartRef2 = ref()
-  const chartRef3 = ref()
-  const chartRef4 = ref()
-  const chartRef5 = ref()
-  const chartRef6 = ref()
-
-  const { chartOptions: data1 } = useChart5(chartRef1, true)
-  const { chartOptions: data2 } = useChart2(chartRef2)
-  const { chartOptions: data3 } = useChart(chartRef3)
-  const { chartOptions: data4 } = useChart3(chartRef4)
-  const { chartOptions: data5 } = useChart6(chartRef5)
-  const { chartOptions: data6 } = useChart7(chartRef6)
-
-  const setData = () => {
-    chartRef1.value.initChart('canvas_1', data1.value)
-    chartRef2.value.initChart('canvas_2', data2.value)
-    chartRef3.value.initChart('canvas_3', data3.value)
-    chartRef4.value.initChart('canvas_4', data4.value)
-    chartRef5.value.initChart('canvas_5', data5.value)
-    chartRef6.value.initChart('canvas_6', data6.value)
-  }
-
-  onMounted(setData)
+  const { chartRef: chartRef1 } = useEcharts_1()
+  const { chartRef: chartRef2 } = useEcharts_2()
+  const { chartRef: chartRef3 } = useEcharts_3()
+  const { chartRef: chartRef4 } = useEcharts_4()
+  const { chartRef: chartRef5 } = useEcharts_5()
+  const { chartRef: chartRef6 } = useEcharts_6()
+  const { chartRef: chartRef7 } = useEcharts_7()
 </script>
 
 <template>
-  <div class="charts">
-    <el-row class="sim-container" :gutter="20">
-      <el-col :md="24" :lg="12" :xl="8" :offset="0" :sm="24" :xs="24" class="mb-20">
-        <el-card class="sim-left sim-update--container" shadow="hover">
-          <template #header>
-            <div class="sim-update--header">
-              <span>柱状图</span>
-            </div>
-          </template>
+  <el-row :gutter="20">
+    <el-col :md="24" :lg="12" :xl="8" :offset="0" :sm="24" :xs="24" class="mb-20">
+      <el-card shadow="hover">
+        <div class="header">
+          <span>雷达图</span>
+        </div>
+        <div class="chart-hei">
           <SimEchart ref="chartRef1" />
-        </el-card>
-      </el-col>
-      <el-col ::md="24" :lg="12" :xl="8" :offset="0" :sm="24" :xs="24" class="mb-20">
-        <el-card class="sim-right sim-update--container" shadow="hover">
-          <template #header>
-            <div class="sim-update--header">
-              <span>折线图</span>
-            </div>
-          </template>
+        </div>
+      </el-card>
+    </el-col>
+    <el-col ::md="24" :lg="12" :xl="8" :offset="0" :sm="24" :xs="24" class="mb-20">
+      <el-card shadow="hover">
+        <div class="header">
+          <span>折线图</span>
+        </div>
+        <div class="chart-hei">
           <SimEchart ref="chartRef2" />
-        </el-card>
-      </el-col>
+        </div>
+      </el-card>
+    </el-col>
 
-      <el-col :md="24" :lg="12" :xl="8" :offset="0" :sm="24" :xs="24" class="mb-20">
-        <el-card class="sim-right sim-update--container" shadow="hover">
-          <template #header>
-            <div class="sim-update--header">
-              <span>雷达图</span>
-            </div>
-          </template>
+    <el-col :md="24" :lg="12" :xl="8" :offset="0" :sm="24" :xs="24" class="mb-20">
+      <el-card shadow="hover">
+        <div class="header">
+          <span>饼图</span>
+        </div>
+        <div class="chart-hei">
           <SimEchart ref="chartRef3" />
-        </el-card>
-      </el-col>
+        </div>
+      </el-card>
+    </el-col>
 
-      <el-col :md="24" :lg="12" :xl="8" :offset="0" :sm="24" :xs="24" class="mb-20">
-        <el-card class="sim-right sim-update--container" shadow="hover">
-          <template #header>
-            <div class="sim-update--header">
-              <span>饼图</span>
-            </div>
-          </template>
+    <el-col :md="24" :lg="12" :xl="8" :offset="0" :sm="24" :xs="24" class="mb-20">
+      <el-card shadow="hover">
+        <div class="header">
+          <span>堆积图</span>
+        </div>
+        <div class="chart-hei">
           <SimEchart ref="chartRef4" />
-        </el-card>
-      </el-col>
+        </div>
+      </el-card>
+    </el-col>
 
-      <el-col :md="24" :lg="12" :xl="8" :offset="0" :sm="24" :xs="24" class="mb-20">
-        <el-card class="sim-right sim-update--container" shadow="hover">
-          <template #header>
-            <div class="sim-update--header">
-              <span>仪表盘</span>
-            </div>
-          </template>
+    <el-col :md="24" :lg="12" :xl="8" :offset="0" :sm="24" :xs="24" class="mb-20">
+      <el-card shadow="hover">
+        <div class="header">
+          <span>柱状图</span>
+        </div>
+        <div class="chart-hei">
           <SimEchart ref="chartRef5" />
-        </el-card>
-      </el-col>
+        </div>
+      </el-card>
+    </el-col>
 
-      <el-col :md="24" :lg="12" :xl="8" :offset="0" :sm="24" :xs="24" class="mb-20">
-        <el-card class="sim-right sim-update--container" shadow="hover">
-          <template #header>
-            <div class="sim-update--header">
-              <span>词云图</span>
-            </div>
-          </template>
+    <el-col :md="24" :lg="12" :xl="8" :offset="0" :sm="24" :xs="24" class="mb-20">
+      <el-card shadow="hover">
+        <div class="header">
+          <span>仪表盘</span>
+        </div>
+        <div class="chart-hei">
           <SimEchart ref="chartRef6" />
-        </el-card>
-      </el-col>
-    </el-row>
-  </div>
+        </div>
+      </el-card>
+    </el-col>
+
+    <el-col :md="24" :lg="12" :xl="8" :offset="0" :sm="24" :xs="24" class="mb-20">
+      <el-card shadow="hover">
+        <div class="header">
+          <span>词云图</span>
+        </div>
+        <div class="chart-hei">
+          <SimEchart ref="chartRef7" />
+        </div>
+      </el-card>
+    </el-col>
+  </el-row>
 </template>
 
 <style lang="scss" scoped>
-  .mb-20 {
-    margin-bottom: 20px;
-  }
-  :deep(.el-card__body) {
-    height: 300px;
+  .chart-hei {
+    height: 320px;
   }
 </style>

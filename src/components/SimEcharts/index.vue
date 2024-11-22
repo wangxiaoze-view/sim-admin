@@ -1,17 +1,17 @@
 <script setup lang="ts">
-  import { useChart } from '~/src/hooks'
+  import { ref } from 'vue'
   defineOptions({
     name: 'SimChart',
   })
-  const { chartId, initChart, setChartData, resizeChart, chartIntance, clearEchartsData } =
-    useChart()
+
+  const chartId = ref('')
+
+  const setChartId = (id: string) => {
+    chartId.value = id
+  }
 
   defineExpose({
-    initChart,
-    setChartData,
-    resizeChart,
-    chartIntance,
-    clearEchartsData,
+    setChartId,
   })
 </script>
 

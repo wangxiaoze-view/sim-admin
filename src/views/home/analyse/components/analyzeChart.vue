@@ -1,25 +1,17 @@
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue'
-  import { useChart4, useChart5 } from '~/src/views/fun/echarts/config/index'
+  import { ref } from 'vue'
   import SimEcharts from '~/src/components/SimEcharts/index.vue'
+  import { useEcharts_4, useEcharts_5 } from '~/src/views/fun/echarts/hooks'
 
   const activeName = ref('first')
-  const chartRef = ref()
-  const chartRef2 = ref()
 
-  const { chartOptions } = useChart4(chartRef)
-  const { chartOptions: chartOptions_2 } = useChart5(chartRef2)
+  const { chartRef: chartRef1, immediateRender: immediateRender1 } = useEcharts_4()
+  const { chartRef: chartRef2, immediateRender: immediateRender2 } = useEcharts_5()
 
-  const setData = () => {
-    chartRef.value?.initChart('sj-canvas', chartOptions.value)
-    chartRef2.value?.initChart('hy-canvas', chartOptions_2.value)
+  const onTabChange = (val: string) => {
+    if (val === 'first') immediateRender1()
+    if (val === 'second') immediateRender2()
   }
-  const onTabChange = () => {
-    chartRef.value?.clearEchartsData()
-    chartRef2.value?.clearEchartsData()
-    setData()
-  }
-  onMounted(setData)
 </script>
 
 <template>
@@ -27,7 +19,7 @@
     <el-tabs v-model="activeName" @tab-change="onTabChange">
       <el-tab-pane label="数据分析" name="first">
         <div class="chart-h">
-          <SimEcharts ref="chartRef" />
+          <SimEcharts ref="chartRef1" />
         </div>
       </el-tab-pane>
       <el-tab-pane label="活跃分析" name="second">
