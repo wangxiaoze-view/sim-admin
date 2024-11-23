@@ -195,6 +195,33 @@ html {
     }
   }
 
+  .component-content {
+    .systable {
+      .first-col,
+      .first-col,
+      th,
+      tr {
+        background-color: var(--el-bg-color) !important;
+      }
+    }
+    .footer {
+      .left-block,
+      .h-scroll {
+        background-color: var(--el-bg-color) !important;
+      }
+    }
+  }
+
+  /* 水波纹效果 */
+  #ripple {
+    position: absolute;
+    pointer-events: none;
+    background-color: var(--el-color-primary-light-6);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 600ms linear;
+  }
+
   body {
     position: relative;
     box-sizing: border-box;
@@ -202,7 +229,7 @@ html {
     margin: 0;
     overflow: hidden;
     font-size: var(--el-font-size-base);
-    background: var(--el-bg-color);
+    background: var(--el-body-bg-color);
 
     #root {
       height: 100%;
@@ -211,7 +238,6 @@ html {
         padding: var(--el-padding-sapce-large);
         overflow: hidden;
         transition: var(--el-default-animation);
-        background: var(--el-body-bg-color);
 
         [class*='-container'] {
           min-height: var(--el-keep-alive-height);
@@ -311,7 +337,7 @@ html {
 
           .sim-logo {
             height: var(--el-logo-height);
-            width: 100%;
+            width: 70%;
             transition: var(--el-default-animation);
           }
           .sim-menu {
@@ -367,6 +393,16 @@ html {
         }
       }
 
+      .is-fixed-header {
+        .sim-header {
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          width: 100%;
+          background-color: var(--el-bg-color);
+        }
+      }
+
       // tabs
       .sim-tabs {
         display: flex;
@@ -376,6 +412,10 @@ html {
         height: var(--el-tab-height);
         padding: 0 var(--el-padding-sapce);
         border-bottom: 1px solid var(--el-border-color-light);
+
+        .el-tabs {
+          width: calc(100% - 35px);
+        }
         .el-tabs__header,
         .el-tabs__nav,
         .el-tabs__item {
@@ -383,6 +423,11 @@ html {
         }
         .el-tabs__header {
           margin-bottom: 0;
+        }
+
+        .el-tabs__nav-wrap {
+          display: flex;
+          align-items: center;
         }
 
         .el-tabs__item {
@@ -507,4 +552,11 @@ html {
 .scale-leave-to {
   opacity: 0;
   transform: scale(0.98);
+}
+
+@keyframes ripple {
+  to {
+    opacity: 0;
+    transform: scale(4);
+  }
 }

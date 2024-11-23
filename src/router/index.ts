@@ -27,6 +27,14 @@ export const constantRoutes: ISimRouterRecordRaw[] = [
       hidden: true,
     },
   },
+  {
+    path: '/redirect',
+    name: 'RedirectPage',
+    component: () => import('~/src/views/redirect/index.vue'),
+    meta: {
+      hidden: true,
+    },
+  },
 ]
 
 // 2. 异步路由

@@ -46,7 +46,7 @@
           <b>最新动态</b>
         </div>
         <el-scrollbar height="480px">
-          <el-timeline>
+          <el-timeline width="100%">
             <el-timeline-item
               v-for="(item, index) in dynamic"
               :key="index"

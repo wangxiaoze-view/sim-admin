@@ -1,15 +1,24 @@
 import { RouteLocationNormalizedLoaded, RouteRecordRaw } from 'vue-router'
 import router, { constantRoutes } from '~/src/router'
 import { isExternal } from '~/src/utils'
+import { settings_config } from '~/src/config'
 import { parseParams } from '../index'
 
+const { isRedirect } = settings_config
 // 重置登录路由
 export function resetLoginPath(currentPath: string) {
-  return {
-    path: '/login',
-    // 后期加个配置
-    query: { redirect: currentPath },
-    replace: true,
+  if (isRedirect) {
+    return {
+      path: '/login',
+      // 后期加个配置
+      query: { redirect: currentPath },
+      replace: true,
+    }
+  } else {
+    return {
+      path: '/login',
+      replace: true,
+    }
   }
 }
 

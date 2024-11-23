@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { getUserInfoApi, loginApi } from '~/src/api/user'
 import { cache_userInfo } from '~/src/config'
 
-import { getToken, setToken, getLocalStorage, Storage } from '~/src/utils'
+import { getToken, setToken, getLocalStorage, Storage, removeToken } from '~/src/utils'
 
 export const useUserStore = defineStore('user', {
   state: (): IUserType => ({
@@ -27,6 +27,15 @@ export const useUserStore = defineStore('user', {
       if (!success) return
       this.userInfo = context
       Storage.set(cache_userInfo, this.userInfo)
+    },
+    async logout() {
+      removeToken()
+      this.clearStore()
+      window.location.reload()
+    },
+
+    clearStore() {
+      this.$reset()
     },
   },
 })

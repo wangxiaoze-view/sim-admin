@@ -18,16 +18,16 @@
   const { getTheme } = useChangeTheme()
 
   const onHandlerRouter = () => {
-    // TODO:
     const {
       path,
-      meta: { target },
+      meta: { target, iframePath },
     } = itemOrMenu
 
     if (target === '_blank') {
       if (isExternal(path)) {
-        window.open(path)
+        window.open(path, '_blank')
       }
+      router.push('/redirect')
     } else {
       router.push(path)
     }

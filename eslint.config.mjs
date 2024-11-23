@@ -59,5 +59,6 @@ export default [
       '@typescript-eslint/no-unused-expressions': 'off',
     },
   },
-  { ignores: ['dist/', 'node_modules/', 'auto-imports.d.ts', 'components.d.ts'] },
+
+  { ignores: ['dist/', 'node_modules/', 'auto-imports.d.ts', 'components.d.ts', 'src/server'] },
 ]

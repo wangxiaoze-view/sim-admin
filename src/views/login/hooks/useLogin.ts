@@ -1,7 +1,7 @@
-import { computed, onMounted, reactive } from 'vue'
+import { computed, onMounted, reactive, ref, watchEffect } from 'vue'
 import { useLoading, useForm, useUser } from '~/src/hooks'
 import { randomCodeToCanvas, logger } from '~/src/utils'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { translate } from '~/src/i18n'
 
 const FORM_RULES = {
@@ -57,9 +57,12 @@ export default function useLogin() {
   })
 
   const router = useRouter()
+  const route = useRoute()
   const { loading, setLoading } = useLoading(false)
   const { formRef, validate, rules } = useForm(FORM_RULES)
   const { toLogin } = useUser()
+
+  const redirect = ref('')
 
   const isDisabled = computed(() => {
     return !formModel.userName || !formModel.password
@@ -77,7 +80,7 @@ export default function useLogin() {
       try {
         setLoading(true)
         toLogin(formModel.userName, formModel.password).then((isSuccess) => {
-          if (isSuccess) router.push({ path: '/' })
+          if (isSuccess) router.push({ path: redirect.value ?? '/' })
           // fix: 登录成功之后，加载动画不消失， 一个好处就是在跳转页面之前由于加载文件可能会有短暂的可点状态
           // setLoading(false)
         })
@@ -89,6 +92,11 @@ export default function useLogin() {
   }
 
   onMounted(refreshCode)
+
+  watchEffect(() => {
+    const _redirect = route.query ? (route.query.redirect as string) : '/'
+    redirect.value = ['/403', '/404'].includes(_redirect) ? '/' : _redirect
+  })
 
   return {
     loading,

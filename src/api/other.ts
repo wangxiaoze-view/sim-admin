@@ -34,13 +34,14 @@ export interface ITotalDataType {
   updateTime: string
   address: string
 }
+export interface IPageType {
+  total: number
+  page: number
+  pageSize: number
+  list: ITotalDataType[]
+}
 export function getTotalDataApi(page: number, pageSize: number) {
-  return http.get<{
-    total: number
-    page: number
-    pageSize: number
-    list: ITotalDataType[]
-  }>(url.getTotalData, {
+  return http.get<IPageType>(url.getTotalData, {
     params: { page, pageSize },
   })
 }

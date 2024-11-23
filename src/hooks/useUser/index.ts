@@ -3,7 +3,7 @@ import { useUserStore } from '~/src/stores/modules/user'
 import { isArray } from '~/src/utils'
 
 export function useUser() {
-  const { setUserInfo, toLogin } = useUserStore()
+  const { setUserInfo, toLogin, clearStore, logout } = useUserStore()
   const { getUserInfo } = storeToRefs(useUserStore())
 
   const hasHandler = (value: string | string[], permissions: string[]) => {
@@ -34,5 +34,7 @@ export function useUser() {
     hasPermission,
     setUserInfo,
     toLogin,
+    clearStore,
+    logout,
   }
 }

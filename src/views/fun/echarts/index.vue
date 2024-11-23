@@ -35,7 +35,7 @@
         </div>
       </el-card>
     </el-col>
-    <el-col ::md="24" :lg="12" :xl="8" :offset="0" :sm="24" :xs="24" class="mb-20">
+    <el-col :md="24" :lg="12" :xl="8" :offset="0" :sm="24" :xs="24" class="mb-20">
       <el-card shadow="hover">
         <div class="header">
           <span>折线图</span>

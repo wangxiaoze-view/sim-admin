@@ -1,6 +1,6 @@
 import { type App, DirectiveBinding } from 'vue'
 import { useUser } from '~/src/hooks'
-import { throttle } from '~/src/utils'
+import { createRipple, removeRipple, throttle } from '~/src/utils'
 const { hasRole, hasPermission } = useUser()
 
 function handlerFun({ value }: DirectiveBinding) {
@@ -87,6 +87,21 @@ export default {
       mounted(el, binding) {
         const { value } = binding
         if (!hasPermission(value)) el.remove()
+      },
+    })
+
+    /**
+     * @description 创建水波纹
+     */
+    app.directive('ripple', {
+      mounted(el: HTMLElement) {
+        el.addEventListener('click', (e) => {
+          removeRipple(el)
+          createRipple(el, e)
+        })
+      },
+      unmounted(el: HTMLElement) {
+        removeRipple(el)
       },
     })
   },

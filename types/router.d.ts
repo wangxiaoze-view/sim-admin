@@ -27,6 +27,8 @@ declare interface ISImRouterMeta {
   notClose?: boolean
   // 外链
   target?: '_blank'
+  // iframe地址
+  iframePath?: string
 }
 
 declare interface ISimRouterRecordRaw extends Omit<RouteRecordRaw, 'meta' | 'children'> {

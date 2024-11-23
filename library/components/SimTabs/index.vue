@@ -64,7 +64,7 @@
 
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item v-for="(item, index) in commands" :command="item.command">
+          <el-dropdown-item v-for="(item, index) in commands" :command="item.command" :key="index">
             <SimIcon :icon-class="item.classNames" />
             {{ item.label }}
           </el-dropdown-item>

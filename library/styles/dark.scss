@@ -25,6 +25,10 @@ html {
       z-index: 1;
     }
 
+    body {
+      background: var(--el-bg-color);
+    }
+
     .lf-dnd-text,
     .lf-control-text {
       color: var(--el-bg-color-overlay) !important;
@@ -38,13 +42,6 @@ html {
       color: #dfdfdf !important;
       i {
         color: #dfdfdf !important;
-      }
-    }
-    .login {
-      .login-container--content {
-        .sim-form {
-          background-color: transparent;
-        }
       }
     }
   }

@@ -105,5 +105,14 @@
   "关闭右侧": "Close right",
   "关闭其他": "Close other",
   "关闭所有": "Close all",
-  "关闭当前": "Close current"
+  "关闭当前": "Close current",
+  "CSS": "CSS",
+  "按钮": "Button",
+  "图片": "Image",
+  "文本": "Text",
+  "交互": "Interaction",
+  "滚动": "Scroll",
+  "Canvas": "Canvas",
+  "订单": "Order",
+  "JS": "JS"
 }

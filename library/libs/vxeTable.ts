@@ -1,6 +1,8 @@
 import { App } from 'vue'
-import { VxeUI, VxeIcon, VxeLoading } from 'vxe-pc-ui'
-import { VxeTable, VxeColumn, VxeGrid } from 'vxe-table'
+import VxeUI from 'vxe-pc-ui'
+import 'vxe-pc-ui/lib/style.css'
+import VxeUITable from 'vxe-table'
+import 'vxe-table/lib/style.css'
 
 // 导入主题变量，也可以重写主题变量
 import 'vxe-table/styles/cssvar.scss'
@@ -14,12 +16,9 @@ VxeUI.setLanguage('zh-CN')
 
 // 可选组件
 export function LazyVxeUI(app: App<Element>) {
-  app.use(VxeIcon)
-  app.use(VxeLoading)
+  app.use(VxeUI)
 }
 
 export function LazyVxeTable(app: App<Element>) {
-  app.use(VxeTable)
-  app.use(VxeColumn)
-  app.use(VxeGrid)
+  app.use(VxeUITable)
 }

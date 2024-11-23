@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "lib": [
-      "DOM",
-      "ES2020"
-    ],
+    "lib": ["DOM", "ES2020"],
     "module": "ESNext",
     "jsx": "preserve",
     "jsxImportSource": "vue",
@@ -18,18 +15,10 @@
     "allowImportingTsExtensions": true,
     "noImplicitAny": true,
     "paths": {
-      "~/*": [
-        "./*"
-      ],
-      "/@/*": [
-        "./src/*"
-      ],
-      "/@mock/*": [
-        "./mock/*"
-      ],
-      "/@sim/*": [
-        "./library/*"
-      ]
+      "~/*": ["./*"],
+      "/@/*": ["./src/*"],
+      "/@mock/*": ["./mock/*"],
+      "/@sim/*": ["./library/*"]
     }
   },
   "include": [
@@ -43,8 +32,5 @@
     "types/**/*.d.ts",
     "types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "exclude": ["node_modules", "dist", "src/server"]
 }

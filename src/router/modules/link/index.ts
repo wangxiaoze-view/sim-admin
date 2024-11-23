@@ -11,10 +11,11 @@ export const linkRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'knowledge',
         name: 'LinkKnowledge',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/iframe/index.vue'),
         meta: {
           title: '知识库',
           icon: 'ri-empathize-line',
+          iframePath: 'https://www.wangzevw.com',
           roles: ['Admin', 'User', 'Test'],
         },
       },
@@ -24,6 +25,7 @@ export const linkRoutes: ISimRouterRecordRaw[] = [
         component: () => import('~/src/views/home/index.vue'),
         meta: {
           title: 'Vue',
+          target: '_blank',
           icon: 'ri-vuejs-line',
           roles: ['Admin', 'User', 'Test'],
         },

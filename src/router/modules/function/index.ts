@@ -31,7 +31,7 @@ export const functionRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'print',
         name: 'FunPrint',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/fun/print/index.vue'),
         meta: {
           title: '打印',
           icon: 'ri-printer-line',
@@ -41,7 +41,7 @@ export const functionRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'watermarking',
         name: 'FunWatermarking',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/fun/watermarking/index.vue'),
         meta: {
           title: '水印',
           icon: 'ri-contrast-drop-line',
@@ -51,7 +51,7 @@ export const functionRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'drag',
         name: 'FunDrag',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/fun/drag/index.vue'),
         meta: {
           title: '拖拽',
           icon: 'ri-drag-drop-line',
@@ -61,7 +61,7 @@ export const functionRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'excel',
         name: 'FunExcel',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/fun/excel/index.vue'),
         meta: {
           title: 'Excel',
           icon: 'ri-file-excel-2-line',
@@ -71,7 +71,7 @@ export const functionRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'preview',
         name: 'FunPreview',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/fun/preview/index.vue'),
         meta: {
           title: '文件预览',
           icon: 'ri-landscape-line',
@@ -81,7 +81,7 @@ export const functionRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'fullScreen',
         name: 'FunFullScreen',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/fun/fullScreen/index.vue'),
         meta: {
           title: '全屏',
           icon: 'ri-fullscreen-line',
@@ -91,7 +91,7 @@ export const functionRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'fullRipple',
         name: 'FunRipple',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/fun/fullRipple/index.vue'),
         meta: {
           title: '水波纹',
           icon: 'ri-water-flash-line',
@@ -101,30 +101,10 @@ export const functionRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'upload',
         name: 'FunUpload',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/fun/upload/index.vue'),
         meta: {
           title: '上传',
           icon: 'ri-upload-cloud-line',
-          roles: ['Admin', 'Test', 'Test'],
-        },
-      },
-      {
-        path: 'download',
-        name: 'FunDownload',
-        component: () => import('~/src/views/home/index.vue'),
-        meta: {
-          title: '下载',
-          icon: 'ri-download-line',
-          roles: ['Admin', 'Test', 'Test'],
-        },
-      },
-      {
-        path: 'websocket',
-        name: 'FunWebsocket',
-        component: () => import('~/src/views/home/index.vue'),
-        meta: {
-          title: 'Websocket',
-          icon: 'ri-webhook-line',
           roles: ['Admin', 'Test', 'Test'],
         },
       },

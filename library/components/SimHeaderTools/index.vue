@@ -20,7 +20,7 @@
   const debugRef = ref<InstanceType<typeof SimError>>()
   const noticeData = ref<INoticeType[]>([])
 
-  const { getUserInfo } = useUser()
+  const { getUserInfo, logout } = useUser()
   const { getTheme, setTheme } = useChangeTheme()
   const { isFullscreen, toggle } = useFullscreen()
   const { getErrors } = useError()
@@ -62,6 +62,7 @@
       case 'userCenter':
         break
       case 'logout':
+        logout()
         break
       default:
         break
@@ -188,10 +189,10 @@
 
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item command="userCenter">
+          <!-- <el-dropdown-item command="userCenter">
             <SimIcon class="cursor-icon" icon-class="ri-user-2-line" />
             {{ translate('个人中心') }}
-          </el-dropdown-item>
+          </el-dropdown-item> -->
           <el-dropdown-item command="logout">
             <SimIcon class="cursor-icon" icon-class="ri-logout-box-line" />
             {{ translate('退出登录') }}

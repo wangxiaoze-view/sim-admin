@@ -31,4 +31,6 @@ export const settings_config = {
   messageTime: 3000,
   // token 存储的方式
   tokenStorage: 'localStorage',
+  // 是否跳转到登录页
+  isRedirect: true,
 }

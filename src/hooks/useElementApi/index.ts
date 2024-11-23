@@ -33,7 +33,7 @@ export function useElementApi() {
       lock: true,
       text,
       background,
-      ...(options || {}),
+      ...options,
     })
   }
 
@@ -41,12 +41,12 @@ export function useElementApi() {
 
   /**
    * 提示信息
-   * @param {string | VNode | Function} message -要显示的信息。
+   * @param {string | VNode} message -要显示的信息。
    * @param {TElStatusType} [type] -要显示的信息的类型。
    * @param {MessageParams} [options] -消息的选项。
    */
   const simMessage = (
-    message: string | VNode | Function,
+    message: string | VNode,
     type: TElStatusType = 'info',
     options?: MessageParams
   ) => {
@@ -73,7 +73,7 @@ export function useElementApi() {
     ElMessageBox.alert(message, title, {
       confirmButtonText: '确定',
       draggable: true,
-      ...(options || {}),
+      ...options,
     })
   }
 
@@ -96,7 +96,7 @@ export function useElementApi() {
       confirmButtonText: '确定',
       cancelButtonText: '取消',
       draggable: true,
-      ...(options || {}),
+      ...options,
     })
       .then(success)
       .catch(cancel)

@@ -11,7 +11,7 @@ export const componentRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'table',
         name: 'CompTable',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/comp/table/index.vue'),
         meta: {
           title: '表格',
           icon: 'ri-table-line',
@@ -21,7 +21,7 @@ export const componentRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'transition',
         name: 'ComTransition',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/comp/transition/index.vue'),
         meta: {
           title: '过渡动画',
           icon: 'ri-meteor-line',
@@ -31,7 +31,7 @@ export const componentRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'clip',
         name: 'ComClip',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/comp/clip/index.vue'),
         meta: {
           title: '图片裁剪',
           icon: 'ri-scissors-cut-line',
@@ -41,27 +41,27 @@ export const componentRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'countAuto',
         name: 'ComCountAuto',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/comp/countAuto/index.vue'),
         meta: {
           title: '数字自增',
           icon: 'ri-sort-number-desc',
           roles: ['Admin', 'User', 'Test'],
         },
       },
-      {
-        path: 'idea',
-        name: 'ComIdea',
-        component: () => import('~/src/views/home/index.vue'),
-        meta: {
-          title: '编辑器',
-          icon: 'ri-keyboard-line',
-          roles: ['Admin', 'User', 'Test'],
-        },
-      },
+      // {
+      //   path: 'idea',
+      //   name: 'ComIdea',
+      //   component: () => import('~/src/views/comp/idea/index.vue'),
+      //   meta: {
+      //     title: '编辑器',
+      //     icon: 'ri-keyboard-line',
+      //     roles: ['Admin', 'User', 'Test'],
+      //   },
+      // },
       {
         path: 'tree',
         name: 'ComTree',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/comp/tree/index.vue'),
         meta: {
           title: '树结构',
           icon: 'ri-node-tree',
@@ -71,7 +71,7 @@ export const componentRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'qrcode',
         name: 'ComQrcode',
-        component: () => import('~/src/views/home/index.vue'),
+        component: () => import('~/src/views/comp/qrcode/index.vue'),
         meta: {
           title: '二维码',
           icon: 'ri-qr-code-line',
