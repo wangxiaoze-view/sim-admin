@@ -2,7 +2,7 @@ export const cssRoutes: ISimRouterRecordRaw[] = [
   {
     path: '/css',
     name: 'CssPage',
-    component: import('~/library/layouts/index.vue'),
+    component: () => import('~/library/layouts/index.vue'),
     meta: {
       title: 'CSS',
       icon: 'ri-css3-line',

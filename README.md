@@ -1,40 +1,63 @@
-# Rsbuild Project
+# sim-admin
 
-## Setup
+这是一款简单好上手的后台管理系统，该系统使用了`rsbuild`作为打包工具，使其在原有的基础上优化打包速度以及页面加载速度；
 
-Install the dependencies:
+使用`vue3 + pinia + element-plus + TS`搭建，其中还有`functional-helpers + @log-reporting`为自己封装的函数辅助插件；避免在`package.json`中使用大量的依赖；而基础的`hooks + emus + utils`封装在其中，这样在不同的业务场景中都可以使用！
+
+## 效果
+
+以下为部分页面
+
+|                                                              |                                                              |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![X](https://file.wangzevw.com/images/image.9rjfk1lgws.webp) | ![X](https://file.wangzevw.com/images/image.7zqgp51wfh.webp) |
+| ![X](https://file.wangzevw.com/images/image.5q7g5nm0wa.webp) | ![X](https://file.wangzevw.com/images/image.7lk0y9ynvy.webp) |
+| ![X](https://file.wangzevw.com/images/image.6bh3ryiwks.webp) | ![X](https://file.wangzevw.com/images/image.969rxqya66.webp) |
+| ![X](https://file.wangzevw.com/images/image.70adbz7qwy.webp) | ![X](https://file.wangzevw.com/images/image.7pbpihw85.webp)  |
+| ![X](https://file.wangzevw.com/images/image.2obk4fq6s3.webp) | ![X](https://file.wangzevw.com/images/image.1e8my48r1d.webp) |
+| ![X](https://file.wangzevw.com/images/image.5c10eskccg.webp) | ![X](https://file.wangzevw.com/images/image.syzbtgh98.webp)  |
+| ![X](https://file.wangzevw.com/images/image.1e8my4b3nc.webp) | ![X](https://file.wangzevw.com/images/image.1sf2ozl931.webp) |
+
+## 进度
+
+- [x] 支持自定义主题以及主题色
+- [x] 支持暗黑色，同时模拟`ELEMENT-PLUS`的暗黑动画效果
+- [x] mock数据
+- [x] echarts自定义数据
+- [x] hooks的开发
+- [x] 内置辅助函数插件
+- [x] 内置部分css动画以及3d效果
+- [ ] 404， 403，500页面开发
+- [ ] 其他待确定
+
+## 运行
+
+1. 请优先使用`pnpm`
 
 ```bash
 pnpm install
 ```
 
-## Get Started
-
-Start the dev server:
+2. 运行项目
 
 ```bash
 pnpm dev
 ```
 
-Build the app for production:
+3. 打包项目
 
 ```bash
 pnpm build
 ```
 
-Preview the production build locally:
+## 可能出现的问题
 
-```bash
-pnpm preview
+1. `functional-helpers`拉取失败，那么您可以在[GITHUB](https://github.com/wangxiaoze-view/functional-helpers-lib)中进行下载， 使用本地包的形式
+
+```JSON
+{
+  "functional-helpers": "file:./functional-helpers"
+}
 ```
 
-'feat',//新特性、新功能
-'fix',//修改bug
-'docs',//文档修改
-'style',//代码格式修改, 注意不是 css 修改
-'refactor',//代码重构
-'perf',//优化相关，比如提升性能、体验
-'test',//测试用例修改
-'chore',//其他修改, 比如改变构建流程、或者增加依赖库、工具等
-'revert',//回滚到上一个版本
-'build',//编译相关的修改，例如发布版本、对项目构建或者依赖的改动
+2. 系统中使用了 `tresjs`，如果对应的页面加载失败，可以查看[知识库](https://www.wangzevw.com/demos/3d/models/common.html)，控制台可能会报警告，对此您可以忽略它，官网还没有对应的解决方案，其解决方案仅仅适用于`vite`

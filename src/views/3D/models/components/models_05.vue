@@ -55,7 +55,7 @@
   }
   .container {
     width: 100%;
-    height: 500px;
+    height: 100%;
     position: relative;
     color: #333;
     background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
