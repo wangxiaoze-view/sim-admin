@@ -356,7 +356,7 @@ export function getColumnChartConfig(data: Ref<number[]>) {
         itemStyle: {
           show: true,
           color: function (params: any) {
-            let num = colorArray.length
+            const num = colorArray.length
             return {
               type: 'linear',
               colorStops: [
@@ -489,7 +489,7 @@ export function getEchartsConfig_1(data_1: Ref<number[]>, data_2: Ref<number[]>)
   }
 }
 
-export const date_1 = new Array(12).fill(0).map((i, index) => `${index + 1}月`)
+export const date_1 = Array.from({ length: 12 }).map((_, index) => `${index + 1}月`)
 export function getEchartsConfig_2(data: Ref<number[]>) {
   return {
     tooltip: {

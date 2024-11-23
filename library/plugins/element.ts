@@ -32,7 +32,7 @@ const provideList = {
   $simEmitClear: simEmitClear,
 }
 // 全局挂载. 后期直接用这个就可以；自动推导数据类型
-export let $sim = provideList
+export const $sim = provideList
 
 export default {
   install: (app: App<Element>) => {

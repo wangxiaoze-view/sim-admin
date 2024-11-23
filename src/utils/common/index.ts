@@ -46,4 +46,3 @@ export function parseParams(data: any) {
     return ''
   }
 }
-

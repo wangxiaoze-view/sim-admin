@@ -114,5 +114,8 @@
   "滚动": "Scroll",
   "Canvas": "Canvas",
   "订单": "Order",
-  "JS": "JS"
+  "JS": "JS",
+  "物体": "Object",
+  "贴图": "Texture",
+  "模型": "Model"
 }
