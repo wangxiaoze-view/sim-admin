@@ -2,7 +2,7 @@ export const pageRoutes: ISimRouterRecordRaw[] = [
   {
     path: '/page',
     name: 'Page',
-    component: import('~/library/layouts/index.vue'),
+    component: () => import('~/library/layouts/index.vue'),
     meta: {
       title: '页面',
       icon: 'ri-article-line',
