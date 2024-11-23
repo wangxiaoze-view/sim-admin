@@ -12,3 +12,6 @@ mockServer/
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+
+pnpm-lock.yaml

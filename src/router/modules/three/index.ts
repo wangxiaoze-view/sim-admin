@@ -5,7 +5,7 @@ export const threeRoutes: ISimRouterRecordRaw[] = [
     component: () => import('~/library/layouts/index.vue'),
     meta: {
       title: 'Three',
-      icon: 'ri-css3-line',
+      icon: 'ri-criminal-line',
     },
     children: [
       {
