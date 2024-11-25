@@ -60,4 +60,4 @@ pnpm build
 }
 ```
 
-2. 系统中使用了 `tresjs`，如果对应的页面加载失败，可以查看[知识库](https://www.wangzevw.com/demos/3d/models/common.html)，控制台可能会报警告，对此您可以忽略它，官网还没有对应的解决方案，其解决方案仅仅适用于`vite`
+2. 系统中使用了 `tresjs`，如果对应的页面加载失败，可以查看[知识库](https://www.wangzevw.com/demos/3d/models/common.html)，控制台可能会报警告，对此您可以忽略它，官网还没有对应的解决方案，其解决方案仅仅适用于`vite` 系统已将`tresjs`迁移为`3d外链`

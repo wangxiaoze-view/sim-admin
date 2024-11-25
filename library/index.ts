@@ -1,6 +1,5 @@
 import { App } from 'vue'
 import VueExcelEditor from 'vue3-excel-editor'
-import Tres from '@tresjs/core'
 
 import 'remixicon/fonts/remixicon.css'
 import './styles/global.scss'
@@ -14,7 +13,6 @@ export function setupSim(app: App<Element>) {
   })
 
   app.use(VueExcelEditor)
-  app.use(Tres)
 
   setiupLayout(app)
 }
