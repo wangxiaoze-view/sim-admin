@@ -5,7 +5,6 @@ import { pageRoutes } from './page'
 import { linkRoutes } from './link'
 import { componentRoutes } from './component'
 import { cssRoutes } from './css'
-import { threeRoutes } from './three'
 
 export const getRoutes = (): Promise<ISimRouterRecordRaw[]> => {
   return new Promise((resolve) => {
@@ -17,7 +16,6 @@ export const getRoutes = (): Promise<ISimRouterRecordRaw[]> => {
       ...linkRoutes,
       ...componentRoutes,
       ...cssRoutes,
-      ...threeRoutes,
     ])
   })
 }
