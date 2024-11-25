@@ -15,7 +15,7 @@ export const functionRoutes: ISimRouterRecordRaw[] = [
         meta: {
           title: '流程图',
           icon: 'ri-route-line',
-          roles: ['Admin', 'Test', 'Test'],
+          roles: ['Admin', 'User', 'Test'],
         },
       },
       {
@@ -25,7 +25,7 @@ export const functionRoutes: ISimRouterRecordRaw[] = [
         meta: {
           title: 'Echarts',
           icon: 'ri-line-chart-line',
-          roles: ['Admin', 'Test', 'Test'],
+          roles: ['Admin', 'User', 'Test'],
         },
       },
       {
@@ -85,7 +85,7 @@ export const functionRoutes: ISimRouterRecordRaw[] = [
         meta: {
           title: '全屏',
           icon: 'ri-fullscreen-line',
-          roles: ['Admin', 'Test', 'Test'],
+          roles: ['Admin', 'User', 'Test'],
         },
       },
       {
@@ -95,7 +95,7 @@ export const functionRoutes: ISimRouterRecordRaw[] = [
         meta: {
           title: '水波纹',
           icon: 'ri-water-flash-line',
-          roles: ['Admin', 'Test', 'Test'],
+          roles: ['Admin', 'User', 'Test'],
         },
       },
       {
@@ -105,7 +105,7 @@ export const functionRoutes: ISimRouterRecordRaw[] = [
         meta: {
           title: '上传',
           icon: 'ri-upload-cloud-line',
-          roles: ['Admin', 'Test', 'Test'],
+          roles: ['Admin', 'User', 'Test'],
         },
       },
     ],
