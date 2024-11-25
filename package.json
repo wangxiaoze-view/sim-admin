@@ -39,7 +39,6 @@
     "element-plus": "^2.8.7",
     "functional-helpers": "git@github.com:wangxiaoze-view/functional-helpers-lib.git",
     "lodash-es": "^4.17.21",
-    "mitt": "^3.0.1",
     "nprogress": "^0.2.0",
     "pinia": "^2.2.6",
     "print-js": "^1.6.0",

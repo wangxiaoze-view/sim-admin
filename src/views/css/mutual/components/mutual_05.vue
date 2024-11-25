@@ -62,7 +62,7 @@
       width: 100px;
       height: 100px;
       border-radius: 4px;
-      border: 1px dashed #eee;
+      border: 1px dashed var(--el-border-color);
     }
 
     .result {

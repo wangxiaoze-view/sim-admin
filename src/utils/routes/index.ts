@@ -123,7 +123,9 @@ export function resetRouter(routes: ISimRouterRecordRaw[] = constantRoutes) {
  */
 export function addRouter(routes: ISimRouterRecordRaw[]) {
   routes.forEach((route: ISimRouterRecordRaw) => {
-    if (!router.hasRoute(route.name)) router.addRoute(route as RouteRecordRaw)
+    if (!router.hasRoute(route.name)) {
+      router.addRoute(route as RouteRecordRaw)
+    }
     if (route.children) addRouter(route.children)
   })
 }

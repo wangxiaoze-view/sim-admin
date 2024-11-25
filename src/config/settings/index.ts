@@ -17,7 +17,7 @@ export const settings_config = {
   // 路由拦截模式 web: 前端路由管理 all: 后端路由管理
   hasRouterGuard: 'all',
   // 白名单
-  whiteList: ['/login', '/register', '/403', '/404', '/500'],
+  whiteList: ['/login', '/register', '/403', '/404', '/500', '/netOffline'],
   // 全局的加载文字
   loadingText: 'sim正在加载, 请稍等...',
   // 网站logo

@@ -70,7 +70,7 @@
         padding: 10px;
         height: 100px;
         border-radius: 4px;
-        border: 1px solid #eee;
+        border: 1px solid var(--el-border-color);
         display: flex;
         align-items: center;
         justify-content: center;

@@ -1,3 +1,17 @@
+## [1.0.1](https://github.com/wangxiaoze-view/sim-admin/compare/1.0.0...1.0.1) (2024-11-23)
+
+
+### 🎫 Chores | 其他更新
+
+* Release v1.0.1 ([010cb3d](https://github.com/wangxiaoze-view/sim-admin/commit/010cb3d4380cf584c477f91ebab4eedecb73a4fb))
+
+
+### 📝 Documentation | 文档
+
+* 更新提交文档 ([77f982c](https://github.com/wangxiaoze-view/sim-admin/commit/77f982c8e75b333563f7b64a0de8db6d52082dac))
+
+
+
 # [1.0.0](https://github.com/wangxiaoze-view/sim-admin/compare/d99d09acdcf0cfe74260ad561a33bf4da5f21db8...1.0.0) (2024-11-23)
 
 

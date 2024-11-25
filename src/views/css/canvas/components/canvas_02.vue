@@ -33,6 +33,7 @@
     canvas.width = width
     canvas.height = 500
     const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
+    ctx.strokeStyle = '#ddd'
     return [canvas, ctx]
   }
 
@@ -159,7 +160,7 @@
 
 <style lang="scss" scoped>
   .canvas-2 {
-    border: 1px solid #eee;
+    border: 1px solid var(--el-border-color);
     height: 100%;
     .container {
       position: relative;
@@ -169,7 +170,7 @@
         top: 4px;
         left: 50%;
         transform: translateX(-50%);
-        background-color: #fff;
+        background-color: var(--el-bg-color);
         border-radius: 4px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         display: flex;

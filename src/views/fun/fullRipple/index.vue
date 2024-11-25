@@ -26,7 +26,7 @@
     border-radius: 4px;
     margin: 20px 0;
     cursor: pointer;
-    border: 1px solid #eee;
+    border: 1px solid var(--el-border-color);
     display: flex;
     align-items: center;
     justify-content: center;

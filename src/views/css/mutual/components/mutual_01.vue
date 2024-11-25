@@ -52,7 +52,7 @@
     border-radius: 50px;
     position: absolute;
     box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.5);
-    z-index: 100;
+    z-index: 10;
     transform: translate(var(--x), var(--y));
     transition: cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
   }

@@ -4,7 +4,7 @@ import { useChangeTheme, useDebounceFn } from '~/src/hooks'
 export function useResizeMobile(immediate = true) {
   const w = 992
 
-  const { setTheme, getTheme } = useChangeTheme()
+  const { setTheme, setupInitTheme } = useChangeTheme()
 
   const getDeviceWidth = () => {
     const rect = document.body.getBoundingClientRect()
@@ -14,7 +14,10 @@ export function useResizeMobile(immediate = true) {
   const resizeHandler = () => {
     if (document.hidden) return
     const isMobile = getDeviceWidth()
-    setTheme({
+    if (isMobile) {
+      setTheme({ layout: 'ordinary', menuMode: 'default' })
+    }
+    setupInitTheme({
       device: isMobile ? 'mobile' : 'desktop',
       isI18n: !isMobile,
       isNotice: !isMobile,

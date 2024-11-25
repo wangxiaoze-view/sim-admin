@@ -19,7 +19,6 @@ import { pluginCssMinimizer } from '@rsbuild/plugin-css-minimizer'
 import postcssEnv from 'postcss-preset-env'
 // gzip 插件
 import CompressionPlugin from 'compression-webpack-plugin'
-
 import { settings_config } from './src/config'
 const { title, linkIcon, description, copyright } = settings_config
 
@@ -148,6 +147,7 @@ export default defineConfig({
       : {}),
   },
   html: {
+    template: './public/index.html',
     title,
     favicon: linkIcon,
     meta: {

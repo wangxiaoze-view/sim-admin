@@ -222,6 +222,45 @@ html {
     animation: ripple 600ms linear;
   }
 
+  .error_page {
+    padding: 40px;
+
+    .left {
+      opacity: 0;
+      animation-name: slideUp;
+      animation-duration: 0.3s;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: bold;
+      line-height: 40px;
+      color: var(--el-color-primary);
+      opacity: 0;
+      margin-bottom: 20px;
+      animation-name: slideUp;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+    }
+
+    .desc,
+    .go-home {
+      opacity: 0;
+      animation-name: slideUp;
+      animation-duration: 0.5s;
+      animation-delay: 0.2s;
+      animation-fill-mode: forwards;
+    }
+    .desc {
+      font-size: 13px;
+      line-height: 21px;
+      color: var(--el-text-color-regular);
+      margin-bottom: 30px;
+    }
+  }
+
   body {
     position: relative;
     box-sizing: border-box;
@@ -558,5 +597,16 @@ html {
   to {
     opacity: 0;
     transform: scale(4);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

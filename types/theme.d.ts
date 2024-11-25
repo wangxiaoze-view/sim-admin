@@ -65,4 +65,7 @@ declare interface ITheme {
 
   // 设备
   device: TDevice
+
+  // 是否支持更新
+  isUpdate: boolean
 }

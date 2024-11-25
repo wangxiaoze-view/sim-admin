@@ -25,7 +25,7 @@ export const permissionRoutes: ISimRouterRecordRaw[] = [
         meta: {
           title: '菜单',
           icon: 'ri-menu-add-fill',
-          roles: ['Admin', 'User', 'Test'],
+          roles: ['Admin'],
         },
       },
     ],

@@ -12,7 +12,7 @@
     name: 'IPhone20',
     content:
       '这款无线蓝牙耳机采用最新的蓝牙5.0技术，提供稳定的连接和出色的音质体验。内置高清麦克风，支持长达8小时的播放时间。 ',
-    price: 2000,
+    price: 20,
     img: 'https://picsum.photos/300',
     _running: false,
   }
@@ -95,7 +95,7 @@
             <b>{{ item.price.toFixed(2) }}</b>
           </span>
 
-          <button :disabled="item._running" @click="onAddCart(item, $event)">加入购物车</button>
+          <button :disabled="item._running" @click="onAddCart(item, $event)">Add</button>
         </div>
       </div>
     </div>
@@ -105,14 +105,13 @@
 <style lang="scss" scoped>
   .cart-box {
     width: 100%;
-    border: 1px solid #eee;
+    border: 1px solid var(--el-border-color);
     .header {
       padding: 14px 20px;
-      background-color: #fff;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 1px 10px #eee;
+      box-shadow: 0 1px 10px var(--el-border-color);
       b {
         color: #ff0000;
       }
@@ -130,7 +129,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          color: red;
+          color: var(--el-color-error);
           font-weight: bold;
         }
       }
@@ -141,7 +140,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
       &-item {
-        border: 1px solid #eee;
+        border: 1px solid var(--el-border-color);
         border-radius: 4px;
         padding: 10px;
         display: flex;
@@ -182,7 +181,7 @@
           align-items: center;
           justify-content: space-between;
           b {
-            color: #ff0000;
+            color: var(--el-color-error);
           }
           button {
             border: 1px solid #e6a23c;

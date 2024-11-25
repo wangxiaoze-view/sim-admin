@@ -44,7 +44,7 @@
       margin-bottom: 20px;
     }
     .container {
-      border: 1px solid #eee;
+      border: 1px solid var(--el-border-color);
       border-radius: 6px;
       padding: 10px;
       &:empty {

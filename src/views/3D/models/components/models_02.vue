@@ -85,7 +85,7 @@
           border-radius: 2px;
           margin-left: 3px;
           cursor: pointer;
-          border: 1px solid #eee;
+          border: 1px solid var(--el-border-color);
         }
       }
     }

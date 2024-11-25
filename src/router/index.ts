@@ -35,14 +35,49 @@ export const constantRoutes: ISimRouterRecordRaw[] = [
       hidden: true,
     },
   },
+  {
+    path: '/404',
+    name: '404',
+    component: () => import('~/src/views/404.vue'),
+    meta: {
+      hidden: true,
+    },
+  },
+  {
+    path: '/403',
+    name: '403',
+    component: () => import('~/src/views/403.vue'),
+    meta: {
+      hidden: true,
+    },
+  },
+  {
+    path: '/500',
+    name: '500',
+    component: () => import('~/src/views/500.vue'),
+    meta: {
+      hidden: true,
+    },
+  },
+  {
+    path: '/netOffline',
+    name: 'NetOffline',
+    component: () => import('~/src/views/netOffline.vue'),
+    meta: {
+      hidden: true,
+    },
+  },
 ]
 
 // 2. 异步路由
-export const asyncRoutes = []
+export const asyncRoutes: ISimRouterRecordRaw[] = []
 
 const router = createRouter({
   history: settings_config.hasRouterMode ? createWebHashHistory() : createWebHistory(),
   routes: constantRoutes as RouteRecordRaw[],
+  scrollBehavior: () => {
+    ;({ left: 0, top: 0 })
+  },
 })
 
 export const setupRouter = (app: App<Element>) => {

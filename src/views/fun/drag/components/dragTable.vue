@@ -40,7 +40,7 @@
     tr,
     td {
       padding: 4px 8px;
-      border: 1px solid #eee;
+      border: 1px solid var(--el-border-color);
       text-align: center;
     }
   }

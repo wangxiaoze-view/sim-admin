@@ -30,12 +30,11 @@
     justify-content: center;
     height: 100%;
     padding: 14px;
-    background-image: linear-gradient(to left, #fbc2eb 0%, #a6c1ee 100%);
     .color {
       width: 50px;
       height: 50px;
       border-radius: 4px;
-      border: 1px solid #eee;
+      border: 1px solid var(--el-border-color);
       cursor: pointer;
       background-color: v-bind(color);
     }

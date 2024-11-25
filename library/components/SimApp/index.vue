@@ -1,9 +1,17 @@
 <script setup lang="ts">
-  import { useConfigProvider } from '~/src/hooks'
+  import { useConfigProvider, useNetwork } from '~/src/hooks'
+  import { useRouter } from 'vue-router'
   defineOptions({
     name: 'SimApp',
   })
+
+  const router = useRouter()
   const { getElLocal, getTheme } = useConfigProvider()
+  const { isOnline } = useNetwork()
+
+  if (!isOnline.value) {
+    router.push({ path: '/netOffline' })
+  }
 </script>
 <template>
   <el-config-provider

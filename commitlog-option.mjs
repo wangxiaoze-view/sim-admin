@@ -1,5 +1,5 @@
 import compareFunc from 'compare-func'
-import { cloneDeep } from 'lodash-es' // 引入 lodash 库用于深拷贝
+import { cloneDeep } from 'lodash-es'
 
 const typeMapping = {
   feat: '✨ Features | 新功能',

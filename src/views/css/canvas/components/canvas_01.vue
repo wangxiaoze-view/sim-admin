@@ -28,7 +28,7 @@
     canvasRef.value.height = containerRef.value?.clientHeight || 600
     console.log(canvasRef.value.width)
     if (!ctx.value) return
-    ctx.value.strokeStyle = '#000000'
+    ctx.value.strokeStyle = '#ddd'
     ctx.value.lineWidth = 2
     canvasRef.value.addEventListener('mousedown', startDrawing)
     canvasRef.value.addEventListener('mousemove', draw)
@@ -57,8 +57,8 @@
       margin-top: 10px;
       width: 100%;
       height: 300px;
-      border: 2px dashed #ddd;
-      background-color: #fff;
+      border: 2px solid var(--el-border-color);
+      background-color: var(--el-bg-color);
     }
   }
 </style>

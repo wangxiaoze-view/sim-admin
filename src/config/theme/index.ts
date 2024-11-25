@@ -63,4 +63,6 @@ export const themeConfig: ITheme = {
   collapse: false,
   // 默认电脑
   device: 'desktop',
+
+  isUpdate: true,
 }

@@ -98,12 +98,12 @@
       <div class="A">
         <template v-if="A.result.type !== 'close'">
           <h3>A区域---{{ A.result.message }}</h3>
-          <button @click="toBChannel">向B区域发送消息</button>
-          <button @click="toAClose">关闭链接</button>
+          <el-button class="mb-20" @click="toBChannel" type="primary">向B区域发送消息</el-button>
+          <el-button @click="toAClose" type="primary">向B区向B区域发送消息域发送消息</el-button>
         </template>
         <template v-else>
           <h3>链接已关闭</h3>
-          <button @click="toAOpen">打开链接</button>
+          <el-button @click="toAOpen" type="primary">打开链接</el-button>
         </template>
       </div>
       <div class="B">
@@ -124,7 +124,6 @@
     width: 100%;
     height: 100%;
     padding: 20px;
-    background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
 
     h1 {
       text-align: center;
@@ -144,16 +143,6 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
-
-      button {
-        margin-top: 20px;
-        background-color: #fff;
-        padding: 6px 12px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        cursor: pointer;
-      }
     }
   }
 </style>

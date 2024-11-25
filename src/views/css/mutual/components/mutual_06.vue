@@ -113,7 +113,7 @@
       .box {
         width: 100px;
         height: 40px;
-        border: 1px solid #ccc;
+        border: 1px solid var(--el-border-color);
         margin: 0 10px;
         display: flex;
         align-items: center;
@@ -126,10 +126,10 @@
     p {
       margin-top: 20px;
       padding: 6px 10px;
-      background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+      background: var(--el-color-primary);
       span {
         padding: 4px 10px;
-        background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        background: var(--el-bg-color);
       }
     }
     .popup {
@@ -153,7 +153,7 @@
         padding: 10px 14px;
         border-radius: 4px;
         z-index: 1;
-        background-color: #fff;
+        background-color: var(--el-bg-color);
         box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
         transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
         &::before {
@@ -167,7 +167,7 @@
           height: 0;
           border-left: 4px solid transparent;
           border-right: 4px solid transparent;
-          border-bottom: 4px solid #fff;
+          border-bottom: 4px solid var(--el-bg-color);
           z-index: 1;
         }
         .title {
@@ -189,10 +189,10 @@
           button {
             font-size: 12px;
             padding: 1px 4px;
-            background-color: #8ec5fc;
+            background-color: var(--el-color-primary);
             color: #fff;
             border-radius: 4px;
-            border: 1px solid #8ec5fc;
+            border: 1px solid var(--el-color-primary);
           }
         }
       }

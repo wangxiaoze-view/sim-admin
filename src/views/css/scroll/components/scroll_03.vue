@@ -25,7 +25,7 @@
       height: 200px;
       margin-bottom: 10px;
       overflow: auto;
-      border: 1px solid #eee;
+      border: 1px solid var(--el-border-color);
       scroll-timeline: --image_1;
     }
 

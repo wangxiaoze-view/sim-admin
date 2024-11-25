@@ -19,7 +19,7 @@
     max-height: 40px;
     overflow: hidden;
     position: relative;
-    border: 1px solid #eee;
+    border: 1px solid var(--el-border-color);
     padding: 12px;
     animation: setOver 1ms;
   }

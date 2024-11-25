@@ -10,38 +10,34 @@ export function setupPermissions(router: Router) {
   router.beforeEach(async (to, _, next) => {
     const { getTheme } = useChangeTheme()
     const { setUserInfo, logout } = useUser()
-    const { getMenuRoutes, setRoutes } = useRoutesStore()
+    const { setRoutes, getMenuRoutes } = useRoutesStore()
     if (getTheme.value.isProgress) SimProgress.start()
     const hasToken = getToken()
 
-    if (!hasToken) {
+    if (hasToken) {
+      // 禁止登录之后重复跳转登录
+      if (to.path === '/login') {
+        next({ path: '/' })
+      } else {
+        if (getMenuRoutes.length > 0) {
+          next()
+        } else {
+          try {
+            await setUserInfo()
+            await setRoutes()
+            next({ ...to, replace: true })
+          } catch (error) {
+            logger.error(JSON.stringify(error))
+            logout()
+            next(resetLoginPath(to.path))
+          }
+        }
+      }
+    } else {
       if (whiteList.includes(to.path)) {
         next()
       } else {
-        // 不是白名单，要处理重定向地址, 会涉及多处地方引入的重定向，需拆分
         next(resetLoginPath(to.fullPath))
-      }
-    } else {
-      if (getMenuRoutes.length > 0) {
-        // 禁止重复跳转
-        if (to.path === '/login') {
-          next({ path: '/' })
-        } else {
-          next()
-        }
-      } else {
-        try {
-          await setUserInfo()
-          await setRoutes()
-          // const metaRole = (to.meta.roles ?? []) as string[]
-          // const isExit = getUserInfo.value.roles.some((i) => metaRole.includes(i))
-          // next(!isExit ? { path: '/' } : { ...to, replace: true })
-          next({ ...to, replace: true })
-        } catch (error) {
-          logger.error(JSON.stringify(error))
-          logout()
-          next(resetLoginPath(to.fullPath))
-        }
       }
     }
   })

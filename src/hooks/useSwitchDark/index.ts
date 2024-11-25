@@ -33,6 +33,7 @@ export function useSwitchDark() {
   }
 
   watchEffect(() => {
+    value.value = isDark.value
     setupInitTheme({ mode: isDark.value ? 'dark' : 'light' })
   })
 

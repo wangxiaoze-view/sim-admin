@@ -6,7 +6,11 @@
     :with-header="false"
     @close="setCollapse"
   >
-    <sim-aside class="sim-aside--drawer" :is-collapse="false" />
+    <sim-aside
+      class="sim-aside--drawer"
+      :class="{ 'is-mobile': getTheme.device === 'mobile' }"
+      :is-collapse="false"
+    />
   </el-drawer>
 </template>
 

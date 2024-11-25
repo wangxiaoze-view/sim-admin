@@ -27,8 +27,8 @@
 - [x] hooks的开发
 - [x] 内置辅助函数插件
 - [x] 内置部分css动画以及3d效果
-- [ ] 404， 403，500页面开发
-- [ ] 其他待确定
+- [x] 404， 403，500页面开发
+- [ ][其他功能更新/开发请看](https://github.com/wangxiaoze-view/sim-admin/issues/1)
 
 ## 运行
 
