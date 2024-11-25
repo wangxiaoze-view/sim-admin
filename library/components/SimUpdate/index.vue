@@ -8,7 +8,7 @@
   const { version } = pkg
   const { isUpdate, updater, waitUpdater, loading } = useCheckUpdate()
 
-  updater()
+  // updater()
 </script>
 
 <template>
