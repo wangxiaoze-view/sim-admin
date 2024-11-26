@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 
+// 检测更新 使用轮询+worker的形式，暂时不考虑pwa离线缓存的方式;
 export function useCheckUpdate() {
   const isProduction = ['production'].includes(process.env.NODE_ENV || '')
   const isUpdate = ref(false)
