@@ -1,3 +1,55 @@
+# [1.2.0](https://github.com/wangxiaoze-view/sim-admin/compare/1.1.0...1.2.0) (2024-11-26)
+
+
+### ♻ Code Refactoring | 代码重构
+
+* 优化循环目录文件, 重构部分代码 ([b16123f](https://github.com/wangxiaoze-view/sim-admin/commit/b16123f9806411b6c3288e62fca76106bace53ae))
+
+
+### ⚡ Performance Improvements | 性能优化
+
+* 将three迁移出去 ([f2d7dcf](https://github.com/wangxiaoze-view/sim-admin/commit/f2d7dcfffd8fcbd2dffd0d71211ca3d35d1424ba))
+
+
+### 🎫 Chores | 其他更新
+
+* 更新lock文件 ([fc3104a](https://github.com/wangxiaoze-view/sim-admin/commit/fc3104a8678f0b3deff8b9981107ad7f4aab8aee))
+* Release v1.2.0 ([320a16d](https://github.com/wangxiaoze-view/sim-admin/commit/320a16d6b360796a4213669096f9ca2f23375a0f))
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 修复功能路由页面的角色重复问题 ([5c357b1](https://github.com/wangxiaoze-view/sim-admin/commit/5c357b10f7be877368e76b11f94503ce22cbe134))
+* 修复keeplive不生效的问题 ([50f8e67](https://github.com/wangxiaoze-view/sim-admin/commit/50f8e678c17e6b649800f2116a60383d00ca13e0))
+* 修复thresjs 模块未找到，导致打包失败的问题 ([6df08b4](https://github.com/wangxiaoze-view/sim-admin/commit/6df08b495a3a3784226d859f0fed85e3e2786eca))
+
+
+
+# [1.1.0](https://github.com/wangxiaoze-view/sim-admin/compare/1.0.1...1.1.0) (2024-11-25)
+
+
+### ✨ Features | 新功能
+
+* 完善404等页面, 添加页面加载loading, 修复部分页面暗黑模式下的兼容样式 ([1ef448d](https://github.com/wangxiaoze-view/sim-admin/commit/1ef448de400985edffbcd6bd1eb26517f762033d))
+
+
+### 🎫 Chores | 其他更新
+
+* Release v1.1.0 ([ded0a7c](https://github.com/wangxiaoze-view/sim-admin/commit/ded0a7cb0403004ec47f226b3427f6e8daa7c2a5))
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 修复页面路由但不开的问题 ([f957e20](https://github.com/wangxiaoze-view/sim-admin/commit/f957e200e3ff399eadd0dc6e2d94f00a98289a91))
+* 修复页面死循环刷新的问题[#2](https://github.com/wangxiaoze-view/sim-admin/issues/2) ([5b86264](https://github.com/wangxiaoze-view/sim-admin/commit/5b8626418415dce70a0b3665200108fc2b711fa1))
+
+
+### 📝 Documentation | 文档
+
+* 更新docs ([008bee7](https://github.com/wangxiaoze-view/sim-admin/commit/008bee78d6190581422370be19e9324268597e2a))
+
+
+
 ## [1.0.1](https://github.com/wangxiaoze-view/sim-admin/compare/1.0.0...1.0.1) (2024-11-23)
 
 
