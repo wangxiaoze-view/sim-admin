@@ -1,5 +1,14 @@
 
 
+## 1.2.0 (2024-11-26)
+
+* refactor: 优化循环目录文件, 重构部分代码 ([b16123f](https://github.com/wangxiaoze-view/sim-admin/commit/b16123f))
+* fix: 修复功能路由页面的角色重复问题 ([5c357b1](https://github.com/wangxiaoze-view/sim-admin/commit/5c357b1))
+* fix: 修复keeplive不生效的问题 ([50f8e67](https://github.com/wangxiaoze-view/sim-admin/commit/50f8e67))
+* fix: 修复thresjs 模块未找到，导致打包失败的问题 ([6df08b4](https://github.com/wangxiaoze-view/sim-admin/commit/6df08b4))
+* chore: 更新lock文件 ([fc3104a](https://github.com/wangxiaoze-view/sim-admin/commit/fc3104a))
+* perf: 将three迁移出去 ([f2d7dcf](https://github.com/wangxiaoze-view/sim-admin/commit/f2d7dcf))
+
 ## 1.1.0 (2024-11-25)
 
 * docs: 更新docs ([008bee7](https://github.com/wangxiaoze-view/sim-admin/commit/008bee7))
