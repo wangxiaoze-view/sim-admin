@@ -4,8 +4,8 @@ import { useRoutesStore } from '../stores/modules/routes'
 import { resetLoginPath } from '../utils/routes'
 import { settings_config } from '~/src/config'
 import { getToken, logger } from '~/src/utils'
-import { useChangeTheme, useUser } from '../hooks'
-const { whiteList } = settings_config
+import { useChangeTheme, useUser, useTitle } from '../hooks'
+const { whiteList, title, titleSpace, titleSort } = settings_config
 export function setupPermissions(router: Router) {
   router.beforeEach(async (to, _, next) => {
     const { getTheme } = useChangeTheme()
@@ -42,7 +42,15 @@ export function setupPermissions(router: Router) {
     }
   })
 
-  router.afterEach(() => {
+  router.afterEach((to) => {
+    const metaTitle = to.meta.title
+    if (metaTitle) {
+      let titles = [metaTitle, title]
+      if (titleSort) {
+        titles = [title, metaTitle]
+      }
+      useTitle(titles.join(titleSpace))
+    }
     if (SimProgress.status) SimProgress.done()
   })
 }

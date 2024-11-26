@@ -7,18 +7,10 @@ import { parseParams } from '../index'
 const { isRedirect } = settings_config
 // 重置登录路由
 export function resetLoginPath(currentPath: string) {
-  if (isRedirect) {
-    return {
-      path: '/login',
-      // 后期加个配置
-      query: { redirect: currentPath },
-      replace: true,
-    }
-  } else {
-    return {
-      path: '/login',
-      replace: true,
-    }
+  return {
+    path: '/login',
+    ...(isRedirect ? { query: { redirect: currentPath } } : {}),
+    replace: true,
   }
 }
 
@@ -30,10 +22,9 @@ export function resetLoginPath(currentPath: string) {
  */
 export function hasPermission(roles: string[], route: ISimRouterRecordRaw) {
   if (route.meta && route.meta.roles) {
-    return roles.some((role) => (route as any).meta.roles.includes(role))
-  } else {
-    return true
+    return roles.some((role) => route?.meta?.roles?.includes(role))
   }
+  return true
 }
 
 /**
@@ -42,10 +33,10 @@ export function hasPermission(roles: string[], route: ISimRouterRecordRaw) {
  * @param roles 细绳[]
  * @returns ISimRouterRecordRaw[] 过滤的路由
  */
-export function filterAsyncRoutes(routes: ISimRouterRecordRaw[], roles: string[], baseUrl = '/') {
+export function initAsyncRoutes(routes: ISimRouterRecordRaw[], roles: string[], baseUrl = '/') {
   return (
     routes
-      // 过滤一层
+      // 先根据角色过滤一层
       .filter((route) =>
         roles.length && route.meta && route.meta.roles ? hasPermission(roles, route) : true
       )
@@ -56,15 +47,7 @@ export function filterAsyncRoutes(routes: ISimRouterRecordRaw[], roles: string[]
           route.path = `${baseUrl}${baseUrl.endsWith('/') ? '' : '/'}${route.path.replace(/^\/+/, '')}`
         }
         if (route.children && route.children.length > 0) {
-          route.children = filterAsyncRoutes(route.children, roles, route.path)
-          if (route.children.length > 0) {
-            route.childrenPathList = route.children.flatMap((item) => item.childrenPathList)
-            if (!route.redirect) {
-              route.redirect = route.children[0].redirect || route.children[0].path
-            }
-          }
-        } else {
-          route.childrenPathList = [route.path]
+          route.children = initAsyncRoutes(route.children, roles, route.path)
         }
         return route
       })
@@ -103,7 +86,7 @@ export const fatteningRoutes = (routes: ISimRouterRecordRaw[]): ISimRouterRecord
  *
  * @param routes -在路由器中设置的一系列路由。默认为“constantRoutes”。
  */
-export function resetRouter(routes: ISimRouterRecordRaw[] = constantRoutes) {
+export function initRouter(routes: ISimRouterRecordRaw[] = constantRoutes) {
   routes.map((route) => {
     if (route.children) route.children = fatteningRoutes(route.children)
   })
@@ -113,7 +96,7 @@ export function resetRouter(routes: ISimRouterRecordRaw[] = constantRoutes) {
       if (router.hasRoute(name)) router.removeRoute(name)
     }
   })
-  addRouter(routes)
+  insertRouter(routes)
 }
 
 /**
@@ -121,16 +104,19 @@ export function resetRouter(routes: ISimRouterRecordRaw[] = constantRoutes) {
  *
  * @param routes - ISimRouterRecordRaw[] 需要添加的路由
  */
-export function addRouter(routes: ISimRouterRecordRaw[]) {
+export function insertRouter(routes: ISimRouterRecordRaw[]) {
   routes.forEach((route: ISimRouterRecordRaw) => {
-    if (!router.hasRoute(route.name)) {
-      router.addRoute(route as RouteRecordRaw)
-    }
-    if (route.children) addRouter(route.children)
+    if (!router.hasRoute(route.name)) router.addRoute(route as RouteRecordRaw)
+    if (route.children) insertRouter(route.children)
   })
 }
 
-// 获取当前路由
+/**
+ * 处理当前活动的路由，转换成string，例如 /home?name=123 => /home?name=123
+ *
+ * @param route - RouteLocationNormalizedLoaded 当前活动的路由
+ * @returns string 处理后的路由
+ */
 export function handlerActiveRoute(route: RouteLocationNormalizedLoaded) {
   const fullPath =
     route.query && Object.keys(route.query).length
@@ -139,6 +125,12 @@ export function handlerActiveRoute(route: RouteLocationNormalizedLoaded) {
   return fullPath
 }
 
+/**
+ * 将给定路线转换为选项卡表示对象。
+ *
+ * @param route -当前要转换的活动路由。
+ * @returns 表示具有路径、查询、参数、名称和元属性的选项卡的对象。
+ */
 export function handlerTabs(route: RouteLocationNormalizedLoaded) {
   return {
     path: handlerActiveRoute(route),

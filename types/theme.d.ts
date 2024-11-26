@@ -43,6 +43,8 @@ declare interface ITheme {
   size: TSize
   // 色弱模式
   colorWeakness: boolean
+  // 灰色模式/纪念模式
+  colorGray: boolean
   // 菜单缩放
   collapse: boolean
   // 是否显示底部

@@ -1,15 +1,14 @@
 <script lang="ts" setup>
   import { computed } from 'vue'
-  import { useRoute } from 'vue-router'
   import { translate } from '~/src/i18n'
-  import { useChangeTheme } from '~/src/hooks'
+  import { useChangeTheme, useRouter } from '~/src/hooks'
   import SimIcon from '~/library/components/SimIcon/index.vue'
 
   defineOptions({
     name: 'BreadcumbPage',
   })
-  const route = useRoute()
 
+  const { route } = useRouter()
   const { getTheme } = useChangeTheme()
 
   const getBreadcrumb = computed(() => {

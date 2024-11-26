@@ -1,15 +1,16 @@
 <script lang="ts" setup>
   import { computed, inject, ref } from 'vue'
-  import { translate } from '~/src/i18n'
-  import { useChangeTheme, useFullscreen, useError, useUser } from '~/src/hooks'
   import SimThemeDrawer from '../SimThemeDrawer/index.vue'
   import SimError from '../SimError/index.vue'
   import SimLanguage from '../SimLanguage/index.vue'
-  import SimIcon from '~/library/components/SimIcon/index.vue'
+  import SimIcon from '../SimIcon/index.vue'
   import SimColorPicker from '../SimColorPicker/index.vue'
   import SimSwitchDark from '../SimSwitchDark/index.vue'
   import SimLock from '../SimLock/index.vue'
-  import { getNoticeListApi, INoticeDataType, type INoticeType } from '~/src/api/other'
+  import { translate } from '~/src/i18n'
+  import { useChangeTheme, useFullscreen, useError, useUser } from '~/src/hooks'
+  import { getNoticeListApi } from '~/src/api/other'
+  import { INoticeDataType, INoticeType } from '~/src/api/types'
 
   defineOptions({
     name: 'SimHeaderTools',

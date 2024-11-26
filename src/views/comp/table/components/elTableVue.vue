@@ -1,8 +1,9 @@
 <script lang="ts" setup>
   import { ref } from 'vue'
-  import { getTotalDataApi, ITotalDataType } from '~/src/api/other'
+  import { getTotalDataApi } from '~/src/api/other'
   import { useLoading } from '~/src/hooks'
   import { settings_config } from '~/src/config'
+  import { ITotalDataType } from '~/src/api/types'
 
   const { loadingText: text } = settings_config
   const tableData = ref<ITotalDataType[]>()

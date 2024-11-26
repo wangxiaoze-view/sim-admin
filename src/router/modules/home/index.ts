@@ -1,10 +1,11 @@
-export const homeRoutes: ISimRouterRecordRaw[] = [
+export default [
   {
     path: '/home',
     name: 'Home',
     meta: {
       title: '首页',
       icon: 'ri-home-line',
+      sort: 1,
     },
     component: () => import('~/library/layouts/index.vue'),
     children: [
@@ -31,4 +32,4 @@ export const homeRoutes: ISimRouterRecordRaw[] = [
       },
     ],
   },
-]
+] as ISimRouterRecordRaw[]

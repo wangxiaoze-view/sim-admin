@@ -1,8 +1,8 @@
 <script lang="ts" setup>
   import { ref } from 'vue'
+  import SimErrorDialog from '../SimErrorDialog/index.vue'
   import { useError } from '~/src/hooks'
   import { getTimeFormat } from '~/src/utils'
-  import SimErrorDialog from '../SimErrorDialog/index.vue'
 
   defineOptions({
     name: 'SimError',

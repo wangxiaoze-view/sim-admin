@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-  import { useRoutesStore } from '~/src/stores/modules/routes'
   import SimLogo from '../SimLogo/index.vue'
   import SimMenu from '../SimMenu/index.vue'
+  import { useRoutesStore } from '~/src/stores/modules/routes'
   import { storeToRefs } from 'pinia'
 
   defineOptions({

@@ -1,4 +1,4 @@
-export const cssRoutes: ISimRouterRecordRaw[] = [
+export default [
   {
     path: '/css',
     name: 'CssPage',
@@ -6,6 +6,7 @@ export const cssRoutes: ISimRouterRecordRaw[] = [
     meta: {
       title: 'CSS',
       icon: 'ri-css3-line',
+      sort: 7,
     },
     children: [
       {
@@ -100,4 +101,4 @@ export const cssRoutes: ISimRouterRecordRaw[] = [
       },
     ],
   },
-]
+] as ISimRouterRecordRaw[]

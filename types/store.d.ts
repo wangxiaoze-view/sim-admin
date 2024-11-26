@@ -21,8 +21,6 @@ declare interface IUserType {
 declare interface IRoutesType {
   // 菜单路由
   menuRoutes: ISimRouterRecordRaw[]
-  // 所有路由
-  allRoutes: ISimRouterRecordRaw[]
   // 当前菜单
   activeMenu: string
 }

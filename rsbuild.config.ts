@@ -19,7 +19,7 @@ import { pluginCssMinimizer } from '@rsbuild/plugin-css-minimizer'
 import postcssEnv from 'postcss-preset-env'
 // gzip 插件
 import CompressionPlugin from 'compression-webpack-plugin'
-import { settings_config } from './src/config'
+import { settings_config, cli_port, cli_host, cli_buildGzip, cli_outputDit } from './src/config'
 const { title, linkIcon, description, copyright } = settings_config
 
 const isProduction = process.env.NODE_ENV === 'production'
@@ -73,7 +73,7 @@ export default defineConfig({
         })
       )
 
-      appendPlugins(new CompressionPlugin())
+      if (cli_buildGzip) appendPlugins(new CompressionPlugin())
     },
   },
   dev: {
@@ -91,6 +91,9 @@ export default defineConfig({
     // 打包资源不去内联
     // inlineScripts: false,
     // inlineStyles: false,
+    distPath: {
+      root: cli_outputDit,
+    },
     sourceMap: { js: process.env.NODE_ENV === 'development' ? 'eval' : false },
     polyfill: 'usage',
   },
@@ -135,8 +138,8 @@ export default defineConfig({
     },
   },
   server: {
-    port: 5555,
-    host: '0.0.0.0',
+    port: cli_port,
+    host: cli_host,
     compress: true,
     ...(!isProduction
       ? {

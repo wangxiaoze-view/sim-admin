@@ -1,18 +1,9 @@
 <script lang="ts" setup>
   import { imageLinks } from '~/src/config'
-  const { logo } = imageLinks
   defineOptions({
     name: 'SimLogo',
   })
-
-  withDefaults(
-    defineProps<{
-      isCollapse?: boolean
-    }>(),
-    {
-      isCollapse: true,
-    }
-  )
+  const { logo } = imageLinks
 </script>
 
 <template>

@@ -1,4 +1,4 @@
-export const linkRoutes: ISimRouterRecordRaw[] = [
+export default [
   {
     path: '/link',
     name: 'Link',
@@ -6,6 +6,7 @@ export const linkRoutes: ISimRouterRecordRaw[] = [
     meta: {
       title: '外链',
       icon: 'ri-link-unlink-m',
+      sort: 5,
     },
     children: [
       {
@@ -43,4 +44,4 @@ export const linkRoutes: ISimRouterRecordRaw[] = [
       },
     ],
   },
-]
+] as ISimRouterRecordRaw[]

@@ -13,10 +13,8 @@ declare interface ISImRouterMeta {
   title?: string
   // 菜单排序
   sort?: number
-  // 菜单角色
+  // 菜单权限，根据角色判断
   roles?: string[]
-  // 菜单权限
-  permissions?: string[]
   // 是否缓存
   keepAlive?: boolean
   // 是否不关闭
@@ -27,6 +25,7 @@ declare interface ISImRouterMeta {
   iframePath?: string
 }
 
+// meta. children 重写自定义类型
 declare interface ISimRouterRecordRaw extends Omit<RouteRecordRaw, 'meta' | 'children'> {
   // 路径
   path: string

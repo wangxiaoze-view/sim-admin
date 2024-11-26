@@ -16,7 +16,6 @@ export function useReport() {
       // 是否开启调试
       isDebug: true,
       // 是否捕获错误
-      // TODO: 建议关闭
       isError: false,
       // 是否捕获console.error
       isConsoleError: false,

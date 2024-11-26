@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import SimIcon from '~/library/components/SimIcon/index.vue'
+  import SimIcon from '../SimIcon/index.vue'
   import SimHeaderTools from '../SimHeaderTools/index.vue'
   import SimTabs from '../SimTabs/index.vue'
   import breadcumb from './components/breadcumb.vue'

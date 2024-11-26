@@ -36,17 +36,17 @@ export const constantRoutes: ISimRouterRecordRaw[] = [
     },
   },
   {
-    path: '/404',
-    name: '404',
-    component: () => import('~/src/views/404.vue'),
+    path: '/403',
+    name: '403',
+    component: () => import('~/src/views/403.vue'),
     meta: {
       hidden: true,
     },
   },
   {
-    path: '/403',
-    name: '403',
-    component: () => import('~/src/views/403.vue'),
+    path: '/404',
+    name: '404',
+    component: () => import('~/src/views/404.vue'),
     meta: {
       hidden: true,
     },
@@ -69,8 +69,15 @@ export const constantRoutes: ISimRouterRecordRaw[] = [
   },
 ]
 
+export const notFoundRoute: ISimRouterRecordRaw = {
+  path: '/:pathMatch(.*)*',
+  redirect: '/404',
+  name: 'NotFound',
+  meta: { hidden: true },
+}
+
 // 2. 异步路由
-export const asyncRoutes: ISimRouterRecordRaw[] = []
+export const asyncRoutes: ISimRouterRecordRaw[] = [notFoundRoute]
 
 const router = createRouter({
   history: settings_config.hasRouterMode ? createWebHashHistory() : createWebHistory(),

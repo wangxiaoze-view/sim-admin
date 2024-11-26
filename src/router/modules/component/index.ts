@@ -1,4 +1,4 @@
-export const componentRoutes: ISimRouterRecordRaw[] = [
+export default [
   {
     path: '/comp',
     name: 'Comp',
@@ -6,6 +6,7 @@ export const componentRoutes: ISimRouterRecordRaw[] = [
     meta: {
       title: '组件',
       icon: 'ri-stack-line',
+      sort: 4,
     },
     children: [
       {
@@ -80,4 +81,4 @@ export const componentRoutes: ISimRouterRecordRaw[] = [
       },
     ],
   },
-]
+] as ISimRouterRecordRaw[]

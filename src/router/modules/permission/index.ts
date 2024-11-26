@@ -1,4 +1,4 @@
-export const permissionRoutes: ISimRouterRecordRaw[] = [
+export default [
   {
     path: '/permission',
     name: 'Permission',
@@ -6,6 +6,7 @@ export const permissionRoutes: ISimRouterRecordRaw[] = [
     meta: {
       title: '权限',
       icon: 'ri-shield-keyhole-line',
+      sort: 2,
     },
     children: [
       {
@@ -30,4 +31,4 @@ export const permissionRoutes: ISimRouterRecordRaw[] = [
       },
     ],
   },
-]
+] as ISimRouterRecordRaw[]

@@ -8,10 +8,13 @@
 <template>
   <el-scrollbar class="sim-scroll--bar" wrap-class="sim-scroll--wrap">
     <SimApp />
-    <el-backtop :bottom="100" :right="20" :visibility-height="200"></el-backtop>
+    <el-backtop
+      :bottom="100"
+      :right="20"
+      :visibility-height="200"
+      target=".sim-scroll--wrap"
+    ></el-backtop>
 
     <SimUpdate v-if="getTheme.isUpdate" />
   </el-scrollbar>
 </template>
-
-<style scoped lang="scss"></style>

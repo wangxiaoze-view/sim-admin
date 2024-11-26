@@ -2,7 +2,7 @@ export const settings_config = {
   // 网站标题
   title: 'Sim-Admin',
   // 网站标题与描述之间的分节符
-  titleSpace: ' - ',
+  titleSpace: ' | ',
   // 标题与描述之间的置换顺序: 标题 - 描述 / 描述 - 标题
   titleSort: false,
   // 描述
@@ -14,10 +14,10 @@ export const settings_config = {
   keepaliveMax: 10,
   // 路由模式： true 哈希 false history
   hasRouterMode: true,
-  // 路由拦截模式 web: 前端路由管理 all: 后端路由管理
-  hasRouterGuard: 'all',
+  // 路由拦截模式 web: 前端路由管理; end: 后端路由管理
+  hasRouterGuard: 'end',
   // 白名单
-  whiteList: ['/login', '/register', '/403', '/404', '/500', '/netOffline'],
+  whiteList: ['/login', '/redirect', '/403', '/404', '/500', '/netOffline'],
   // 全局的加载文字
   loadingText: 'sim正在加载, 请稍等...',
   // 网站logo

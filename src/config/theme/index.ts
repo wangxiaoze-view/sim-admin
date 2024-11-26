@@ -19,6 +19,8 @@ export const themeConfig: ITheme = {
   tabStyle: 'card',
   // 色弱模式
   colorWeakness: false,
+  // 灰色模式
+  colorGray: false,
   // 自动插入空格
   autoInsertSpace: true,
 

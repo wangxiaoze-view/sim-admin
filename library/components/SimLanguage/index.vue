@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import SimIcon from '~/library/components/SimIcon/index.vue'
+  import SimIcon from '../SimIcon/index.vue'
   defineOptions({
     name: 'SimLanguage',
   })

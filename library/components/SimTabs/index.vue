@@ -1,10 +1,12 @@
 <script lang="ts" setup>
+  import SimIcon from '../SimIcon/index.vue'
   import useTabs from './useTabs'
-  import { translate } from '~/src/i18n'
-  import SimIcon from '~/library/components/SimIcon/index.vue'
+
   defineOptions({
     name: 'SimTabs',
   })
+
+  import { translate } from '~/src/i18n'
   const {
     left,
     top,

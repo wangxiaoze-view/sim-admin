@@ -1,7 +1,7 @@
 import { ElMessageBox } from 'element-plus'
 import { version, name } from '~/package.json'
-import setupLogReporting from '../libs/logReporting'
-
+import { useReport } from '~/src/hooks'
+const { initLogReporting } = useReport()
 export default {
   install: () => {
     // @ts-expect-error TS2339
@@ -26,6 +26,6 @@ export default {
       'color: #ffffff; background: #0081ff; padding:2px 0; border-radius: 3px 0 0 3px;',
       'color: #ffffff; background: #354855; padding:2px 0; border-radius: 0 3px 3px 0;'
     )
-    setupLogReporting()
+    initLogReporting()
   },
 }

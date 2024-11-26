@@ -1,4 +1,4 @@
-export const functionRoutes: ISimRouterRecordRaw[] = [
+export default [
   {
     path: '/fun',
     name: 'Fun',
@@ -6,6 +6,7 @@ export const functionRoutes: ISimRouterRecordRaw[] = [
     meta: {
       title: '功能',
       icon: 'ri-apps-line',
+      sort: 3,
     },
     children: [
       {
@@ -110,4 +111,4 @@ export const functionRoutes: ISimRouterRecordRaw[] = [
       },
     ],
   },
-]
+] as ISimRouterRecordRaw[]

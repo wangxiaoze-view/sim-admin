@@ -15,7 +15,7 @@ export function useResizeMobile(immediate = true) {
     if (document.hidden) return
     const isMobile = getDeviceWidth()
     if (isMobile) {
-      setTheme({ layout: 'ordinary', menuMode: 'default' })
+      setTheme({ layout: 'ordinary', menuMode: 'default', isMode: false, mode: 'light' })
     }
     setupInitTheme({
       device: isMobile ? 'mobile' : 'desktop',
@@ -25,7 +25,7 @@ export function useResizeMobile(immediate = true) {
     })
   }
 
-  const debounceFn = useDebounceFn(resizeHandler, 100)
+  const debounceFn = useDebounceFn(resizeHandler, 2)
   onMounted(() => {
     if (immediate) debounceFn().then(() => {})
   })

@@ -1,7 +1,7 @@
 <script setup lang="ts">
+  import { computed } from 'vue'
   import simSubmenu from './components/simSubmenu.vue'
   import simMenuItem from './components/simMenuItem.vue'
-  import { computed } from 'vue'
 
   defineOptions({
     name: 'SimMenu',
@@ -30,5 +30,3 @@
     </template>
   </component>
 </template>
-
-<style lang="scss" scoped></style>

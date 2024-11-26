@@ -1,10 +1,10 @@
 <script lang="ts" setup>
   import { watch, ref } from 'vue'
-  import { translate } from '~/src/i18n'
-  import { useClipboard, useChangeTheme } from '~/src/hooks'
   import navType from './components/navTypePage.vue'
   import SimColorPicker from '../SimColorPicker/index.vue'
-  import SimIcon from '~/library/components/SimIcon/index.vue'
+  import SimIcon from '../SimIcon/index.vue'
+  import { translate } from '~/src/i18n'
+  import { useClipboard, useChangeTheme } from '~/src/hooks'
   import { $sim } from '~/library/plugins/element'
 
   defineOptions({
@@ -119,10 +119,20 @@
                 </el-select>
               </el-form-item>
 
-              <el-form-item class="sim-flex">
+              <el-form-item class="sim-flex" v-if="!getTheme.colorGray">
                 <template #label>{{ translate('色弱模式') }}</template>
                 <el-switch
                   v-model="getTheme.colorWeakness"
+                  inline-prompt
+                  :active-text="translate('开启')"
+                  :inactive-text="translate('关闭')"
+                />
+              </el-form-item>
+
+              <el-form-item class="sim-flex" v-if="!getTheme.colorWeakness">
+                <template #label>{{ translate('灰色模式') }}</template>
+                <el-switch
+                  v-model="getTheme.colorGray"
                   inline-prompt
                   :active-text="translate('开启')"
                   :inactive-text="translate('关闭')"
@@ -135,7 +145,7 @@
 
                   <el-tooltip
                     effect="dark"
-                    :content="translate('在支持国际化的情况下，按钮空格不生效')"
+                    :content="translate('该配置按钮只有俩个字的情况下才会生效')"
                     placement="top-start"
                   >
                     <SimIcon icon-class="ri-information-line" />
@@ -144,7 +154,6 @@
                 <el-switch
                   v-model="getTheme.autoInsertSpace"
                   inline-prompt
-                  disabled
                   :active-text="translate('开启')"
                   :inactive-text="translate('关闭')"
                 />

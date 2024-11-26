@@ -1,19 +1,3 @@
-<template>
-  <el-drawer
-    v-model="getTheme.collapse"
-    direction="ltr"
-    :size="220"
-    :with-header="false"
-    @close="setCollapse"
-  >
-    <sim-aside
-      class="sim-aside--drawer"
-      :class="{ 'is-mobile': getTheme.device === 'mobile' }"
-      :is-collapse="false"
-    />
-  </el-drawer>
-</template>
-
 <script lang="ts" setup>
   import { useChangeTheme } from '~/src/hooks'
   import SimAside from '../SimAside/index.vue'
@@ -29,4 +13,18 @@
   }
 </script>
 
-<style scoped></style>
+<template>
+  <el-drawer
+    v-model="getTheme.collapse"
+    direction="ltr"
+    :size="220"
+    :with-header="false"
+    @close="setCollapse"
+  >
+    <sim-aside
+      class="sim-aside--drawer"
+      :class="{ 'is-mobile': getTheme.device === 'mobile' }"
+      :is-collapse="false"
+    />
+  </el-drawer>
+</template>

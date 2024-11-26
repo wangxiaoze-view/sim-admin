@@ -1,12 +1,12 @@
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { useRoute } from 'vue-router'
+  import { useRouter } from '~/src/hooks'
+
   defineOptions({
     name: 'LinkKnowledge',
   })
 
-  const route = useRoute()
-
+  const { route } = useRouter()
   const pathUrl = computed((): string => {
     return route.meta ? (route.meta.iframePath as string) : ''
   })

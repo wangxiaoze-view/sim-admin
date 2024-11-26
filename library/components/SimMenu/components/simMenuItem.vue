@@ -2,9 +2,7 @@
   import SimIcon from '~/library/components/SimIcon/index.vue'
   import { translate } from '~/src/i18n'
   import { isExternal } from '~/src/utils'
-  import { useChangeTheme } from '~/src/hooks'
-
-  import { useRouter } from 'vue-router'
+  import { useRouter } from '~/src/hooks'
 
   defineOptions({
     name: 'SimMenuItem',
@@ -13,9 +11,7 @@
     itemOrMenu: ISimRouterRecordRaw
   }>()
 
-  const router = useRouter()
-
-  const { getTheme } = useChangeTheme()
+  const { router } = useRouter()
 
   const onHandlerRouter = () => {
     const {
@@ -42,7 +38,6 @@
       :size="16"
     />
     <template v-if="itemOrMenu.meta">
-      <!-- v-show="getTheme.device === 'mobile' ? true : !getTheme.collapse" -->
       <span>
         {{ translate(itemOrMenu.meta.title) }}
       </span>

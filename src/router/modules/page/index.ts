@@ -1,4 +1,4 @@
-export const pageRoutes: ISimRouterRecordRaw[] = [
+export default [
   {
     path: '/page',
     name: 'Page',
@@ -6,6 +6,7 @@ export const pageRoutes: ISimRouterRecordRaw[] = [
     meta: {
       title: '页面',
       icon: 'ri-article-line',
+      sort: 6,
     },
     children: [
       {
@@ -30,4 +31,4 @@ export const pageRoutes: ISimRouterRecordRaw[] = [
       },
     ],
   },
-]
+] as ISimRouterRecordRaw[]

@@ -1,14 +1,14 @@
 import { inject, onUnmounted, ref, watch, watchEffect } from 'vue'
-import { useRoute } from 'vue-router'
+// import { useRoute } from 'vue-router'
 import SimProgress from '~/library/libs/nprogress'
-import { useChangeTheme, useVisiteRoutes } from '~/src/hooks'
+import { useChangeTheme, useVisiteRoutes, useRouter } from '~/src/hooks'
 import { handlerActiveRoute } from '~/src/utils'
 import { settings_config } from '~/src/config'
 
 export default function useMainView() {
   const { keepaliveMax } = settings_config
 
-  const route = useRoute()
+  const { route } = useRouter()
   // 这个用于刷新页面, 也就是用 :key 强制刷新
   const routerKey = ref()
 

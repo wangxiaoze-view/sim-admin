@@ -1,11 +1,10 @@
 <script setup lang="ts">
-  import { useConfigProvider, useNetwork } from '~/src/hooks'
-  import { useRouter } from 'vue-router'
+  import { useConfigProvider, useNetwork, useRouter } from '~/src/hooks'
   defineOptions({
     name: 'SimApp',
   })
 
-  const router = useRouter()
+  const { router } = useRouter()
   const { getElLocal, getTheme } = useConfigProvider()
   const { isOnline } = useNetwork()
 
@@ -24,5 +23,3 @@
     </router-view>
   </el-config-provider>
 </template>
-
-<style scoped></style>

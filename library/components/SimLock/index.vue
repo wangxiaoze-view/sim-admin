@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import SimIcon from '~/library/components/SimIcon/index.vue'
+  import SimIcon from '../SimIcon/index.vue'
   import { useLocked } from '~/src/hooks'
 
   defineOptions({
