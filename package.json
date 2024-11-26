@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "rsbuild dev --open --env-mode development",
-    "build": "rsbuild build --env-mode production && node build/index.js",
+    "build": "NODE_OPTIONS=--max_old_space_size=4096 && rsbuild build --env-mode production && node build/index.js",
     "build:profile": "RSDOCTOR=true RSPACK_PROFILE=ALL  rsbuild build --env-mode production",
     "build:analyze": "BUNDLE_ANALYZE=true rsbuild build --env-mode production",
     "preview": "rsbuild preview",

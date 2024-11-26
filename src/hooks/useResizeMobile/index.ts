@@ -15,7 +15,13 @@ export function useResizeMobile(immediate = true) {
     if (document.hidden) return
     const isMobile = getDeviceWidth()
     if (isMobile) {
-      setTheme({ layout: 'ordinary', menuMode: 'default', isMode: false, mode: 'light' })
+      setTheme({
+        layout: 'ordinary',
+        menuMode: 'default',
+        isMode: false,
+        mode: 'light',
+        isUpdate: false,
+      })
     }
     setupInitTheme({
       device: isMobile ? 'mobile' : 'desktop',

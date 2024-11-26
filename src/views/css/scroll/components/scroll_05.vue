@@ -11,9 +11,10 @@
 
 <style lang="scss" scoped>
   @use 'sass:string';
+  @use 'sass:math';
 
   @function randomNum($max, $min: 0, $u: 1) {
-    @return ($min + random($max)) * $u;
+    @return ($min + math.random($max)) * $u;
   }
 
   @function randomColor() {

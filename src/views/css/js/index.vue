@@ -36,6 +36,10 @@
 
 <style lang="scss" scoped>
   .content {
-    height: 500px;
+    height: 400px;
+
+    :deep(p) {
+      margin: 0;
+    }
   }
 </style>

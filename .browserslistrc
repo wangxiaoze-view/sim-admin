@@ -3,6 +3,7 @@ chrome >= 87
 edge >= 88
 firefox >= 78
 safari >= 14
+IE 11
 
 [development]
 last 1 chrome version

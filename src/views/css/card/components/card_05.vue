@@ -13,9 +13,10 @@
 
 <style lang="scss" scoped>
   @use 'sass:string';
+  @use 'sass:math';
 
   @function randomColor() {
-    @return rgb(random(255), random(255), random(255));
+    @return rgb(math.random(255), math.random(255), math.random(255));
   }
 
   @mixin randomImage($rows: 6, $cols: 6) {
@@ -45,11 +46,11 @@
   }
 
   $str: 'ABCDEFGHIGKLMNOPQRSTUVWXYZabcdefghigklmnopqrstuvwxyz123456789';
-  $len: str-length($str);
+  $len: string.length($str);
 
   @function randomChar() {
-    $r: random($len);
-    @return str-slice($str, $r, $r);
+    $r: math.random($len);
+    @return string.slice($str, $r, $r);
   }
 
   @function randomChars($number) {

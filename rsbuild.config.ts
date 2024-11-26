@@ -44,14 +44,7 @@ export default defineConfig({
     lightningcssLoader: false,
     postcss(opts) {
       // @ts-expect-error TS2339
-      opts.postcssOptions?.plugins?.push(
-        postcssEnv({
-          autoprefixer: {
-            grid: true,
-            overrideBrowserslist: ['Android 4.1', 'iOS 7.1', 'Chrome > 31', 'ff > 31', 'ie >= 8'],
-          },
-        })
-      )
+      opts.postcssOptions?.plugins?.push(postcssEnv())
     },
     rspack(config, { appendPlugins }) {
       process.env.RSDOCTOR &&

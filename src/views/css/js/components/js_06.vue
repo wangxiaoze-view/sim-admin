@@ -58,7 +58,6 @@
       .item {
         margin-bottom: 10px;
         break-inside: avoid;
-        background: #fff;
         animation: a 5s;
 
         img {

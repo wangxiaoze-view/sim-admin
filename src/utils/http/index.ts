@@ -18,7 +18,11 @@ http.interceptorsRequest((config) => {
 
 http.interceptorsResponse((response: any) => {
   const { simMessage } = useElementApi()
-  if (!response.success || !net_success_code.includes(response.code)) {
+  if (
+    response.success != undefined &&
+    response.code != undefined &&
+    (!response.success || !net_success_code.includes(response.code))
+  ) {
     simMessage(response[net_message_name], 'error')
   }
   return response
