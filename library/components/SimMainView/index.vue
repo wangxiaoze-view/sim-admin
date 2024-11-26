@@ -16,7 +16,6 @@
         </keep-alive>
       </transition>
     </router-view>
-    <!-- <sim-footer /> -->
     <SimFooter />
   </div>
 </template>

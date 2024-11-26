@@ -29,7 +29,7 @@
     <div class="header">
       <span>配送列表</span>
     </div>
-    <el-table :data="tableData" border style="width: 100%">
+    <el-table :data="tableData" border>
       <el-table-column prop="date" label="日期" />
       <el-table-column prop="name" label="名字" />
       <el-table-column prop="phone" label="手机" />

@@ -34,7 +34,6 @@ export const linkRoutes: ISimRouterRecordRaw[] = [
       {
         path: 'https://cn.vuejs.org/',
         name: 'LinkVue',
-        component: () => import('~/src/views/home/index.vue'),
         meta: {
           title: 'Vue',
           target: '_blank',

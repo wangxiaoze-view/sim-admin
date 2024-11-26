@@ -31,16 +31,10 @@
     const base64 = cropper.getDataURL()
     const blob: Blob | null = await cropper.getBlob()
     if (!blob) return
-
-    // const file = await cropper.getFile({
-    //   fileName: 'test.png'
-    // })
-
     result.value = base64
     setTimeout(() => {
       setLoading(false)
     }, 2000)
-    // console.log(base64, blob, file)
   }
 </script>
 

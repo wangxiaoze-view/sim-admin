@@ -28,9 +28,7 @@
     }
     QRCodeMsg.value = url
     const msg = document.getElementById('QRCode_header')
-    QRCode.toCanvas(msg, QRCodeMsg.value, opts, function (error) {
-      console.log(error)
-    })
+    QRCode.toCanvas(msg, QRCodeMsg.value, opts, function () {})
   }
 
   onMounted(() => {

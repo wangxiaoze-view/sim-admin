@@ -41,7 +41,9 @@
   })
 
   // 触发mitt.emit
-  const onRefresh = () => $simEmit('refresh')
+  const onRefresh = () => {
+    $simEmit('refresh')
+  }
 
   const showTheme = () => {
     themeRef.value?.setVisible(true, {

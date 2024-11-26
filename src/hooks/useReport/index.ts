@@ -16,9 +16,10 @@ export function useReport() {
       // 是否开启调试
       isDebug: true,
       // 是否捕获错误
-      isError: true,
+      // TODO: 建议关闭
+      isError: false,
       // 是否捕获console.error
-      isConsoleError: true,
+      isConsoleError: false,
       // 是否捕获性能
       isPerformance: true,
       // 是否捕获资源

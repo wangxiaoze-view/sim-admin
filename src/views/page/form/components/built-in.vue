@@ -80,6 +80,7 @@
 <script lang="ts" setup>
   import { reactive, ref } from 'vue'
   import type { ComponentSize, FormInstance, FormRules } from 'element-plus'
+  import { logger } from '~/src/utils'
 
   interface RuleForm {
     name: string
@@ -175,9 +176,9 @@
     if (!formEl) return
     await formEl.validate((valid, fields) => {
       if (valid) {
-        console.log('submit!')
+        logger.log('submit!')
       } else {
-        console.log('error submit!', fields)
+        logger.log('error submit!', JSON.stringify(fields))
       }
     })
   }

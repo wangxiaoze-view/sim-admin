@@ -42,6 +42,12 @@ export const useRoutesStore = defineStore('routes', {
         }
         routes = [...routes, ...list]
       }
+
+      // 如果后期有 菜单 sort 排序， 那么您可以释放以下注解
+      // routes.sort((a, b) => {
+      //   return a.meta.sort - b.meta.sort
+      // })
+
       const getFilterRoutes = filterAsyncRoutes(
         [...constantRoutes, ...routes],
         getUserInfo.value.roles

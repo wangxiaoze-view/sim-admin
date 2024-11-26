@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { reactive, ref, onMounted } from 'vue'
   import { ElMessage } from 'element-plus'
+  import { logger } from '~/src/utils'
   const msg = ref('')
   const voices = ref()
 
@@ -35,7 +36,7 @@
       speechRecognition.value[type]()
       loading.value = false
     } catch (error) {
-      console.log(error)
+      logger.error(JSON.stringify(error))
     }
   }
 
@@ -45,7 +46,7 @@
       // @ts-expect-error TS2339
       speechRecognition.value = new webkitSpeechRecognition()
     } catch (error) {
-      console.log(error)
+      logger.error(JSON.stringify(error))
     }
   })
 </script>

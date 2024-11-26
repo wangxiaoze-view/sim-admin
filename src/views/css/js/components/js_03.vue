@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { reactive, ref, onMounted } from 'vue'
+  import { logger } from '~/src/utils'
   const msg = ref(
     `路上只我一个人，背着手踱着。这一片天地好像是我的;我也像超出了平常旳自己，到了另一世界里。
     我爱热闹，也爱冷静;爱群居，也爱独处。像今晚上，一个人在这苍茫旳月下，什么都可以想，什么都可以不想，
@@ -40,7 +41,7 @@
       speechSynthesis[type](utterance.value)
       loading.value = false
     } catch (error) {
-      console.log(error)
+      logger.error(JSON.stringify(error))
     }
   }
 
@@ -52,7 +53,7 @@
       // 	voices.value = speechSynthesis.getVoices();
       // };
     } catch (error) {
-      console.log(error)
+      logger.error(JSON.stringify(error))
     }
   })
 </script>

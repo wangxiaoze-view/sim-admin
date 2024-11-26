@@ -20,9 +20,10 @@ export default function useMainView() {
   const { activeMenu, getVisitedRoutes } = useVisiteRoutes()
   const { getTheme } = useChangeTheme()
 
-  const upKeepaliveNames = () => {
+  const upKeepaliveNames = (refreshName?: string) => {
     keepaliveNames.value = getVisitedRoutes.value
-      .filter((i) => !i.meta.keepAlive && i.name !== route.name)
+      // fix: !i.meta.keepAlive && i.name !== route.name每次都会执行，这样的话之前的缓存数组就清空了
+      .filter((i) => !i.meta.keepAlive && i.name !== refreshName)
       .map((item) => item.name)
   }
 
@@ -38,6 +39,7 @@ export default function useMainView() {
     }
     const cacheActivePath = routerKey.value
     routerKey.value = ''
+    upKeepaliveNames(route.name as string)
     setTimeout(() => {
       routerKey.value = cacheActivePath
       upKeepaliveNames()

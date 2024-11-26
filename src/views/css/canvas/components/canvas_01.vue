@@ -26,7 +26,6 @@
     ctx.value = canvasRef.value.getContext('2d')
     canvasRef.value.width = containerRef.value?.clientWidth || 800
     canvasRef.value.height = containerRef.value?.clientHeight || 600
-    console.log(canvasRef.value.width)
     if (!ctx.value) return
     ctx.value.strokeStyle = '#ddd'
     ctx.value.lineWidth = 2

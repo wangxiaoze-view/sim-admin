@@ -19,10 +19,6 @@ declare interface ISImRouterMeta {
   permissions?: string[]
   // 是否缓存
   keepAlive?: boolean
-  // 是否显示面包屑
-  breadcrumb?: boolean
-  // 是否显示菜单
-  showMenu?: boolean
   // 是否不关闭
   notClose?: boolean
   // 外链
@@ -38,8 +34,6 @@ declare interface ISimRouterRecordRaw extends Omit<RouteRecordRaw, 'meta' | 'chi
   name: Capitalize<string>
   // 自定义meta
   meta: ISImRouterMeta
-  // 全路径，例如：/home/index
-  fullPath?: string
   // 组件
   component?: ComponentType
   // 子集
