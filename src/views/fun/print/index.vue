@@ -15,8 +15,8 @@
   }
 
   const imageHref = [
-    'https://file.wangzevw.com/images/9e8609733f4a8658f2519b47df068f9.jpg',
-    'https://file.wangzevw.com/images/7.2h8btdobvo.webp',
+    'https://www.wangzevw.com/cdn-file/images/9e8609733f4a8658f2519b47df068f9.jpg',
+    'https://www.wangzevw.com/cdn-file/images/7.2h8btdobvo.webp',
   ]
 
   const pdfSrc = 'https://printjs.crabbly.com/docs/printjs.pdf'

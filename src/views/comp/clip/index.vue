@@ -54,7 +54,7 @@
         backgroundColor: '#f8f8f8',
         margin: 'auto',
       }"
-      img="https://file.wangzevw.com/images/bg2.4qr6mtamhy.webp"
+      img="https://www.wangzevw.com/cdn-file/images/bg2.4qr6mtamhy.webp"
       :options="{
         viewMode: 1,
         dragMode: 'crop',

@@ -32,21 +32,21 @@
       <el-tab-pane label="docx文件预览" name="first">
         <vue-office-docx
           :key="activeName"
-          src="https://file.wangzevw.com/files/test_admin_doc.docx"
+          src="https://www.wangzevw.com/cdn-file/files/test_admin_doc.docx"
           style="height: 100vh"
         />
       </el-tab-pane>
       <el-tab-pane label="excel文件预览" name="second">
         <vue-office-excel
           :key="activeName"
-          src="https://file.wangzevw.com/files/test_admin_excel.xls"
+          src="https://www.wangzevw.com/cdn-file/files/test_admin_excel.xls"
           style="height: 100vh"
         />
       </el-tab-pane>
       <el-tab-pane label="pdf文件预览" name="third">
         <vue-office-pdf
           :key="activeName"
-          src="https://file.wangzevw.com/files/test_admin_pdf.pdf"
+          src="https://www.wangzevw.com/cdn-file/files/test_admin_pdf.pdf"
           style="height: 100vh"
         />
       </el-tab-pane>

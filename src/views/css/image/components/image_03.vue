@@ -7,7 +7,11 @@
 
 <template>
   <div class="container">
-    <img src="https://file.wangzevw.com/images/default_top_img_3.webp" alt="image" srcset="" />
+    <img
+      src="https://www.wangzevw.com/cdn-file/images/default_top_img_3.webp"
+      alt="image"
+      srcset=""
+    />
   </div>
 </template>
 
