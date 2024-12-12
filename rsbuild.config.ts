@@ -131,6 +131,7 @@ export default defineConfig({
     },
   },
   server: {
+    base: '/sim-admin/',
     port: cli_port,
     host: cli_host,
     compress: true,
