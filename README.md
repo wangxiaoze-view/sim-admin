@@ -26,7 +26,7 @@
 - [x] echarts自定义数据
 - [x] hooks的开发
 - [x] 内置辅助函数插件
-- [x] 内置部分css动画以及3d效果
+- [x] ~~内置部分css动画以及3d效果~~, three-3d效果和css效果请看 [预览](https://wangxiaoze-view.github.io/web-demos/#button)
 - [x] 404， 403，500页面开发
 - [ ] [其他功能更新/开发请看](https://github.com/wangxiaoze-view/sim-admin/issues/1)
 
