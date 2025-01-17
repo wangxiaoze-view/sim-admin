@@ -4,6 +4,8 @@ declare type ComponentType<T = any> =
   | (() => Promise<T>)
   | Component
 
+type IconType = 'success_icon' | 'cup_icon' | 'new_icon'
+
 declare interface ISImRouterMeta {
   // 是否在菜单显示
   hidden?: boolean
@@ -23,6 +25,11 @@ declare interface ISImRouterMeta {
   target?: '_blank'
   // iframe地址
   iframePath?: string
+  // 菜单状态：数字角标，图标, 自定义图片，自定义组件等等
+  badge?: string // 角标
+  dot?: boolean // 圆点
+  statusIcon?: IconType // 自定义图标
+  custom?: ComponentType // 自定义组件
 }
 
 // meta. children 重写自定义类型

@@ -3,6 +3,7 @@
   import { translate } from '~/src/i18n'
   import { isExternal } from '~/src/utils'
   import { useRouter } from '~/src/hooks'
+  import SimSvg from '~/library/components/SimSvg/index.vue'
 
   defineOptions({
     name: 'SimMenuItem',
@@ -32,15 +33,26 @@
 
 <template>
   <el-menu-item :index="itemOrMenu.path" @click="onHandlerRouter">
-    <SimIcon
-      v-if="itemOrMenu.meta && itemOrMenu.meta.icon"
-      :icon-class="itemOrMenu.meta.icon"
-      :size="16"
-    />
+    <div class="sim-menu-item-container">
+      <SimIcon
+        v-if="itemOrMenu.meta && itemOrMenu.meta.icon"
+        :icon-class="itemOrMenu.meta.icon"
+        :size="16"
+        class="menu-icon"
+      />
+      <template v-if="itemOrMenu.meta">
+        <span class="menu-title">
+          {{ translate(itemOrMenu.meta.title) }}
+        </span>
+      </template>
+    </div>
     <template v-if="itemOrMenu.meta">
-      <span>
-        {{ translate(itemOrMenu.meta.title) }}
-      </span>
+      <el-tag v-if="itemOrMenu.meta.badge" effect="dark" type="danger">
+        {{ itemOrMenu.meta.badge }}
+      </el-tag>
+      <span v-if="itemOrMenu.meta.dot" class="sim-dot sim-dot-error"><span></span></span>
+      <SimSvg v-if="itemOrMenu.meta.statusIcon" :type="itemOrMenu.meta.statusIcon" />
+      <component v-if="itemOrMenu.meta.custom" :is="itemOrMenu.meta.custom()" />
     </template>
   </el-menu-item>
 </template>

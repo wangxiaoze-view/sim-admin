@@ -18,6 +18,7 @@ export default [
           icon: 'ri-list-check-3',
           notClose: true,
           roles: ['Admin', 'User', 'Test'],
+          dot: true,
         },
       },
       {

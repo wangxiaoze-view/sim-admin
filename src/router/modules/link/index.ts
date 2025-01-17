@@ -10,25 +10,35 @@ export default [
     },
     children: [
       {
+        path: 'my',
+        name: 'My',
+        component: () => import('~/src/views/iframe/index.vue'),
+        meta: {
+          title: '我的主页',
+          icon: 'ri-product-hunt-line',
+          iframePath: 'https://www.wangzevw.com',
+          roles: ['Admin', 'User', 'Test'],
+        },
+      },
+      {
         path: 'knowledge',
         name: 'LinkKnowledge',
         component: () => import('~/src/views/iframe/index.vue'),
         meta: {
           title: '知识库',
           icon: 'ri-empathize-line',
-          iframePath: 'https://www.wangzevw.com',
+          iframePath: 'https://www.wangzevw.com/knowledge-base/',
           roles: ['Admin', 'User', 'Test'],
         },
       },
-
       {
-        path: '3D',
-        name: '3D',
+        path: 'Demos',
+        name: 'Demos',
         component: () => import('~/src/views/iframe/index.vue'),
         meta: {
-          title: '3D',
+          title: 'Demos',
           icon: 'ri-criminal-line',
-          iframePath: 'https://www.wangzevw.com/demos/3d/models/common.html',
+          iframePath: 'https://www.wangzevw.com/web-demos',
           roles: ['Admin', 'User', 'Test'],
         },
       },

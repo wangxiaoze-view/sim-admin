@@ -34,6 +34,8 @@
   "列表": "List",
   "外链": "Link",
   "知识库": "Knowledge",
+  "我的主页": "Home",
+  "Demos": "Demos",
   "Vue": "Vue",
   "组件": "Component",
   "表格": "Table",
@@ -123,5 +125,12 @@
   "404": "404",
   "500": "500",
   "403": "403",
-  "网络下线": "Network offline"
+  "网络下线": "Network offline",
+  "菜单状态": "Menu status",
+  "角标": "Badge",
+  "数字角标": "Number badge",
+  "圆点": "Dot",
+  "自定义图标": "Custom icon",
+  "H函数": "H function",
+  "Vue 组件": "Vue component"
 }

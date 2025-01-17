@@ -9,7 +9,6 @@ export const getRoutes = (): Promise<ISimRouterRecordRaw[]> => {
         const route = (routes(key) as any).default
         if (route) _routes.push(...route)
       })
-
     resolve(_routes)
   })
 }
