@@ -1,3 +1,41 @@
+# [1.3.0](https://github.com/wangxiaoze-view/sim-admin/compare/1.2.0...1.3.0) (2025-01-17)
+
+
+* Update README.md ([a88b52a](https://github.com/wangxiaoze-view/sim-admin/commit/a88b52a39ef91e67af2609bf165f453bc8d670be))
+
+
+### ✅ Tests | 测试
+
+* 测试域名 ([7182cab](https://github.com/wangxiaoze-view/sim-admin/commit/7182cab86f84595e0d8f5b6b16052b4ecafcbcdc))
+
+
+### ✨ Features | 新功能
+
+* **菜单状态:** 新增菜单状态，支持自定义结构 ([4710000](https://github.com/wangxiaoze-view/sim-admin/commit/4710000c81dcfe6fc6b8a066a27b7e5cc263a2a1))
+* github-workflows ([c0c91b3](https://github.com/wangxiaoze-view/sim-admin/commit/c0c91b32fef60db2ab53aa367a6b455f012d1207))
+
+
+### 🎫 Chores | 其他更新
+
+* 跟新base路径 ([c66c68b](https://github.com/wangxiaoze-view/sim-admin/commit/c66c68b1ebed21352c24bfde009a56db9eeedb19))
+* 更新生产环境mock地址 ([1462598](https://github.com/wangxiaoze-view/sim-admin/commit/1462598e042fbd29ddebdd8e3fa54bcd0e4e7dca))
+* 更新组件图片cdn ([cadb976](https://github.com/wangxiaoze-view/sim-admin/commit/cadb9763ce49c4b04700ab51e6dde82f094f48f6))
+* 图片cdn链接更换 ([f4e9e35](https://github.com/wangxiaoze-view/sim-admin/commit/f4e9e3593d7831825a4cfe75f3d3d8c64ac3bbcf))
+* Release v1.3.0 ([9f9897f](https://github.com/wangxiaoze-view/sim-admin/commit/9f9897fca01cf5e76068954426794b0f8787612c))
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 修复检测网址更新提示的方式 ([9f7229d](https://github.com/wangxiaoze-view/sim-admin/commit/9f7229da26b43de33e004d20e3f561078c92a819)), closes [#2](https://github.com/wangxiaoze-view/sim-admin/issues/2)
+* **sass,update:** 修复update更新状态,修复sass语法升级 ([48719b5](https://github.com/wangxiaoze-view/sim-admin/commit/48719b5b81c665087223b5b620a52058dc63c9fc))
+
+
+### 📝 Documentation | 文档
+
+* 更新文档 ([5fd4754](https://github.com/wangxiaoze-view/sim-admin/commit/5fd4754a408522b08c57824500da4fd3348a9e9d))
+
+
+
 # [1.2.0](https://github.com/wangxiaoze-view/sim-admin/compare/1.1.0...1.2.0) (2024-11-26)
 
 
