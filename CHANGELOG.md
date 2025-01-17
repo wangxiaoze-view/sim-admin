@@ -1,5 +1,19 @@
 
 
+## 1.3.0 (2025-01-17)
+
+* feat(菜单状态): 新增菜单状态，支持自定义结构 ([4710000](https://github.com/wangxiaoze-view/sim-admin/commit/4710000))
+* fix(sass,update): 修复update更新状态,修复sass语法升级 ([48719b5](https://github.com/wangxiaoze-view/sim-admin/commit/48719b5))
+* Update README.md ([a88b52a](https://github.com/wangxiaoze-view/sim-admin/commit/a88b52a))
+* test: 测试域名 ([7182cab](https://github.com/wangxiaoze-view/sim-admin/commit/7182cab))
+* chore: 跟新base路径 ([c66c68b](https://github.com/wangxiaoze-view/sim-admin/commit/c66c68b))
+* chore: 更新生产环境mock地址 ([1462598](https://github.com/wangxiaoze-view/sim-admin/commit/1462598))
+* chore: 更新组件图片cdn ([cadb976](https://github.com/wangxiaoze-view/sim-admin/commit/cadb976))
+* chore: 图片cdn链接更换 ([f4e9e35](https://github.com/wangxiaoze-view/sim-admin/commit/f4e9e35))
+* feat: github-workflows ([c0c91b3](https://github.com/wangxiaoze-view/sim-admin/commit/c0c91b3))
+* fix: 修复检测网址更新提示的方式 ([9f7229d](https://github.com/wangxiaoze-view/sim-admin/commit/9f7229d)), closes [#2](https://github.com/wangxiaoze-view/sim-admin/issues/2)
+* docs: 更新文档 ([5fd4754](https://github.com/wangxiaoze-view/sim-admin/commit/5fd4754))
+
 ## 1.2.0 (2024-11-26)
 
 * refactor: 优化循环目录文件, 重构部分代码 ([b16123f](https://github.com/wangxiaoze-view/sim-admin/commit/b16123f))
