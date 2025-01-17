@@ -56,7 +56,7 @@ export default [
         },
       },
       {
-        path: 'custom',
+        path: 'customH',
         name: 'CustomStatusPage',
         component: () => import('~/src/views/status/index.vue'),
         meta: {
@@ -77,7 +77,7 @@ export default [
         },
       },
       {
-        path: 'custom',
+        path: 'customVue',
         name: 'CustomStatusPage',
         component: () => import('~/src/views/status/index.vue'),
         meta: {
