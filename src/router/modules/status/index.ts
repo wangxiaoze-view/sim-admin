@@ -57,7 +57,7 @@ export default [
       },
       {
         path: 'customH',
-        name: 'CustomStatusPage',
+        name: 'CustomHStatusPage',
         component: () => import('~/src/views/status/index.vue'),
         meta: {
           title: 'H函数',
@@ -78,7 +78,7 @@ export default [
       },
       {
         path: 'customVue',
-        name: 'CustomStatusPage',
+        name: 'CustomVueStatusPage',
         component: () => import('~/src/views/status/index.vue'),
         meta: {
           title: 'Vue 组件',
