@@ -3,6 +3,7 @@
   import printJs from 'print-js'
   import { usePrint } from '~/src/hooks'
   import { dayjs } from '~/src/utils'
+  import { fileLinks, otherLinks } from '~/src/config'
 
   defineOptions({
     name: 'FunPrint',
@@ -14,12 +15,10 @@
     address: string
   }
 
-  const imageHref = [
-    'https://www.wangzevw.com/cdn-file/images/9e8609733f4a8658f2519b47df068f9.jpg',
-    'https://www.wangzevw.com/cdn-file/images/7.2h8btdobvo.webp',
-  ]
-
-  const pdfSrc = 'https://printjs.crabbly.com/docs/printjs.pdf'
+  const { test_admin_pdf } = fileLinks
+  const {
+    printFiles: { images },
+  } = otherLinks
 
   const formModel = ref({
     name: '',
@@ -27,7 +26,7 @@
   })
 
   const imageRef = ref<HTMLImageElement | null>(null)
-  const { onSysPrint, onPrint } = usePrint()
+  const { onPrint } = usePrint()
 
   const tableData = ref<ITable[]>(
     Array.from({ length: 10 }, (_, index) => ({
@@ -39,7 +38,7 @@
 
   const onClickPrintImag = () => {
     onPrint({
-      printable: imageHref[0],
+      printable: images[0],
       type: 'image',
       header: '乌镇一日游',
     })
@@ -47,7 +46,7 @@
 
   const onClickPrintImageForMany = () => {
     onPrint({
-      printable: imageHref,
+      printable: images,
       type: 'image',
       header: '乌镇一日游',
     })
@@ -88,7 +87,7 @@
   }
 
   const onCLickPrintForPdf = () => {
-    printJs({ printable: pdfSrc, type: 'pdf', showModal: true })
+    printJs({ printable: test_admin_pdf, type: 'pdf', showModal: true })
   }
 </script>
 
@@ -101,7 +100,7 @@
           <el-button ref="imageRef" type="primary" @click="onClickPrintImag">图片打印</el-button>
         </div>
         <div class="card-height">
-          <img :src="imageHref[0]" alt="" />
+          <img :src="images[0]" alt="" />
         </div>
       </el-card>
     </el-col>
@@ -116,7 +115,7 @@
         </div>
         <div class="card-height">
           <el-scrollbar>
-            <img v-for="item in imageHref" :key="item" :src="item" alt="" />
+            <img v-for="item in images" :key="item" :src="item" alt="" />
           </el-scrollbar>
         </div>
       </el-card>
@@ -214,7 +213,7 @@
         </div>
         <div class="card-height">
           <el-scrollbar>
-            <iframe :src="pdfSrc" frameborder="0"></iframe>
+            <iframe :src="test_admin_pdf" frameborder="0"></iframe>
           </el-scrollbar>
         </div>
       </el-card>

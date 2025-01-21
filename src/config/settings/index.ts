@@ -1,3 +1,5 @@
+import { imageLinks } from '../link'
+
 export const settings_config = {
   // 网站标题
   title: 'Sim-Admin',
@@ -23,10 +25,10 @@ export const settings_config = {
   // 网站logo
   // v1 版本logo
   // logo: 'https://www.wangzevw.com/cdn-file/images/sim_admin_favicon.7zqat7487l.ico',
-  logo: 'https://www.wangzevw.com/cdn-file/images/logo.51e67aosot.svg',
+  logo: imageLinks.logo || 'https://www.wangzevw.com/cdn-file/images/logo.51e67aosot.svg',
   // 浏览器的logo
   // linkIcon: 'https://www.wangzevw.com/cdn-file/images/sim_admin_favicon.7zqat7487l.ico',
-  linkIcon: 'https://www.wangzevw.com/cdn-file/images/logo.51e67aosot.svg',
+  linkIcon: imageLinks.logo || 'https://www.wangzevw.com/cdn-file/images/logo.51e67aosot.svg',
   // ele message 的消失时间
   messageTime: 3000,
   // token 存储的方式

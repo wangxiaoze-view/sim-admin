@@ -2,9 +2,12 @@
   import { useCheckUpdate } from '~/src/hooks'
   import SimSvg from '~/library/components/SimSvg/index.vue'
   import pkg from '~/package.json'
+  import { imageLinks, githubCommit } from '~/src/config'
+
   defineOptions({
     name: 'SimUpdate',
   })
+  const { update_img } = imageLinks
   const { version } = pkg
   const { isUpdate, updater, waitUpdater, loading } = useCheckUpdate()
 </script>
@@ -24,14 +27,14 @@
         <SimSvg type="new_icon" />
       </div>
     </template>
-    <img src="https://www.wangzevw.com/cdn-file/images/up.67xk0iidnk.svg" alt="" />
+    <img :src="update_img" alt="" />
     <p>
       当前版本:
       <el-text type="primary">{{ version }}</el-text>
     </p>
     <div>
       更新内容:
-      <a target="_blank" href="https://github.com/wangxiaoze-view/sim-admin/blob/main/COMMIT.md">
+      <a target="_blank" :href="githubCommit">
         <el-text type="primary">更多内容在GitHub查看</el-text>
       </a>
       <ul>

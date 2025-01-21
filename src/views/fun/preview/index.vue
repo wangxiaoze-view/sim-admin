@@ -7,57 +7,40 @@
 
   import '@vue-office/docx/lib/v3/style.css'
   import '@vue-office/excel/lib/v3/style.css'
+  import { fileLinks, otherLinks } from '~/src/config'
 
   defineOptions({
     name: 'FunPreview',
   })
 
+  const { previewImages } = otherLinks
   const activeName = ref('first')
-
-  const url = 'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg'
-  const srcList = [
-    'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-    'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
-    'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
-    'https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg',
-    'https://fuss10.elemecdn.com/d/e6/c4d93a3805b3ce3f323f7974e6f78jpeg.jpeg',
-    'https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg',
-    'https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg',
-  ]
 </script>
 
 <template>
   <el-card class="mb-20" shadow="hover">
     <el-tabs v-model="activeName">
       <el-tab-pane label="docx文件预览" name="first">
-        <vue-office-docx
-          :key="activeName"
-          src="https://www.wangzevw.com/cdn-file/files/test_admin_doc.docx"
-          style="height: 100vh"
-        />
+        <vue-office-docx :key="activeName" :src="fileLinks.test_admin_doc" style="height: 100vh" />
       </el-tab-pane>
       <el-tab-pane label="excel文件预览" name="second">
         <vue-office-excel
           :key="activeName"
-          src="https://www.wangzevw.com/cdn-file/files/test_admin_excel.xls"
+          :src="fileLinks.test_admin_excel"
           style="height: 100vh"
         />
       </el-tab-pane>
       <el-tab-pane label="pdf文件预览" name="third">
-        <vue-office-pdf
-          :key="activeName"
-          src="https://www.wangzevw.com/cdn-file/files/test_admin_pdf.pdf"
-          style="height: 100vh"
-        />
+        <vue-office-pdf :key="activeName" :src="fileLinks.test_admin_pdf" style="height: 100vh" />
       </el-tab-pane>
       <el-tab-pane label="图片预览" name="fourth">
         <el-image
           style="width: 100px; height: 100px"
-          :src="url"
+          :src="previewImages[0]"
           :zoom-rate="1.2"
           :max-scale="7"
           :min-scale="0.2"
-          :preview-src-list="srcList"
+          :preview-src-list="previewImages"
           :initial-index="4"
           fit="cover"
         />

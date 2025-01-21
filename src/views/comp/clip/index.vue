@@ -1,11 +1,17 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import VuePictureCropper, { cropper } from 'vue-picture-cropper'
+  import { otherLinks } from '~/src/config'
   import { useLoading } from '~/src/hooks'
 
   defineOptions({
     name: 'ComClip',
   })
+
+  const {
+    printFiles: { images },
+  } = otherLinks
+
   // https://cropper.chengpeiquan.com/zh/
   const result = ref()
   const { loading, setLoading } = useLoading(true)
@@ -54,7 +60,7 @@
         backgroundColor: '#f8f8f8',
         margin: 'auto',
       }"
-      img="https://www.wangzevw.com/cdn-file/images/bg2.4qr6mtamhy.webp"
+      :img="images[1]"
       :options="{
         viewMode: 1,
         dragMode: 'crop',
