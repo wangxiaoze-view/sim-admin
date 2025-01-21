@@ -24,6 +24,7 @@
     "@log-reporting/core": "^1.0.8",
     "@logicflow/core": "^2.0.7",
     "@logicflow/extension": "^2.0.11",
+    "@remixicon/vue": "^4.6.0",
     "@tinymce/tinymce-vue": "^6.1.0",
     "@vue-office/docx": "^1.6.2",
     "@vue-office/excel": "^1.7.11",

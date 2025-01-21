@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Breadcumb: typeof import('./library/components/SimHeader/components/breadcumb.vue')['default']
+    ElAlert: typeof import('element-plus/es')['ElAlert']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElBacktop: typeof import('element-plus/es')['ElBacktop']
@@ -69,12 +70,14 @@ declare module 'vue' {
     SimHeader: typeof import('./library/components/SimHeader/index.vue')['default']
     SimHeaderTools: typeof import('./library/components/SimHeaderTools/index.vue')['default']
     SimIcon: typeof import('./library/components/SimIcon/index.vue')['default']
+    SimIconSelector: typeof import('./library/components/SimIconSelector/index.vue')['default']
     SimLanguage: typeof import('./library/components/SimLanguage/index.vue')['default']
     SimLock: typeof import('./library/components/SimLock/index.vue')['default']
     SimLogo: typeof import('./library/components/SimLogo/index.vue')['default']
     SimMainView: typeof import('./library/components/SimMainView/index.vue')['default']
     SimMenu: typeof import('./library/components/SimMenu/index.vue')['default']
     SimMenuItem: typeof import('./library/components/SimMenu/components/simMenuItem.vue')['default']
+    SimMenuStatus: typeof import('./library/components/SimMenu/components/simMenuStatus.vue')['default']
     SimRowHeader: typeof import('./library/components/SimRowHeader/index.vue')['default']
     SimSubmenu: typeof import('./library/components/SimMenu/components/simSubmenu.vue')['default']
     SimSvg: typeof import('./src/components/SimSvg/index.vue')['default']

@@ -1,3 +1,5 @@
+import { defineAsyncComponent, h } from 'vue'
+
 export default [
   {
     path: '/css',
@@ -7,6 +9,7 @@ export default [
       title: 'CSS',
       icon: 'ri-css3-line',
       sort: 7,
+      custom: () => defineAsyncComponent(() => import('~/src/views/css/components/custom.vue')),
     },
     children: [
       {

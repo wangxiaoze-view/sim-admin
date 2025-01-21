@@ -278,6 +278,11 @@ html {
       color: #fff;
     }
 
+    .sim--sub-menu-container {
+      display: flex;
+      align-items: center;
+      flex: 1;
+    }
     .el-menu-item {
       display: flex;
       align-items: center;
@@ -438,6 +443,11 @@ html {
         // 缩放侧边栏
         &.is-collapse {
           @extend .collapse-common-menu;
+        }
+        .sim-menu {
+          .el-menu {
+            margin: 0;
+          }
         }
       }
 
@@ -656,6 +666,12 @@ html {
           }
         }
       }
+    }
+  }
+
+  .el-popper {
+    .menu-title {
+      display: block !important;
     }
   }
 }

@@ -3,7 +3,7 @@
   import { translate } from '~/src/i18n'
   import { isExternal } from '~/src/utils'
   import { useRouter } from '~/src/hooks'
-  import SimSvg from '~/library/components/SimSvg/index.vue'
+  import SimMenuStatus from './simMenuStatus.vue'
 
   defineOptions({
     name: 'SimMenuItem',
@@ -46,14 +46,7 @@
         </span>
       </template>
     </div>
-    <template v-if="itemOrMenu.meta">
-      <el-tag v-if="itemOrMenu.meta.badge" effect="dark" type="danger">
-        {{ itemOrMenu.meta.badge }}
-      </el-tag>
-      <span v-if="itemOrMenu.meta.dot" class="sim-dot sim-dot-error"><span></span></span>
-      <SimSvg v-if="itemOrMenu.meta.statusIcon" :type="itemOrMenu.meta.statusIcon" />
-      <component v-if="itemOrMenu.meta.custom" :is="itemOrMenu.meta.custom()" />
-    </template>
+    <SimMenuStatus :item-or-menu="itemOrMenu" />
   </el-menu-item>
 </template>
 

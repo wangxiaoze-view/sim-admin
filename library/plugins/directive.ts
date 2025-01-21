@@ -32,7 +32,8 @@ export default {
     // 颜色，文本颜色或者图标颜色
     app.directive('icon-color', {
       mounted(el, binding) {
-        el.style.color = binding.value
+        console.log(binding.value)
+        el.style.color = `${binding.value} !important`
       },
     })
 

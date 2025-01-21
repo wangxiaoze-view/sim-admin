@@ -6,7 +6,7 @@ export default [
     meta: {
       title: '权限',
       icon: 'ri-shield-keyhole-line',
-      sort: 2,
+      sort: 4,
     },
     children: [
       {

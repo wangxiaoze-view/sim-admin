@@ -1,3 +1,5 @@
+import { h } from 'vue'
+
 export default [
   {
     path: '/comp',
@@ -6,9 +8,53 @@ export default [
     meta: {
       title: '组件',
       icon: 'ri-stack-line',
-      sort: 4,
+      sort: 2,
     },
     children: [
+      {
+        path: 'icon',
+        name: 'IconPage',
+        component: () => import('~/library/layouts/index.vue'),
+        meta: {
+          title: '图标',
+          icon: 'ri-remixicon-line',
+          roles: ['Admin', 'User', 'Test'],
+        },
+        children: [
+          {
+            path: 'icon',
+            name: 'IconPage',
+            component: () => import('~/src/views/comp/icon/icon/index.vue'),
+            meta: {
+              title: '默认图标',
+              // 多级不需要图标了，图标太多不好找
+              icon: '',
+              roles: ['Admin', 'User', 'Test'],
+              custom: () =>
+                h(
+                  'b',
+                  {
+                    style: {
+                      color: 'var(--el-color-danger)',
+                      textShadow: 'var(--el-color-danger) 4px 5px 3px',
+                    },
+                  },
+                  '新'
+                ),
+            },
+          },
+          {
+            path: 'iconSelector',
+            name: 'IconSelector',
+            component: () => import('~/src/views/comp/icon/iconSelector/index.vue'),
+            meta: {
+              title: '图标选择器',
+              icon: '',
+              roles: ['Admin', 'User', 'Test'],
+            },
+          },
+        ],
+      },
       {
         path: 'table',
         name: 'CompTable',
