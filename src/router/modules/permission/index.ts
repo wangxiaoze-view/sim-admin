@@ -1,3 +1,5 @@
+import { h } from 'vue'
+
 export default [
   {
     path: '/permission',
@@ -7,6 +9,7 @@ export default [
       title: '权限',
       icon: 'ri-shield-keyhole-line',
       sort: 4,
+      dot: true,
     },
     children: [
       {
@@ -27,6 +30,27 @@ export default [
           title: '菜单',
           icon: 'ri-menu-add-fill',
           roles: ['Admin'],
+        },
+      },
+      {
+        path: 'directive',
+        name: 'Directive',
+        component: () => import('~/src/views/permissions/directive/index.vue'),
+        meta: {
+          title: '指令',
+          icon: 'ri-instance-line',
+          roles: ['Admin', 'User', 'Test'],
+          custom: () =>
+            h(
+              'b',
+              {
+                style: {
+                  color: 'var(--el-color-danger)',
+                  textShadow: 'var(--el-color-danger) 4px 5px 3px',
+                },
+              },
+              '新'
+            ),
         },
       },
     ],

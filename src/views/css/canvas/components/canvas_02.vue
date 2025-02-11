@@ -1,7 +1,7 @@
 <script lang="ts" setup>
   import { onMounted, ref } from 'vue'
-  import { Shape } from '~/src/components/SimSvg/enum'
-  import svgIcon from '~/src/components/SimSvg/index.vue'
+  import { Shape } from '~/library/components/SimSvg/enum'
+  import svgIcon from '~/library/components/SimSvg/index.vue'
   import { TShape } from '~/src/enum'
 
   interface IRectType {

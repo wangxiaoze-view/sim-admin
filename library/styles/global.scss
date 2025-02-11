@@ -715,3 +715,32 @@ html {
     opacity: 1;
   }
 }
+
+::highlight(rainbow-color-1) {
+  color: #ad26ad;
+  text-decoration: underline;
+}
+::highlight(rainbow-color-2) {
+  color: #5d0a99;
+  text-decoration: underline;
+}
+::highlight(rainbow-color-3) {
+  color: #0000ff;
+  text-decoration: underline;
+}
+::highlight(rainbow-color-4) {
+  color: #07c607;
+  text-decoration: underline;
+}
+::highlight(rainbow-color-5) {
+  color: #b3b308;
+  text-decoration: underline;
+}
+::highlight(rainbow-color-6) {
+  color: #ffa500;
+  text-decoration: underline;
+}
+::highlight(rainbow-color-7) {
+  color: #ff0000;
+  text-decoration: underline;
+}

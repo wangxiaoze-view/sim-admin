@@ -11,6 +11,8 @@
   import { useChangeTheme, useFullscreen, useError, useUser } from '~/src/hooks'
   import { getNoticeListApi } from '~/src/api/other'
   import { INoticeDataType, INoticeType } from '~/src/api/types'
+  import { TUserRole } from '~/src/enum'
+  import { changeRole } from '~/src/utils'
 
   defineOptions({
     name: 'SimHeaderTools',
@@ -60,9 +62,18 @@
     })
   }
 
-  const changeUserMenu = (command: 'userCenter' | 'logout') => {
+  const changeUserMenu = (command: string) => {
     switch (command) {
       case 'userCenter':
+        break
+      case 'admin':
+        changeRole(TUserRole.ADMIN)
+        break
+      case 'user':
+        changeRole(TUserRole.USER)
+        break
+      case 'test':
+        changeRole(TUserRole.TEST)
         break
       case 'logout':
         logout()
@@ -196,7 +207,19 @@
             <SimIcon class="cursor-icon" icon-class="ri-user-2-line" />
             {{ translate('个人中心') }}
           </el-dropdown-item> -->
-          <el-dropdown-item command="logout">
+          <el-dropdown-item command="admin">
+            <SimIcon class="cursor-icon" icon-class="ri-admin-line" />
+            {{ translate('切换超级管理员身份') }}
+          </el-dropdown-item>
+          <el-dropdown-item command="user">
+            <SimIcon class="cursor-icon" icon-class="ri-user-4-line" />
+            {{ translate('切换管理员身份') }}
+          </el-dropdown-item>
+          <el-dropdown-item command="test">
+            <SimIcon class="cursor-icon" icon-class="ri-flask-line" />
+            {{ translate('切换游客身份') }}
+          </el-dropdown-item>
+          <el-dropdown-item command="logout" divided>
             <SimIcon class="cursor-icon" icon-class="ri-logout-box-line" />
             {{ translate('退出登录') }}
           </el-dropdown-item>

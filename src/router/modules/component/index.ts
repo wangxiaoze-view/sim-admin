@@ -30,17 +30,6 @@ export default [
               // 多级不需要图标了，图标太多不好找
               icon: '',
               roles: ['Admin', 'User', 'Test'],
-              custom: () =>
-                h(
-                  'b',
-                  {
-                    style: {
-                      color: 'var(--el-color-danger)',
-                      textShadow: 'var(--el-color-danger) 4px 5px 3px',
-                    },
-                  },
-                  '新'
-                ),
             },
           },
           {

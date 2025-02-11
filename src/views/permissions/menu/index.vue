@@ -1,26 +1,13 @@
 <script setup lang="ts">
-  import Mock from 'mockjs'
   import { TUserRole } from '~/src/enum'
-  import { setToken } from '~/src/utils'
+  import { changeRole } from '~/src/utils'
   import { useUser } from '~/src/hooks'
-  const { Random } = Mock
 
   defineOptions({
     name: 'PermissionMenu',
   })
 
   const { getUserInfo } = useUser()
-  const changeRole = (role: TUserRole) => {
-    const config = {
-      [TUserRole.ADMIN]: `Sim-Admin-Token-${Random.guid()}-${Date.now()}`,
-      [TUserRole.USER]: `Sim-User-Token-${Random.guid()}-${Date.now()}`,
-      [TUserRole.TEST]: `Sim-Test-Token-${Random.guid()}-${Date.now()}`,
-    }
-    const token = config[role]
-    if (!token) return
-    setToken(token)
-    window.location.reload()
-  }
 </script>
 
 <template>
