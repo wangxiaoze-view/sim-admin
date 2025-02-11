@@ -1,5 +1,15 @@
 
 
+## 1.4.0 (2025-02-11)
+
+* feat(directive): 新增文本高亮以及tooltip文字提示的自定义指令 ([e9f38ff](https://github.com/wangxiaoze-view/sim-admin/commit/e9f38ff))
+* feat(icons): 添加图标菜单, 新增依赖 ([b2e9fc4](https://github.com/wangxiaoze-view/sim-admin/commit/b2e9fc4))
+* fix: 修复菜单路径相同的bug ([8105e81](https://github.com/wangxiaoze-view/sim-admin/commit/8105e81))
+* fix: 修复锁屏页面代码错乱问题 ([aa24e14](https://github.com/wangxiaoze-view/sim-admin/commit/aa24e14))
+* fix: 修复组件名称一致导致出现的404 ([3595015](https://github.com/wangxiaoze-view/sim-admin/commit/3595015))
+* chore: 图片拆分为cdn ([d9753a7](https://github.com/wangxiaoze-view/sim-admin/commit/d9753a7))
+* docs: 更新commit ([6b26873](https://github.com/wangxiaoze-view/sim-admin/commit/6b26873))
+
 ## 1.3.0 (2025-01-17)
 
 * feat(菜单状态): 新增菜单状态，支持自定义结构 ([4710000](https://github.com/wangxiaoze-view/sim-admin/commit/4710000))
