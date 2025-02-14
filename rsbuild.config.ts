@@ -40,6 +40,7 @@ export default defineConfig({
       },
     }),
   ],
+
   tools: {
     lightningcssLoader: false,
     postcss(opts) {
@@ -67,8 +68,14 @@ export default defineConfig({
       )
 
       if (cli_buildGzip) appendPlugins(new CompressionPlugin())
+
+      // 可有优化hmr速度，但是页面代码报错 应用进程会终止
+      // config.experiments = {
+      //   incremental: !isProduction,
+      // }
     },
   },
+
   dev: {
     lazyCompilation: true,
   },
@@ -87,10 +94,12 @@ export default defineConfig({
     distPath: {
       root: cli_outputDit,
     },
-    sourceMap: { js: process.env.NODE_ENV === 'development' ? 'eval' : false },
+    // sourceMap: { js: !isProduction ? 'eval' : false },
+    sourceMap: { js: false },
     polyfill: 'usage',
   },
   performance: {
+    buildCache: !isProduction,
     chunkSplit: {
       // 通过 forceSplitting 配置拆分的 chunk 会通过 <script> 标签插入到 HTML 文件中，作为首屏请求的资源
       // forceSplitting: {
@@ -156,10 +165,8 @@ export default defineConfig({
     options: {
       name: 'sim_admin',
       remotes: {
-        // TODO: 测试
-        remote: 'remote@http://localhost:3000/remoteEntry.js',
+        remote: process.env.APP_REMOTE as string,
       },
-      // shared: ['vue', 'vue-router', 'pinia'],
       shared: {
         vue: {
           singleton: true,

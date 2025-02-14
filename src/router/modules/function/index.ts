@@ -10,6 +10,16 @@ export default [
     },
     children: [
       {
+        path: 'remote',
+        name: 'RemotePage',
+        component: () => import('~/src/views/fun/remote/index.vue'),
+        meta: {
+          title: '远程组件',
+          icon: 'ri-remote-control-line',
+          roles: ['Admin', 'User', 'Test'],
+        },
+      },
+      {
         path: 'flow',
         name: 'FunFlow',
         component: () => import('~/src/views/fun/flow/index.vue'),
