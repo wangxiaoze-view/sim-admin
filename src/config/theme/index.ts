@@ -66,5 +66,5 @@ export const themeConfig: ITheme = {
   // 默认电脑
   device: 'desktop',
 
-  isUpdate: true,
+  isUpdate: false,
 }
