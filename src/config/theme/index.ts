@@ -66,5 +66,6 @@ export const themeConfig: ITheme = {
   // 默认电脑
   device: 'desktop',
 
+  // TODO: 网站更新后期会考虑其他实现方式？
   isUpdate: false,
 }
