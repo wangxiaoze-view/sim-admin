@@ -1,5 +1,3 @@
-import { h } from 'vue'
-
 export default [
   {
     path: '/comp',
@@ -8,7 +6,7 @@ export default [
     meta: {
       title: '组件',
       icon: 'ri-stack-line',
-      sort: 2,
+      sort: 4,
     },
     children: [
       {
@@ -27,8 +25,7 @@ export default [
             component: () => import('~/src/views/comp/icon/icon/index.vue'),
             meta: {
               title: '默认图标',
-              // 多级不需要图标了，图标太多不好找
-              icon: '',
+              icon: 'ri-golf-ball-line',
               roles: ['Admin', 'User', 'Test'],
             },
           },
@@ -38,7 +35,7 @@ export default [
             component: () => import('~/src/views/comp/icon/iconSelector/index.vue'),
             meta: {
               title: '图标选择器',
-              icon: '',
+              icon: 'ri-filter-3-line',
               roles: ['Admin', 'User', 'Test'],
             },
           },

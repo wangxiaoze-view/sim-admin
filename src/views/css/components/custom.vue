@@ -41,7 +41,7 @@
         textShadow: 'var(--el-color-danger) 4px 5px 3px',
       },
     },
-    '废弃'
+    '弃'
   )
 </script>
 

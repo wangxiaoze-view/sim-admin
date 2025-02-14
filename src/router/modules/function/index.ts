@@ -6,7 +6,7 @@ export default [
     meta: {
       title: '功能',
       icon: 'ri-apps-line',
-      sort: 3,
+      sort: 5,
     },
     children: [
       {

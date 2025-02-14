@@ -8,7 +8,7 @@ export default [
     meta: {
       title: '菜单状态',
       icon: 'ri-asterisk',
-      sort: 5,
+      sort: 2,
     },
     children: [
       {

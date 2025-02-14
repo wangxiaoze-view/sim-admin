@@ -6,7 +6,7 @@ export default [
     meta: {
       title: '外链',
       icon: 'ri-link-unlink-m',
-      sort: 5,
+      sort: 6,
     },
     children: [
       {

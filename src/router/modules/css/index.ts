@@ -8,7 +8,7 @@ export default [
     meta: {
       title: 'CSS',
       icon: 'ri-css3-line',
-      sort: 7,
+      sort: 99,
       custom: () => defineAsyncComponent(() => import('~/src/views/css/components/custom.vue')),
     },
     children: [

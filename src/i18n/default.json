@@ -139,5 +139,9 @@
   "圆点": "Dot",
   "自定义图标": "Custom icon",
   "H函数": "H function",
-  "Vue 组件": "Vue component"
+  "Vue 组件": "Vue component",
+  "成功": "Success",
+  "警告": "Warning",
+  "消息": "Message",
+  "信息": "Info"
 }

@@ -8,7 +8,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Breadcumb: typeof import('./library/components/SimHeader/components/breadcumb.vue')['default']
-    ElAlert: typeof import('element-plus/es')['ElAlert']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElBacktop: typeof import('element-plus/es')['ElBacktop']
@@ -19,7 +18,6 @@ declare module 'vue' {
     ElCard: typeof import('element-plus/es')['ElCard']
     ElCarousel: typeof import('element-plus/es')['ElCarousel']
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
-    ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
     ElCol: typeof import('element-plus/es')['ElCol']
     ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
@@ -46,7 +44,6 @@ declare module 'vue' {
     ElRow: typeof import('element-plus/es')['ElRow']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSelect: typeof import('element-plus/es')['ElSelect']
-    ElSlider: typeof import('element-plus/es')['ElSlider']
     ElSpace: typeof import('element-plus/es')['ElSpace']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
@@ -83,7 +80,7 @@ declare module 'vue' {
     SimMenuStatus: typeof import('./library/components/SimMenu/components/simMenuStatus.vue')['default']
     SimRowHeader: typeof import('./library/components/SimRowHeader/index.vue')['default']
     SimSubmenu: typeof import('./library/components/SimMenu/components/simSubmenu.vue')['default']
-    SimSvg: typeof import('./src/components/SimSvg/index.vue')['default']
+    SimSvg: typeof import('./library/components/SimSvg/index.vue')['default']
     SimSwitchDark: typeof import('./library/components/SimSwitchDark/index.vue')['default']
     SimTabs: typeof import('./library/components/SimTabs/index.vue')['default']
     SimThemeDrawer: typeof import('./library/components/SimThemeDrawer/index.vue')['default']
