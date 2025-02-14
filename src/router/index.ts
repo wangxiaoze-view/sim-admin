@@ -67,6 +67,14 @@ export const constantRoutes: ISimRouterRecordRaw[] = [
       hidden: true,
     },
   },
+  {
+    path: '/demo',
+    name: 'Demo',
+    component: () => import('~/src/views/demo/index.vue'),
+    meta: {
+      hidden: true,
+    },
+  },
 ]
 
 export const notFoundRoute: ISimRouterRecordRaw = {

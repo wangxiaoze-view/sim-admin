@@ -152,4 +152,26 @@ export default defineConfig({
       copyright,
     },
   },
+  moduleFederation: {
+    options: {
+      name: 'sim_admin',
+      remotes: {
+        // TODO: 测试
+        remote: 'remote@http://localhost:3000/remoteEntry.js',
+      },
+      // shared: ['vue', 'vue-router', 'pinia'],
+      shared: {
+        vue: {
+          singleton: true,
+          requiredVersion: '3',
+          eager: true,
+        },
+        'element-plus': {
+          singleton: true,
+          requiredVersion: '2',
+          eager: true,
+        },
+      },
+    },
+  },
 })
