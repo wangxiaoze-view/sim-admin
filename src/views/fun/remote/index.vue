@@ -1,19 +1,21 @@
 <template>
   <div class="remote-container mb-20">
     <el-alert title="后期会继续完善远程组件!" class="mb-20"></el-alert>
-    <Btn />
+    <el-row :gutter="20">
+      <remoteBtn />
+      <remoteRad v-if="false" />
+    </el-row>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { defineAsyncComponent, h } from 'vue'
   defineOptions({ name: 'RemotePage' })
-  const Btn = defineAsyncComponent({
-    loader: () => import('remote/button'),
-    loadingComponent: () => h('div', 'loading...'),
-    errorComponent: () => h('div', '远程组件加载失败, 请刷新页面!'),
-    delay: 1000,
-  })
+  import remoteBtn from './components/remoteBtn.vue'
+  import remoteRad from './components/remoteRadioCheck.vue'
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+  :deep(.content) {
+    height: 300px;
+  }
+</style>
