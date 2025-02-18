@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { defineAsyncComponent, ref } from 'vue'
+  import { ElRadioGroup } from 'element-plus'
   import { Loading, Error } from '../asyncComponent'
 
   const Rad = defineAsyncComponent({
