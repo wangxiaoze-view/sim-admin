@@ -27,7 +27,7 @@ export default [
         meta: {
           title: '知识库',
           icon: 'ri-empathize-line',
-          iframePath: 'https://www.wangzevw.com/knowledge-base/',
+          iframePath: 'https://www.wangxiaoze.cn/knowledge-base/',
           roles: ['Admin', 'User', 'Test'],
         },
       },
@@ -38,7 +38,7 @@ export default [
         meta: {
           title: 'Demos',
           icon: 'ri-criminal-line',
-          iframePath: 'https://www.wangzevw.com/web-demos',
+          iframePath: 'https://www.wangxiaoze.cn/web-demos',
           roles: ['Admin', 'User', 'Test'],
         },
       },

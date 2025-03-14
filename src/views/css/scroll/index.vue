@@ -19,7 +19,7 @@
         <template #title>
           <p>
             以下滚动兼容效果不是很好
-            <a href="https://www.wangzevw.com/demos/css/scroll/common.html">查看</a>
+            <a href="https://www.wangxiaoze.cn/demos/css/scroll/common.html">查看</a>
           </p>
         </template>
       </el-alert>

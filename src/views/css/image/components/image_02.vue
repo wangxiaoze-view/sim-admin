@@ -10,7 +10,7 @@
     <div>
       <div class="box">
         <img
-          src="https://www.wangzevw.com/cdn-file/images/default_top_img_3.webp"
+          src="https://www.wangxiaoze.cn/cdn-file/images/default_top_img_3.webp"
           alt="image"
           srcset=""
         />
@@ -19,7 +19,7 @@
       <div style="overflow: hidden; height: 0">
         <div class="box" id="element">
           <img
-            src="https://www.wangzevw.com/cdn-file/images/default_top_img_3.webp"
+            src="https://www.wangxiaoze.cn/cdn-file/images/default_top_img_3.webp"
             alt="image"
             srcset=""
           />

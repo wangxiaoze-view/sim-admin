@@ -8,7 +8,7 @@
 <template>
   <div class="container">
     <img
-      src="https://www.wangzevw.com/cdn-file/images/default_top_img_3.webp"
+      src="https://www.wangxiaoze.cn/cdn-file/images/default_top_img_3.webp"
       alt="image"
       srcset=""
     />
