@@ -1,0 +1,11 @@
+{
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    ".env": ".env.development, .env.production",
+    "eslint.config.mjs": ".eslintignore,.prettierignore,.stylelintignore,.commitlintrc.*,.prettierrc.*,.stylelintrc.*,.eslintrc-auto-import.json,.editorconfig,.commitlint.cjs,.prettierrc,.stylelintcache,.cz-message.cjs,commitlint.config.cjs,commitlog-option.mjs,.release-it.json",
+    "package.json": "pnpm-lock.yaml,pnpm-workspace.yaml,LICENSE,.gitattributes,.gitignore,.gitpod.yml,CNAME,.npmrc,.browserslistrc,.node-version,.nvmrc",
+    "README.md": "CHANGELOG.md,COMMIT.md",
+    "rsbuild.config.ts": "web-types.json,tsconfig.json,auto-imports.d.ts,components.d.ts",
+  },
+}

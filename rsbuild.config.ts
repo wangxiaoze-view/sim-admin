@@ -161,6 +161,7 @@ export default defineConfig({
       copyright,
     },
   },
+
   moduleFederation: {
     options: {
       name: 'sim_admin',

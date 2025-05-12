@@ -14,6 +14,7 @@
   import remoteBtn from './components/remoteBtn.vue'
   import remoteRad from './components/remoteRadioCheck.vue'
   import remoteSvg from './components/remoteSvgIcon.vue'
+  const isProduction = ['production'].includes(process.env.NODE_ENV || '')
 </script>
 
 <style scoped lang="scss">
