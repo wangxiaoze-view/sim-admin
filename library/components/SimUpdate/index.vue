@@ -23,7 +23,7 @@
   >
     <template #header>
       <div class="title">
-        新版本来袭!!
+        新版本来袭!
         <SimSvg type="new_icon" />
       </div>
     </template>
