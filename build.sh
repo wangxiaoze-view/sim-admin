@@ -1,3 +1,4 @@
+#!/bin/bash
 chmod +x pull.sh
 
 # 是否需要install
