@@ -38,7 +38,7 @@ export default [
         meta: {
           title: 'Demos',
           icon: 'ri-criminal-line',
-          iframePath: 'https://www.wangxiaoze.cn/web-demos',
+          iframePath: 'https://www.wangxiaoze.cn/demos',
           roles: ['Admin', 'User', 'Test'],
         },
       },
