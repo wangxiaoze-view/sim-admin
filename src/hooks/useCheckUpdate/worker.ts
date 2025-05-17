@@ -23,6 +23,7 @@ try {
   }
 
   self.addEventListener('message', ({ data }) => {
+    console.log(data)
     // 检测更新
     if (data.type === 'check') {
       checkUpdate()
