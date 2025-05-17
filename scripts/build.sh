@@ -4,7 +4,7 @@ echo "正在进行项目打包，请稍等..."
 # 是否需要install
 if test "$Re_Install" = "true" ; then
 	rm -rf node_modules pnpm-lock.yaml
-	pnpm install
+	pnpm run init
 fi
 
 pnpm run build
