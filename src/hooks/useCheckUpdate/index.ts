@@ -8,7 +8,7 @@ export function useCheckUpdate() {
   let lastEtag: string | undefined = undefined
   let worker: Worker
   if (isProduction) {
-    worker = new Worker(new URL('./worker.ts', import.meta.url), {
+    worker = new Worker('./worker.ts', {
       name: 'checkUpdateWorker',
     })
     console.log(worker)
