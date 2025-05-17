@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "rsbuild dev --open --env-mode development",
-    "build": "NODE_OPTIONS=--max_old_space_size=4096 && rsbuild build --env-mode production && node build/index.js",
+    "build": "rsbuild build --env-mode production && node build/index.js",
+    "build:mac": "NODE_OPTIONS=--max_old_space_size=4096 && rsbuild build --env-mode production && node build/index.js",
     "build:profile": "RSDOCTOR=true RSPACK_PROFILE=ALL  rsbuild build --env-mode production",
     "build:analyze": "BUNDLE_ANALYZE=true rsbuild build --env-mode production",
     "preview": "rsbuild preview",
     "commitlint": "commitlint --config commitlint.config.cjs -e -V",
-    "lint:oxlint": "oxlint {src,mock,library}/**/*.{vue,js,ts} --fix -D correctness --ignore-path .gitignore",
+    "lint:oxlint": "oxlint {src,mock,library}/**/*.{vue,js,ts} --fix -D correctness --ignore-path .gitignore ",
     "lint:eslint": "eslint --no-error-on-unmatched-pattern {src,mock,library}/**/*.{vue,js,ts} --fix",
     "lint:format": "prettier --no-error-on-unmatched-pattern  {src,mock,library}/**/*.{html,vue,css,sass,scss,js,ts,md} --write ",
     "lint:style": "stylelint {src,mock,library}/**/*.{vue,css,sass,scss} --cache --fix",
@@ -18,7 +19,8 @@
     "commitlog": "conventional-changelog -p angular -i COMMIT.md -s -r 0 -n ./commitlog-option.mjs",
     "prepare": "husky install",
     "commit": "git-cz",
-    "release": "release-it"
+    "release": "release-it",
+    "preinstall": "sh pull.sh"
   },
   "dependencies": {
     "@log-reporting/core": "^1.0.8",
@@ -35,7 +37,7 @@
     "dayjs": "^1.11.13",
     "echarts": "^5.5.1",
     "element-plus": "^2.8.7",
-    "functional-helpers": "git@github.com:wangxiaoze-view/functional-helpers-lib.git",
+    "functional-helpers": "file:./functional-helpers",
     "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
     "pinia": "^2.2.6",
@@ -109,7 +111,7 @@
     "vue-eslint-parser": "^9.4.3"
   },
   "lint-staged": {
-    "*.{js,ts,vue,json}": [
+    "{src,mock,library,types,build}.{js,ts,vue,json}": [
       "pnpm run lint:oxlint",
       "pnpm run lint:eslint",
       "pnpm run lint:format",

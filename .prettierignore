@@ -5,3 +5,4 @@ yarn.lock
 auto-imports.d.ts
 components.d.ts
 src/server
+functional-helpers/*

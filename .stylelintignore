@@ -2,3 +2,4 @@
 /dist/*
 /public/*
 src/server
+functional-helpers/*

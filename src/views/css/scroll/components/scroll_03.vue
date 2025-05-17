@@ -9,7 +9,7 @@
     </div>
     <img
       class="image1"
-      src="https://www.wangxiaoze.cn/cdn-file/images/default_top_img_3.webp"
+      src="https://cdn.wangxiaoze.cn/images/default_top_img_3.webp"
       alt="image"
       srcset=""
     />
