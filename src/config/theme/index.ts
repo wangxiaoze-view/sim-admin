@@ -67,5 +67,5 @@ export const themeConfig: ITheme = {
   device: 'desktop',
 
   // TODO: 网站更新后期会考虑其他实现方式？
-  isUpdate: false,
+  isUpdate: true,
 }
