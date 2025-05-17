@@ -18,7 +18,7 @@ export function useCheckUpdate() {
     if (preTime === `${process.env.VERSION}`) return
     isUpdate.value = true
   }
-  const updater = () => {
+  const startUpdateInterval = () => {
     if (updateInterval) clearInterval(updateInterval)
     updateInterval = setInterval(() => {
       onCheckUpdate()
@@ -28,14 +28,18 @@ export function useCheckUpdate() {
     if (updateInterval) clearInterval(updateInterval)
     isUpdate.value = false
   }
+  const updater = () => {
+    location.reload()
+  }
 
   if (isProduction) {
     document.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'visible') {
         onCheckUpdate()
+        startUpdateInterval()
       }
     })
-    updater()
+    startUpdateInterval()
   }
   // let lastEtag: string | undefined = undefined
   // let worker: Worker
