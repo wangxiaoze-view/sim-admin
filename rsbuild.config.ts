@@ -153,9 +153,9 @@ export default defineConfig({
     port: cli_port,
     host: cli_host,
     compress: true,
-    headers: {
-      lastBuildTime: `${new Date().getTime()}`,
-    },
+    // headers: {
+    //   lastBuildTime: `${new Date().getTime()}`,
+    // },
     // ...(!isProduction
     //   ? {
     //       proxy: {
