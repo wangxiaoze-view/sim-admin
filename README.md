@@ -37,7 +37,7 @@
 ```bash
 pnpm install
 
-# 如果install报错，那么使用git bash 执行sh pull.sh
+# 如果没有lib-functional-helpers.tar.gz，那么使用git bash 执行pnpm run init
 ```
 
 2. 运行项目
