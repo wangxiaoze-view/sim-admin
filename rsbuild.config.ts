@@ -80,13 +80,14 @@ export default defineConfig({
   },
   source: {
     define: {
-      __APP_INFO__: JSON.stringify({
-        pkg: {
-          name: process.env.npm_package_name,
-          version: process.env.npm_package_version,
-        },
-        lastBuildTime: new Date().toLocaleString(),
-      }),
+      'process.env.VERSION': `${Date.now()}`,
+      // __APP_INFO__: JSON.stringify({
+      //   pkg: {
+      //     name: process.env.npm_package_name,
+      //     version: process.env.npm_package_version,
+      //   },
+      //   lastBuildTime: new Date().toLocaleString(),
+      // }),
     },
     alias: {
       '~/': './',
@@ -152,6 +153,9 @@ export default defineConfig({
     port: cli_port,
     host: cli_host,
     compress: true,
+    headers: {
+      lastBuildTime: `${new Date().getTime()}`,
+    },
     // ...(!isProduction
     //   ? {
     //       proxy: {
@@ -167,6 +171,7 @@ export default defineConfig({
     meta: {
       description,
       copyright,
+      buildTime: `${new Date().getTime()}`,
     },
   },
 
