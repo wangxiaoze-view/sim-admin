@@ -24,175 +24,178 @@ const { title, linkIcon, description, copyright } = settings_config
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-export default defineConfig({
-  plugins: [
-    pluginVue(),
-    pluginSass(),
-    pluginImageCompress(),
-    pluginCssMinimizer(),
-    // pluginMockServer({
-    //   log: true,
-    //   prefix: '/api',
-    //   build: {
-    //     // 将mock数据打包到生产环境
-    //     dist: `${process.cwd()}/mockServer`,
-    //     serverPort: 3003,
-    //   },
-    // }),
-  ],
+export default defineConfig(() => {
+  const buildTime = Date.now()
+  return {
+    plugins: [
+      pluginVue(),
+      pluginSass(),
+      pluginImageCompress(),
+      pluginCssMinimizer(),
+      // pluginMockServer({
+      //   log: true,
+      //   prefix: '/api',
+      //   build: {
+      //     // 将mock数据打包到生产环境
+      //     dist: `${process.cwd()}/mockServer`,
+      //     serverPort: 3003,
+      //   },
+      // }),
+    ],
 
-  tools: {
-    lightningcssLoader: false,
-    postcss(opts) {
-      opts.postcssOptions?.plugins?.push(postcssEnv())
-    },
-    rspack(config, { appendPlugins }) {
-      process.env.RSDOCTOR &&
+    tools: {
+      lightningcssLoader: false,
+      postcss(opts) {
+        opts.postcssOptions?.plugins?.push(postcssEnv())
+      },
+      rspack(config, { appendPlugins }) {
+        process.env.RSDOCTOR &&
+          appendPlugins(
+            new RsdoctorRspackPlugin({
+              mode: 'brief',
+            })
+          )
         appendPlugins(
-          new RsdoctorRspackPlugin({
-            mode: 'brief',
+          AutoImport({
+            imports: ['vue', 'vue-router', 'pinia'],
+            resolvers: [ElementPlusResolver()],
           })
         )
-      appendPlugins(
-        AutoImport({
-          imports: ['vue', 'vue-router', 'pinia'],
-          resolvers: [ElementPlusResolver()],
-        })
-      )
-      appendPlugins(
-        Components({
-          dirs: ['src/components', 'library/components'],
-          resolvers: [ElementPlusResolver()],
-        })
-      )
+        appendPlugins(
+          Components({
+            dirs: ['src/components', 'library/components'],
+            resolvers: [ElementPlusResolver()],
+          })
+        )
 
-      if (cli_buildGzip) appendPlugins(new CompressionPlugin())
+        if (cli_buildGzip) appendPlugins(new CompressionPlugin())
 
-      // 可有优化hmr速度，但是页面代码报错 应用进程会终止
-      // config.experiments = {
-      //   incremental: !isProduction,
-      // }
-    },
-  },
-
-  dev: {
-    lazyCompilation: true,
-  },
-  source: {
-    define: {
-      'process.env.VERSION': `${Date.now()}`,
-      // __APP_INFO__: JSON.stringify({
-      //   pkg: {
-      //     name: process.env.npm_package_name,
-      //     version: process.env.npm_package_version,
-      //   },
-      //   lastBuildTime: new Date().toLocaleString(),
-      // }),
-    },
-    alias: {
-      '~/': './',
-      '/@/': './src/',
-      '/@mock/': './mock/',
-      '/@sim/': './library/',
-    },
-  },
-  output: {
-    // 打包资源不去内联
-    // inlineScripts: false,
-    // inlineStyles: false,
-    distPath: {
-      root: cli_outputDit,
-    },
-    // sourceMap: { js: !isProduction ? 'eval' : false },
-    sourceMap: { js: false },
-    polyfill: 'usage',
-  },
-  performance: {
-    buildCache: !isProduction,
-    chunkSplit: {
-      // 通过 forceSplitting 配置拆分的 chunk 会通过 <script> 标签插入到 HTML 文件中，作为首屏请求的资源
-      forceSplitting: {
-        axios: /node_modules[\\/]vue-axios/,
-        lodash: /node_modules[\\/]lodash-es/,
-        vue: /node_modules[\\/]vue[\\/]/,
-        'vue-router': /node_modules[\\/]vue-router[\\/]/,
-        'element-plus': /node_modules[\\/]element-plus[\\/]/,
-        pinia: /node_modules[\\/]pinia[\\/]/,
-        remixicon: /node_modules[\\/]remixicon[\\/]/,
+        // 可有优化hmr速度，但是页面代码报错 应用进程会终止
+        // config.experiments = {
+        //   incremental: !isProduction,
+        // }
       },
-      override: {
-        chunks: 'all',
-        minSize: 20000,
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name(module: any) {
-              let packageName = 'vendors'
-              // 匹配/node_modules/.pnpm/, 因为固定式pnpm安装的
-              const reg = /[\\/]node_modules[\\/].pnpm\/(.*?)([\\/]|$)/
-              if (reg.test(module.context)) {
-                packageName = module.context.match(reg)[1]
-              }
-              return `chunk-${packageName.replace('@', '')}`
+    },
+
+    dev: {
+      lazyCompilation: true,
+    },
+    source: {
+      define: {
+        'process.env.VERSION': JSON.stringify(buildTime),
+        // __APP_INFO__: JSON.stringify({
+        //   pkg: {
+        //     name: process.env.npm_package_name,
+        //     version: process.env.npm_package_version,
+        //   },
+        //   lastBuildTime: new Date().toLocaleString(),
+        // }),
+      },
+      alias: {
+        '~/': './',
+        '/@/': './src/',
+        '/@mock/': './mock/',
+        '/@sim/': './library/',
+      },
+    },
+    output: {
+      // 打包资源不去内联
+      // inlineScripts: false,
+      // inlineStyles: false,
+      distPath: {
+        root: cli_outputDit,
+      },
+      // sourceMap: { js: !isProduction ? 'eval' : false },
+      sourceMap: { js: false },
+      polyfill: 'usage',
+    },
+    performance: {
+      buildCache: !isProduction,
+      chunkSplit: {
+        // 通过 forceSplitting 配置拆分的 chunk 会通过 <script> 标签插入到 HTML 文件中，作为首屏请求的资源
+        forceSplitting: {
+          axios: /node_modules[\\/]vue-axios/,
+          lodash: /node_modules[\\/]lodash-es/,
+          vue: /node_modules[\\/]vue[\\/]/,
+          'vue-router': /node_modules[\\/]vue-router[\\/]/,
+          'element-plus': /node_modules[\\/]element-plus[\\/]/,
+          pinia: /node_modules[\\/]pinia[\\/]/,
+          remixicon: /node_modules[\\/]remixicon[\\/]/,
+        },
+        override: {
+          chunks: 'all',
+          minSize: 20000,
+          cacheGroups: {
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              name(module: any) {
+                let packageName = 'vendors'
+                // 匹配/node_modules/.pnpm/, 因为固定式pnpm安装的
+                const reg = /[\\/]node_modules[\\/].pnpm\/(.*?)([\\/]|$)/
+                if (reg.test(module.context)) {
+                  packageName = module.context.match(reg)[1]
+                }
+                return `chunk-${packageName.replace('@', '')}`
+              },
+              priority: 10,
+              reuseExistingChunk: true,
+              enforce: true,
             },
-            priority: 10,
-            reuseExistingChunk: true,
-            enforce: true,
-          },
-          default: {
-            reuseExistingChunk: true,
-            priority: -10,
-            enforce: true,
+            default: {
+              reuseExistingChunk: true,
+              priority: -10,
+              enforce: true,
+            },
           },
         },
       },
     },
-  },
-  server: {
-    // base: '/sim-admin/',
-    port: cli_port,
-    host: cli_host,
-    compress: true,
-    // headers: {
-    //   lastBuildTime: `${new Date().getTime()}`,
-    // },
-    // ...(!isProduction
-    //   ? {
-    //       proxy: {
-    //         '/api': 'http://localhost:3000',
-    //       },
-    //     }
-    //   : {}),
-  },
-  html: {
-    template: './public/index.html',
-    title,
-    favicon: linkIcon,
-    meta: {
-      description,
-      copyright,
-      buildTime: `${new Date().getTime()}`,
+    server: {
+      // base: '/sim-admin/',
+      port: cli_port,
+      host: cli_host,
+      compress: true,
+      // headers: {
+      //   lastBuildTime: `${new Date().getTime()}`,
+      // },
+      // ...(!isProduction
+      //   ? {
+      //       proxy: {
+      //         '/api': 'http://localhost:3000',
+      //       },
+      //     }
+      //   : {}),
     },
-  },
+    html: {
+      template: './public/index.html',
+      title,
+      favicon: linkIcon,
+      meta: {
+        description,
+        copyright,
+        buildTime: JSON.stringify(buildTime),
+      },
+    },
 
-  moduleFederation: {
-    options: {
-      name: 'sim_admin',
-      remotes: {
-        remote: process.env.APP_REMOTE as string,
-      },
-      shared: {
-        vue: {
-          singleton: true,
-          requiredVersion: '3',
-          eager: true,
+    moduleFederation: {
+      options: {
+        name: 'sim_admin',
+        remotes: {
+          remote: process.env.APP_REMOTE as string,
         },
-        'element-plus': {
-          singleton: true,
-          requiredVersion: '2',
-          eager: true,
+        shared: {
+          vue: {
+            singleton: true,
+            requiredVersion: '3',
+            eager: true,
+          },
+          'element-plus': {
+            singleton: true,
+            requiredVersion: '2',
+            eager: true,
+          },
         },
       },
     },
-  },
+  }
 })

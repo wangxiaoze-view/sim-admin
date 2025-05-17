@@ -2,7 +2,7 @@ import { ref } from 'vue'
 
 // 检测更新 使用轮询+worker的形式，暂时不考虑pwa离线缓存的方式;
 export function useCheckUpdate() {
-  const isProduction = !['production'].includes(process.env.NODE_ENV || '')
+  const isProduction = ['production'].includes(process.env.NODE_ENV || '')
   const isUpdate = ref(false)
   const loading = ref(false)
 
@@ -10,27 +10,16 @@ export function useCheckUpdate() {
 
   const onCheckUpdate = async () => {
     if (isUpdate.value) return
-    const preVersion = document.querySelector('meta[name="buildTime"]')?.getAttribute('content')
-    if (preVersion === `${process.env.VERSION}`) return
+    const res = await fetch(
+      `${self.location.protocol}//${self.location.host}/index.html?time=${Date.now()}`
+    )
+    const html = await res.text()
+    const regex = /<meta\s+name="buildTime"\s+content="([^"]*)"/i
+    const match = html.match(regex)
+    const preTime = match?.[1] || ''
+    console.log(preTime, process.env.VERSION)
+    if (preTime === `${process.env.VERSION}`) return
     isUpdate.value = true
-    // const res = await fetch(
-    //   `${self.location.protocol}//${self.location.host}/index.html?time=${Date.now()}`
-    //   // {
-    //   //   method: 'HEAD',
-    //   //   cache: 'no-cache',
-    //   // }
-    // )
-    // const html = await res.text()
-
-    // const match = html.match(/<meta name="buildTime" content="(.*)">/)
-
-    // const buildTime = match?.[1] || ''
-
-    // console.log(buildTime)
-    // console.log(await res.text())
-    // const preTime = res.headers.get('lastBuildTime')
-    // if (preTime === `${process.env.VERSION}`) return
-    // isUpdate.value = true
   }
   const startUpdateInterval = () => {
     if (updateInterval) clearInterval(updateInterval)
@@ -55,41 +44,6 @@ export function useCheckUpdate() {
     })
     startUpdateInterval()
   }
-  // let lastEtag: string | undefined = undefined
-  // let worker: Worker
-  // if (isProduction) {
-  //   worker = new Worker(new URL('./worker.ts', import.meta.url), {
-  //     name: 'checkUpdateWorker',
-  //   })
-
-  //   worker.postMessage({
-  //     type: 'check',
-  //     tip: '检测是否更新',
-  //   })
-  //   worker.onmessage = ({ data }) => {
-  //     if (data.type === 'hasUpdate') {
-  //       isUpdate.value = true
-  //       lastEtag = data.lastEtag
-  //     }
-  //   }
-  // }
-
-  // // 立即更新
-  // const updater = () => {
-  //   if (!isProduction) return
-  //   loading.value = true
-  //   worker.postMessage({
-  //     type: 'close',
-  //     tip: '关闭',
-  //     lastEtag,
-  //   })
-  //   location.reload()
-  // }
-
-  // // 稍后更新
-  // const waitUpdater = () => {
-  //   isUpdate.value = false
-  // }
 
   return {
     isUpdate,
