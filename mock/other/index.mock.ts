@@ -49,7 +49,7 @@ const mockNoticeData = [
 ]
 export default defineMock([
   {
-    url: '/api/getNoticeList',
+    url: '/getNoticeList',
     response(_, res) {
       res.end(
         JSON.stringify({
@@ -62,7 +62,7 @@ export default defineMock([
     },
   },
   {
-    url: '/api/getTotalData',
+    url: '/getTotalData',
     delay: 1500,
     response(req: any, res: any) {
       const count = 50
@@ -102,7 +102,7 @@ export default defineMock([
     },
   },
   {
-    url: '/api/getDynamic',
+    url: '/getDynamic',
     response(req: any, res: any) {
       const data = []
       for (let i = 0; i < 15; i++) {

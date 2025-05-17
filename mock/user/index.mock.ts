@@ -23,7 +23,7 @@ const mockUserToken = {
 
 export default defineMock([
   {
-    url: '/api/login',
+    url: '/login',
     method: 'POST',
     delay: 2000,
     response(req, res) {
@@ -47,7 +47,7 @@ export default defineMock([
     },
   },
   {
-    url: '/api/getUserInfo',
+    url: '/getUserInfo',
     response(req, res) {
       const authorization: string = req.headers.authorization || ''
       const k = 'Bearer '

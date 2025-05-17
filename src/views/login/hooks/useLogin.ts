@@ -80,6 +80,7 @@ export default function useLogin() {
       try {
         setLoading(true)
         toLogin(formModel.userName, formModel.password).then((isSuccess) => {
+          console.log(isSuccess)
           if (isSuccess) router.push({ path: redirect.value ?? '/' })
           // fix: 登录成功之后，加载动画不消失， 一个好处就是在跳转页面之前由于加载文件可能会有短暂的可点状态
           // setLoading(false)

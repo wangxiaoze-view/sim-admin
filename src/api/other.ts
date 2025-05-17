@@ -2,10 +2,10 @@ import { http } from '~/src/utils'
 import { IDynamicType, INoticeType, IPageType } from './types'
 
 const url = {
-  getNoticeList: '/api/getNoticeList',
-  getUserInfo: '/api/getUserInfo',
-  getTotalData: '/api/getTotalData',
-  getDynamic: '/api/getDynamic',
+  getNoticeList: '/getNoticeList',
+  getUserInfo: '/getUserInfo',
+  getTotalData: '/getTotalData',
+  getDynamic: '/getDynamic',
 }
 
 export function getNoticeListApi() {

@@ -1,8 +1,8 @@
 import { http } from '~/src/utils'
 
 const url = {
-  login: '/api/login',
-  getUserInfo: '/api/getUserInfo',
+  login: '/login',
+  getUserInfo: '/getUserInfo',
 }
 
 export function loginApi(data: { username: string; password: string }) {
