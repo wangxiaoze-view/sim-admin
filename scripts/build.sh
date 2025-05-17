@@ -8,5 +8,5 @@ if test "$Re_Install" = "true" ; then
 fi
 
 pnpm run build
-
-docker cp ./dist 1Panel-openresty-0yGn:/www/sites/sim-admin.wangxiaoze.cn/index
+cd dist
+docker cp ./ 1Panel-openresty-0yGn:/www/sites/sim-admin.wangxiaoze.cn/index
