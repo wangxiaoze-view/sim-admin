@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "rsbuild dev --open --env-mode development",
+    "build:sh": "sh build.sh",
     "build": "rsbuild build --env-mode production && node build/index.js",
     "build:mac": "NODE_OPTIONS=--max_old_space_size=4096 && rsbuild build --env-mode production && node build/index.js",
     "build:profile": "RSDOCTOR=true RSPACK_PROFILE=ALL  rsbuild build --env-mode production",
