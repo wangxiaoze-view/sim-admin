@@ -9,4 +9,4 @@ fi
 
 pnpm run build
 cd dist
-docker cp ./ 1Panel-openresty-0yGn:/www/sites/sim-admin.wangxiaoze.cn/index
+docker cp ./ "$CONTAINER":/www/sites/wangxiaoze.cn/index/admin
