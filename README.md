@@ -1,5 +1,7 @@
 # sim-admin
 
+> 注意：该项目为个人项目，仅供学习使用，请勿用于商业用途，目前维护进度较少。
+
 这是一款简单好上手的后台管理系统，该系统使用了`rsbuild`作为打包工具，使其在原有的基础上优化打包速度以及页面加载速度；
 
 使用`vue3 + pinia + element-plus + TS`搭建，其中还有`functional-helpers + @log-reporting`为自己封装的函数辅助插件；避免在`package.json`中使用大量的依赖；而基础的`hooks + emus + utils`封装在其中，这样在不同的业务场景中都可以使用！
