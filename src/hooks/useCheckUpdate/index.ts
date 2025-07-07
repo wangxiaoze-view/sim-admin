@@ -12,13 +12,12 @@ export function useCheckUpdate() {
   const onCheckUpdate = async () => {
     if (isUpdate.value) return
     const res = await fetch(
-      `${self.location.protocol}//${self.location.host}/index.html?time=${Date.now()}`
+      `${self.location.protocol}//${self.location.host}${self.location.pathname}index.html?time=${Date.now()}`
     )
     const html = await res.text()
     const regex = /<meta\s+name="buildTime"\s+content="([^"]*)"/i
     const match = html.match(regex)
     const preTime = match?.[1] || ''
-    console.log(`preTime : ${preTime}`, `__BUILD_TIME__: ${__BUILD_TIME__}`)
     if (preTime === `${__BUILD_TIME__}`) return
     isUpdate.value = true
   }
