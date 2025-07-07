@@ -17,4 +17,4 @@ declare module '*.vue' {
   export default component
 }
 
-declare const BUILD_TIME: string
+declare const __BUILD_TIME__: string

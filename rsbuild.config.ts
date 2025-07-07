@@ -84,7 +84,7 @@ export default defineConfig(() => {
     },
     source: {
       define: {
-        BUILD_TIME: JSON.stringify(buildTime),
+        __BUILD_TIME__: JSON.stringify(buildTime),
       },
       alias: {
         '~/': './',

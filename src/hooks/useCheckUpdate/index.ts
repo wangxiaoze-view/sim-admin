@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 
 // 检测更新 使用轮询+worker的形式，暂时不考虑pwa离线缓存的方式;
+
 export function useCheckUpdate() {
   const isProduction = ['production'].includes(process.env.NODE_ENV || '')
   const isUpdate = ref(false)
@@ -17,8 +18,8 @@ export function useCheckUpdate() {
     const regex = /<meta\s+name="buildTime"\s+content="([^"]*)"/i
     const match = html.match(regex)
     const preTime = match?.[1] || ''
-    console.log(preTime, BUILD_TIME)
-    if (preTime === `${BUILD_TIME}`) return
+    console.log(`preTime : ${preTime}`, `__BUILD_TIME__: ${__BUILD_TIME__}`)
+    if (preTime === `${__BUILD_TIME__}`) return
     isUpdate.value = true
   }
   const startUpdateInterval = () => {
