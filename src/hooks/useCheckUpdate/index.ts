@@ -17,8 +17,8 @@ export function useCheckUpdate() {
     const regex = /<meta\s+name="buildTime"\s+content="([^"]*)"/i
     const match = html.match(regex)
     const preTime = match?.[1] || ''
-    console.log(preTime, process.env.VERSION)
-    if (preTime === `${process.env.VERSION}`) return
+    console.log(preTime, BUILD_TIME)
+    if (preTime === `${BUILD_TIME}`) return
     isUpdate.value = true
   }
   const startUpdateInterval = () => {

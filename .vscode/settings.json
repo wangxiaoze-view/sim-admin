@@ -8,4 +8,7 @@
     "README.md": "CHANGELOG.md,COMMIT.md",
     "rsbuild.config.ts": "web-types.json,tsconfig.json,auto-imports.d.ts,components.d.ts",
   },
+  "cSpell.words": [
+    "Rsbuild"
+  ],
 }

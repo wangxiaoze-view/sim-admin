@@ -19,6 +19,7 @@ import { pluginCssMinimizer } from '@rsbuild/plugin-css-minimizer'
 import postcssEnv from 'postcss-preset-env'
 // gzip 插件
 import CompressionPlugin from 'compression-webpack-plugin'
+
 import { settings_config, cli_port, cli_host, cli_buildGzip, cli_outputDit } from './src/config'
 const { title, linkIcon, description, copyright } = settings_config
 
@@ -32,6 +33,7 @@ export default defineConfig(() => {
       pluginSass(),
       pluginImageCompress(),
       pluginCssMinimizer(),
+
       // pluginMockServer({
       //   log: true,
       //   prefix: '/api',
@@ -46,7 +48,7 @@ export default defineConfig(() => {
     tools: {
       lightningcssLoader: false,
       postcss(opts) {
-        opts.postcssOptions?.plugins?.push(postcssEnv())
+        ;(opts.postcssOptions as any)?.plugins?.push(postcssEnv())
       },
       rspack(config, { appendPlugins }) {
         process.env.RSDOCTOR &&
@@ -82,14 +84,7 @@ export default defineConfig(() => {
     },
     source: {
       define: {
-        'process.env.VERSION': JSON.stringify(buildTime),
-        // __APP_INFO__: JSON.stringify({
-        //   pkg: {
-        //     name: process.env.npm_package_name,
-        //     version: process.env.npm_package_version,
-        //   },
-        //   lastBuildTime: new Date().toLocaleString(),
-        // }),
+        BUILD_TIME: JSON.stringify(buildTime),
       },
       alias: {
         '~/': './',
@@ -155,16 +150,6 @@ export default defineConfig(() => {
       port: cli_port,
       host: cli_host,
       compress: true,
-      // headers: {
-      //   lastBuildTime: `${new Date().getTime()}`,
-      // },
-      // ...(!isProduction
-      //   ? {
-      //       proxy: {
-      //         '/api': 'http://localhost:3000',
-      //       },
-      //     }
-      //   : {}),
     },
     html: {
       template: './public/index.html',
@@ -173,7 +158,7 @@ export default defineConfig(() => {
       meta: {
         description,
         copyright,
-        buildTime: JSON.stringify(buildTime),
+        buildTime: `${buildTime}`,
       },
     },
 
