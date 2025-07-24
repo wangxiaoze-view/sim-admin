@@ -14,7 +14,7 @@
     </p>
     <img
       class="image1"
-      src="https://cdn.wangxiaoze.cn/images/default_top_img_3.webp"
+      src="https://www.wxz9949.cn/cdn/images/default_top_img_3.webp"
       alt="image"
       srcset=""
     />
@@ -26,7 +26,7 @@
     </p>
     <img
       class="image2"
-      src="https://cdn.wangxiaoze.cn/images/default_top_img_1.webp"
+      src="https://www.wxz9949.cn/cdn/images/default_top_img_1.webp"
       alt="image"
       srcset=""
     />

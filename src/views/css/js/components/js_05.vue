@@ -29,7 +29,7 @@
   <div class="cross-1">
     <div v-for="(_, index) in list" :key="index">
       <img
-        src="https://cdn.wangxiaoze.cn/images/libs/remote-components/icons/404.svg"
+        src="https://www.wxz9949.cn/cdn/images/libs/remote-components/icons/404.svg"
         :data-src="`https://picsum.photos/200/300?random=${Math.random()}`"
         alt=""
       />

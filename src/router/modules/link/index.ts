@@ -16,7 +16,7 @@ export default [
         meta: {
           title: '我的主页',
           icon: 'ri-product-hunt-line',
-          iframePath: 'https://www.wangxiaoze.cn',
+          iframePath: 'https://www.wxz9949.cn/apps/index/',
           roles: ['Admin', 'User', 'Test'],
         },
       },
@@ -27,7 +27,7 @@ export default [
         meta: {
           title: 'Playground',
           icon: 'ri-airplay-line',
-          iframePath: 'https://www.wangxiaoze.cn/playground/',
+          iframePath: 'https://www.wxz9949.cn/apps/playground/',
           roles: ['Admin', 'User', 'Test'],
         },
       },
@@ -38,7 +38,7 @@ export default [
         meta: {
           title: 'Demos',
           icon: 'ri-criminal-line',
-          iframePath: 'https://www.wangxiaoze.cn/demos',
+          iframePath: 'https://www.wxz9949.cn/apps/demos/',
           roles: ['Admin', 'User', 'Test'],
         },
       },

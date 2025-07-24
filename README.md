@@ -10,15 +10,15 @@
 
 以下为部分页面
 
-|                                                              |                                                              |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![X](https://cdn.wangxiaoze.cn/images/image.9rjfk1lgws.webp) | ![X](https://cdn.wangxiaoze.cn/images/image.7zqgp51wfh.webp) |
-| ![X](https://cdn.wangxiaoze.cn/images/image.5q7g5nm0wa.webp) | ![X](https://cdn.wangxiaoze.cn/images/image.7lk0y9ynvy.webp) |
-| ![X](https://cdn.wangxiaoze.cn/images/image.6bh3ryiwks.webp) | ![X](https://cdn.wangxiaoze.cn/images/image.969rxqya66.webp) |
-| ![X](https://cdn.wangxiaoze.cn/images/image.70adbz7qwy.webp) | ![X](https://cdn.wangxiaoze.cn/images/image.7pbpihw85.webp)  |
-| ![X](https://cdn.wangxiaoze.cn/images/image.2obk4fq6s3.webp) | ![X](https://cdn.wangxiaoze.cn/images/image.1e8my48r1d.webp) |
-| ![X](https://cdn.wangxiaoze.cn/images/image.5c10eskccg.webp) | ![X](https://cdn.wangxiaoze.cn/images/image.syzbtgh98.webp)  |
-| ![X](https://cdn.wangxiaoze.cn/images/image.1e8my4b3nc.webp) | ![X](https://cdn.wangxiaoze.cn/images/image.1sf2ozl931.webp) |
+|                                                               |                                                               |
+| ------------------------------------------------------------- | ------------------------------------------------------------- |
+| ![X](https://www.wxz9949.cn/cdn/images/image.9rjfk1lgws.webp) | ![X](https://www.wxz9949.cn/cdn/images/image.7zqgp51wfh.webp) |
+| ![X](https://www.wxz9949.cn/cdn/images/image.5q7g5nm0wa.webp) | ![X](https://www.wxz9949.cn/cdn/images/image.7lk0y9ynvy.webp) |
+| ![X](https://www.wxz9949.cn/cdn/images/image.6bh3ryiwks.webp) | ![X](https://www.wxz9949.cn/cdn/images/image.969rxqya66.webp) |
+| ![X](https://www.wxz9949.cn/cdn/images/image.70adbz7qwy.webp) | ![X](https://www.wxz9949.cn/cdn/images/image.7pbpihw85.webp)  |
+| ![X](https://www.wxz9949.cn/cdn/images/image.2obk4fq6s3.webp) | ![X](https://www.wxz9949.cn/cdn/images/image.1e8my48r1d.webp) |
+| ![X](https://www.wxz9949.cn/cdn/images/image.5c10eskccg.webp) | ![X](https://www.wxz9949.cn/cdn/images/image.syzbtgh98.webp)  |
+| ![X](https://www.wxz9949.cn/cdn/images/image.1e8my4b3nc.webp) | ![X](https://www.wxz9949.cn/cdn/images/image.1sf2ozl931.webp) |
 
 ## 进度
 
@@ -64,4 +64,4 @@ pnpm build
 }
 ```
 
-2. 系统中使用了 `tresjs`，如果对应的页面加载失败，可以查看[知识库](https://www.wangxiaoze.cn/demos/3d/models/common.html)，控制台可能会报警告，对此您可以忽略它，官网还没有对应的解决方案，其解决方案仅仅适用于`vite` 系统已将`tresjs`迁移为`3d外链`
+2. 系统中使用了 `tresjs`，如果对应的页面加载失败，可以查看[知识库](https://www.wxz9949.cn/apps/demos/3d/models/common.html)，控制台可能会报警告，对此您可以忽略它，官网还没有对应的解决方案，其解决方案仅仅适用于`vite` 系统已将`tresjs`迁移为`3d外链`
