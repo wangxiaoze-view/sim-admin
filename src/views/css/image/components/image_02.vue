@@ -9,13 +9,13 @@
   <div class="container">
     <div>
       <div class="box">
-        <img src="https://www.wxz9949.cn/cdn/images/default_top_img_3.webp" alt="image" srcset="" />
+        <img src="https://cdn.wangxiaoze.cn/images/default_top_img_3.webp" alt="image" srcset="" />
       </div>
 
       <div style="overflow: hidden; height: 0">
         <div class="box" id="element">
           <img
-            src="https://www.wxz9949.cn/cdn/images/default_top_img_3.webp"
+            src="https://cdn.wangxiaoze.cn/images/default_top_img_3.webp"
             alt="image"
             srcset=""
           />

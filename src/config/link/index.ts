@@ -1,17 +1,17 @@
 // 系统链接
 export const imageLinks = {
   // https://github.com/wangxiaoze-view/picx-images-hosting/raw/master/images/qq_icon.8z6jnypwzg.svg
-  logo: 'https://www.wxz9949.cn/cdn/images/logo.51e67aosot.svg',
-  login_cover: 'https://www.wxz9949.cn/cdn/images/login_cover.3nrn392l78.svg',
-  login_bg: 'https://www.wxz9949.cn/cdn/images/wave-haikei.8l03zqtzlh.svg',
-  qq_icon: 'https://www.wxz9949.cn/cdn/images/qq_icon.8z6jnypwzg.svg',
-  wechat_icon: 'https://www.wxz9949.cn/cdn/images/wechat_icon.99tdh4554t.svg',
-  ksrm_image: 'https://www.wxz9949.cn/cdn/images/ksrm.1ziag0q8rw.webp',
-  not_found: 'https://www.wxz9949.cn/cdn/images/404.5fkmf5bic8.svg',
-  not_premission: 'https://www.wxz9949.cn/cdn/images/403.9kg7ra271m.svg',
-  not_error: 'https://www.wxz9949.cn/cdn/images/500.969s0fd4vo.svg',
-  not_network: 'https://www.wxz9949.cn/cdn/images/netOffline.6wqrgxz19f.svg',
-  update_img: 'https://www.wxz9949.cn/cdn/images/up.67xk0iidnk.svg',
+  logo: 'https://cdn.wangxiaoze.cn/images/logo.51e67aosot.svg',
+  login_cover: 'https://cdn.wangxiaoze.cn/images/login_cover.3nrn392l78.svg',
+  login_bg: 'https://cdn.wangxiaoze.cn/images/wave-haikei.8l03zqtzlh.svg',
+  qq_icon: 'https://cdn.wangxiaoze.cn/images/qq_icon.8z6jnypwzg.svg',
+  wechat_icon: 'https://cdn.wangxiaoze.cn/images/wechat_icon.99tdh4554t.svg',
+  ksrm_image: 'https://cdn.wangxiaoze.cn/images/ksrm.1ziag0q8rw.webp',
+  not_found: 'https://cdn.wangxiaoze.cn/images/404.5fkmf5bic8.svg',
+  not_premission: 'https://cdn.wangxiaoze.cn/images/403.9kg7ra271m.svg',
+  not_error: 'https://cdn.wangxiaoze.cn/images/500.969s0fd4vo.svg',
+  not_network: 'https://cdn.wangxiaoze.cn/images/netOffline.6wqrgxz19f.svg',
+  update_img: 'https://cdn.wangxiaoze.cn/images/up.67xk0iidnk.svg',
 }
 
 // github
@@ -19,9 +19,9 @@ export const githubCommit = 'https://github.com/wangxiaoze-view/sim-admin/blob/m
 
 // 文件
 export const fileLinks = {
-  test_admin_doc: 'https://www.wxz9949.cn/cdn/images/files/test_admin_doc.docx',
-  test_admin_excel: 'https://www.wxz9949.cn/cdn/images/files/test_admin_excel.xls',
-  test_admin_pdf: 'https://www.wxz9949.cn/cdn/images/files/test_admin_pdf.pdf',
+  test_admin_doc: 'https://cdn.wangxiaoze.cn/images/files/test_admin_doc.docx',
+  test_admin_excel: 'https://cdn.wangxiaoze.cn/images/files/test_admin_excel.xls',
+  test_admin_pdf: 'https://cdn.wangxiaoze.cn/images/files/test_admin_pdf.pdf',
 }
 
 // 其他，如预览图片，打印文件等等
@@ -37,8 +37,8 @@ export const otherLinks = {
   ],
   printFiles: {
     images: [
-      'https://www.wxz9949.cn/cdn/images/9e8609733f4a8658f2519b47df068f9.jpg',
-      'https://www.wxz9949.cn/cdn/images/7.2h8btdobvo.webp',
+      'https://cdn.wangxiaoze.cn/images/9e8609733f4a8658f2519b47df068f9.jpg',
+      'https://cdn.wangxiaoze.cn/images/7.2h8btdobvo.webp',
     ],
   },
 }

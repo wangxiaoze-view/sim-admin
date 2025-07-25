@@ -7,7 +7,7 @@ echo "⏬正在下载插件..."
 echo ""
 
 # 下载远程文件
-curl -L -o "lib-functional-helpers.tar.gz" "https://www.wxz9949.cn/cdn/assets/libs/lib-functional-helpers.tar.gz"
+curl -L -o "lib-functional-helpers.tar.gz" "https://cdn.wangxiaoze.cn/assets/libs/lib-functional-helpers.tar.gz"
 
 
 # 判断是否下载完成

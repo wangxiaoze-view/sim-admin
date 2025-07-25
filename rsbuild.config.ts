@@ -146,7 +146,7 @@ export default defineConfig(() => {
       },
     },
     server: {
-      base: '/apps/admin/',
+      base: '/admin/',
       port: cli_port,
       host: cli_host,
       compress: true,

@@ -25,7 +25,7 @@
     cursor: pointer;
     font-size: 40px;
     font-weight: bold;
-    background: url('https://www.wxz9949.cn/cdn/images/default_top_img.webp');
+    background: url('https://cdn.wangxiaoze.cn/images/default_top_img.webp');
     color: transparent;
     /* 背景以文字的形式裁剪 */
     -webkit-background-clip: text;
