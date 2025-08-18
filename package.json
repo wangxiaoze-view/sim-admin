@@ -1,7 +1,7 @@
 {
   "name": "sim-admin",
   "private": true,
-  "version": "1.4.0",
+  "version": "1.4.1",
   "type": "module",
   "scripts": {
     "dev": "rsbuild dev --open --env-mode development",
