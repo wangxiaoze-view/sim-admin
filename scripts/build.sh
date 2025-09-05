@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "正在进行项目打包，请稍等..."
+echo "⌛️ sim-admin 项目正在构建中，可能需要一些时间，请稍等..."
 
 # 是否需要install
 if test "$Re_Install" = "true" ; then
@@ -11,4 +11,4 @@ pnpm run build
 cd dist
 docker cp ./ "$CONTAINER":/www/sites/wangxiaoze.cn/index/admin
 
-echo "打包成功！"
+echo "✅ sim-admin 项目构建完成！"
