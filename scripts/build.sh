@@ -10,3 +10,5 @@ fi
 pnpm run build
 cd dist
 docker cp ./ "$CONTAINER":/www/sites/wangxiaoze.cn/index/admin
+
+echo "打包成功！"
