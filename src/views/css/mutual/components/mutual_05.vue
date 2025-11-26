@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { ref } from 'vue'
-  const image = ref('http://assets.wangxiaoze.cn/images/qq_icon.8z6jnypwzg.svg')
+  const image = ref('https://assets.wangxiaoze.cn/images/qq_icon.8z6jnypwzg.svg')
 
   const shadow = ref('')
 

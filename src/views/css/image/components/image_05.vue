@@ -28,7 +28,7 @@
 
       .box_1 {
         clip-path: polygon(0 0, 30% 0, 70% 30%, 70% 60%, 0 100%);
-        background: url(http://assets.wangxiaoze.cn/images/default_top_img_1.webp);
+        background: url(https://assets.wangxiaoze.cn/images/default_top_img_1.webp);
         background-size: cover;
         background-position: 50% -40px;
         transform: scale(0.98);
@@ -37,7 +37,7 @@
 
       .box_2 {
         clip-path: polygon(30% 0, 100% 0, 100% 50%, 70% 30%);
-        background: url(http://assets.wangxiaoze.cn/images/default_top_img_2.webp);
+        background: url(https://assets.wangxiaoze.cn/images/default_top_img_2.webp);
         background-size: cover;
         background-position: 20% -40px;
         transform: scale(0.98);
@@ -46,7 +46,7 @@
 
       .box_3 {
         clip-path: polygon(0 100%, 100% 100%, 70% 60%);
-        background: url(http://assets.wangxiaoze.cn/images/default_top_img_4.jpeg);
+        background: url(https://assets.wangxiaoze.cn/images/default_top_img_4.jpeg);
         background-size: cover;
         background-position: 50% 200px;
         transform: scale(0.98);
@@ -55,7 +55,7 @@
 
       .box_4 {
         clip-path: polygon(70% 30%, 100% 50%, 100% 100%, 70% 60%);
-        background: url(http://assets.wangxiaoze.cn/images/default_top_img_5.jpeg);
+        background: url(https://assets.wangxiaoze.cn/images/default_top_img_5.jpeg);
         background-size: cover;
         background-position: 8% 100px;
         transform: scale(0.98);

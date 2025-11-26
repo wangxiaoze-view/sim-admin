@@ -22,7 +22,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url('http://assets.wangxiaoze.cn/images/default_top_img_3.webp');
+    background-image: url('https://assets.wangxiaoze.cn/images/default_top_img_3.webp');
     background-repeat: no-repeat;
     position: relative;
   }

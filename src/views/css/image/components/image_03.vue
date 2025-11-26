@@ -7,7 +7,7 @@
 
 <template>
   <div class="container">
-    <img src="http://assets.wangxiaoze.cn/images/default_top_img_3.webp" alt="image" srcset="" />
+    <img src="https://assets.wangxiaoze.cn/images/default_top_img_3.webp" alt="image" srcset="" />
   </div>
 </template>
 

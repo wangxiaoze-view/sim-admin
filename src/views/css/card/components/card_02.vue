@@ -43,8 +43,9 @@
   }
 
   .item {
-    background-image: url('http://assets.wangxiaoze.cn/images/default_top_img_1.webp'),
-      url('http://assets.wangxiaoze.cn/images/default_top_img.webp');
+    background-image:
+      url('https://assets.wangxiaoze.cn/images/default_top_img_1.webp'),
+      url('https://assets.wangxiaoze.cn/images/default_top_img.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -58,23 +59,27 @@
   }
 
   .item:nth-child(2) {
-    background-image: url('http://assets.wangxiaoze.cn/images/default_top_img_2.webp'),
-      url('http://assets.wangxiaoze.cn/images/default_top_img.webp');
+    background-image:
+      url('https://assets.wangxiaoze.cn/images/default_top_img_2.webp'),
+      url('https://assets.wangxiaoze.cn/images/default_top_img.webp');
   }
 
   .item:nth-child(3) {
-    background-image: url('http://assets.wangxiaoze.cn/images/default_top_img_4.jpeg'),
-      url('http://assets.wangxiaoze.cn/images/default_top_img.webp');
+    background-image:
+      url('https://assets.wangxiaoze.cn/images/default_top_img_4.jpeg'),
+      url('https://assets.wangxiaoze.cn/images/default_top_img.webp');
   }
 
   .item:nth-child(4) {
-    background-image: url('http://assets.wangxiaoze.cn/images/default_top_img_5.jpeg'),
-      url('http://assets.wangxiaoze.cn/images/default_top_img.webp');
+    background-image:
+      url('https://assets.wangxiaoze.cn/images/default_top_img_5.jpeg'),
+      url('https://assets.wangxiaoze.cn/images/default_top_img.webp');
   }
 
   .item:nth-child(5) {
-    background-image: url('http://assets.wangxiaoze.cn/images/default_top_img_6.jpeg'),
-      url('http://assets.wangxiaoze.cn/images/default_top_img.webp');
+    background-image:
+      url('https://assets.wangxiaoze.cn/images/default_top_img_6.jpeg'),
+      url('https://assets.wangxiaoze.cn/images/default_top_img.webp');
   }
 
   .item-active {

@@ -24,11 +24,11 @@ export const settings_config = {
   loadingText: 'sim正在加载, 请稍等...',
   // 网站logo
   // v1 版本logo
-  // logo: 'http://assets.wangxiaoze.cn/images/sim_admin_favicon.7zqat7487l.ico',
-  logo: imageLinks.logo || 'http://assets.wangxiaoze.cn/images/logo.51e67aosot.svg',
+  // logo: 'https://assets.wangxiaoze.cn/images/sim_admin_favicon.7zqat7487l.ico',
+  logo: imageLinks.logo || 'https://assets.wangxiaoze.cn/images/logo.51e67aosot.svg',
   // 浏览器的logo
-  // linkIcon: 'http://assets.wangxiaoze.cn/images/sim_admin_favicon.7zqat7487l.ico',
-  linkIcon: imageLinks.logo || 'http://assets.wangxiaoze.cn/images/logo.51e67aosot.svg',
+  // linkIcon: 'https://assets.wangxiaoze.cn/images/sim_admin_favicon.7zqat7487l.ico',
+  linkIcon: imageLinks.logo || 'https://assets.wangxiaoze.cn/images/logo.51e67aosot.svg',
   // ele message 的消失时间
   messageTime: 3000,
   // token 存储的方式

@@ -31,7 +31,7 @@
     position: relative;
     width: inherit;
     height: inherit;
-    background: url('http://assets.wangxiaoze.cn/images/default_top_img.webp') no-repeat;
+    background: url('https://assets.wangxiaoze.cn/images/default_top_img.webp') no-repeat;
   }
   #mutual_01::before {
     content: '';
