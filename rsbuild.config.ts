@@ -25,6 +25,29 @@ const { title, linkIcon, description, copyright } = settings_config
 
 const isProduction = process.env.NODE_ENV === 'production'
 
+const c = {
+  moduleFederation: {
+    options: {
+      name: 'sim_admin',
+      remotes: {
+        remote: process.env.APP_REMOTE as string,
+      },
+      shared: {
+        vue: {
+          singleton: true,
+          requiredVersion: '3',
+          eager: true,
+        },
+        'element-plus': {
+          singleton: true,
+          requiredVersion: '2',
+          eager: true,
+        },
+      },
+    },
+  },
+}
+
 export default defineConfig(() => {
   const buildTime = Date.now()
   return {
@@ -162,25 +185,6 @@ export default defineConfig(() => {
       },
     },
 
-    moduleFederation: {
-      options: {
-        name: 'sim_admin',
-        remotes: {
-          remote: process.env.APP_REMOTE as string,
-        },
-        shared: {
-          vue: {
-            singleton: true,
-            requiredVersion: '3',
-            eager: true,
-          },
-          'element-plus': {
-            singleton: true,
-            requiredVersion: '2',
-            eager: true,
-          },
-        },
-      },
-    },
+    ...(isProduction ? c : {}),
   }
 })
