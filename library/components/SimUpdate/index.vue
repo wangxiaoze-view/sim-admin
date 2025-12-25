@@ -1,13 +1,14 @@
 <script setup lang="ts">
+  import { ElText } from 'element-plus'
   import { useCheckUpdate } from '~/src/hooks'
   import SimSvg from '~/library/components/SimSvg/index.vue'
   import pkg from '~/package.json'
-  import { imageLinks, githubCommit } from '~/src/config'
+  import { link } from '~/src/config'
 
   defineOptions({
     name: 'SimUpdate',
   })
-  const { update_img } = imageLinks
+  const { update_img, githubCommit } = link
   const { version } = pkg
   const { isUpdate, updater, waitUpdater, loading } = useCheckUpdate()
 </script>

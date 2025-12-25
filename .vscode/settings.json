@@ -9,6 +9,15 @@
     "rsbuild.config.ts": "web-types.json,tsconfig.json,auto-imports.d.ts,components.d.ts",
   },
   "cSpell.words": [
-    "Rsbuild"
+    "Rsbuild",
+    "unplugin",
+    "rspack",
+    "rsdoctor",
+    "lightningcss",
+    "remixicon",
+    "Arrayable",
+    "rrweb",
+    "vueuse",
+    "backtop"
   ],
 }

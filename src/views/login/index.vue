@@ -6,8 +6,8 @@
   defineOptions({
     name: 'LoginIndex',
   })
-  import { imageLinks } from '~/src/config'
-  const { login_bg, login_cover, logo } = imageLinks
+  import { link } from '~/src/config'
+  const { login_bg, login_cover, logo } = link
 </script>
 
 <template>

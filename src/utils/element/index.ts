@@ -1,39 +1,64 @@
-import { ElMessage, ElNotification } from 'element-plus'
-import type { VNode } from 'vue'
-
-// 水波纹的创建与删除
-export function createRipple(el: HTMLElement, e: MouseEvent) {
-  // 设置按钮overflow
+/**
+ * 创建水波纹效果
+ * 在元素上创建点击时的水波纹动画效果
+ * @param el 目标元素
+ * @param e 鼠标事件对象
+ */
+export function createRipple(el: HTMLElement, e: MouseEvent): void {
+  // 设置元素 overflow 为 hidden，确保水波纹不溢出
   el.style.overflow = 'hidden'
-  // 获取按钮的长宽
+
+  // 获取元素尺寸
   const { clientWidth, clientHeight } = el
-  // 算出直径
+
+  // 计算水波纹直径（确保能覆盖整个元素）
   const diameter = Math.ceil(Math.sqrt(clientWidth ** 2 + clientHeight ** 2))
-  // 算出半径
   const radius = diameter / 2
-  // 获取按钮的全局坐标
+
+  // 获取元素相对于视口的位置
   const { left, top } = el.getBoundingClientRect()
-  // 设置按钮的定位是relative
+
+  // 确保元素定位为 relative，以便水波纹正确定位
   const position = el.style.position
   if (!position || position === 'static') {
     el.style.position = 'relative'
   }
-  // 获取鼠标点击全局坐标
+
+  // 获取鼠标点击位置
   const { clientX, clientY } = e
 
-  // 创建一个圆dom
+  // 创建水波纹元素
   const rippleEle = document.createElement('div')
-  // 设置唯一标识id
   rippleEle.id = 'ripple'
-  // 设置长宽
-  rippleEle.style.width = rippleEle.style.height = `${diameter}px`
+  rippleEle.style.width = `${diameter}px`
+  rippleEle.style.height = `${diameter}px`
   rippleEle.style.left = `${clientX - radius - left}px`
   rippleEle.style.top = `${clientY - radius - top}px`
-  // 插入圆dom
+  rippleEle.style.position = 'absolute'
+  rippleEle.style.borderRadius = '50%'
+  rippleEle.style.backgroundColor = 'rgba(255, 255, 255, 0.6)'
+  rippleEle.style.pointerEvents = 'none'
+  rippleEle.style.transform = 'scale(0)'
+  rippleEle.style.animation = 'ripple 0.6s ease-out'
+
+  // 插入水波纹元素
   el.appendChild(rippleEle)
+
+  // 动画结束后移除元素
+  rippleEle.addEventListener('animationend', () => {
+    if (rippleEle.parentNode) {
+      rippleEle.parentNode.removeChild(rippleEle)
+    }
+  })
 }
 
-export function removeRipple(el: HTMLElement) {
+/**
+ * 移除水波纹效果
+ * @param el 目标元素
+ */
+export function removeRipple(el: HTMLElement): void {
   const rippleEl = el.querySelector('#ripple')
-  rippleEl && el.removeChild(rippleEl)
+  if (rippleEl && rippleEl.parentNode) {
+    rippleEl.parentNode.removeChild(rippleEl)
+  }
 }

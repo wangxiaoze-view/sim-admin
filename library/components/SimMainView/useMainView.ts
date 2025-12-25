@@ -1,12 +1,12 @@
 import { inject, onUnmounted, ref, watch, watchEffect } from 'vue'
 // import { useRoute } from 'vue-router'
 import SimProgress from '~/library/libs/nprogress'
-import { useChangeTheme, useVisiteRoutes, useRouter } from '~/src/hooks'
+import { useChangeTheme, useVisitedRoutes, useRouter } from '~/src/hooks'
 import { handlerActiveRoute } from '~/src/utils'
-import { settings_config } from '~/src/config'
+import { settings } from '~/src/config'
 
 export default function useMainView() {
-  const { keepaliveMax } = settings_config
+  const { keepaliveMax } = settings
 
   const { route } = useRouter()
   // 这个用于刷新页面, 也就是用 :key 强制刷新
@@ -17,7 +17,7 @@ export default function useMainView() {
   const $simEmitOn = inject<any>('$simEmitOn')
   const $simEmitOff = inject<any>('$simEmitOff')
 
-  const { activeMenu, getVisitedRoutes } = useVisiteRoutes()
+  const { activeMenu, getVisitedRoutes } = useVisitedRoutes()
   const { getTheme } = useChangeTheme()
 
   const upKeepaliveNames = (refreshName?: string) => {

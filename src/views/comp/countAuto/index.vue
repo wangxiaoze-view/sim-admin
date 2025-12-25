@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { useTransition } from '~/src/hooks'
+  import { useTransition } from '@vueuse/core'
   defineOptions({
     name: 'ComCountAuto',
   })

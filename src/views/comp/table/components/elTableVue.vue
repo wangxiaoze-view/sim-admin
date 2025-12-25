@@ -2,10 +2,10 @@
   import { ref } from 'vue'
   import { getTotalDataApi } from '~/src/api/other'
   import { useLoading } from '~/src/hooks'
-  import { settings_config } from '~/src/config'
+  import { settings } from '~/src/config'
   import { ITotalDataType } from '~/src/api/types'
 
-  const { loadingText: text } = settings_config
+  const { loadingText: text } = settings
   const tableData = ref<ITotalDataType[]>()
 
   const pageNo = ref(1)

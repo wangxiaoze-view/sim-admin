@@ -1,12 +1,23 @@
-import { computed, ref, watch } from 'vue'
 import { LogicFlow } from '@logicflow/core'
 import { DndPanel, SelectionSelect, Control, MiniMap, Menu } from '@logicflow/extension'
 import '@logicflow/core/lib/style/index.css'
 import '@logicflow/extension/lib/style/index.css'
-import { TShape } from '~/src/enum'
 import { $sim } from '~/library/plugins/element'
 import { useSwitchDark } from '~/src/hooks'
-
+enum TShape {
+  CIRCLE = 'circle',
+  RECTANGLE = 'rect',
+  ELLIPSE = 'ellipse',
+  POLYGON = 'polygon',
+  DIAMOND = 'diamond',
+  TEXT = 'text',
+  HTML = 'html',
+}
+/**
+ * 流程图 Hook
+ * 提供 LogicFlow 流程图的初始化和操作功能
+ * @returns 流程图相关方法和引用
+ */
 export function useFlow() {
   const containerRef = ref()
 
@@ -34,14 +45,17 @@ export function useFlow() {
     return lf.value
   }
 
-  const initMenu = () => {
-    const extension: any = lf.value?.extension
-    extension.menu?.addMenuConfig({
+  /**
+   * 初始化菜单配置
+   */
+  const initMenu = (): void => {
+    const extension = lf.value?.extension as { menu?: { addMenuConfig: (config: unknown) => void } }
+    extension?.menu?.addMenuConfig({
       nodeMenu: [
         {
           text: '删除',
           className: 'delete-node',
-          callback(node: any) {
+          callback(node: { id: string }) {
             lf.value?.deleteNode(node.id)
           },
         },
@@ -53,27 +67,32 @@ export function useFlow() {
         },
         {
           text: '属性',
-          callback(node: any) {
-            $sim.$simMessage(`
-                节点id：${node.id}\n
-                节点类型：${node.type}\n
-                节点坐标：(x: ${node.x}, y: ${node.y})`)
+          callback(node: { id: string; type: string; x: number; y: number }) {
+            $sim.$simMessage(
+              `节点id：${node.id}\n节点类型：${node.type}\n节点坐标：(x: ${node.x}, y: ${node.y})`
+            )
           },
         },
       ],
     })
   }
 
-  const initPattern = () => {
-    const extension: any = lf.value?.extension
-    extension.dndPanel.setPatternItems([
+  /**
+   * 初始化拖拽面板模式
+   */
+  const initPattern = (): void => {
+    const extension = lf.value?.extension as {
+      dndPanel?: { setPatternItems: (items: unknown[]) => void }
+      selectionSelect?: { openSelectionSelect: () => void; closeSelectionSelect: () => void }
+    }
+    extension?.dndPanel?.setPatternItems([
       {
         label: '选区',
         icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAAH6ji2bAAAABGdBTUEAALGPC/xhBQAAAOVJREFUOBGtVMENwzAIjKP++2026ETdpv10iy7WFbqFyyW6GBywLCv5gI+Dw2Bluj1znuSjhb99Gkn6QILDY2imo60p8nsnc9bEo3+QJ+AKHfMdZHnl78wyTnyHZD53Zzx73MRSgYvnqgCUHj6gwdck7Zsp1VOrz0Uz8NbKunzAW+Gu4fYW28bUYutYlzSa7B84Fh7d1kjLwhcSdYAYrdkMQVpsBr5XgDGuXwQfQr0y9zwLda+DUYXLaGKdd2ZTtvbolaO87pdo24hP7ov16N0zArH1ur3iwJpXxm+v7oAJNR4JEP8DoAuSFEkYH7cAAAAASUVORK5CYII=',
         callback: () => {
-          extension.selectionSelect.openSelectionSelect()
+          extension?.selectionSelect?.openSelectionSelect()
           lf.value?.once('selection:selected', () => {
-            extension.selectionSelect.closeSelectionSelect()
+            extension?.selectionSelect?.closeSelectionSelect()
           })
         },
       },
@@ -109,7 +128,11 @@ export function useFlow() {
     ])
   }
 
-  const onCreateNode = (shape: TShape) => {
+  /**
+   * 创建节点
+   * @param shape 节点形状类型
+   */
+  const onCreateNode = (shape: TShape): void => {
     switch (shape) {
       case TShape.CIRCLE:
         lf.value?.addNode({
@@ -183,10 +206,14 @@ export function useFlow() {
     }
   }
 
-  const onClearData = () => {
+  /**
+   * 清空流程图数据
+   */
+  const onClearData = (): void => {
     lf.value?.clearData()
   }
 
+  // 监听暗黑模式变化，重新初始化
   watch(
     () => isDark.value,
     () => {
@@ -196,11 +223,17 @@ export function useFlow() {
       deep: true,
     }
   )
+
   return {
+    /** 容器引用 */
     containerRef,
+    /** 初始化流程图 */
     init,
+    /** 创建节点 */
     onCreateNode,
+    /** 节点形状类型 */
     TShape,
+    /** 清空数据 */
     onClearData,
   }
 }

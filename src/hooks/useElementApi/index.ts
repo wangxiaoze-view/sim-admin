@@ -5,30 +5,33 @@ import {
   type LoadingOptions,
   type MessageParams,
   ElMessageBox,
-  ElMessageBoxOptions,
-  NotificationParams,
+  type ElMessageBoxOptions,
+  type NotificationParams,
 } from 'element-plus'
-import { settings_config } from '~/src/config'
-import { EColor } from '~/src/enum'
-import { VNode } from 'vue'
+import { settings } from '~/src/config'
 
-const { loadingText, messageTime } = settings_config
+const { loadingText, messageTime } = settings
 
 type TElStatusType = 'success' | 'warning' | 'info' | 'error'
 type TElPosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'
 
+/**
+ * Element Plus API Hook
+ * 封装 Element Plus 的常用组件 API，提供统一的调用方式
+ * @returns Element Plus API 方法集合
+ */
 export function useElementApi() {
   /**
-   * 模拟整个页面的加载状态。
-   * @param {string} [text] -要显示的文本。
-   * @param {string} [background] -加载蒙版的背景颜色。
-   * @param {LoadingOptions} [options] -加载服务的选项。
+   * 显示全屏加载状态
+   * @param text 加载文本，默认为配置的加载文本
+   * @param background 加载蒙版背景颜色，默认为白色
+   * @param options 加载服务的额外选项
    */
   const simLoading = (
     text: string = loadingText,
-    background: string = EColor.white,
+    background: string = '#fff',
     options?: LoadingOptions
-  ) => {
+  ): void => {
     ElLoading.service({
       lock: true,
       text,
@@ -45,31 +48,41 @@ export function useElementApi() {
    * @param {TElStatusType} [type] -要显示的信息的类型。
    * @param {MessageParams} [options] -消息的选项。
    */
+  /**
+   * 提示信息
+   * @param message 要显示的信息
+   * @param type 信息类型，默认为 'info'
+   * @param options 消息选项
+   */
   const simMessage = (
     message: string | VNode,
     type: TElStatusType = 'info',
-    options?: MessageParams
-  ) => {
-    ElMessage({
-      message,
-      type,
-      grouping: true,
-      duration: messageTime,
-      ...((options || {}) as any),
-    })
+    options: MessageParams = {}
+  ): void => {
+    ElMessage(
+      Object.assign(
+        {
+          message,
+          type,
+          grouping: true,
+          duration: messageTime,
+        },
+        options
+      )
+    )
   }
 
   /**
-   * 弹出一个警告对话框。
-   * @param {string | VNode | Function} message - 要显示的消息内容，可以是字符串、VNode 或返回 VNode 的函数。
-   * @param {string} [title='sim提示'] - 对话框的标题。
-   * @param {ElMessageBoxOptions} [options] - 额外的消息框选项。
+   * 显示警告对话框
+   * @param message 要显示的消息内容
+   * @param title 对话框标题，默认为 'sim提示'
+   * @param options 额外的消息框选项
    */
   const simAlert = (
     message: string | VNode | (() => VNode),
     title = 'sim提示',
     options?: ElMessageBoxOptions
-  ) => {
+  ): void => {
     ElMessageBox.alert(message, title, {
       confirmButtonText: '确定',
       draggable: true,
@@ -78,20 +91,20 @@ export function useElementApi() {
   }
 
   /**
-   * 弹出一个确认对话框。
-   * @param {string | VNode | Function} message - 要显示的消息内容，可以是字符串、VNode 或返回 VNode 的函数。
-   * @param {string} [title='sim提示'] - 对话框的标题。
-   * @param {Function} [success=() => {}] - 点击确认按钮时的回调函数。
-   * @param {Function} [cancel=() => {}] - 点击取消按钮时的回调函数。
-   * @param {ElMessageBoxOptions} [options] - 额外的消息框选项。
+   * 显示确认对话框
+   * @param message 要显示的消息内容
+   * @param title 对话框标题，默认为 'sim提示'
+   * @param success 点击确认按钮时的回调函数，默认为空函数
+   * @param cancel 点击取消按钮时的回调函数，默认为空函数
+   * @param options 额外的消息框选项
    */
   const simConfirm = (
     message: string | VNode | (() => VNode),
     title = 'sim提示',
-    success = () => {},
-    cancel = () => {},
+    success: () => void = () => {},
+    cancel: () => void = () => {},
     options?: ElMessageBoxOptions
-  ) => {
+  ): void => {
     ElMessageBox.confirm(message, title, {
       confirmButtonText: '确定',
       cancelButtonText: '取消',
@@ -102,27 +115,39 @@ export function useElementApi() {
       .catch(cancel)
   }
 
+  /**
+   * 显示通知
+   * @param title 通知标题，默认为 'sim通知'
+   * @param message 通知内容
+   * @param type 通知类型，默认为 'success'
+   * @param position 通知位置，默认为 'top-right'
+   * @param options 通知选项
+   */
   const simNotify = (
     title = 'sim通知',
     message: string | VNode,
     type: TElStatusType = 'success',
     position: TElPosition = 'top-right',
-    options?: NotificationParams
-  ) => {
-    ElNotification({
-      title,
-      message,
-      duration: messageTime,
-      type,
-      position,
-      ...((options || {}) as any),
-    })
+    options: NotificationParams = {}
+  ): void => {
+    ElNotification(
+      Object.assign(
+        {
+          title,
+          message,
+          duration: messageTime,
+          type,
+          position,
+        },
+        options
+      )
+    )
   }
 
   /**
-   * 关闭所有simNotify弹出的消息框。
+   * 关闭所有通知
    */
-  const simNotifyClose = () => {
+  const simNotifyClose = (): void => {
     ElNotification.closeAll()
   }
 

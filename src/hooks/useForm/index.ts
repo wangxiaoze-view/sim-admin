@@ -1,64 +1,63 @@
 import type { FormInstance, FormItemProp, FormRules, FormValidateCallback } from 'element-plus'
 import type { Arrayable } from 'element-plus/lib/utils/typescript.js'
-import { ref, unref } from 'vue'
 
 /**
- * @description 表单的hooks
- * @param rulesConfig 表单的规则
- * @returns 返回表单的ref
+ * 表单 Hook
+ * 提供表单验证、重置等常用功能
+ * @param rulesConfig 表单验证规则配置
+ * @returns 表单相关方法和引用
  */
-export function useForm(rulesConfig: any) {
-  /**
-   * @description 表单的ref
-   */
+export function useForm(rulesConfig?: FormRules | (() => FormRules)) {
+  /** 表单实例引用 */
   const formRef = ref<FormInstance>()
 
-  /**
-   * @description 表单的规则, 由于业务场景不一致，所以这里需要动态传入自定义
-   */
-  const rules = ref<FormRules>(unref(rulesConfig || {}))
+  /** 表单验证规则（响应式） */
+  const rules = ref<FormRules>(
+    typeof rulesConfig === 'function' ? rulesConfig() : rulesConfig || {}
+  )
 
   /**
-   * @description 表单验证
-   * @param callback @abstract 回调
+   * 验证整个表单
+   * @param callback 验证完成后的回调函数
    */
-  const validate = (callback?: (valid: boolean) => void) => {
+  const validate = (callback?: (valid: boolean) => void): void => {
     formRef.value?.validate(callback)
   }
 
   /**
-   * @description 验证具体的某个字段
-   * @param props @abstract props
-   * @param callback @abstract 回调
+   * 验证指定字段
+   * @param props 要验证的字段属性
+   * @param callback 验证完成后的回调函数
    */
   const validateField = (
-    props?: Arrayable<FormItemProp> | undefined,
-    callback?: FormValidateCallback | undefined
-  ) => {
+    props?: Arrayable<FormItemProp>,
+    callback?: FormValidateCallback
+  ): void => {
     formRef.value?.validateField(props, callback)
   }
 
   /**
-   * @description 重置该表单项，将其值重置为初始值，并移除校验结果
-   * @param props @abstract props
+   * 重置表单字段
+   * 将字段值重置为初始值，并移除校验结果
+   * @param props 要重置的字段属性，不传则重置所有字段
    */
-  const resetFields = (props?: Arrayable<FormItemProp> | undefined) => {
+  const resetFields = (props?: Arrayable<FormItemProp>): void => {
     formRef.value?.resetFields(props)
   }
 
   /**
-   * @description 滚动到指定的字段
-   * @param prop @abstract prop
+   * 滚动到指定字段
+   * @param prop 字段属性
    */
-  const scrollToField = (prop: FormItemProp) => {
+  const scrollToField = (prop: FormItemProp): void => {
     formRef.value?.scrollToField(prop)
   }
 
   /**
-   * @description 清理某个字段的表单验证信息。
-   * @param props @abstract props
+   * 清除指定字段的验证信息
+   * @param props 要清除验证的字段属性，不传则清除所有字段
    */
-  const clearValidate = (props?: Arrayable<FormItemProp> | undefined) => {
+  const clearValidate = (props?: Arrayable<FormItemProp>): void => {
     formRef.value?.clearValidate(props)
   }
 

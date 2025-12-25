@@ -1,7 +1,6 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import type { UploadUserFile } from 'element-plus'
-  import { useChunksUpload } from '~/src/hooks'
 
   defineOptions({
     name: 'FunUpload',
@@ -18,9 +17,7 @@
     },
   ])
 
-  const onChangeFile = (e: any) => {
-    useChunksUpload(e.target.files[0])
-  }
+  const onChangeFile = (e: any) => {}
 </script>
 
 <template>

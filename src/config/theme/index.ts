@@ -1,7 +1,6 @@
-export const themeConfig: ITheme = {
+export default {
   // ===============================菜单风格
-  // 布局风格 普通布局ordinary  横向布局row   浮动布局float
-  layout: 'ordinary',
+  layout: 'ordinary', // 布局风格 普通布局ordinary  横向布局row   浮动布局float
 
   //===============================主题配置
   // 暗黑模式 light:亮色,dark:暗色
@@ -66,6 +65,6 @@ export const themeConfig: ITheme = {
   // 默认电脑
   device: 'desktop',
 
-  // TODO: 网站更新后期会考虑其他实现方式？
+  // 是否支持更新
   isUpdate: true,
 }

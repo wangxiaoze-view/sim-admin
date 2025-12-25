@@ -1,15 +1,24 @@
-import { App } from 'vue'
-import { createRouter, createWebHistory, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import type { App } from 'vue'
+import {
+  createRouter,
+  createWebHistory,
+  createWebHashHistory,
+  type RouteRecordRaw,
+} from 'vue-router'
 import { setupPermissions } from './permissions'
-import { settings_config } from '../config'
+import { settings } from '../config'
 
 /**
- * @description 路由分为俩种情况
- * 1. 常规路由, 例如：登录，注册， 403，404等
- * 2. 异步路由， 例如：动态菜单等
+ * 路由配置
+ * 路由分为两种情况：
+ * 1. 常规路由：登录、注册、错误页面等固定路由
+ * 2. 异步路由：动态菜单等需要权限控制的路由
  */
 
-// 1. 常规路由
+/**
+ * 常规路由配置
+ * 包含登录、错误页面等不需要权限验证的路由
+ */
 export const constantRoutes: ISimRouterRecordRaw[] = [
   {
     path: '/',
@@ -77,6 +86,10 @@ export const constantRoutes: ISimRouterRecordRaw[] = [
   },
 ]
 
+/**
+ * 404 路由配置
+ * 捕获所有未匹配的路由
+ */
 export const notFoundRoute: ISimRouterRecordRaw = {
   path: '/:pathMatch(.*)*',
   redirect: '/404',
@@ -84,17 +97,33 @@ export const notFoundRoute: ISimRouterRecordRaw = {
   meta: { hidden: true },
 }
 
-// 2. 异步路由
+/**
+ * 异步路由配置
+ * 包含需要动态加载的路由
+ */
 export const asyncRoutes: ISimRouterRecordRaw[] = [notFoundRoute]
 
+/**
+ * 创建路由实例
+ */
 const router = createRouter({
-  history: settings_config.hasRouterMode ? createWebHashHistory() : createWebHistory(),
+  history: settings.hasRouterMode ? createWebHashHistory() : createWebHistory(),
   routes: constantRoutes as RouteRecordRaw[],
+  /**
+   * 滚动行为配置
+   * 路由切换时滚动到页面顶部
+   */
   scrollBehavior: () => {
-    ;({ left: 0, top: 0 })
+    return { left: 0, top: 0 }
   },
 })
 
+/**
+ * 设置路由
+ * 配置路由权限并注册到 Vue 应用
+ * @param app Vue 应用实例
+ * @returns 路由实例
+ */
 export const setupRouter = (app: App<Element>) => {
   setupPermissions(router)
   app.use(router)

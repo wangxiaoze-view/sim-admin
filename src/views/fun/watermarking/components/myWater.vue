@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { nextTick, onMounted, reactive, watch } from 'vue'
-  import { IWaterRemark, useWatermaking } from '~/src/hooks'
+  import { IWaterRemark, useWaterMaking } from '~/src/hooks'
 
   const fontWeigh = [
     'normal',
@@ -27,7 +27,7 @@
     },
   })
 
-  const { watermark } = useWatermaking()
+  const { watermark } = useWaterMaking()
 
   const onCreate = () => {
     watermark.set(state.watermark, document.querySelector('.mark'))

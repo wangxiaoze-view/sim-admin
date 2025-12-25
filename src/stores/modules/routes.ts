@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia'
 import { asyncRoutes, constantRoutes, notFoundRoute } from '~/src/router'
-import { settings_config } from '~/src/config'
-import { isArray, logger, initAsyncRoutes, filterHidden, initRouter } from '~/src/utils'
+import { settings } from '~/src/config'
+import { initAsyncRoutes, filterHidden, initRouter } from '~/src/utils'
 import { getRoutes } from '~/src/router/modules'
 import { useUser } from '~/src/hooks'
+import { isArray } from 'lodash-es'
 
-const { hasRouterGuard } = settings_config
+const { hasRouterGuard } = settings
 
 export const useRoutesStore = defineStore('routes', {
   state: (): IRoutesType => ({
@@ -27,7 +28,7 @@ export const useRoutesStore = defineStore('routes', {
       if (hasRouterGuard === 'end') {
         // 这里可以走请求菜单的接口； 这里模拟接口
         const list: ISimRouterRecordRaw[] = await getRoutes()
-        if (!isArray(list)) return logger.error('菜单数据格式错误')
+        if (!isArray(list)) return console.error('菜单数据格式错误')
         // 404 地址应放在最后
         if (list[list.length - 1].path !== '*') list.push(notFoundRoute)
         routes = [...routes, ...list]

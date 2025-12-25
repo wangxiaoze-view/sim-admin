@@ -2,7 +2,8 @@
   import { onMounted, ref } from 'vue'
   import { Shape } from '~/library/components/SimSvg/enum'
   import svgIcon from '~/library/components/SimSvg/index.vue'
-  import { TShape } from '~/src/enum'
+  import { useFlow } from '~/src/hooks'
+  const { TShape } = useFlow()
 
   interface IRectType {
     width: number
@@ -18,7 +19,7 @@
   }
 
   interface IShapesItem {
-    type: Shape | TShape
+    type: Shape | (typeof TShape)[keyof typeof TShape]
   }
   const shapes: IShapesItem[] = [
     { type: TShape.RECTANGLE },
@@ -112,20 +113,22 @@
     isDrawing.value = false
 
     // 抬手记录
-    type.value === TShape.RECTANGLE &&
+    if (type.value === TShape.RECTANGLE) {
       rects.value.push({
         x: lastX.value,
         y: lastY.value,
         width: e.offsetX - lastX.value,
         height: e.offsetY - lastY.value,
       })
+    }
 
-    type.value === TShape.CIRCLE &&
+    if (type.value === TShape.CIRCLE) {
       circles.value.push({
         x: e.offsetX,
         y: lastY.value,
         r: Math.abs(e.offsetX - lastX.value),
       })
+    }
   }
 
   onMounted(() => {

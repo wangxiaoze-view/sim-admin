@@ -1,3 +1,6 @@
+/**
+ * 外链路由配置
+ */
 export default [
   {
     path: '/link',

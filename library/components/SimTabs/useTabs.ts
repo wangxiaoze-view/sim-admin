@@ -3,9 +3,10 @@ import { translate } from '~/src/i18n'
 import { ETabs } from '~/src/enum'
 import { computed, ref, watch, watchEffect } from 'vue'
 import { RouteLocationNormalizedLoaded, useRoute, useRouter } from 'vue-router'
-import { useChangeTheme, useMouse, useVisiteRoutes } from '~/src/hooks'
+import { useChangeTheme, useVisitedRoutes } from '~/src/hooks'
 import { handlerActiveRoute } from '~/src/utils'
 import { useTabsStore } from '~/src/stores/modules/tabs'
+import { useMouse } from '@vueuse/core'
 
 export default function useTabs() {
   const isContextMenu = ref(false)
@@ -18,7 +19,7 @@ export default function useTabs() {
   const router = useRouter()
   const { x, y } = useMouse()
   const { getTheme } = useChangeTheme()
-  const { curtrentTab, getVisitedRoutes, initNoCloseRoutes, addVisitedRoutes } = useVisiteRoutes()
+  const { currentTab, getVisitedRoutes, initNoCloseRoutes, addVisitedRoutes } = useVisitedRoutes()
   const {
     onRemoveLeftTabs,
     onRemoveCurrentTabs,
@@ -197,7 +198,7 @@ export default function useTabs() {
     commands,
     left,
     top,
-    curtrentTab,
+    currentTab,
     getVisitedRoutes,
     getTheme,
     onTabClick,

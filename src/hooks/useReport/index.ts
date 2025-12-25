@@ -1,14 +1,24 @@
 import { useChangeTheme, useError } from '~/src/hooks'
 import { init, _support, EVENT_TYPES } from '@log-reporting/core'
-import { AnyFun } from '@log-reporting/types'
+import type { AnyFun } from '@log-reporting/types'
 import rrwebPlayer from 'rrweb-player'
 import 'rrweb-player/dist/style.css'
+
+/**
+ * 日志上报 Hook
+ * 提供日志上报和回放功能
+ * @returns 日志上报相关方法
+ */
 export function useReport() {
   const { getTheme } = useChangeTheme()
   const { setError } = useError()
 
-  const initLogReporting = () => {
+  /**
+   * 初始化日志上报
+   */
+  const initLogReporting = (): void => {
     if (!getTheme.value.isDebug) return
+
     init({
       // 上报地址, 可以改为 后端真实地址
       dsn: '/',
@@ -42,49 +52,48 @@ export function useReport() {
     })
 
     /**
-     * // error
-     * ERROR = 'error',
-     * // promise
-     * UNHANDLEDREJECTION = 'unhandledrejection',
-     * // console.error
-     * CONSOLE_ERROR = 'consoleError',
-     * // xhr
-     * XHR = 'xhr',
-     * // fetch
-     * FETCH = 'fetch',
-     * // pv统计
-     * PV = 'pv',
-     * // exposure 曝光
-     * EXPOSURE = 'exposure',
+     * 事件类型说明：
+     * - ERROR: 错误
+     * - UNHANDLEDREJECTION: Promise 未捕获错误
+     * - CONSOLE_ERROR: console.error
+     * - XHR: XMLHttpRequest 请求
+     * - FETCH: Fetch 请求
+     * - PV: 页面访问统计
+     * - EXPOSURE: 曝光统计
+     *
+     * @see https://github1s.com/wangxiaoze-view/log-repeorting/blob/main/packages/core/enum/index.ts
      */
-
-    // https://github1s.com/wangxiaoze-view/log-repeorting/blob/main/packages/core/enum/index.ts
     Object.values(EVENT_TYPES).forEach((eventType) => {
       _support.eventBus.on(eventType, (errorOptions: AnyFun) => {
-        setError(errorOptions)
+        setError(errorOptions as unknown as Record<string, unknown>)
       })
     })
   }
 
-  const initReplayer = () => {
-    if (_support.record) {
-      if (!_support.record.snapshot.length) return
-      const target = document.querySelector('#video-player')
-      if (!target) return
-      new rrwebPlayer({
-        target: target as any, // customizable root element
-        props: {
-          events: _support.record.snapshot,
-          width: 600,
-          height: 400,
-        },
-      })
-    }
+  /**
+   * 初始化回放器
+   * 用于回放录制的屏幕内容
+   */
+  const initRePlayer = (): void => {
+    if (!_support.record) return
+    if (!_support.record.snapshot.length) return
+
+    const target = document.querySelector('#video-player')
+    if (!target) return
+
+    new rrwebPlayer({
+      target: target as HTMLElement,
+      props: {
+        events: _support.record.snapshot,
+        width: 600,
+        height: 400,
+      },
+    })
   }
 
   return {
     initLogReporting,
-    initReplayer,
+    initRePlayer,
   }
 }
 

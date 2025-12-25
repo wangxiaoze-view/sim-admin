@@ -1,20 +1,34 @@
-import { settings_config, cache_token } from '~/src/config'
-import { Storage } from '~/src/utils'
-const { tokenStorage } = settings_config
+import { settings, cache } from '~/src/config'
+const { tokenStorage } = settings
 
+/**
+ * 获取存储实例
+ * 根据配置返回 localStorage 或 sessionStorage
+ * @returns Storage 实例
+ */
 function getStorage() {
-  Storage.storage = tokenStorage === 'localStorage' ? localStorage : sessionStorage
-  return Storage
+  return tokenStorage === 'localStorage' ? localStorage : sessionStorage
 }
 
-export function getToken() {
-  return getStorage().get(cache_token) || ''
+/**
+ * 获取 token
+ * @returns token 字符串，如果不存在则返回空字符串
+ */
+export function getToken(): string {
+  return getStorage().getItem(cache.cache_token) || ''
 }
 
-export function setToken(token: string) {
-  return getStorage().set(cache_token, token)
+/**
+ * 设置 token
+ * @param token token 字符串
+ */
+export function setToken(token: string): void {
+  getStorage().setItem(cache.cache_token, token)
 }
 
-export function removeToken() {
-  return getStorage().remove(cache_token)
+/**
+ * 移除 token
+ */
+export function removeToken(): void {
+  getStorage().removeItem(cache.cache_token)
 }

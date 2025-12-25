@@ -1,16 +1,13 @@
-export const net_config = {
-  // 接口地址
-  baseUrl: import.meta.env.PUBLIC_API_URL,
-  // 接口请求超时时间
-  timeout: 10000,
+export default {
+  net_success_code: [200],
+  // 返回的message
+  net_message_name: 'message',
   // 接口请求头
-  // application/json;charset=UTF-8 或 application/x-www-form-urlencoded;charset=UTF-8
-  headers: {
+  net_headers: {
     'Content-Type': 'application/json;charset=UTF-8',
   },
+  // 接口请求超时时间
+  net_timeout: 10000,
+  // 接口地址
+  net_baseUrl: import.meta.env.PUBLIC_API_URL,
 }
-
-// 接口返回状态码
-export const net_success_code = [200]
-// 返回的message
-export const net_message_name = 'message'

@@ -1,6 +1,6 @@
 import { computed, onMounted, reactive, ref, watchEffect } from 'vue'
 import { useLoading, useForm, useUser } from '~/src/hooks'
-import { randomCodeToCanvas, logger } from '~/src/utils'
+import { randomCodeToCanvas } from '~/src/utils'
 import { useRoute, useRouter } from 'vue-router'
 import { translate } from '~/src/i18n'
 
@@ -85,7 +85,7 @@ export default function useLogin() {
           // setLoading(false)
         })
       } catch (error) {
-        logger.error(JSON.stringify(error))
+        console.error(JSON.stringify(error))
         setLoading(false)
       }
     })

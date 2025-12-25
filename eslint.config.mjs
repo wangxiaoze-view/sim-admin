@@ -30,9 +30,6 @@ export default [
       'auto-imports.d.ts',
       'components.d.ts',
       'package.json',
-      'functional-helpers/*',
-      'functional-helpers /**/*',
-      'functional-helpers/*',
     ],
   },
   js.configs.recommended,
@@ -64,15 +61,6 @@ export default [
   },
 
   {
-    ignores: [
-      'dist/',
-      'node_modules/',
-      'auto-imports.d.ts',
-      'components.d.ts',
-      'src/server',
-      'functional-helpers/*',
-      'functional-helpers /**/*',
-      'functional-helpers/*',
-    ],
+    ignores: ['dist/', 'node_modules/', 'auto-imports.d.ts', 'components.d.ts', 'src/server'],
   },
 ]

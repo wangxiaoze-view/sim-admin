@@ -1,6 +1,5 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
-  import { useFullscreen } from '~/src/hooks'
+  import { useFullscreen } from '@vueuse/core'
 
   defineOptions({
     name: 'FunFullScreen',

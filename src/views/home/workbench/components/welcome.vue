@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { imageLinks } from '~/src/config'
+  import { link } from '~/src/config'
   import SimIcon from '~/library/components/SimIcon/index.vue'
   import { useLocked, useUser } from '~/src/hooks'
 
@@ -7,7 +7,7 @@
     name: 'SimWelcome',
   })
 
-  const { ksrm_image } = imageLinks
+  const { ksrm_image } = link
 
   const { getUserInfo } = useUser()
   const { randomImage } = useLocked()

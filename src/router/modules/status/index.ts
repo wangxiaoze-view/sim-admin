@@ -1,5 +1,8 @@
 import { defineAsyncComponent, h } from 'vue'
 
+/**
+ * 菜单状态展示路由配置
+ */
 export default [
   {
     path: '/status',

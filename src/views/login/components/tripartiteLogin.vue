@@ -1,11 +1,11 @@
 <script setup lang="ts">
-  import { imageLinks } from '~/src/config'
+  import { link } from '~/src/config'
 
   defineOptions({
     name: 'TripartiteLogin',
   })
 
-  const SVG_ICONS = [imageLinks.wechat_icon, imageLinks.qq_icon]
+  const SVG_ICONS = [link.wechat_icon, link.qq_icon]
 
   const toLogin = () => {
     // simNotice({

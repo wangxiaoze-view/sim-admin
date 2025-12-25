@@ -8,11 +8,12 @@
   import SimSwitchDark from '../SimSwitchDark/index.vue'
   import SimLock from '../SimLock/index.vue'
   import { translate } from '~/src/i18n'
-  import { useChangeTheme, useFullscreen, useError, useUser } from '~/src/hooks'
+  import { useChangeTheme, useError, useUser } from '~/src/hooks'
   import { getNoticeListApi } from '~/src/api/other'
   import { INoticeDataType, INoticeType } from '~/src/api/types'
   import { TUserRole } from '~/src/enum'
   import { changeRole } from '~/src/utils'
+  import { useFullscreen } from '@vueuse/core'
 
   defineOptions({
     name: 'SimHeaderTools',

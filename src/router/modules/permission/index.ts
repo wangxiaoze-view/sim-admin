@@ -1,5 +1,6 @@
-import { h } from 'vue'
-
+/**
+ * 权限管理路由配置
+ */
 export default [
   {
     path: '/permission',

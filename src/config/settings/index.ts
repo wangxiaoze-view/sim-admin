@@ -1,9 +1,8 @@
-import { imageLinks } from '../link'
-
-export const settings_config = {
+import imageLinks from '../link'
+export default {
   // 网站标题
   title: 'Sim-Admin',
-  // 网站标题与描述之间的分节符
+  // 标题与描述之间的分节符
   titleSpace: ' | ',
   // 标题与描述之间的置换顺序: 标题 - 描述 / 描述 - 标题
   titleSort: false,
@@ -22,12 +21,9 @@ export const settings_config = {
   whiteList: ['/login', '/redirect', '/403', '/404', '/500', '/netOffline'],
   // 全局的加载文字
   loadingText: 'sim正在加载, 请稍等...',
-  // 网站logo
-  // v1 版本logo
-  // logo: 'https://assets.wangxiaoze.cn/images/sim_admin_favicon.7zqat7487l.ico',
+  // logo
   logo: imageLinks.logo || 'https://assets.wangxiaoze.cn/images/logo.51e67aosot.svg',
-  // 浏览器的logo
-  // linkIcon: 'https://assets.wangxiaoze.cn/images/sim_admin_favicon.7zqat7487l.ico',
+  // linkIcon
   linkIcon: imageLinks.logo || 'https://assets.wangxiaoze.cn/images/logo.51e67aosot.svg',
   // ele message 的消失时间
   messageTime: 3000,

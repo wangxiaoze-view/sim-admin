@@ -1,4 +1,3 @@
-import { createApp } from 'vue'
 import App from './App.vue'
 import { setupSim } from '~/library'
 import { setupRouter } from './router'

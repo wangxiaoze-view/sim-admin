@@ -4,8 +4,9 @@
   import SimColorPicker from '../SimColorPicker/index.vue'
   import SimIcon from '../SimIcon/index.vue'
   import { translate } from '~/src/i18n'
-  import { useClipboard, useChangeTheme } from '~/src/hooks'
+  import { useChangeTheme } from '~/src/hooks'
   import { $sim } from '~/library/plugins/element'
+  import { useClipboard } from '@vueuse/core'
 
   defineOptions({
     name: 'SimThemeDrawer',

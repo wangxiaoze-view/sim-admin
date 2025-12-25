@@ -80,7 +80,6 @@
 <script lang="ts" setup>
   import { reactive, ref } from 'vue'
   import type { ComponentSize, FormInstance, FormRules } from 'element-plus'
-  import { logger } from '~/src/utils'
 
   interface RuleForm {
     name: string

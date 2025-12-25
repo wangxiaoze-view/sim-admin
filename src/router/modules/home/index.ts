@@ -1,3 +1,6 @@
+/**
+ * 首页路由配置
+ */
 export default [
   {
     path: '/home',

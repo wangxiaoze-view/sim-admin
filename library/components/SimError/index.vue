@@ -2,7 +2,7 @@
   import { ref } from 'vue'
   import SimErrorDialog from '../SimErrorDialog/index.vue'
   import { useError } from '~/src/hooks'
-  import { getTimeFormat } from '~/src/utils'
+  import dayjs from 'dayjs'
 
   defineOptions({
     name: 'SimError',
@@ -37,7 +37,7 @@
               <template #default="props">
                 <div class="expand-row">
                   <p>行号：{{ props.row.colno }}-{{ props.row.lineno }}</p>
-                  <p>时间：{{ getTimeFormat(props.row.time) }}</p>
+                  <p>时间：{{ dayjs(props.row.time).format('YYYY-MM-DD HH:mm:ss') }}</p>
                   <p><el-button @click="onClickReplayer" type="primary">回放</el-button></p>
                   <!-- <div class="video-player"></div> -->
                 </div>

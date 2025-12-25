@@ -1,30 +1,46 @@
-import { storeToRefs } from 'pinia'
 import { useUserStore } from '~/src/stores/modules/user'
-import { isArray } from '~/src/utils'
+import { isArray } from 'lodash-es'
 
+/**
+ * 用户 Hook
+ * 提供用户信息、权限检查、登录登出等功能
+ * @returns 用户相关方法和数据
+ */
 export function useUser() {
-  const { setUserInfo, toLogin, clearStore, logout } = useUserStore()
-  const { getUserInfo } = storeToRefs(useUserStore())
+  const userStore = useUserStore()
+  const { setUserInfo, toLogin, clearStore, logout } = userStore
+  const { getUserInfo } = storeToRefs(userStore)
 
-  const hasHandler = (value: string | string[], permissions: string[]) => {
+  /**
+   * 权限/角色检查处理函数
+   * @param value 要检查的值（字符串或字符串数组）
+   * @param list 权限/角色列表
+   * @returns 是否具有权限/角色
+   */
+  const hasHandler = (value: string | string[], list: string[] = []): boolean => {
     if (isArray(value)) {
-      return permissions.some((i) => value.includes(i.toLocaleLowerCase()))
+      return value.some((item) => list.includes(item.toLowerCase()))
     }
-    return permissions.includes(value)
+    return list.includes(value)
   }
 
   /**
-   * 确定用户是否具有特定角色
-   * @param role 要检查的 string 或 string[] 角色
-   * @returns 指示用户是否具有角色的布尔值
+   * 检查用户是否具有指定角色
+   * @param role 要检查的角色（字符串或字符串数组）
+   * @returns 是否具有该角色
    */
-  const hasRole = (role: string | string[]) => {
-    const roles = getUserInfo.value?.roles
+  const hasRole = (role: string | string[]): boolean => {
+    const roles = getUserInfo.value?.roles || []
     return hasHandler(role, roles)
   }
 
-  const hasPermission = (permission: string | string[]) => {
-    const permissions = getUserInfo.value?.permissions
+  /**
+   * 检查用户是否具有指定权限
+   * @param permission 要检查的权限（字符串或字符串数组）
+   * @returns 是否具有该权限
+   */
+  const hasPermission = (permission: string | string[]): boolean => {
+    const permissions = getUserInfo.value?.permissions || []
     return hasHandler(permission, permissions)
   }
 

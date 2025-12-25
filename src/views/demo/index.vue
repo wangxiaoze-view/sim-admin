@@ -1,13 +1,7 @@
 <template>
-  <div>
-    <Btn />
-  </div>
+  <div></div>
 </template>
 
-<script setup lang="ts">
-  import { defineAsyncComponent } from 'vue'
-
-  const Btn = defineAsyncComponent(() => import('remote/button'))
-</script>
+<script setup lang="ts"></script>
 
 <style scoped></style>

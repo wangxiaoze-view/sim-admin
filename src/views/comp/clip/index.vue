@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import VuePictureCropper, { cropper } from 'vue-picture-cropper'
-  import { otherLinks } from '~/src/config'
+  import { link } from '~/src/config'
   import { useLoading } from '~/src/hooks'
 
   defineOptions({
@@ -10,7 +10,7 @@
 
   const {
     printFiles: { images },
-  } = otherLinks
+  } = link
 
   // https://cropper.chengpeiquan.com/zh/
   const result = ref()

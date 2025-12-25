@@ -1,3 +1,6 @@
+/**
+ * 组件展示路由配置
+ */
 export default [
   {
     path: '/comp',

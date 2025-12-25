@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import { imageLinks } from '~/src/config'
+  import { link } from '~/src/config'
   defineOptions({ name: 'NetOffline' })
-  const { not_network } = imageLinks
+  const { not_network } = link
 
   const onGoHone = () => {
     window.location.href = '/'

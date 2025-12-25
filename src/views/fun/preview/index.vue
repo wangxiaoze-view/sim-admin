@@ -7,13 +7,13 @@
 
   import '@vue-office/docx/lib/v3/style.css'
   import '@vue-office/excel/lib/v3/style.css'
-  import { fileLinks, otherLinks } from '~/src/config'
+  import { link } from '~/src/config'
 
   defineOptions({
     name: 'FunPreview',
   })
 
-  const { previewImages } = otherLinks
+  const { previewImages, test_admin_doc, test_admin_excel, test_admin_pdf } = link
   const activeName = ref('first')
 </script>
 
@@ -22,17 +22,13 @@
   <el-card class="mb-20" shadow="hover">
     <el-tabs v-model="activeName">
       <el-tab-pane label="docx文件预览" name="first">
-        <vue-office-docx :key="activeName" :src="fileLinks.test_admin_doc" style="height: 100vh" />
+        <vue-office-docx :key="activeName" :src="test_admin_doc" style="height: 100vh" />
       </el-tab-pane>
       <el-tab-pane label="excel文件预览" name="second">
-        <vue-office-excel
-          :key="activeName"
-          :src="fileLinks.test_admin_excel"
-          style="height: 100vh"
-        />
+        <vue-office-excel :key="activeName" :src="test_admin_excel" style="height: 100vh" />
       </el-tab-pane>
       <el-tab-pane label="pdf文件预览" name="third">
-        <vue-office-pdf :key="activeName" :src="fileLinks.test_admin_pdf" style="height: 100vh" />
+        <vue-office-pdf :key="activeName" :src="test_admin_pdf" style="height: 100vh" />
       </el-tab-pane>
       <el-tab-pane label="图片预览" name="fourth">
         <el-image

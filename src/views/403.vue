@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import { imageLinks } from '~/src/config'
+  import { link } from '~/src/config'
   defineOptions({ name: '403' })
-  const { not_premission } = imageLinks
+  const { not_premission } = link
 
   const onGoHone = () => {
     window.location.href = '/'

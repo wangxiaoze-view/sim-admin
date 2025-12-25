@@ -1,93 +1,102 @@
-import { Ref, nextTick, onBeforeMount, onBeforeUnmount, onMounted } from 'vue'
 import * as echarts from 'echarts'
 import SimChart from '~/src/components/SimEcharts/index.vue'
-import { isFunction, logger } from '~/src/utils'
-import { useDebounceFn } from '..'
+import { useDebounceFn } from '@vueuse/core'
 
 type TEChartsOption = echarts.EChartsOption | Record<string, unknown>
 
 interface IChartConfig {
-  // 图表的 ID
+  /** 图表的 ID */
   chartId: string
-  // 图表的引用
+  /** 图表的引用 */
   chartRef: Ref<InstanceType<typeof SimChart>>
-  // 渲染前需要处理的数据
+  /** 渲染前需要处理的数据 */
   beforeRender: () => TEChartsOption
+  /** 渲染间隔时间（毫秒），默认 3000ms */
   time?: number
 }
 
-// 针对于echarts的配置业务场景
-export function useChart<T>(options: IChartConfig) {
+/**
+ * ECharts 图表 Hook
+ * 提供图表的初始化、数据更新、大小调整等功能
+ * @param options 图表配置选项
+ * @returns 图表操作方法集合
+ */
+export function useChart(options: IChartConfig) {
   const { chartId, time = 3000, beforeRender, chartRef } = options
 
   let startTime = 0
-
-  // 图表实例
-  let chart: echarts.ECharts
-
-  const initChart = () => {
-    nextTick(() => {
-      getInstance()
-      renderChartConfig()
-    })
-  }
+  let chart: echarts.ECharts | null = null
+  let animationFrameId: number | null = null
 
   /**
-   * @description：返回ECharts实例，如果尚未初始化则初始化。
-   * @return {echarts.ECharts} ECharts实例
+   * 获取或初始化 ECharts 实例
+   * @returns ECharts 实例
    */
   const getInstance = (): echarts.ECharts => {
     if (!chartId) {
-      logger.error('chartId is required')
-      return chart
+      console.error('chartId is required')
+      throw new Error('chartId is required')
     }
-    chartRef.value?.setChartId(chartId)
+
+    if (!chartRef.value) {
+      console.error('chartRef is not available')
+      throw new Error('chartRef is not available')
+    }
+
+    chartRef.value.setChartId(chartId)
 
     if (!chart) {
-      chart = echarts.init(chartRef.value!.$el as HTMLElement)
+      const el = chartRef.value.$el as HTMLElement
+      if (!el) {
+        console.error('Chart element is not available')
+        throw new Error('Chart element is not available')
+      }
+      chart = echarts.init(el)
     }
+
     return chart
   }
 
   /**
-   * @description: 设置图表数据。
-   * @param {TEChartsOption} options -可选的图表选项，用于覆盖 beforeRender 中的选项。
+   * 设置图表数据
+   * @param options 图表配置选项
    */
-  const setChartData = (options: TEChartsOption) => {
+  const setChartData = (options: TEChartsOption): void => {
+    if (!chart) return
+    chart.setOption(options)
     resizeChart()
-    getInstance().setOption(options)
   }
 
   /**
-   * @description: 调整图表的大小。
-   * @remark: 如果你使用了自适应布局，需要在布局变化后调用这个函数，例如在浏览器窗口大小变化时。
+   * 调整图表大小
+   * 适用于窗口大小变化或布局变化时调用
    */
-  const resizeChart = () => {
-    getInstance().resize()
+  const resizeChart = (): void => {
+    if (!chart) return
+    chart.resize()
   }
 
   /**
-   * @description: 清除图表数据。
-   * @remark: 调用此函数可清空当前图表的所有数据和状态。
+   * 清除图表数据
    */
-  const clearChart = () => {
-    getInstance().clear()
+  const clearChart = (): void => {
+    if (!chart) return
+    chart.clear()
   }
 
   /**
-   * @description：AnimationFrame 请求AnimationFrame 包装器。
-   * @param {() => void} callback -要调用的回调函数。
-   * @returns {void}
+   * 立即渲染图表数据
    */
-  const animationFrame = (callback: () => void): void => {
-    if (!isFunction(callback)) return
-    requestAnimationFrame(callback)
+  const immediateRender = (): void => {
+    const options = beforeRender()
+    if (options) {
+      setChartData(options)
+    }
   }
 
   /**
-   * @description: 渲染图表数据。
-   * @remark: 如果传入了immediateRender参数，且immediateRender为true，那么将立即渲染数据，不进行定时处理。
-   * @returns {void}
+   * 渲染图表配置（定时渲染）
+   * 根据配置的时间间隔自动更新图表数据
    */
   const renderChartConfig = (): void => {
     const endTime = Date.now()
@@ -95,39 +104,82 @@ export function useChart<T>(options: IChartConfig) {
       immediateRender()
       startTime = endTime
     }
-    animationFrame(renderChartConfig)
+    animationFrameId = requestAnimationFrame(renderChartConfig)
   }
 
   /**
-   * @description: 立即渲染图表数据。
-   * @remark: 该函数将根据beforeRender函数的返回值来设置图表数据。
-   *          如果beforeRender函数的返回值为undefined，那么将不进行图表数据的设置。
-   * @returns {void}
+   * 停止自动渲染
    */
-  const immediateRender = (): void => {
-    setChartData(beforeRender() ?? {})
+  const stopAutoRender = (): void => {
+    if (animationFrameId !== null) {
+      cancelAnimationFrame(animationFrameId)
+      animationFrameId = null
+    }
   }
+
+  /**
+   * 初始化图表
+   */
+  const initChart = (): void => {
+    nextTick(() => {
+      try {
+        getInstance()
+        startTime = Date.now()
+        renderChartConfig()
+      } catch (error) {
+        console.error('Failed to initialize chart:', String(error))
+      }
+    })
+  }
+
+  /**
+   * 销毁图表实例
+   */
+  const disposeChart = (): void => {
+    stopAutoRender()
+    if (chart) {
+      chart.dispose()
+      chart = null
+    }
+  }
+
+  // 防抖处理窗口大小变化
+  const debounceResize = useDebounceFn(resizeChart, 300)
+
+  // 注册生命周期钩子
+  onBeforeMount(() => {
+    window.addEventListener('resize', debounceResize)
+  })
 
   onMounted(initChart)
 
-  const debounceFn = useDebounceFn(resizeChart, 3)
-  onBeforeMount(() => {
-    window.addEventListener('resize', debounceFn)
-  })
   onBeforeUnmount(() => {
-    window.removeEventListener('resize', debounceFn)
+    window.removeEventListener('resize', debounceResize)
+    disposeChart()
   })
 
   return {
+    /** SimChart 组件 */
     SimChart,
+    /** 图表 ID */
     chartId,
+    /** 图表引用 */
     chartRef,
+    /** 获取图表实例 */
     getInstance,
+    /** 设置图表数据 */
     setChartData,
+    /** 调整图表大小 */
     resizeChart,
+    /** 清除图表数据 */
     clearChart,
-    animationFrame,
-    renderChartConfig,
+    /** 立即渲染图表 */
     immediateRender,
+    /** 开始自动渲染 */
+    renderChartConfig,
+    /** 停止自动渲染 */
+    stopAutoRender,
+    /** 销毁图表 */
+    disposeChart,
   }
 }

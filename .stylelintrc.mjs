@@ -24,5 +24,5 @@ export default {
       },
     ],
   },
-  ignoreFiles: ['dist/**/*', 'index.html', 'functional-helpers/**/*', 'functional-helpers/*'],
+  ignoreFiles: ['dist/**/*', 'index.html'],
 }

@@ -1,9 +1,9 @@
 import { onMounted, ref } from 'vue'
 import { getDynamicApi, getTotalDataApi } from '~/src/api/other'
 import { useLoading } from '~/src/hooks'
-import { settings_config } from '~/src/config'
+import { settings } from '~/src/config'
 
-const { loadingText: text } = settings_config
+const { loadingText: text } = settings
 
 export function useTable() {
   const tableData = ref<any[]>([])

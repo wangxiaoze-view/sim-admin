@@ -2,9 +2,8 @@
   import { ref } from 'vue'
   import printJs from 'print-js'
   import { usePrint } from '~/src/hooks'
-  import { dayjs } from '~/src/utils'
-  import { fileLinks, otherLinks } from '~/src/config'
-
+  import dayjs from 'dayjs'
+  import { link } from '~/src/config'
   defineOptions({
     name: 'FunPrint',
   })
@@ -15,10 +14,10 @@
     address: string
   }
 
-  const { test_admin_pdf } = fileLinks
   const {
+    test_admin_pdf,
     printFiles: { images },
-  } = otherLinks
+  } = link
 
   const formModel = ref({
     name: '',

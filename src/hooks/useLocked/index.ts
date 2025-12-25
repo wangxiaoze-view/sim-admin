@@ -1,15 +1,15 @@
-import { reactive, ref } from 'vue'
 import { translate } from '~/src/i18n'
-import { uniqueId } from '~/src/utils'
 import { useChangeTheme, useForm, useUser } from '../index'
+import { uniqueId } from 'lodash-es'
 
 const defaultPsw = '123456'
-const LOCK_RULEs = {
+
+const LOCK_RULES = {
   password: [
     {
       required: true,
       trigger: 'blur',
-      validator: (rule: any, value: any, callback: any) => {
+      validator: (_rule: unknown, value: string, callback: (error?: Error) => void) => {
         if (value !== defaultPsw) {
           return callback(new Error(translate(`请输入锁屏密码, 默认${defaultPsw}`)))
         }
@@ -19,18 +19,29 @@ const LOCK_RULEs = {
   ],
 }
 
+/**
+ * 锁屏 Hook
+ * 提供锁屏、解锁、切换壁纸等功能
+ * @returns 锁屏相关方法和数据
+ */
 export function useLocked() {
-  const { formRef, validate, rules } = useForm(LOCK_RULEs)
+  const { formRef, validate, rules } = useForm(LOCK_RULES)
   const { setTheme } = useChangeTheme()
-
   const { getUserInfo } = useUser()
 
   const formModel = reactive({
     password: defaultPsw,
   })
 
-  const randomImage = (fast = false) => {
-    return `https://picsum.photos/${!fast ? innerWidth : 200}/${!fast ? innerHeight : 400}?random=${uniqueId()}`
+  /**
+   * 生成随机壁纸 URL
+   * @param fast 是否使用快速模式（小尺寸），默认为 false
+   * @returns 壁纸 URL
+   */
+  const randomImage = (fast = false): string => {
+    const width = fast ? 200 : innerWidth
+    const height = fast ? 400 : innerHeight
+    return `https://picsum.photos/${width}/${height}?random=${uniqueId()}`
   }
 
   const lockImage = ref(randomImage())
@@ -39,14 +50,20 @@ export function useLocked() {
   const changeTitle = translate('切换壁纸')
   const tipTitle = translate('壁纸切换可能会很慢，请耐心等待....')
 
-  const toUnlock = () => {
+  /**
+   * 解锁屏幕
+   */
+  const toUnlock = (): void => {
     validate((valid: boolean) => {
       if (!valid) return
       setTheme({ isLockedLayer: false })
     })
   }
 
-  const changeImage = () => {
+  /**
+   * 切换壁纸
+   */
+  const changeImage = (): void => {
     lockImage.value = randomImage()
   }
 

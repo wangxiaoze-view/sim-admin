@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import { imageLinks } from '~/src/config'
+  import { link } from '~/src/config'
   defineOptions({ name: '500' })
-  const { not_error } = imageLinks
+  const { not_error } = link
 
   const onGoHone = () => {
     window.location.href = '/'

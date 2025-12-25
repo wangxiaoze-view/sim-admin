@@ -1,4 +1,10 @@
-export const cli_buildGzip = true
-export const cli_outputDit = 'dist'
-export const cli_port = 5555
-export const cli_host = '0.0.0.0'
+export default {
+  // 是否开启 gzip 压缩
+  cli_buildGzip: true,
+  // 输出目录
+  cli_outputDit: 'dist',
+  // 端口号
+  cli_port: 5555,
+  // 主机地址
+  cli_host: '0.0.0.0',
+}

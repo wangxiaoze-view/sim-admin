@@ -1,6 +1,6 @@
 import { App } from 'vue'
 
-export default function setiupLayout(app: App<Element>) {
+export default function setupLayout(app: App<Element>) {
   const layouts = require.context('./', true, /\.vue$/)
   layouts
     .keys()

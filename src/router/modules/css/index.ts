@@ -1,5 +1,8 @@
-import { defineAsyncComponent, h } from 'vue'
+import { defineAsyncComponent } from 'vue'
 
+/**
+ * CSS 样式展示路由配置
+ */
 export default [
   {
     path: '/css',

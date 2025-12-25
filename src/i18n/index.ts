@@ -1,5 +1,5 @@
 import { createI18n } from 'vue-i18n'
-import { useSettinggsStore } from '../stores/modules/settings'
+import { useSettingsStore } from '../stores/modules/settings'
 import { App, computed } from 'vue'
 import defaultLanguage from './default.json'
 import pinia from '../stores'
@@ -16,7 +16,7 @@ const messages = {
 }
 
 const getLanguage = () => {
-  const { getLanguage } = useSettinggsStore(pinia)
+  const { getLanguage } = useSettingsStore(pinia)
   return getLanguage
 }
 

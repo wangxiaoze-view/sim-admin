@@ -1,5 +1,6 @@
 <script setup lang="ts">
-  import { useConfigProvider, useNetwork, useRouter } from '~/src/hooks'
+  import { useConfigProvider, useRouter } from '~/src/hooks'
+  import { useNetwork } from '@vueuse/core'
   defineOptions({
     name: 'SimApp',
   })

@@ -1,3 +1,6 @@
+/**
+ * 页面模板路由配置
+ */
 export default [
   {
     path: '/page',

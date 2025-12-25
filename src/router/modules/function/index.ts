@@ -1,3 +1,6 @@
+/**
+ * 功能演示路由配置
+ */
 export default [
   {
     path: '/fun',
@@ -9,16 +12,16 @@ export default [
       sort: 5,
     },
     children: [
-      {
-        path: 'remote',
-        name: 'RemotePage',
-        component: () => import('~/src/views/fun/remote/index.vue'),
-        meta: {
-          title: '远程组件',
-          icon: 'ri-remote-control-line',
-          roles: ['Admin', 'User', 'Test'],
-        },
-      },
+      // {
+      //   path: 'remote',
+      //   name: 'RemotePage',
+      //   component: () => import('~/src/views/fun/remote/index.vue'),
+      //   meta: {
+      //     title: '远程组件',
+      //     icon: 'ri-remote-control-line',
+      //     roles: ['Admin', 'User', 'Test'],
+      //   },
+      // },
       {
         path: 'flow',
         name: 'FunFlow',

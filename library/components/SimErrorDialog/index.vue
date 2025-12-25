@@ -7,14 +7,14 @@
     name: 'SimErrorDialog',
   })
 
-  const { initReplayer } = useReport()
+  const { initRePlayer } = useReport()
 
   const visible = ref(false)
   const setVisible = (show: boolean) => {
     visible.value = show
     if (show) {
       setTimeout(() => {
-        initReplayer()
+        initRePlayer()
       }, 10)
     }
   }

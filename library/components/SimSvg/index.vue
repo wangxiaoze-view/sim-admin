@@ -1,8 +1,9 @@
 <script setup lang="ts">
-  import { TShape } from '~/src/enum'
+  import { useFlow } from '~/src/hooks'
   import { Shape } from './enum'
 
-  defineProps<{ type: IconType | TShape | Shape }>()
+  const { TShape } = useFlow()
+  defineProps<{ type: IconType | (typeof TShape)[keyof typeof TShape] | Shape }>()
 </script>
 <template>
   <div class="sim-svg">

@@ -1,8 +1,9 @@
 import { ElTooltip, ElTooltipProps } from 'element-plus'
 import { type App, DirectiveBinding, isVNode, nextTick } from 'vue'
 import { renderToString } from 'vue/server-renderer'
-import { isObject, isString, useDirectiveComponent, useUser } from '~/src/hooks'
-import { createRipple, isArray, removeRipple, throttle } from '~/src/utils'
+import { useDirectiveComponent, useUser } from '~/src/hooks'
+import { isString, throttle, isArray } from 'lodash-es'
+import { createRipple, removeRipple } from '~/src/utils'
 import { $sim } from '~/library/plugins/element'
 
 const { hasRole, hasPermission } = useUser()

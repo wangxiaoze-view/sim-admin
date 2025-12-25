@@ -1,6 +1,4 @@
-// 系统链接
-export const imageLinks = {
-  // https://github.com/wangxiaoze-view/picx-images-hosting/raw/master/images/qq_icon.8z6jnypwzg.svg
+export default {
   logo: 'https://assets.wangxiaoze.cn/images/logo.51e67aosot.svg',
   login_cover: 'https://assets.wangxiaoze.cn/images/login_cover.3nrn392l78.svg',
   login_bg: 'https://assets.wangxiaoze.cn/images/wave-haikei.8l03zqtzlh.svg',
@@ -12,20 +10,11 @@ export const imageLinks = {
   not_error: 'https://assets.wangxiaoze.cn/images/500.969s0fd4vo.svg',
   not_network: 'https://assets.wangxiaoze.cn/images/netOffline.6wqrgxz19f.svg',
   update_img: 'https://assets.wangxiaoze.cn/images/up.67xk0iidnk.svg',
-}
 
-// github
-export const githubCommit = 'https://github.com/wangxiaoze-view/sim-admin/blob/main/COMMIT.md'
-
-// 文件
-export const fileLinks = {
+  githubCommit: 'https://github.com/wangxiaoze-view/sim-admin/blob/main/COMMIT.md',
   test_admin_doc: 'https://assets.wangxiaoze.cn/images/files/test_admin_doc.docx',
   test_admin_excel: 'https://assets.wangxiaoze.cn/images/files/test_admin_excel.xls',
   test_admin_pdf: 'https://assets.wangxiaoze.cn/images/files/test_admin_pdf.pdf',
-}
-
-// 其他，如预览图片，打印文件等等
-export const otherLinks = {
   previewImages: [
     'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
     'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',

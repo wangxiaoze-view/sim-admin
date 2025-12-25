@@ -14,7 +14,7 @@
     commands,
     getTheme,
     getVisitedRoutes,
-    curtrentTab,
+    currentTab,
     onTabClick,
     onTabRemove,
     onShowTabMenu,
@@ -35,7 +35,7 @@
     v-if="getTheme.isTabs"
   >
     <el-tabs
-      v-model="curtrentTab"
+      v-model="currentTab"
       type="card"
       :class="[`sim-tabs--${getTheme.tabStyle}`]"
       @tab-click="onTabClick"

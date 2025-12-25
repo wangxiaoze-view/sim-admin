@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-  import { imageLinks } from '~/src/config'
+  import { link } from '~/src/config'
   defineOptions({
     name: 'SimLogo',
   })
-  const { logo } = imageLinks
+  const { logo } = link
 </script>
 
 <template>
