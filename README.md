@@ -1,6 +1,6 @@
 # sim-admin
 
-> **`admin` 将不再继续更新维护。 [pro版本已上线](https://wangxiaoze.cn/admin-pro)，更多功能详看`pro`版本。**
+> **`admin` 将不再继续更新维护。 [pro版本已上线](https://wangxiaoze.cn/admin-pro/)，更多功能详看`pro`版本。**
 
 ## Pro版本与Admin 有什么区别
 
