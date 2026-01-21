@@ -16,6 +16,13 @@
 10. **后期在日常开发中遇到的业务场景也会总结进去。**
 
 
+## 参考视频如下：
+
+
+<video src="https://assets.wangxiaoze.cn/assets/files/iShot_2026-01-21_16.59.28.mp4" controls="controls" width="500" height="300"></video>
+
+如果视频没有加载出来，可以浏览器打开：https://assets.wangxiaoze.cn/assets/files/iShot_2026-01-21_16.59.28.mp4
+
 ---- 
 
 # admin 版本文档如下
