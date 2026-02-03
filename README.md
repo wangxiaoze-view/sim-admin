@@ -1,6 +1,6 @@
 # sim-admin
 
-> **`admin` 将不再继续更新维护。 [pro版本已上线](https://wangxiaoze.cn/admin-pro/)，更多功能详看`pro`版本。**
+> **`admin` 将不再继续更新维护。 [pro版本已上线](https://wangxiaoze.cn/web-admin-pro/)，更多功能详看`pro`版本。**
 
 ## Pro版本与Admin 有什么区别
 
@@ -15,13 +15,6 @@
 9. 新功能由于个人时间问题，可能开发上线时间**较晚**。
 10. **后期在日常开发中遇到的业务场景也会总结进去。**
 
-
-## 参考视频如下：
-
-
-<video src="https://assets.wangxiaoze.cn/assets/files/iShot_2026-01-21_16.59.28.mp4" controls="controls" width="500" height="300"></video>
-
-如果视频没有加载出来，可以浏览器打开：https://assets.wangxiaoze.cn/assets/files/iShot_2026-01-21_16.59.28.mp4
 
 ---- 
 
